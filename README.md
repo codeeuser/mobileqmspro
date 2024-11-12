@@ -33,6 +33,8 @@ $ dart bin/main.dart
 $ dart run intl_utils:generate
 $ flutter run -d chrome --web-port=1234
 $ flutter create .
+$ dart compile aot-snapshot bin/main.dart 
+$ dartaotruntime bin/main.aot
 ```
 
 ## License
