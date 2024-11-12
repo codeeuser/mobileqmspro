@@ -1,4 +1,3 @@
-// import 'package:serverpod_auth_shared_flutter/serverpod_auth_shared_flutter.dart';
 import 'package:serverpod_flutter/serverpod_flutter.dart';
 import 'package:mobileqmspro_client/mobileqmspro_client.dart';
 
@@ -14,11 +13,4 @@ Future<void> initializeServerpodClient() async {
   client = Client(
     'http://localhost:8080/',
   )..connectivityMonitor = FlutterConnectivityMonitor();
-
-  // The session manager keeps track of the signed-in state of the user. You
-  // can query it to see if the user is currently signed in and get information
-  // about the user.
-  // sessionManager = SessionManager(
-  //   caller: client.modules.auth,
-  // );
 }

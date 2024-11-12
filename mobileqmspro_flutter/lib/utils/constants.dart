@@ -6,26 +6,10 @@ class Constant {
   static bool sendTestException = false;
 }
 
-const String myBaseUrl = (kReleaseMode == true)
-    ? 'https://wheref.com/'
-    : 'http://192.168.1.49:1234/';
+const String myBaseUrl =
+    (kReleaseMode == true) ? 'https://wheref.com/' : 'http://localhost:1234/';
 const String privacyUrl = 'https://wheref.com/privacy.html';
 const String termUrl = 'https://wheref.com/terms.html';
-
-// const String ANDROIDTV_BOARD = 'https://play.google.com/store/apps/details?id=com.wheref.mobileqmsboard';
-
-// const FORCE_UPDATE_RESTRICTION = 'force_update_restriction';
-
-// const MOBILEQMS_APP_STORE_URL = 'https://apps.apple.com/us/app/paperless-qms/id1497464296?ls=1';
-// const MOBILEQMS_PLAY_STORE_URL = 'https://play.google.com/store/apps/details?id=com.wheref.mobileqms';
-// const MOBILEQMS_HUAWEI_STORE_URL = 'https://appgallery.huawei.com/#/app/C101040523';
-// const MOBILEQMS_FORCE_UPDATE = 'mobileqms_force_update_current_version';
-
-// const MOBILEQMSBOARDPAD_APP_STORE_URL = 'https://apps.apple.com/us/app/paperless-qms/id1497657270?ls=1';
-// const MOBILEQMSBOARDPAD_PLAY_STORE_URL = 'https://play.google.com/store/apps/details?id=com.wheref.mobileqmsboardpad';
-// const MOBILEQMSBOARDPAD_HUAWEI_STORE_URL = 'https://appgallery.huawei.com/#/app/C101687235';
-
-// const int numDayRecord = 7;
 
 class Texts {
   static const String appName = "MobileQMSPro";

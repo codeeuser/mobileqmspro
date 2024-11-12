@@ -35,7 +35,6 @@ class _MorePageState extends State<MorePage> {
   static const String tag = "MorePage";
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey();
 
-  String? _appName;
   String? _packageName;
   String? _version;
   String? _buildNumber;
@@ -50,14 +49,11 @@ class _MorePageState extends State<MorePage> {
   Future<void> _initialize() async {
     PackageInfo.fromPlatform().then((PackageInfo packageInfo) async {
       AppTheme appTheme = context.read<AppTheme>();
-      String appName = packageInfo.appName;
-      appName = (appName.isEmpty == true) ? 'MobileQMS Pro' : appName;
       String packageName = packageInfo.packageName;
       String version = packageInfo.version;
       String buildNumber = packageInfo.buildNumber;
 
       setState(() {
-        _appName = appName;
         _packageName = packageName;
         _version = version;
         _buildNumber = buildNumber;
@@ -198,18 +194,6 @@ class _MorePageState extends State<MorePage> {
               const Icon(CupertinoIcons.wind, semanticLabel: 'Current Window'),
           title: Text(S.of(context).currentWindowName),
           subtitle: Text(widget.window.name),
-        ),
-        const Divider(color: Colors.grey),
-        ListTile(
-          leading: const Icon(CupertinoIcons.info, semanticLabel: 'App Name'),
-          title: Text(S.of(context).appName),
-          subtitle: Text('$_appName'),
-          onTap: () {
-            Logger.log(tag, message: 'TAP');
-          },
-          onLongPress: () {
-            throw "Test exception";
-          },
         ),
         const Divider(color: Colors.grey),
         ListTile(
