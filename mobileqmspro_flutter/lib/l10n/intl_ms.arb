@@ -1,0 +1,497 @@
+{
+	"@@last_modified": "2020-06-05T08:38:20.745482",
+	"title": "MobileQMS Pro",
+	"@title": {
+		"description": "The application title",
+		"type": "text",
+		"placeholders": {}
+	},
+	"text": "Teks",
+	"@text": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"boardSetting": "Penetapan Papan",
+	"@boardSetting": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"selectLanguage": "Pilih Bahasa",
+	"@selectLanguage": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"backgroundColor": "Warna latar belakang",
+	"@backgroundColor": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"textColor": "Warna Teks",
+	"@textColor": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"numberOfTokenBox": "Bilangan Kotak Token",
+	"@numberOfTokenBox": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"setting": "Menetapkan",
+	"@setting": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"tokenNumber": "Nombor Token",
+	"@tokenNumber": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"printToken": "Cetak Token",
+	"@printToken": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"proceedToCounter": "Teruskan ke Kaunter",
+	"@proceedToCounter": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"pleaseWait": "Sila tunggu",
+	"@pleaseWait": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"counter": "Kaunter",
+	"@counter": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"createdDate": "Dicipta",
+	"@createdDate": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"statusQueue": "status",
+	"@statusQueue": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"currentToken": "Token Semasa",
+	"@currentToken": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"myQueue": "Antrian Saya",
+	"@myQueue": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"markComplete": "Tandakan Selesai",
+	"@markComplete": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"markAsCompleted": "Tandakan sebagai Selesai",
+	"@markAsCompleted": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"recall": "Panggil Semula",
+	"@recall": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"callToken": "Panggil Token",
+	"@callToken": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"issueToken": "Token Isu",
+	"@issueToken": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"more": "Lebih banyak lagi",
+	"@more": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"moreOptions": "Lebih banyak pilihan",
+	"@moreOptions": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"name": "Nama",
+	"@name": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"printQRCode": "Cetak Kod QR",
+	"@printQRCode": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"pairCode": "Kod Pasangan",
+	"@pairCode": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"share": "Kongsi",
+	"@share": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"feedback": "Maklumbalas",
+	"@feedback": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"mobileqmsBoardPadApp": "Aplikasi MobileQMS Board Pad",
+	"@mobileqmsBoardPadApp": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"serverStarted": "Pelayan Dimulakan",
+	"@serverStarted": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"serverStopped": "Pelayan Dihentikan",
+	"@serverStopped": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"setupLanguage": "Bahasa Persediaan",
+	"@setupLanguage": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"setupTheStall": "Sediakan Gerai",
+	"@setupTheStall": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"setupPrinter": "Persediaan Pencetak",
+	"@setupPrinter": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"completedTokens": "Token selesai",
+	"@completedTokens": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"resetTokenNumber": "Tetapkan Semula Nombor Token",
+	"@resetTokenNumber": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"visitUsAt": "Lawati kami di",
+	"@visitUsAt": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"termsOfUse": "Syarat penggunaan",
+	"@termsOfUse": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"privacy": "Privasi",
+	"@privacy": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"currentWindowName": "Nama Tetingkap Semasa",
+	"@currentWindowName": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"appName": "Nama Aplikasi",
+	"@appName": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"packageName": "Nama Pakej",
+	"@packageName": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"buildNumber": "Nombor Binaan",
+	"@buildNumber": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"version": "Versi",
+	"@version": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"displayTheRunningQueueNumber": "Paparkan Nombor Giliran Berjalan",
+	"@displayTheRunningQueueNumber": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"youShouldSetupPrinter": "Anda harus Menyiapkan Pencetak sebelum digunakan",
+	"@youShouldSetupPrinter": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"device": "Peranti",
+	"@device": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"connect": "Sambung",
+	"@connect": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"disconnect": "Putuskan sambungan",
+	"@disconnect": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"testPrint": "Cetakan Ujian",
+	"@testPrint": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"fontScale": "Skala Font",
+	"@fontScale": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"pageSize": "Saiz Halaman",
+	"@pageSize": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"accept": "Terima",
+	"@accept": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"cancel": "Batalkan",
+	"@cancel": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"setupWindow": "Tetingkap Persediaan",
+	"@setupWindow": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"enableWindow": "Dayakan Tetingkap",
+	"@enableWindow": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"editWindow": "Edit Tetingkap",
+	"@editWindow": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"openServiceList": "Buka Senarai Perkhidmatan",
+	"@openServiceList": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"moveUp": "Bergerak ke atas",
+	"@moveUp": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"moveDown": "Bergerak ke bawah",
+	"@moveDown": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"editService": "Edit Perkhidmatan",
+	"@editService": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"serviceList": "Senarai Perkhidmatan",
+	"@serviceList": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"serviceForm": "Borang Perkhidmatan",
+	"@serviceForm": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"serviceName": "Nama Perkhidmatan",
+	"@serviceName": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"serviceLetter": "Surat Perkhidmatan",
+	"@serviceLetter": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"startNumber": "Nombor Mula",
+	"@startNumber": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"save": "Simpan",
+	"@save": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"update": "Kemas kini",
+	"@update": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"submit": "mengemukakan",
+	"@submit": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"windowForm": "Borang Tingkap",
+	"@windowForm": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"windowName": "Nama Tetingkap",
+	"@windowName": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"email": "E-mel",
+	"@email": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"phone": "Telefon",
+	"@phone": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"windowWizard": "Ahli Sihir Tetingkap",
+	"@windowWizard": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"serviceWizard": "Wizard Perkhidmatan",
+	"@serviceWizard": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"next": "Seterusnya",
+	"@next": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"window": "Tingkap",
+	"@window": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"service": "Perkhidmatan",
+	"@service": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"addLogo": "Tambah Logo",
+	"@addLogo": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"removeLogo": "Keluarkan Logo",
+	"@removeLogo": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"openImageGalerry": "Buka Gambar Galerry",
+	"@openImageGalerry": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"openCamera": "Buka kamera",
+	"@openCamera": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"addPrinter": "Tambah Pencetak",
+	"@addPrinter": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"doYouAccept": "Adakah anda terima",
+	"@doYouAccept": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"yes": "Ya",
+	"@yes": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"no": "Tidak",
+	"@no": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"addService": "Tambah Perkhidmatan",
+	"@addService": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"addWindow": "Tambah Tetingkap",
+	"@addWindow": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"dashboard": "Papan Pemuka",
+	"@dashboard": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"windows": "Tingkap",
+	"@windows": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"appInfo": "Maklumat Aplikasi",
+	"@appInfo": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"tokenList": "Senarai Token",
+	"@tokenList": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"server": "Pelayan",
+	"@server": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"shareTokenInfo": "Kongsi Maklumat Token",
+	"@shareTokenInfo": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"appearance": "Penampilan",
+	"@appearance": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"markAllAsCompleted": "Tandakan Semua sebagai Selesai",
+	"permission": "Kebenaran",
+	"sendSms": "Hantar SMS",
+	"inAppPurchase": "Dalam Pembelian Aplikasi",
+	"alreadyPurchased": "Sudah dibeli",
+	"purchasedRecord": "Rekod yang Dibeli",
+	"markAllAsTimeout": "Tandakan Semua Sebagai Waktu Tamat",
+	"tokenAction": "Tindakan Token",
+	"recallToken": "Ingat Token",
+	"timeout": "Masa tamat",
+	"timeoutToken": "Token Masa tamat",
+	"wizardProject": "Projek Penyihir",
+	"dropDatabase": "Gugurkan Pangkalan Data"
+}

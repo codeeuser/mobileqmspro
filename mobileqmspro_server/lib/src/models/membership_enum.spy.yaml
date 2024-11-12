@@ -1,0 +1,6 @@
+enum: Membership
+serialized: byName
+values:
+    - basic
+    - advance
+    - premium

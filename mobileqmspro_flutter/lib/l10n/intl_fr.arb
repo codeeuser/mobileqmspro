@@ -1,0 +1,497 @@
+{
+	"@@last_modified": "2020-06-05T08:38:20.745482",
+	"title": "MobileQMS Pro",
+	"@title": {
+		"description": "The application title",
+		"type": "text",
+		"placeholders": {}
+	},
+	"text": "Texte",
+	"@text": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"boardSetting": "Réglage de la carte",
+	"@boardSetting": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"selectLanguage": "Choisir la langue",
+	"@selectLanguage": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"backgroundColor": "Couleur de fond",
+	"@backgroundColor": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"textColor": "Couleur du texte",
+	"@textColor": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"numberOfTokenBox": "Nombre de Token Box",
+	"@numberOfTokenBox": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"setting": "réglage",
+	"@setting": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"tokenNumber": "Numéro de jeton",
+	"@tokenNumber": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"printToken": "Jeton d'impression",
+	"@printToken": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"proceedToCounter": "Passer au comptoir",
+	"@proceedToCounter": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"pleaseWait": "S'il vous plaît, attendez",
+	"@pleaseWait": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"counter": "Compteur",
+	"@counter": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"createdDate": "Créé",
+	"@createdDate": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"statusQueue": "Statut",
+	"@statusQueue": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"currentToken": "Jeton actuel",
+	"@currentToken": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"myQueue": "Ma file d'attente",
+	"@myQueue": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"markComplete": "Mark Complete",
+	"@markComplete": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"markAsCompleted": "Marquer comme terminé",
+	"@markAsCompleted": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"recall": "Rappel",
+	"@recall": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"callToken": "Jeton d'appel",
+	"@callToken": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"issueToken": "Jeton d'émission",
+	"@issueToken": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"more": "Plus",
+	"@more": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"moreOptions": "Plus d'options",
+	"@moreOptions": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"name": "Prénom",
+	"@name": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"printQRCode": "Imprimer le code QR",
+	"@printQRCode": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"pairCode": "Code de paire",
+	"@pairCode": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"share": "Partager",
+	"@share": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"feedback": "Retour d'information",
+	"@feedback": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"mobileqmsBoardPadApp": "MobileQMS Board Pad App",
+	"@mobileqmsBoardPadApp": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"serverStarted": "Serveur démarré",
+	"@serverStarted": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"serverStopped": "Arrêt du serveur",
+	"@serverStopped": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"setupLanguage": "Langue de configuration",
+	"@setupLanguage": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"setupTheStall": "Configurer le décrochage",
+	"@setupTheStall": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"setupPrinter": "Configurer l'imprimante",
+	"@setupPrinter": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"completedTokens": "Jeton terminé",
+	"@completedTokens": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"resetTokenNumber": "Réinitialiser le numéro de jeton",
+	"@resetTokenNumber": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"visitUsAt": "Rendez-nous visite à",
+	"@visitUsAt": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"termsOfUse": "conditions d'utilisation",
+	"@termsOfUse": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"privacy": "Intimité",
+	"@privacy": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"currentWindowName": "Nom de la fenêtre actuelle",
+	"@currentWindowName": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"appName": "Nom de l'application",
+	"@appName": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"packageName": "Nom du paquet",
+	"@packageName": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"buildNumber": "Numéro de build",
+	"@buildNumber": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"version": "Version",
+	"@version": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"displayTheRunningQueueNumber": "Afficher le numéro de la file d'attente en cours d'exécution",
+	"@displayTheRunningQueueNumber": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"youShouldSetupPrinter": "Vous devez configurer l'imprimante avant utilisation",
+	"@youShouldSetupPrinter": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"device": "Dispositif",
+	"@device": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"connect": "Relier",
+	"@connect": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"disconnect": "déconnecter",
+	"@disconnect": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"testPrint": "Test d'impression",
+	"@testPrint": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"fontScale": "Échelle de police",
+	"@fontScale": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"pageSize": "Taille de la page",
+	"@pageSize": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"accept": "Acceptez",
+	"@accept": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"cancel": "annuler",
+	"@cancel": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"setupWindow": "Fenêtre de configuration",
+	"@setupWindow": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"enableWindow": "Activer la fenêtre",
+	"@enableWindow": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"editWindow": "Fenêtre d'édition",
+	"@editWindow": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"openServiceList": "Ouvrir la liste des services",
+	"@openServiceList": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"moveUp": "Déplacer vers le haut",
+	"@moveUp": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"moveDown": "Descendre",
+	"@moveDown": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"editService": "EDITER LE SERVICE",
+	"@editService": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"serviceList": "Liste des services",
+	"@serviceList": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"serviceForm": "Formulaire de service",
+	"@serviceForm": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"serviceName": "Nom du service",
+	"@serviceName": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"serviceLetter": "Lettre de service",
+	"@serviceLetter": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"startNumber": "Numéro de départ",
+	"@startNumber": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"save": "sauvegarder",
+	"@save": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"update": "Mettre à jour",
+	"@update": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"submit": "Soumettre",
+	"@submit": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"windowForm": "Formulaire de fenêtre",
+	"@windowForm": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"windowName": "Nom de la fenêtre",
+	"@windowName": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"email": "Email",
+	"@email": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"phone": "Téléphone",
+	"@phone": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"windowWizard": "Assistant de fenêtre",
+	"@windowWizard": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"serviceWizard": "Assistant de service",
+	"@serviceWizard": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"next": "Suivant",
+	"@next": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"window": "fenêtre",
+	"@window": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"service": "Un service",
+	"@service": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"addLogo": "Ajouter un logo",
+	"@addLogo": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"removeLogo": "Supprimer le logo",
+	"@removeLogo": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"openImageGalerry": "Open Image Galerry",
+	"@openImageGalerry": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"openCamera": "Ouvrir la caméra",
+	"@openCamera": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"addPrinter": "Ajouter une imprimante",
+	"@addPrinter": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"doYouAccept": "Acceptez-vous",
+	"@doYouAccept": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"yes": "Oui",
+	"@yes": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"no": "Non",
+	"@no": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"addService": "Ajouter un service",
+	"@addService": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"addWindow": "Ajouter une fenêtre",
+	"@addWindow": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"dashboard": "Tableau de bord",
+	"@dashboard": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"windows": "les fenêtres",
+	"@windows": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"appInfo": "Informations sur l'application",
+	"@appInfo": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"tokenList": "Liste de jetons",
+	"@tokenList": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"server": "Serveur",
+	"@server": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"shareTokenInfo": "Partager les informations de jeton",
+	"@shareTokenInfo": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"appearance": "Apparence",
+	"@appearance": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"markAllAsCompleted": "Marquer tout comme terminé",
+	"permission": "Autorisation",
+	"sendSms": "Envoyer un SMS",
+	"inAppPurchase": "Achat d'application",
+	"alreadyPurchased": "Déjà acheté",
+	"purchasedRecord": "Enregistrement acheté",
+	"markAllAsTimeout": "Marquer tout comme délai d'attente",
+	"tokenAction": "Action de jeton",
+	"recallToken": "Jeton de rappel",
+	"timeout": "Temps libre",
+	"timeoutToken": "Jeton de délai d'attente",
+	"wizardProject": "Projet Assistant",
+	"dropDatabase": "Déposer la base de données"
+}

@@ -1,0 +1,45 @@
+logLogin:
+  - getAll:
+  - update:
+  - create:
+  - delete:
+profileUser:
+  - findByEmail:
+  - update:
+  - create:
+  - delete:
+queueService:
+  - getAllByWindowId:
+  - getAllByWindowIdAndEnable:
+  - findById:
+  - update:
+  - createAll:
+  - create:
+  - delete:
+  - countByWindow:
+queueWindow:
+  - getAllByEmail:
+  - getSelectedByEmail:
+  - findById:
+  - updateSelected:
+  - update:
+  - create:
+  - delete:
+  - countByEmail:
+tokenIssued:
+  - getAllByWindowId:
+  - getAllByWindowAndStatus:
+  - getAllByWindowAndOnQueue:
+  - getAllByServiceId:
+  - findByToken:
+  - findById:
+  - findLatestTokenIssuedByWindowAndService:
+  - update:
+  - updateAll:
+  - resetAll:
+  - create:
+  - delete:
+  - countIsQueueStatus:
+  - countStatus:
+  - echoStatusStream:
+  - echoTokensStream:

@@ -1,0 +1,497 @@
+{
+	"@@last_modified": "2020-06-05T08:38:20.745482",
+	"title": "MobileQMS Pro",
+	"@title": {
+		"description": "The application title",
+		"type": "text",
+		"placeholders": {}
+	},
+	"text": "Texto",
+	"@text": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"boardSetting": "Configuração da placa",
+	"@boardSetting": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"selectLanguage": "Selecione o idioma",
+	"@selectLanguage": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"backgroundColor": "Cor de fundo",
+	"@backgroundColor": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"textColor": "Cor do texto",
+	"@textColor": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"numberOfTokenBox": "Número de caixas de tokens",
+	"@numberOfTokenBox": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"setting": "Configuração",
+	"@setting": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"tokenNumber": "Número do token",
+	"@tokenNumber": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"printToken": "Token de impressão",
+	"@printToken": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"proceedToCounter": "Prossiga para Contador",
+	"@proceedToCounter": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"pleaseWait": "Por favor, espere",
+	"@pleaseWait": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"counter": "Contador",
+	"@counter": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"createdDate": "Criado",
+	"@createdDate": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"statusQueue": "Status",
+	"@statusQueue": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"currentToken": "Token atual",
+	"@currentToken": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"myQueue": "Minha fila",
+	"@myQueue": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"markComplete": "Marcar como concluído",
+	"@markComplete": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"markAsCompleted": "Marcar como concluído",
+	"@markAsCompleted": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"recall": "Re-Call",
+	"@recall": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"callToken": "Token de chamada",
+	"@callToken": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"issueToken": "Token de Emissão",
+	"@issueToken": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"more": "mais",
+	"@more": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"moreOptions": "Mais opções",
+	"@moreOptions": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"name": "Nome",
+	"@name": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"printQRCode": "Imprimir código QR",
+	"@printQRCode": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"pairCode": "Código de par",
+	"@pairCode": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"share": "Compartilhar",
+	"@share": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"feedback": "Comentários",
+	"@feedback": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"mobileqmsBoardPadApp": "MobileQMS Board Pad App",
+	"@mobileqmsBoardPadApp": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"serverStarted": "Servidor iniciado",
+	"@serverStarted": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"serverStopped": "Servidor parado",
+	"@serverStopped": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"setupLanguage": "Idioma de configuração",
+	"@setupLanguage": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"setupTheStall": "Configurar o estol",
+	"@setupTheStall": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"setupPrinter": "Configuração da impressora",
+	"@setupPrinter": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"completedTokens": "Token concluído",
+	"@completedTokens": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"resetTokenNumber": "Redefinir número de token",
+	"@resetTokenNumber": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"visitUsAt": "Visite-nos em",
+	"@visitUsAt": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"termsOfUse": "termos de uso",
+	"@termsOfUse": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"privacy": "Privacidade",
+	"@privacy": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"currentWindowName": "Nome da janela atual",
+	"@currentWindowName": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"appName": "Nome do Aplicativo",
+	"@appName": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"packageName": "Nome do pacote",
+	"@packageName": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"buildNumber": "Número da compilação",
+	"@buildNumber": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"version": "Versão",
+	"@version": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"displayTheRunningQueueNumber": "Exibir o número da fila em execução",
+	"@displayTheRunningQueueNumber": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"youShouldSetupPrinter": "Você deve configurar a impressora antes de usar",
+	"@youShouldSetupPrinter": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"device": "Dispositivo",
+	"@device": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"connect": "Conectar",
+	"@connect": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"disconnect": "Desconectar",
+	"@disconnect": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"testPrint": "Impressão de teste",
+	"@testPrint": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"fontScale": "Escala de fonte",
+	"@fontScale": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"pageSize": "Tamanho da página",
+	"@pageSize": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"accept": "Aceitar",
+	"@accept": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"cancel": "Cancelar",
+	"@cancel": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"setupWindow": "Janela de configuração",
+	"@setupWindow": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"enableWindow": "Ativar janela",
+	"@enableWindow": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"editWindow": "Janela de edição",
+	"@editWindow": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"openServiceList": "Abrir lista de serviços",
+	"@openServiceList": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"moveUp": "Subir",
+	"@moveUp": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"moveDown": "Mover para baixo",
+	"@moveDown": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"editService": "Serviço de edição",
+	"@editService": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"serviceList": "Lista de serviços",
+	"@serviceList": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"serviceForm": "Formulário de Serviço",
+	"@serviceForm": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"serviceName": "Nome do serviço",
+	"@serviceName": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"serviceLetter": "Carta de Serviço",
+	"@serviceLetter": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"startNumber": "Número inicial",
+	"@startNumber": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"save": "Salve ",
+	"@save": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"update": "Atualizar",
+	"@update": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"submit": "Enviar",
+	"@submit": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"windowForm": "Formulário da janela",
+	"@windowForm": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"windowName": "Nome da janela",
+	"@windowName": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"email": "O email",
+	"@email": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"phone": "telefone",
+	"@phone": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"windowWizard": "Assistente de janela",
+	"@windowWizard": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"serviceWizard": "Assistente de serviço",
+	"@serviceWizard": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"next": "Próximo",
+	"@next": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"window": "Janela",
+	"@window": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"service": "Serviço",
+	"@service": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"addLogo": "Adicionar logotipo",
+	"@addLogo": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"removeLogo": "Remover logotipo",
+	"@removeLogo": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"openImageGalerry": "Abrir imagem Galerry",
+	"@openImageGalerry": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"openCamera": "Câmera Aberta",
+	"@openCamera": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"addPrinter": "Adicionar impressora",
+	"@addPrinter": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"doYouAccept": "Você aceita",
+	"@doYouAccept": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"yes": "sim",
+	"@yes": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"no": "Não",
+	"@no": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"addService": "Adicionar serviço",
+	"@addService": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"addWindow": "Adicionar janela",
+	"@addWindow": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"dashboard": "painel de controle",
+	"@dashboard": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"windows": "janelas",
+	"@windows": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"appInfo": "Informações do aplicativo",
+	"@appInfo": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"tokenList": "Lista de Token",
+	"@tokenList": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"server": "Servidor",
+	"@server": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"shareTokenInfo": "Compartilhar informações do token",
+	"@shareTokenInfo": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"appearance": "Aparência",
+	"@appearance": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"markAllAsCompleted": "Marcar tudo como concluído",
+	"permission": "Permissão",
+	"sendSms": "Enviar SMS",
+	"inAppPurchase": "Compra no aplicativo",
+	"alreadyPurchased": "Já comprado",
+	"purchasedRecord": "Registro Comprado",
+	"markAllAsTimeout": "Marcar tudo como tempo limite",
+	"tokenAction": "Ação Token",
+	"recallToken": "Lembrar token",
+	"timeout": "Tempo esgotado",
+	"timeoutToken": "Token de tempo limite",
+	"wizardProject": "Projeto Wizard",
+	"dropDatabase": "Eliminar banco de dados"
+}

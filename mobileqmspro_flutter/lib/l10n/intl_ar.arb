@@ -1,0 +1,497 @@
+{
+	"@@last_modified": "2020-06-05T08:38:20.745482",
+	"title": "MobileQMS Pro",
+	"@title": {
+		"description": "The application title",
+		"type": "text",
+		"placeholders": {}
+	},
+	"text": "نص",
+	"@text": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"boardSetting": "إعداد المجلس",
+	"@boardSetting": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"selectLanguage": "اختار اللغة",
+	"@selectLanguage": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"backgroundColor": "لون الخلفية",
+	"@backgroundColor": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"textColor": "لون الخط",
+	"@textColor": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"numberOfTokenBox": "عدد الصناديق المميزة",
+	"@numberOfTokenBox": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"setting": "ضبط",
+	"@setting": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"tokenNumber": "رقم الرمز",
+	"@tokenNumber": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"printToken": "طباعة الرمز المميز",
+	"@printToken": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"proceedToCounter": "انتقل إلى العداد",
+	"@proceedToCounter": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"pleaseWait": "ارجوك انتظر",
+	"@pleaseWait": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"counter": "عداد",
+	"@counter": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"createdDate": "خلقت",
+	"@createdDate": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"statusQueue": "الحالة",
+	"@statusQueue": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"currentToken": "الرمز الحالي",
+	"@currentToken": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"myQueue": "قائمة الانتظار الخاصة بي",
+	"@myQueue": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"markComplete": "وضع علامة مكتمل",
+	"@markComplete": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"markAsCompleted": "بمناسبة اكتمال",
+	"@markAsCompleted": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"recall": "اعد الاتصال",
+	"@recall": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"callToken": "اتصل برمز",
+	"@callToken": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"issueToken": "رمز الإصدار",
+	"@issueToken": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"more": "أكثر من",
+	"@more": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"moreOptions": "المزيد من الخيارات",
+	"@moreOptions": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"name": "اسم",
+	"@name": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"printQRCode": "طباعة رمز الاستجابة السريعة",
+	"@printQRCode": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"pairCode": "كود الزوج",
+	"@pairCode": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"share": "شارك",
+	"@share": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"feedback": "ردود الفعل",
+	"@feedback": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"mobileqmsBoardPadApp": "لوحة MobileQMS لوحة التطبيق",
+	"@mobileqmsBoardPadApp": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"serverStarted": "بدأ الخادم",
+	"@serverStarted": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"serverStopped": "توقف الخادم",
+	"@serverStopped": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"setupLanguage": "لغة الإعداد",
+	"@setupLanguage": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"setupTheStall": "قم بإعداد المماطلة",
+	"@setupTheStall": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"setupPrinter": "إعداد الطابعة",
+	"@setupPrinter": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"completedTokens": "رمز مكتمل",
+	"@completedTokens": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"resetTokenNumber": "إعادة تعيين رقم الرمز",
+	"@resetTokenNumber": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"visitUsAt": "زورونا على",
+	"@visitUsAt": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"termsOfUse": "تعليمات الاستخدام",
+	"@termsOfUse": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"privacy": "الإجمالية",
+	"@privacy": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"currentWindowName": "اسم النافذة الحالية",
+	"@currentWindowName": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"appName": "اسم التطبيق",
+	"@appName": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"packageName": "اسم الحزمة",
+	"@packageName": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"buildNumber": "اكمل العدد",
+	"@buildNumber": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"version": "الإصدار",
+	"@version": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"displayTheRunningQueueNumber": "عرض رقم قائمة الانتظار قيد التشغيل",
+	"@displayTheRunningQueueNumber": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"youShouldSetupPrinter": "يجب عليك إعداد الطابعة قبل الاستخدام",
+	"@youShouldSetupPrinter": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"device": "جهاز",
+	"@device": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"connect": "الاتصال",
+	"@connect": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"disconnect": "قطع الاتصال",
+	"@disconnect": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"testPrint": "اختبار الطباعة",
+	"@testPrint": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"fontScale": "مقياس الخط",
+	"@fontScale": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"pageSize": "مقاس الصفحه",
+	"@pageSize": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"accept": "قبول",
+	"@accept": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"cancel": "إلغاء",
+	"@cancel": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"setupWindow": "نافذة الإعداد",
+	"@setupWindow": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"enableWindow": "تمكين النافذة",
+	"@enableWindow": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"editWindow": "تحرير النافذة",
+	"@editWindow": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"openServiceList": "افتح قائمة الخدمات",
+	"@openServiceList": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"moveUp": "تحرك",
+	"@moveUp": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"moveDown": "تحرك لأسفل",
+	"@moveDown": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"editService": "تحرير الخدمة",
+	"@editService": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"serviceList": "قائمة الخدمات",
+	"@serviceList": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"serviceForm": "نموذج الخدمة",
+	"@serviceForm": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"serviceName": "اسم الخدمة",
+	"@serviceName": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"serviceLetter": "خطاب الخدمة",
+	"@serviceLetter": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"startNumber": "رقم البداية",
+	"@startNumber": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"save": "حفظ",
+	"@save": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"update": "تحديث",
+	"@update": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"submit": "خضع",
+	"@submit": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"windowForm": "نموذج النافذة",
+	"@windowForm": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"windowName": "اسم النافذة",
+	"@windowName": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"email": "البريد الإلكتروني",
+	"@email": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"phone": "هاتف",
+	"@phone": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"windowWizard": "معالج النوافذ",
+	"@windowWizard": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"serviceWizard": "معالج الخدمة",
+	"@serviceWizard": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"next": "التالى",
+	"@next": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"window": "نافذة او شباك",
+	"@window": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"service": "الخدمات",
+	"@service": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"addLogo": "إضافة شعار",
+	"@addLogo": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"removeLogo": "إزالة الشعار",
+	"@removeLogo": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"openImageGalerry": "افتح غاليري الصورة",
+	"@openImageGalerry": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"openCamera": "افتح الكاميرا",
+	"@openCamera": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"addPrinter": "إضافة طابعة",
+	"@addPrinter": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"doYouAccept": "هل تقبل",
+	"@doYouAccept": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"yes": "نعم فعلا",
+	"@yes": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"no": "لا",
+	"@no": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"addService": "إضافة الخدمة",
+	"@addService": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"addWindow": "إضافة نافذة",
+	"@addWindow": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"dashboard": "لوحة القيادة",
+	"@dashboard": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"windows": "شبابيك",
+	"@windows": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"appInfo": "معلومات التطبيق",
+	"@appInfo": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"tokenList": "قائمة الرموز",
+	"@tokenList": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"server": "الخادم",
+	"@server": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"shareTokenInfo": "مشاركة معلومات الرمز المميز",
+	"@shareTokenInfo": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"appearance": "مظهر خارجي",
+	"@appearance": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"markAllAsCompleted": "اجعل الكل مكتمل",
+	"permission": "الإذن",
+	"sendSms": "أرسل رسالة نصية قصيرة",
+	"inAppPurchase": "شراء داخل التطبيق",
+	"alreadyPurchased": "مباع",
+	"purchasedRecord": "السجل المشتراة",
+	"markAllAsTimeout": "وضع علامة على الكل كمهلة",
+	"tokenAction": "عمل رمزي",
+	"recallToken": "أذكر الرمز",
+	"timeout": "نفذ الوقت",
+	"timeoutToken": "رمز المهلة",
+	"wizardProject": "معالج المشروع",
+	"dropDatabase": "إسقاط قاعدة البيانات"
+}

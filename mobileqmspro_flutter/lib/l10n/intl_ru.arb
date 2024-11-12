@@ -1,0 +1,497 @@
+{
+	"@@last_modified": "2020-06-05T08:38:20.745482",
+	"title": "MobileQMS Pro",
+	"@title": {
+		"description": "The application title",
+		"type": "text",
+		"placeholders": {}
+	},
+	"text": "Текст",
+	"@text": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"boardSetting": "Настройка платы",
+	"@boardSetting": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"selectLanguage": "Выберите язык",
+	"@selectLanguage": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"backgroundColor": "Фоновый цвет",
+	"@backgroundColor": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"textColor": "Цвет текста",
+	"@textColor": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"numberOfTokenBox": "Количество токенов",
+	"@numberOfTokenBox": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"setting": "установка",
+	"@setting": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"tokenNumber": "Номер токена",
+	"@tokenNumber": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"printToken": "Печать токена",
+	"@printToken": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"proceedToCounter": "Перейти к счетчику",
+	"@proceedToCounter": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"pleaseWait": "подождите пожалуйста",
+	"@pleaseWait": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"counter": "счетчик",
+	"@counter": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"createdDate": "созданный",
+	"@createdDate": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"statusQueue": "Статус",
+	"@statusQueue": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"currentToken": "Текущий токен",
+	"@currentToken": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"myQueue": "Моя очередь",
+	"@myQueue": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"markComplete": "Отметка завершена",
+	"@markComplete": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"markAsCompleted": "отметить как выполненное",
+	"@markAsCompleted": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"recall": "Отзыв",
+	"@recall": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"callToken": "Токен вызова",
+	"@callToken": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"issueToken": "Выдача токена",
+	"@issueToken": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"more": "Больше",
+	"@more": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"moreOptions": "Больше вариантов",
+	"@moreOptions": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"name": "название",
+	"@name": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"printQRCode": "Распечатать QR-код",
+	"@printQRCode": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"pairCode": "Код пары",
+	"@pairCode": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"share": "Поделиться",
+	"@share": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"feedback": "Обратная связь",
+	"@feedback": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"mobileqmsBoardPadApp": "Приложение MobileQMS Board Pad",
+	"@mobileqmsBoardPadApp": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"serverStarted": "Сервер запущен",
+	"@serverStarted": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"serverStopped": "Сервер остановлен",
+	"@serverStopped": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"setupLanguage": "Язык установки",
+	"@setupLanguage": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"setupTheStall": "Настройте стойло",
+	"@setupTheStall": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"setupPrinter": "Настройка принтера",
+	"@setupPrinter": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"completedTokens": "Завершенный токен",
+	"@completedTokens": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"resetTokenNumber": "Сбросить номер токена",
+	"@resetTokenNumber": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"visitUsAt": "Посетите нас на",
+	"@visitUsAt": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"termsOfUse": "Условия эксплуатации",
+	"@termsOfUse": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"privacy": "Конфиденциальность",
+	"@privacy": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"currentWindowName": "Текущее имя окна",
+	"@currentWindowName": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"appName": "Имя приложения",
+	"@appName": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"packageName": "Имя пакета",
+	"@packageName": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"buildNumber": "Номер сборки",
+	"@buildNumber": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"version": "Версия",
+	"@version": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"displayTheRunningQueueNumber": "Показать номер текущей очереди",
+	"@displayTheRunningQueueNumber": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"youShouldSetupPrinter": "Вы должны настроить принтер перед использованием",
+	"@youShouldSetupPrinter": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"device": "Устройство",
+	"@device": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"connect": "соединять",
+	"@connect": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"disconnect": "Отключить",
+	"@disconnect": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"testPrint": "Пробная печать",
+	"@testPrint": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"fontScale": "Масштаб шрифта",
+	"@fontScale": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"pageSize": "Размер страницы",
+	"@pageSize": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"accept": "принимать",
+	"@accept": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"cancel": "отменить",
+	"@cancel": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"setupWindow": "Окно настройки",
+	"@setupWindow": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"enableWindow": "Включить окно",
+	"@enableWindow": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"editWindow": "Окно редактирования",
+	"@editWindow": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"openServiceList": "Открыть список услуг",
+	"@openServiceList": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"moveUp": "Двигаться вверх",
+	"@moveUp": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"moveDown": "Двигаться вниз",
+	"@moveDown": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"editService": "Редактировать Сервис",
+	"@editService": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"serviceList": "Перечень услуг",
+	"@serviceList": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"serviceForm": "Форма обслуживания",
+	"@serviceForm": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"serviceName": "наименование услуги",
+	"@serviceName": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"serviceLetter": "Сервисное письмо",
+	"@serviceLetter": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"startNumber": "Стартовый номер",
+	"@startNumber": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"save": "Сохранить",
+	"@save": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"update": "Обновить",
+	"@update": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"submit": "Отправить",
+	"@submit": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"windowForm": "Форма окна",
+	"@windowForm": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"windowName": "Имя окна",
+	"@windowName": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"email": "Эл. адрес",
+	"@email": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"phone": "Телефон",
+	"@phone": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"windowWizard": "Мастер окон",
+	"@windowWizard": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"serviceWizard": "Мастер обслуживания",
+	"@serviceWizard": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"next": "следующий",
+	"@next": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"window": "Окно",
+	"@window": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"service": "ОКАЗАНИЕ УСЛУГ",
+	"@service": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"addLogo": "Добавить логотип",
+	"@addLogo": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"removeLogo": "Удалить логотип",
+	"@removeLogo": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"openImageGalerry": "Открыть изображение Galerry",
+	"@openImageGalerry": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"openCamera": "Открытая камера",
+	"@openCamera": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"addPrinter": "Добавить принтер",
+	"@addPrinter": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"doYouAccept": "Вы принимаете",
+	"@doYouAccept": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"yes": "да",
+	"@yes": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"no": "нет",
+	"@no": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"addService": "Добавить сервис",
+	"@addService": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"addWindow": "Добавить окно",
+	"@addWindow": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"dashboard": "Приборная доска",
+	"@dashboard": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"windows": "Windows",
+	"@windows": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"appInfo": "Информация о приложении",
+	"@appInfo": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"tokenList": "Список токенов",
+	"@tokenList": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"server": "сервер",
+	"@server": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"shareTokenInfo": "Поделиться информацией о токене",
+	"@shareTokenInfo": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"appearance": "Внешность",
+	"@appearance": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"markAllAsCompleted": "Отметить все как выполненное",
+	"permission": "разрешение",
+	"sendSms": "Отправить смс",
+	"inAppPurchase": "Покупки в приложении",
+	"alreadyPurchased": "Уже купили",
+	"purchasedRecord": "Купленная запись",
+	"markAllAsTimeout": "Отметить все как тайм-аут",
+	"tokenAction": "Токен Действие",
+	"recallToken": "Токен отзыва",
+	"timeout": "Тайм-аут",
+	"timeoutToken": "Токен тайм-аута",
+	"wizardProject": "Мастер проекта",
+	"dropDatabase": "Удалить базу данных"
+}

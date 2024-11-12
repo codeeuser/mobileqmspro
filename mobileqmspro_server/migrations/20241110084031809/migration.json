@@ -1,0 +1,129 @@
+{
+  "actions": [
+    {
+      "type": "deleteTable",
+      "deleteTable": "profile_user"
+    },
+    {
+      "type": "createTable",
+      "createTable": {
+        "name": "profile_user",
+        "dartName": "ProfileUser",
+        "module": "mobileqmspro",
+        "schema": "public",
+        "columns": [
+          {
+            "name": "id",
+            "columnType": 6,
+            "isNullable": false,
+            "columnDefault": "nextval('profile_user_id_seq'::regclass)",
+            "dartType": "int?"
+          },
+          {
+            "name": "username",
+            "columnType": 0,
+            "isNullable": true,
+            "dartType": "String?"
+          },
+          {
+            "name": "email",
+            "columnType": 0,
+            "isNullable": false,
+            "dartType": "String"
+          },
+          {
+            "name": "phone",
+            "columnType": 0,
+            "isNullable": true,
+            "dartType": "String?"
+          },
+          {
+            "name": "passcode",
+            "columnType": 0,
+            "isNullable": false,
+            "dartType": "String"
+          },
+          {
+            "name": "verified",
+            "columnType": 1,
+            "isNullable": true,
+            "dartType": "bool?"
+          },
+          {
+            "name": "membership",
+            "columnType": 0,
+            "isNullable": false,
+            "dartType": "protocol:Membership"
+          },
+          {
+            "name": "ipAddress",
+            "columnType": 0,
+            "isNullable": true,
+            "dartType": "String?"
+          },
+          {
+            "name": "birthDate",
+            "columnType": 4,
+            "isNullable": true,
+            "dartType": "DateTime?"
+          },
+          {
+            "name": "gender",
+            "columnType": 0,
+            "isNullable": true,
+            "dartType": "String?"
+          },
+          {
+            "name": "createdDate",
+            "columnType": 4,
+            "isNullable": false,
+            "dartType": "DateTime"
+          },
+          {
+            "name": "modifiedDate",
+            "columnType": 4,
+            "isNullable": true,
+            "dartType": "DateTime?"
+          }
+        ],
+        "foreignKeys": [],
+        "indexes": [
+          {
+            "indexName": "profile_user_pkey",
+            "elements": [
+              {
+                "type": 0,
+                "definition": "id"
+              }
+            ],
+            "type": "btree",
+            "isUnique": true,
+            "isPrimary": true
+          }
+        ],
+        "managed": true
+      }
+    }
+  ],
+  "warnings": [
+    {
+      "type": "columnDropped",
+      "message": "Column membership of table profile_user is modified in a way that it must be deleted and recreated.",
+      "table": "profile_user",
+      "columns": [
+        "membership"
+      ],
+      "destrucive": true
+    },
+    {
+      "type": "tableDropped",
+      "message": "One or more columns are added to table \"profile_user\" which cannot be added in a table migration. The complete table will be deleted and recreated.",
+      "table": "profile_user",
+      "columns": [
+        "membership"
+      ],
+      "destrucive": true
+    }
+  ],
+  "migrationApiVersion": 1
+}

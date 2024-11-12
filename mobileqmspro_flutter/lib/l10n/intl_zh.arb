@@ -1,0 +1,497 @@
+{
+	"@@last_modified": "2020-06-05T08:38:20.745482",
+	"title": "MobileQMS Pro",
+	"@title": {
+		"description": "The application title",
+		"type": "text",
+		"placeholders": {}
+	},
+	"text": "文本",
+	"@text": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"boardSetting": "板卡设置",
+	"@boardSetting": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"selectLanguage": "选择语言",
+	"@selectLanguage": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"backgroundColor": "背景颜色",
+	"@backgroundColor": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"textColor": "文字颜色",
+	"@textColor": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"numberOfTokenBox": "坐号箱数",
+	"@numberOfTokenBox": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"setting": "设置",
+	"@setting": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"tokenNumber": "坐号号码",
+	"@tokenNumber": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"printToken": "打印坐号",
+	"@printToken": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"proceedToCounter": "前往柜台",
+	"@proceedToCounter": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"pleaseWait": "请耐心等待",
+	"@pleaseWait": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"counter": "计数器",
+	"@counter": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"createdDate": "创建",
+	"@createdDate": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"statusQueue": "状态",
+	"@statusQueue": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"currentToken": "当前坐号",
+	"@currentToken": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"myQueue": "我的队列",
+	"@myQueue": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"markComplete": "标记为完成",
+	"@markComplete": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"markAsCompleted": "标记为完成",
+	"@markAsCompleted": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"recall": "召回",
+	"@recall": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"callToken": "呼叫坐号",
+	"@callToken": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"issueToken": "发行坐号",
+	"@issueToken": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"more": "更多",
+	"@more": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"moreOptions": "更多的选择",
+	"@moreOptions": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"name": "名称",
+	"@name": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"printQRCode": "打印二维码",
+	"@printQRCode": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"pairCode": "配对码",
+	"@pairCode": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"share": "分享",
+	"@share": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"feedback": "反馈",
+	"@feedback": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"mobileqmsBoardPadApp": "MobileQMS Board Pad应用",
+	"@mobileqmsBoardPadApp": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"serverStarted": "服务器启动",
+	"@serverStarted": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"serverStopped": "服务器已停止",
+	"@serverStopped": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"setupLanguage": "设定语言",
+	"@setupLanguage": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"setupTheStall": "设置档位",
+	"@setupTheStall": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"setupPrinter": "设定打印机",
+	"@setupPrinter": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"completedTokens": "完成的坐号",
+	"@completedTokens": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"resetTokenNumber": "重置坐号",
+	"@resetTokenNumber": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"visitUsAt": "请访问我们",
+	"@visitUsAt": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"termsOfUse": "使用条款",
+	"@termsOfUse": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"privacy": "隐私",
+	"@privacy": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"currentWindowName": "当前窗口名称",
+	"@currentWindowName": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"appName": "应用名称",
+	"@appName": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"packageName": "包裹名字",
+	"@packageName": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"buildNumber": "内部编号",
+	"@buildNumber": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"version": "版",
+	"@version": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"displayTheRunningQueueNumber": "显示正在运行的队列号",
+	"@displayTheRunningQueueNumber": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"youShouldSetupPrinter": "您应该在使用前设置打印机",
+	"@youShouldSetupPrinter": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"device": "设备",
+	"@device": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"connect": "连",
+	"@connect": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"disconnect": "断开",
+	"@disconnect": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"testPrint": "测试列印",
+	"@testPrint": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"fontScale": "字体比例",
+	"@fontScale": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"pageSize": "页面大小",
+	"@pageSize": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"accept": "接受",
+	"@accept": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"cancel": "取消",
+	"@cancel": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"setupWindow": "设定窗口",
+	"@setupWindow": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"enableWindow": "启用窗口",
+	"@enableWindow": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"editWindow": "编辑窗口",
+	"@editWindow": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"openServiceList": "打开服务清单",
+	"@openServiceList": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"moveUp": "提升",
+	"@moveUp": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"moveDown": "下移",
+	"@moveDown": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"editService": "编辑服务",
+	"@editService": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"serviceList": "服务清单",
+	"@serviceList": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"serviceForm": "服务表格",
+	"@serviceForm": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"serviceName": "服务名称",
+	"@serviceName": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"serviceLetter": "服务信",
+	"@serviceLetter": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"startNumber": "起始号码",
+	"@startNumber": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"save": "保存",
+	"@save": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"update": "更新",
+	"@update": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"submit": "提交",
+	"@submit": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"windowForm": "窗口形式",
+	"@windowForm": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"windowName": "窗口名称",
+	"@windowName": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"email": "电子邮件",
+	"@email": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"phone": "电话",
+	"@phone": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"windowWizard": "窗口向导",
+	"@windowWizard": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"serviceWizard": "服务向导",
+	"@serviceWizard": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"next": "下一个",
+	"@next": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"window": "窗口",
+	"@window": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"service": "服务",
+	"@service": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"addLogo": "添加徽标",
+	"@addLogo": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"removeLogo": "删除徽标",
+	"@removeLogo": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"openImageGalerry": "打开图片嘉里",
+	"@openImageGalerry": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"openCamera": "开放式摄像头",
+	"@openCamera": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"addPrinter": "添加打印机",
+	"@addPrinter": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"doYouAccept": "你接受吗",
+	"@doYouAccept": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"yes": "是",
+	"@yes": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"no": "没有",
+	"@no": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"addService": "添加服务",
+	"@addService": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"addWindow": "新增窗口",
+	"@addWindow": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"dashboard": "仪表板",
+	"@dashboard": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"windows": "窗口",
+	"@windows": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"appInfo": "应用程式资讯",
+	"@appInfo": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"tokenList": "坐号列表",
+	"@tokenList": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"server": "服务器",
+	"@server": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"shareTokenInfo": "分享坐号信息",
+	"@shareTokenInfo": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"appearance": "外观",
+	"@appearance": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"markAllAsCompleted": "全部标记为已完成",
+	"permission": "允许",
+	"sendSms": "发送短信",
+	"inAppPurchase": "在应用程序内购买",
+	"alreadyPurchased": "已购买",
+	"purchasedRecord": "购买记录",
+	"markAllAsTimeout": "全部标记为超时",
+	"tokenAction": "坐号操作",
+	"recallToken": "召回坐号",
+	"timeout": "超时",
+	"timeoutToken": "超时坐号",
+	"wizardProject": "向导项目",
+	"dropDatabase": "删除数据库"
+}

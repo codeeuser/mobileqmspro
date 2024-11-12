@@ -1,0 +1,513 @@
+{
+	"@@last_modified": "2020-06-05T08:38:20.745482",
+	"title": "MobileQMS Pro",
+	"@title": {
+		"description": "The application title",
+		"type": "text",
+		"placeholders": {}
+	},
+	"text": "Text",
+	"@text": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"boardSetting": "Board Setting",
+	"@boardSetting": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"selectLanguage": "Select Language",
+	"@selectLanguage": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"backgroundColor": "Background Color",
+	"@backgroundColor": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"textColor": "Text Color",
+	"@textColor": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"numberOfTokenBox": "Number Of Token Box",
+	"@numberOfTokenBox": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"setting": "Setting",
+	"@setting": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"tokenNumber": "Token Number",
+	"@tokenNumber": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"printToken": "Print Token",
+	"@printToken": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"proceedToCounter": "Proceed to Counter",
+	"@proceedToCounter": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"pleaseWait": "Please Wait",
+	"@pleaseWait": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"counter": "Counter",
+	"@counter": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"createdDate": "Created",
+	"@createdDate": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"statusQueue": "Status",
+	"@statusQueue": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"currentToken": "Current Token",
+	"@currentToken": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"myQueue": "My Queue",
+	"@myQueue": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"markComplete": "Mark Complete",
+	"@markComplete": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"markAsCompleted": "Mark as Completed",
+	"@markAsCompleted": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"recall": "Re-Call",
+	"@recall": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"callToken": "Call Token",
+	"@callToken": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"issueToken": "Issue Token",
+	"@issueToken": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"more": "More",
+	"@more": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"moreOptions": "More Options",
+	"@moreOptions": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"name": "Name",
+	"@name": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"printQRCode": "Print QR Code",
+	"@printQRCode": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"pairCode": "Pair Code",
+	"@pairCode": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"share": "Share",
+	"@share": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"feedback": "Feedback",
+	"@feedback": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"mobileqmsBoardPadApp": "MobileQMS Board Pad App",
+	"@mobileqmsBoardPadApp": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"serverStarted": "Server Started",
+	"@serverStarted": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"serverStopped": "Server Stopped",
+	"@serverStopped": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"setupLanguage": "Setup Language",
+	"@setupLanguage": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"setupTheStall": "Setup the Stall",
+	"@setupTheStall": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"setupPrinter": "Setup Printer",
+	"@setupPrinter": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"completedTokens": "Completed Token",
+	"@completedTokens": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"resetTokenNumber": "Reset Token Number",
+	"@resetTokenNumber": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"visitUsAt": "Visit us at",
+	"@visitUsAt": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"termsOfUse": "Terms of use",
+	"@termsOfUse": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"privacy": "Privacy",
+	"@privacy": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"currentWindowName": "Current Window Name",
+	"@currentWindowName": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"appName": "App Name",
+	"@appName": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"packageName": "Package Name",
+	"@packageName": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"buildNumber": "Build Number",
+	"@buildNumber": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"version": "Version",
+	"@version": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"displayTheRunningQueueNumber": "Display the Running Queue Number",
+	"@displayTheRunningQueueNumber": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"youShouldSetupPrinter": "You should Setup the Printer before use",
+	"@youShouldSetupPrinter": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"device": "Device",
+	"@device": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"connect": "Connect",
+	"@connect": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"disconnect": "Disconnect",
+	"@disconnect": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"testPrint": "Test Print",
+	"@testPrint": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"fontScale": "Font Scale",
+	"@fontScale": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"pageSize": "Page Size",
+	"@pageSize": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"accept": "Accept",
+	"@accept": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"cancel": "Cancel",
+	"@cancel": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"setupWindow": "Setup Window",
+	"@setupWindow": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"enableWindow": "Enable Window",
+	"@enableWindow": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"editWindow": "Edit Window",
+	"@editWindow": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"openServiceList": "Open Service List",
+	"@openServiceList": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"moveUp": "Move Up",
+	"@moveUp": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"moveDown": "Move Down",
+	"@moveDown": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"editService": "Edit Service",
+	"@editService": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"serviceList": "Service List",
+	"@serviceList": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"serviceForm": "Service Form",
+	"@serviceForm": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"serviceName": "Service Name",
+	"@serviceName": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"serviceLetter": "Service Letter",
+	"@serviceLetter": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"startNumber": "Start Number",
+	"@startNumber": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"save": "Save",
+	"@save": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"update": "Update",
+	"@update": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"submit": "Submit",
+	"@submit": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"windowForm": "Window Form",
+	"@windowForm": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"windowName": "Window Name",
+	"@windowName": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"email": "Email",
+	"@email": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"phone": "Phone",
+	"@phone": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"windowWizard": "Window Wizard",
+	"@windowWizard": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"serviceWizard": "Service Wizard",
+	"@serviceWizard": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"next": "Next",
+	"@next": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"window": "Window",
+	"@window": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"service": "Service",
+	"@service": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"addLogo": "Add Logo",
+	"@addLogo": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"removeLogo": "Remove Logo",
+	"@removeLogo": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"openImageGalerry": "Open Image Galerry",
+	"@openImageGalerry": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"openCamera": "Open Camera",
+	"@openCamera": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"addPrinter": "Add Printer",
+	"@addPrinter": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"doYouAccept": "Do You Accept",
+	"@doYouAccept": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"yes": "Yes",
+	"@yes": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"no": "No",
+	"@no": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"addService": "Add Service",
+	"@addService": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"addWindow": "Add Window",
+	"@addWindow": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"dashboard": "Dashboard",
+	"@dashboard": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"windows": "Windows",
+	"@windows": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"appInfo": "App Info",
+	"@appInfo": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"tokenList": "Token List",
+	"@tokenList": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"server": "Server",
+	"@server": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"shareTokenInfo": "Share Token Info",
+	"@shareTokenInfo": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"appearance": "Appearance dark mode",
+	"@appearance": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"markAllAsCompleted": "Mark All As Completed",
+	"@markAllAsCompleted": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"permission": "Permission",
+	"@permission": {
+		"type": "text",
+		"placeholders": {}
+	},
+	"sendSms": "Send SMS",
+	"inAppPurchase": "In App Purchase",
+	"alreadyPurchased": "Already Purchased",
+	"purchasedRecord": "Purchased Record",
+	"markAllAsTimeout": "Mark All As Timeout",
+	"tokenAction": "Token Action",
+	"recallToken": "Recall Token",
+	"timeout": "Timeout",
+	"timeoutToken": "Timeout Token",
+	"wizardProject": "Wizard Project",
+	"dropDatabase": "Drop Database",
+	"noAction": "No Action",
+	"exitApplication": "Exit Application",
+	"logout": "Logout",
+	"createDemoProject": "Create a Demo Project",
+	"proceed": "Proceed",
+	"next": "Next",
+	"runningTokens": "Running Tokens",
+	"loading": "Loading"
+}

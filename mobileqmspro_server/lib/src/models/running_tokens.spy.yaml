@@ -1,0 +1,3 @@
+class: RunningTokens
+fields:
+  tokens: List<TokenIssued>?

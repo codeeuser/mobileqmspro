@@ -1,0 +1,4 @@
+class: CountToken
+fields:
+  countIsQueue: int
+  countWait: int
