@@ -91,14 +91,16 @@ class TokenIssuedEndpoint extends Endpoint {
   }
 
   Future<TokenIssued> update(Session session, TokenIssued tokenIssued) async {
+    final item = await TokenIssued.db.updateRow(session, tokenIssued);
     _updateStream(session);
-    return await TokenIssued.db.updateRow(session, tokenIssued);
+    return item;
   }
 
   Future<List<TokenIssued>> updateAll(
       Session session, List<TokenIssued> tokenIssuedList) async {
+    final listNew = await TokenIssued.db.update(session, tokenIssuedList);
     _updateStream(session);
-    return await TokenIssued.db.update(session, tokenIssuedList);
+    return listNew;
   }
 
   Future<List<TokenIssued>> resetAll(Session session, int windowId) async {
@@ -107,8 +109,9 @@ class TokenIssuedEndpoint extends Endpoint {
     for (TokenIssued issued in list) {
       issued.reset = true;
     }
+    final listNew = await TokenIssued.db.update(session, list);
     _updateStream(session);
-    return await TokenIssued.db.update(session, list);
+    return listNew;
   }
 
   Future<TokenIssued?> create(Session session, TokenIssued tokenIssued) async {
@@ -123,8 +126,8 @@ class TokenIssuedEndpoint extends Endpoint {
   }
 
   Future<void> delete(Session session, TokenIssued tokenIssued) async {
-    _updateStream(session);
     await TokenIssued.db.deleteRow(session, tokenIssued);
+    _updateStream(session);
   }
 
   Future<int> countIsQueueStatus(Session session, int windowId) async {
