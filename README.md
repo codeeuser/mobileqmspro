@@ -24,6 +24,7 @@ flutter run
 
 # USEFUL COMMAND
 ```bash
+$ serverpod generate
 $ serverpod create-migration
 $ dart bin/main.dart --apply-migrations -r maintenance
 $ dart bin/main.dart
@@ -31,3 +32,6 @@ $ dart run intl_utils:generate
 $ flutter run -d chrome --web-port=1234
 $ flutter create .
 ```
+
+## License
+All MobileQMSPro packages are licensed under BSD-3, except for the main `mobileqmspro` package, which uses the SSPL license. In short, this means that you can, without limitation, use any of the client packages in your app. You can also host your MobileQMSPro server without limitation as long as you do not offer mobileqmspro as a cloud service to 3rd parties (this is typically only relevant for cloud service providers).
