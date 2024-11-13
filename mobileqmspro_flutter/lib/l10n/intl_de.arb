@@ -493,5 +493,12 @@
 	"timeout": "Auszeit",
 	"timeoutToken": "Timeout-Token",
 	"wizardProject": "Wizard-Projekt",
-	"dropDatabase": "Datenbank löschen"
+	"dropDatabase": "Datenbank löschen",
+	"createDemoProject": "Erstellen Sie ein Demoprojekt",
+	"exitApplication": "Anwendung beenden",
+	"loading": "Wird geladen",
+	"logout": "Ausloggen",
+	"noAction": "Keine Aktion",
+	"proceed": "Fortfahren",
+	"runningTokens": "Laufende Token"
 }

@@ -44,6 +44,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Token concluído"),
         "connect": MessageLookupByLibrary.simpleMessage("Conectar"),
         "counter": MessageLookupByLibrary.simpleMessage("Contador"),
+        "createDemoProject": MessageLookupByLibrary.simpleMessage(
+            "Criar um projeto de demonstração"),
         "createdDate": MessageLookupByLibrary.simpleMessage("Criado"),
         "currentToken": MessageLookupByLibrary.simpleMessage("Token atual"),
         "currentWindowName":
@@ -61,11 +63,15 @@ class MessageLookup extends MessageLookupByLibrary {
         "editWindow": MessageLookupByLibrary.simpleMessage("Janela de edição"),
         "email": MessageLookupByLibrary.simpleMessage("O email"),
         "enableWindow": MessageLookupByLibrary.simpleMessage("Ativar janela"),
+        "exitApplication":
+            MessageLookupByLibrary.simpleMessage("Sair do aplicativo"),
         "feedback": MessageLookupByLibrary.simpleMessage("Comentários"),
         "fontScale": MessageLookupByLibrary.simpleMessage("Escala de fonte"),
         "inAppPurchase":
             MessageLookupByLibrary.simpleMessage("Compra no aplicativo"),
         "issueToken": MessageLookupByLibrary.simpleMessage("Token de Emissão"),
+        "loading": MessageLookupByLibrary.simpleMessage("CARREGANDO"),
+        "logout": MessageLookupByLibrary.simpleMessage("sair"),
         "markAllAsCompleted":
             MessageLookupByLibrary.simpleMessage("Marcar tudo como concluído"),
         "markAllAsTimeout": MessageLookupByLibrary.simpleMessage(
@@ -84,6 +90,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "name": MessageLookupByLibrary.simpleMessage("Nome"),
         "next": MessageLookupByLibrary.simpleMessage("Próximo"),
         "no": MessageLookupByLibrary.simpleMessage("Não"),
+        "noAction": MessageLookupByLibrary.simpleMessage("Nenhuma ação"),
         "numberOfTokenBox":
             MessageLookupByLibrary.simpleMessage("Número de caixas de tokens"),
         "openCamera": MessageLookupByLibrary.simpleMessage("Câmera Aberta"),
@@ -102,6 +109,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "printToken":
             MessageLookupByLibrary.simpleMessage("Token de impressão"),
         "privacy": MessageLookupByLibrary.simpleMessage("Privacidade"),
+        "proceed": MessageLookupByLibrary.simpleMessage("Continuar"),
         "proceedToCounter":
             MessageLookupByLibrary.simpleMessage("Prossiga para Contador"),
         "purchasedRecord":
@@ -111,6 +119,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "removeLogo": MessageLookupByLibrary.simpleMessage("Remover logotipo"),
         "resetTokenNumber":
             MessageLookupByLibrary.simpleMessage("Redefinir número de token"),
+        "runningTokens":
+            MessageLookupByLibrary.simpleMessage("Fichas de Corrida"),
         "save": MessageLookupByLibrary.simpleMessage("Salve "),
         "selectLanguage":
             MessageLookupByLibrary.simpleMessage("Selecione o idioma"),

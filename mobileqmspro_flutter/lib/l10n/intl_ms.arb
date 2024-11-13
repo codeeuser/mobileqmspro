@@ -493,5 +493,12 @@
 	"timeout": "Masa tamat",
 	"timeoutToken": "Token Masa tamat",
 	"wizardProject": "Projek Penyihir",
-	"dropDatabase": "Gugurkan Pangkalan Data"
+	"dropDatabase": "Gugurkan Pangkalan Data",
+	"createDemoProject": "Buat Projek Demo",
+	"exitApplication": "Keluar dari Aplikasi",
+	"loading": "MEMBUAT",
+	"logout": "Log keluar",
+	"noAction": "Tiada Tindakan",
+	"proceed": "teruskan",
+	"runningTokens": "Token Larian"
 }

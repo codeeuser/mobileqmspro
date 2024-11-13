@@ -45,6 +45,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Token completado"),
         "connect": MessageLookupByLibrary.simpleMessage("Conectar"),
         "counter": MessageLookupByLibrary.simpleMessage("Mostrador"),
+        "createDemoProject": MessageLookupByLibrary.simpleMessage(
+            "Crear un proyecto de demostración"),
         "createdDate": MessageLookupByLibrary.simpleMessage("creado"),
         "currentToken": MessageLookupByLibrary.simpleMessage("Token actual"),
         "currentWindowName":
@@ -63,11 +65,15 @@ class MessageLookup extends MessageLookupByLibrary {
         "email": MessageLookupByLibrary.simpleMessage("Email"),
         "enableWindow":
             MessageLookupByLibrary.simpleMessage("Habilitar ventana"),
+        "exitApplication":
+            MessageLookupByLibrary.simpleMessage("Solicitud de salida"),
         "feedback": MessageLookupByLibrary.simpleMessage("Realimentación"),
         "fontScale": MessageLookupByLibrary.simpleMessage("Escala de fuente"),
         "inAppPurchase":
             MessageLookupByLibrary.simpleMessage("Aplicación en la compra"),
         "issueToken": MessageLookupByLibrary.simpleMessage("Token de emisión"),
+        "loading": MessageLookupByLibrary.simpleMessage("Cargando"),
+        "logout": MessageLookupByLibrary.simpleMessage("Cerrar sesión"),
         "markAllAsCompleted":
             MessageLookupByLibrary.simpleMessage("Marcar todo como completado"),
         "markAllAsTimeout": MessageLookupByLibrary.simpleMessage(
@@ -85,6 +91,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "name": MessageLookupByLibrary.simpleMessage("Nombre"),
         "next": MessageLookupByLibrary.simpleMessage("Siguiente"),
         "no": MessageLookupByLibrary.simpleMessage("No"),
+        "noAction": MessageLookupByLibrary.simpleMessage("Sin acción"),
         "numberOfTokenBox":
             MessageLookupByLibrary.simpleMessage("Número de cuadro de token"),
         "openCamera": MessageLookupByLibrary.simpleMessage("Cámara abierta"),
@@ -104,6 +111,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "printToken":
             MessageLookupByLibrary.simpleMessage("Token de impresión"),
         "privacy": MessageLookupByLibrary.simpleMessage("intimidad"),
+        "proceed": MessageLookupByLibrary.simpleMessage("Proceder"),
         "proceedToCounter":
             MessageLookupByLibrary.simpleMessage("Proceder al mostrador"),
         "purchasedRecord":
@@ -114,6 +122,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "removeLogo": MessageLookupByLibrary.simpleMessage("Eliminar logotipo"),
         "resetTokenNumber":
             MessageLookupByLibrary.simpleMessage("Restablecer número de token"),
+        "runningTokens":
+            MessageLookupByLibrary.simpleMessage("Fichas de funcionamiento"),
         "save": MessageLookupByLibrary.simpleMessage("Salvar"),
         "selectLanguage":
             MessageLookupByLibrary.simpleMessage("Seleccione el idioma"),

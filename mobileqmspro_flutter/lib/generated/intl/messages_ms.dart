@@ -43,6 +43,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Token selesai"),
         "connect": MessageLookupByLibrary.simpleMessage("Sambung"),
         "counter": MessageLookupByLibrary.simpleMessage("Kaunter"),
+        "createDemoProject":
+            MessageLookupByLibrary.simpleMessage("Buat Projek Demo"),
         "createdDate": MessageLookupByLibrary.simpleMessage("Dicipta"),
         "currentToken": MessageLookupByLibrary.simpleMessage("Token Semasa"),
         "currentWindowName":
@@ -63,11 +65,15 @@ class MessageLookup extends MessageLookupByLibrary {
         "email": MessageLookupByLibrary.simpleMessage("E-mel"),
         "enableWindow":
             MessageLookupByLibrary.simpleMessage("Dayakan Tetingkap"),
+        "exitApplication":
+            MessageLookupByLibrary.simpleMessage("Keluar dari Aplikasi"),
         "feedback": MessageLookupByLibrary.simpleMessage("Maklumbalas"),
         "fontScale": MessageLookupByLibrary.simpleMessage("Skala Font"),
         "inAppPurchase":
             MessageLookupByLibrary.simpleMessage("Dalam Pembelian Aplikasi"),
         "issueToken": MessageLookupByLibrary.simpleMessage("Token Isu"),
+        "loading": MessageLookupByLibrary.simpleMessage("MEMBUAT"),
+        "logout": MessageLookupByLibrary.simpleMessage("Log keluar"),
         "markAllAsCompleted": MessageLookupByLibrary.simpleMessage(
             "Tandakan Semua sebagai Selesai"),
         "markAllAsTimeout": MessageLookupByLibrary.simpleMessage(
@@ -87,6 +93,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "name": MessageLookupByLibrary.simpleMessage("Nama"),
         "next": MessageLookupByLibrary.simpleMessage("Seterusnya"),
         "no": MessageLookupByLibrary.simpleMessage("Tidak"),
+        "noAction": MessageLookupByLibrary.simpleMessage("Tiada Tindakan"),
         "numberOfTokenBox":
             MessageLookupByLibrary.simpleMessage("Bilangan Kotak Token"),
         "openCamera": MessageLookupByLibrary.simpleMessage("Buka kamera"),
@@ -103,6 +110,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "printQRCode": MessageLookupByLibrary.simpleMessage("Cetak Kod QR"),
         "printToken": MessageLookupByLibrary.simpleMessage("Cetak Token"),
         "privacy": MessageLookupByLibrary.simpleMessage("Privasi"),
+        "proceed": MessageLookupByLibrary.simpleMessage("teruskan"),
         "proceedToCounter":
             MessageLookupByLibrary.simpleMessage("Teruskan ke Kaunter"),
         "purchasedRecord":
@@ -112,6 +120,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "removeLogo": MessageLookupByLibrary.simpleMessage("Keluarkan Logo"),
         "resetTokenNumber": MessageLookupByLibrary.simpleMessage(
             "Tetapkan Semula Nombor Token"),
+        "runningTokens": MessageLookupByLibrary.simpleMessage("Token Larian"),
         "save": MessageLookupByLibrary.simpleMessage("Simpan"),
         "selectLanguage": MessageLookupByLibrary.simpleMessage("Pilih Bahasa"),
         "sendSms": MessageLookupByLibrary.simpleMessage("Hantar SMS"),

@@ -493,5 +493,12 @@
 	"timeout": "Тайм-аут",
 	"timeoutToken": "Токен тайм-аута",
 	"wizardProject": "Мастер проекта",
-	"dropDatabase": "Удалить базу данных"
+	"dropDatabase": "Удалить базу данных",
+	"createDemoProject": "Создать демонстрационный проект",
+	"exitApplication": "Выйти из приложения",
+	"loading": "Загрузка",
+	"logout": "Выйти",
+	"noAction": "Никаких действий",
+	"proceed": "Продолжить",
+	"runningTokens": "Запуск токенов"
 }

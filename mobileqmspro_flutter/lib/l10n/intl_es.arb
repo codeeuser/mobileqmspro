@@ -493,5 +493,12 @@
 	"timeout": "Se acabó el tiempo",
 	"timeoutToken": "Token de tiempo de espera",
 	"wizardProject": "Proyecto de asistente",
-	"dropDatabase": "Soltar base de datos"
+	"dropDatabase": "Soltar base de datos",
+	"createDemoProject": "Crear un proyecto de demostración",
+	"exitApplication": "Solicitud de salida",
+	"loading": "Cargando",
+	"logout": "Cerrar sesión",
+	"noAction": "Sin acción",
+	"proceed": "Proceder",
+	"runningTokens": "Fichas de funcionamiento"
 }

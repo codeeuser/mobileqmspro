@@ -493,5 +493,12 @@
 	"timeout": "超时",
 	"timeoutToken": "超时坐号",
 	"wizardProject": "向导项目",
-	"dropDatabase": "删除数据库"
+	"dropDatabase": "删除数据库",
+	"createDemoProject": "创建演示项目",
+	"exitApplication": "退出软件",
+	"loading": "加载中",
+	"logout": "登出",
+	"noAction": "没有行动",
+	"proceed": "继续",
+	"runningTokens": "运行座号"
 }

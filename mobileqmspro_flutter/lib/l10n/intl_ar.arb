@@ -493,5 +493,12 @@
 	"timeout": "نفذ الوقت",
 	"timeoutToken": "رمز المهلة",
 	"wizardProject": "معالج المشروع",
-	"dropDatabase": "إسقاط قاعدة البيانات"
+	"dropDatabase": "إسقاط قاعدة البيانات",
+	"createDemoProject": "إنشاء مشروع تجريبي",
+	"exitApplication": "الخروج من التطبيق",
+	"loading": "تحميل",
+	"logout": "تسجيل خروج",
+	"noAction": "لا يوجد إجراء",
+	"proceed": "يتابع",
+	"runningTokens": "رموز التشغيل"
 }

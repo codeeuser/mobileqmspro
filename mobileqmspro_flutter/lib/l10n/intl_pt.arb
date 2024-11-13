@@ -493,5 +493,12 @@
 	"timeout": "Tempo esgotado",
 	"timeoutToken": "Token de tempo limite",
 	"wizardProject": "Projeto Wizard",
-	"dropDatabase": "Eliminar banco de dados"
+	"dropDatabase": "Eliminar banco de dados",
+	"createDemoProject": "Criar um projeto de demonstração",
+	"exitApplication": "Sair do aplicativo",
+	"loading": "CARREGANDO",
+	"logout": "sair",
+	"noAction": "Nenhuma ação",
+	"proceed": "Continuar",
+	"runningTokens": "Fichas de Corrida"
 }

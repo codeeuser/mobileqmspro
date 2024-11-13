@@ -493,5 +493,12 @@
 	"timeout": "Temps libre",
 	"timeoutToken": "Jeton de délai d'attente",
 	"wizardProject": "Projet Assistant",
-	"dropDatabase": "Déposer la base de données"
+	"dropDatabase": "Déposer la base de données",
+	"createDemoProject": "Créer un projet de démonstration",
+	"exitApplication": "Demande de sortie",
+	"loading": "Chargement",
+	"logout": "Se déconnecter",
+	"noAction": "Aucune action",
+	"proceed": "Procéder",
+	"runningTokens": "Jetons en cours d'exécution"
 }

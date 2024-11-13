@@ -493,5 +493,12 @@
 	"timeout": "시간 초과",
 	"timeoutToken": "타임아웃 토큰",
 	"wizardProject": "마법사 프로젝트",
-	"dropDatabase": "드롭 데이터베이스"
+	"dropDatabase": "드롭 데이터베이스",
+	"createDemoProject": "데모 프로젝트 만들기",
+	"exitApplication": "종료 신청",
+	"loading": "로딩 중",
+	"logout": "로그 아웃",
+	"noAction": "행동 없음",
+	"proceed": "진행하다",
+	"runningTokens": "토큰 실행"
 }

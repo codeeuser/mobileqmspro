@@ -41,6 +41,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Завершенный токен"),
         "connect": MessageLookupByLibrary.simpleMessage("соединять"),
         "counter": MessageLookupByLibrary.simpleMessage("счетчик"),
+        "createDemoProject": MessageLookupByLibrary.simpleMessage(
+            "Создать демонстрационный проект"),
         "createdDate": MessageLookupByLibrary.simpleMessage("созданный"),
         "currentToken": MessageLookupByLibrary.simpleMessage("Текущий токен"),
         "currentWindowName":
@@ -59,11 +61,15 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Окно редактирования"),
         "email": MessageLookupByLibrary.simpleMessage("Эл. адрес"),
         "enableWindow": MessageLookupByLibrary.simpleMessage("Включить окно"),
+        "exitApplication":
+            MessageLookupByLibrary.simpleMessage("Выйти из приложения"),
         "feedback": MessageLookupByLibrary.simpleMessage("Обратная связь"),
         "fontScale": MessageLookupByLibrary.simpleMessage("Масштаб шрифта"),
         "inAppPurchase":
             MessageLookupByLibrary.simpleMessage("Покупки в приложении"),
         "issueToken": MessageLookupByLibrary.simpleMessage("Выдача токена"),
+        "loading": MessageLookupByLibrary.simpleMessage("Загрузка"),
+        "logout": MessageLookupByLibrary.simpleMessage("Выйти"),
         "markAllAsCompleted": MessageLookupByLibrary.simpleMessage(
             "Отметить все как выполненное"),
         "markAllAsTimeout":
@@ -82,6 +88,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "name": MessageLookupByLibrary.simpleMessage("название"),
         "next": MessageLookupByLibrary.simpleMessage("следующий"),
         "no": MessageLookupByLibrary.simpleMessage("нет"),
+        "noAction": MessageLookupByLibrary.simpleMessage("Никаких действий"),
         "numberOfTokenBox":
             MessageLookupByLibrary.simpleMessage("Количество токенов"),
         "openCamera": MessageLookupByLibrary.simpleMessage("Открытая камера"),
@@ -100,6 +107,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Распечатать QR-код"),
         "printToken": MessageLookupByLibrary.simpleMessage("Печать токена"),
         "privacy": MessageLookupByLibrary.simpleMessage("Конфиденциальность"),
+        "proceed": MessageLookupByLibrary.simpleMessage("Продолжить"),
         "proceedToCounter":
             MessageLookupByLibrary.simpleMessage("Перейти к счетчику"),
         "purchasedRecord":
@@ -109,6 +117,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "removeLogo": MessageLookupByLibrary.simpleMessage("Удалить логотип"),
         "resetTokenNumber":
             MessageLookupByLibrary.simpleMessage("Сбросить номер токена"),
+        "runningTokens": MessageLookupByLibrary.simpleMessage("Запуск токенов"),
         "save": MessageLookupByLibrary.simpleMessage("Сохранить"),
         "selectLanguage": MessageLookupByLibrary.simpleMessage("Выберите язык"),
         "sendSms": MessageLookupByLibrary.simpleMessage("Отправить смс"),

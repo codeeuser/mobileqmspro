@@ -39,6 +39,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "completedTokens": MessageLookupByLibrary.simpleMessage("رمز مكتمل"),
         "connect": MessageLookupByLibrary.simpleMessage("الاتصال"),
         "counter": MessageLookupByLibrary.simpleMessage("عداد"),
+        "createDemoProject":
+            MessageLookupByLibrary.simpleMessage("إنشاء مشروع تجريبي"),
         "createdDate": MessageLookupByLibrary.simpleMessage("خلقت"),
         "currentToken": MessageLookupByLibrary.simpleMessage("الرمز الحالي"),
         "currentWindowName":
@@ -55,11 +57,15 @@ class MessageLookup extends MessageLookupByLibrary {
         "editWindow": MessageLookupByLibrary.simpleMessage("تحرير النافذة"),
         "email": MessageLookupByLibrary.simpleMessage("البريد الإلكتروني"),
         "enableWindow": MessageLookupByLibrary.simpleMessage("تمكين النافذة"),
+        "exitApplication":
+            MessageLookupByLibrary.simpleMessage("الخروج من التطبيق"),
         "feedback": MessageLookupByLibrary.simpleMessage("ردود الفعل"),
         "fontScale": MessageLookupByLibrary.simpleMessage("مقياس الخط"),
         "inAppPurchase":
             MessageLookupByLibrary.simpleMessage("شراء داخل التطبيق"),
         "issueToken": MessageLookupByLibrary.simpleMessage("رمز الإصدار"),
+        "loading": MessageLookupByLibrary.simpleMessage("تحميل"),
+        "logout": MessageLookupByLibrary.simpleMessage("تسجيل خروج"),
         "markAllAsCompleted":
             MessageLookupByLibrary.simpleMessage("اجعل الكل مكتمل"),
         "markAllAsTimeout":
@@ -79,6 +85,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "name": MessageLookupByLibrary.simpleMessage("اسم"),
         "next": MessageLookupByLibrary.simpleMessage("التالى"),
         "no": MessageLookupByLibrary.simpleMessage("لا"),
+        "noAction": MessageLookupByLibrary.simpleMessage("لا يوجد إجراء"),
         "numberOfTokenBox":
             MessageLookupByLibrary.simpleMessage("عدد الصناديق المميزة"),
         "openCamera": MessageLookupByLibrary.simpleMessage("افتح الكاميرا"),
@@ -97,6 +104,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "printToken":
             MessageLookupByLibrary.simpleMessage("طباعة الرمز المميز"),
         "privacy": MessageLookupByLibrary.simpleMessage("الإجمالية"),
+        "proceed": MessageLookupByLibrary.simpleMessage("يتابع"),
         "proceedToCounter":
             MessageLookupByLibrary.simpleMessage("انتقل إلى العداد"),
         "purchasedRecord":
@@ -106,6 +114,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "removeLogo": MessageLookupByLibrary.simpleMessage("إزالة الشعار"),
         "resetTokenNumber":
             MessageLookupByLibrary.simpleMessage("إعادة تعيين رقم الرمز"),
+        "runningTokens": MessageLookupByLibrary.simpleMessage("رموز التشغيل"),
         "save": MessageLookupByLibrary.simpleMessage("حفظ"),
         "selectLanguage": MessageLookupByLibrary.simpleMessage("اختار اللغة"),
         "sendSms":

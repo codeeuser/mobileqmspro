@@ -507,7 +507,6 @@
 	"logout": "Logout",
 	"createDemoProject": "Create a Demo Project",
 	"proceed": "Proceed",
-	"next": "Next",
 	"runningTokens": "Running Tokens",
 	"loading": "Loading"
 }
