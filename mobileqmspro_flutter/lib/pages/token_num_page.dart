@@ -141,8 +141,10 @@ class _TokenNumPageState extends State<TokenNumPage> {
                   Utils.pushAndRemoveUntilPage(
                       context,
                       WaysPage(
-                          key: const ValueKey('ways-page'),
-                          prefs: widget.prefs),
+                        key: const ValueKey('ways-page'),
+                        prefs: widget.prefs,
+                        window: widget.window,
+                      ),
                       'WaysPage');
                 },
               ),

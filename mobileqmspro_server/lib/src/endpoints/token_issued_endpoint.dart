@@ -2,8 +2,8 @@ import 'package:mobileqmspro_server/src/generated/protocol.dart';
 import 'package:serverpod/serverpod.dart';
 
 class TokenIssuedEndpoint extends Endpoint {
-  static const channelRunningTokens = 'running-tokens';
-  static const channelCountToken = 'count-token';
+  static const _channelRunningTokens = 'running-tokens';
+  static const _channelCountToken = 'count-token';
   Future<List<TokenIssued>> getAllByWindowId(
       Session session, int windowId, int? limit, int? offset, bool desc) async {
     return await TokenIssued.db.find(session,
@@ -92,14 +92,14 @@ class TokenIssuedEndpoint extends Endpoint {
 
   Future<TokenIssued> update(Session session, TokenIssued tokenIssued) async {
     final item = await TokenIssued.db.updateRow(session, tokenIssued);
-    _updateStream(session);
+    await _updateRunningStream(session);
     return item;
   }
 
   Future<List<TokenIssued>> updateAll(
       Session session, List<TokenIssued> tokenIssuedList) async {
     final listNew = await TokenIssued.db.update(session, tokenIssuedList);
-    _updateStream(session);
+    await _updateRunningStream(session);
     return listNew;
   }
 
@@ -110,7 +110,7 @@ class TokenIssuedEndpoint extends Endpoint {
       issued.reset = true;
     }
     final listNew = await TokenIssued.db.update(session, list);
-    _updateStream(session);
+    await _updateRunningStream(session);
     return listNew;
   }
 
@@ -121,13 +121,13 @@ class TokenIssuedEndpoint extends Endpoint {
     if (id != null) {
       tokenIssuedNew = await findById(session, id);
     }
-    _updateStream(session);
+    await _updateRunningStream(session);
     return tokenIssuedNew;
   }
 
   Future<void> delete(Session session, TokenIssued tokenIssued) async {
     await TokenIssued.db.deleteRow(session, tokenIssued);
-    _updateStream(session);
+    await _updateRunningStream(session);
   }
 
   Future<int> countIsQueueStatus(Session session, int windowId) async {
@@ -152,16 +152,15 @@ class TokenIssuedEndpoint extends Endpoint {
     return count;
   }
 
-  void _updateStream(Session session) {
-    session.messages.postMessage(
-        channelCountToken, CountToken(countIsQueue: 0, countWait: 0));
-    session.messages.postMessage(channelRunningTokens, RunningTokens());
+  Future<void> _updateRunningStream(Session session) async {
+    await session.messages.postMessage(_channelRunningTokens, RunningTokens());
   }
 
   Stream echoStatusStream(
       Session session, int statusCode, int windowId) async* {
+    session.log('echoStatusStream---');
     var updateStream =
-        session.messages.createStream<RunningTokens>(channelCountToken);
+        session.messages.createStream<CountToken>(_channelCountToken);
     final count = await countStatus(session, statusCode, windowId);
     final countIsQueue = await countIsQueueStatus(session, windowId);
     yield CountToken(countIsQueue: countIsQueue, countWait: count);
@@ -174,15 +173,16 @@ class TokenIssuedEndpoint extends Endpoint {
   }
 
   Stream echoTokensStream(Session session, int windowId) async* {
+    session.log('echoTokensStream---');
     var updateStream =
-        session.messages.createStream<RunningTokens>(channelRunningTokens);
+        session.messages.createStream<RunningTokens>(_channelRunningTokens);
     List<TokenIssued> list =
-        await getAllByWindowId(session, windowId, 20, 0, true);
+        await getAllByWindowId(session, windowId, 25, 0, true);
     yield RunningTokens(tokens: list);
     await for (var update in updateStream) {
       session.log('update: $update');
       List<TokenIssued> list =
-          await getAllByWindowId(session, windowId, 20, 0, true);
+          await getAllByWindowId(session, windowId, 25, 0, true);
       yield RunningTokens(tokens: list);
     }
   }

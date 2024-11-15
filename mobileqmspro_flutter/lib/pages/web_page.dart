@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mobileqmspro/utils/constants.dart';
 import 'package:mobileqmspro_client/mobileqmspro_client.dart';
 import 'package:mobileqmspro/commons/no_data.dart';
 import 'package:mobileqmspro/generated/l10n.dart';
@@ -107,9 +108,18 @@ class _WebPageState extends State<WebPage> {
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text(
-                tokenIssued.statusName,
-                style: const TextStyle(color: Colors.black, fontSize: 12),
+              Container(
+                padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(5),
+                  boxShadow: const [
+                    BoxShadow(color: Colors.white, spreadRadius: 1),
+                  ],
+                ),
+                child: Text(
+                  tokenIssued.statusName.toUpperCase(),
+                  style: const TextStyle(color: Colors.black, fontSize: 12),
+                ),
               ),
               const SizedBox(height: 8),
               Text(
@@ -135,7 +145,13 @@ class _WebPageState extends State<WebPage> {
     Logger.log(tag, message: '_listenToUpdates');
     final tokenUpdates = client.tokenIssued.echoTokensStream(windowId);
     await for (final update in tokenUpdates) {
-      _tokenIssuedList.value = update.tokens;
+      List<TokenIssued> list = update.tokens;
+      list.sort((a, b) => b.statusCode.compareTo(a.statusCode));
+      final listCompleted =
+          list.where((e) => e.statusCode == StatusCode.completed).toList();
+      final listNoneCompleted =
+          list.where((e) => e.statusCode != StatusCode.completed).toList();
+      _tokenIssuedList.value = listNoneCompleted..addAll(listCompleted);
     }
   }
 }

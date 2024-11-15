@@ -65,7 +65,10 @@ class _TokenCallPageState extends State<TokenCallPage> {
               goBackButton: Utils.goBackButton(() => Utils.pushPage(
                   context,
                   WaysPage(
-                      key: const ValueKey('ways-page'), prefs: widget.prefs),
+                    key: const ValueKey('ways-page'),
+                    prefs: widget.prefs,
+                    window: widget.window,
+                  ),
                   'WaysPage')),
             ),
             body: SafeArea(

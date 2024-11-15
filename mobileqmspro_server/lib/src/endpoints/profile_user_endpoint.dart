@@ -79,7 +79,7 @@ class ProfileUserEndpoint extends Endpoint {
 
     // Create message.
     final passcode = profileUser.passcode;
-    var subject = 'Your mBoard Passcode';
+    var subject = 'Your MobileQMSPro Passcode';
     var html = 'Hello,<br/><br/>';
     html += 'PASSCODE is <strong><h1>$passcode</h1></strong><br/><br/>';
     html +=

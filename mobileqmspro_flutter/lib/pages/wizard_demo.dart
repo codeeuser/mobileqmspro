@@ -111,7 +111,7 @@ class _WizardDemoState extends State<WizardDemo> {
                 border: const UnderlineInputBorder(),
                 icon: const Icon(Icons.email,
                     color: Colors.grey, semanticLabel: 'Email'),
-                hintText: 'What is the email?',
+                hintText: 'Email Passcode here.',
                 labelText: S.of(context).email,
               ),
               controller: _emailController,

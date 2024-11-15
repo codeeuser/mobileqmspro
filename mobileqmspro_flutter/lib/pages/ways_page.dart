@@ -22,8 +22,9 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class WaysPage extends StatefulWidget {
   final SharedPreferences prefs;
+  final QueueWindow? window;
 
-  const WaysPage({super.key, required this.prefs});
+  const WaysPage({super.key, required this.prefs, this.window});
 
   @override
   State<WaysPage> createState() => _WaysPageState();
@@ -44,11 +45,16 @@ class _WaysPageState extends State<WaysPage> {
   }
 
   Future<void> _initialize() async {
+    Logger.log(tag, message: '_initialize---');
     AppProfile appProfile = context.read<AppProfile>();
     final email = widget.prefs.getString(Prefs.windowEmail);
     if (email != null) {
       ProfileUser? profileUser = await client.profileUser.findByEmail(email);
       appProfile.profileUser = profileUser;
+    }
+    int? windowId = widget.window?.id;
+    if (windowId != null) {
+      await _listenToUpdates(windowId);
     }
   }
 
@@ -76,8 +82,12 @@ class _WaysPageState extends State<WaysPage> {
   Widget _buildContent() {
     return Consumer<AppProfile>(builder: (_, appProfile, child) {
       final email = appProfile.profileUser?.email;
+      final window = widget.window;
       if (email == null) {
         return WizardLanguage(prefs: widget.prefs);
+      }
+      if (window != null) {
+        return _buildPhoneContent(window);
       }
       return FutureBuilder(
           future: client.queueWindow.getSelectedByEmail(email),

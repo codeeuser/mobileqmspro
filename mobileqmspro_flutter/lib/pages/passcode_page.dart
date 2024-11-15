@@ -57,6 +57,9 @@ class _PasscodePageState extends State<PasscodePage> {
             children: [
               _showPasscodeMessage(),
               const SizedBox(height: 10),
+              Text(widget.profileUser.email,
+                  style: Theme.of(context).textTheme.titleLarge),
+              const SizedBox(height: 10),
               TextFormField(
                 keyboardType: TextInputType.number,
                 maxLength: 6,
