@@ -217,6 +217,13 @@ class _MorePageState extends State<MorePage> {
         ),
         const Divider(color: Colors.grey),
         ListTile(
+          leading: const Icon(CupertinoIcons.person, semanticLabel: 'Version'),
+          title: Text(S.of(context).login),
+          subtitle:
+              Text(context.read<AppProfile>().profileUser?.email ?? 'Empty'),
+        ),
+        const Divider(color: Colors.grey),
+        ListTile(
           leading:
               const Icon(CupertinoIcons.info, semanticLabel: 'Runing Token'),
           title: Text(S.of(context).runningTokens),
