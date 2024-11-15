@@ -26,6 +26,7 @@ flutter run
 
 # USEFUL COMMAND
 ```bash
+$ dart pub global activate serverpod_cli
 $ serverpod generate
 $ serverpod create-migration
 $ dart bin/main.dart --apply-migrations -r maintenance

@@ -53,3 +53,4 @@ app.*.map.json
 /windows
 *.babel
 /assets/config/production.yaml
+pubspec.lock

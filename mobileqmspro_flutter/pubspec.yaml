@@ -29,7 +29,6 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   serverpod_flutter: 2.1.5
-  # serverpod_auth_shared_flutter: ^2.1.5
   mobileqmspro_client:
     path: ../mobileqmspro_client
 
@@ -42,7 +41,6 @@ dependencies:
   intl_utils: ^2.8.7
   catcher_2: ^2.0.1
   provider: ^6.1.2
-  flutter_bloc: ^8.1.6
   package_info_plus: ^8.0.2
   shared_preferences: ^2.3.2
   window_manager: ^0.4.3

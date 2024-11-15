@@ -22,3 +22,4 @@ config/firebase_service_account_key.json
 .DS_Store
 bin/*.aot
 certificates/
+pubspec.lock
