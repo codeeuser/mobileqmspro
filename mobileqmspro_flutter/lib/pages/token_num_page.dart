@@ -5,10 +5,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:mobileqmspro_client/mobileqmspro_client.dart';
-import 'package:mobileqmspro_flutter/generated/l10n.dart';
-import 'package:mobileqmspro_flutter/logger.dart';
-import 'package:mobileqmspro_flutter/pages/ways_page.dart';
-import 'package:mobileqmspro_flutter/utils/functions.dart';
+import 'package:mobileqmspro/generated/l10n.dart';
+import 'package:mobileqmspro/logger.dart';
+import 'package:mobileqmspro/pages/ways_page.dart';
+import 'package:mobileqmspro/utils/functions.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 

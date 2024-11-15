@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:mobileqmspro_client/mobileqmspro_client.dart';
-import 'package:mobileqmspro_flutter/commons/no_data.dart';
-import 'package:mobileqmspro_flutter/generated/l10n.dart';
-import 'package:mobileqmspro_flutter/logger.dart';
-import 'package:mobileqmspro_flutter/serverpod_client.dart';
-import 'package:mobileqmspro_flutter/utils/functions.dart';
+import 'package:mobileqmspro/commons/no_data.dart';
+import 'package:mobileqmspro/generated/l10n.dart';
+import 'package:mobileqmspro/logger.dart';
+import 'package:mobileqmspro/serverpod_client.dart';
+import 'package:mobileqmspro/utils/functions.dart';
 
 class WebPage extends StatefulWidget {
   final int windowId;

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mobileqmspro_flutter/styles.dart';
+import 'package:mobileqmspro/styles.dart';
 
 class CustomDivider extends StatelessWidget {
   final String? title;

@@ -2,12 +2,12 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:mobileqmspro_flutter/commons/custom_appbar.dart';
-import 'package:mobileqmspro_flutter/generated/l10n.dart';
-import 'package:mobileqmspro_flutter/logger.dart';
-import 'package:mobileqmspro_flutter/pages/wizard_demo.dart';
-import 'package:mobileqmspro_flutter/utils/constants.dart';
-import 'package:mobileqmspro_flutter/utils/functions.dart';
+import 'package:mobileqmspro/commons/custom_appbar.dart';
+import 'package:mobileqmspro/generated/l10n.dart';
+import 'package:mobileqmspro/logger.dart';
+import 'package:mobileqmspro/pages/wizard_demo.dart';
+import 'package:mobileqmspro/utils/constants.dart';
+import 'package:mobileqmspro/utils/functions.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class WizardLanguage extends StatefulWidget {

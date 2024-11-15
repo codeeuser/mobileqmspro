@@ -1,6 +1,6 @@
 import 'package:flutter/services.dart';
-import 'package:mobileqmspro_flutter/logger.dart';
-import 'package:mobileqmspro_flutter/utils/constants.dart';
+import 'package:mobileqmspro/logger.dart';
+import 'package:mobileqmspro/utils/constants.dart';
 import 'package:serverpod_flutter/serverpod_flutter.dart';
 import 'package:mobileqmspro_client/mobileqmspro_client.dart';
 import 'package:yaml/yaml.dart';

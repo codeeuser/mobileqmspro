@@ -2,13 +2,13 @@
 
 import 'package:flutter/material.dart';
 import 'package:mobileqmspro_client/mobileqmspro_client.dart';
-import 'package:mobileqmspro_flutter/generated/l10n.dart';
-import 'package:mobileqmspro_flutter/logger.dart';
-import 'package:mobileqmspro_flutter/pages/passcode_page.dart';
-import 'package:mobileqmspro_flutter/serverpod_client.dart';
-import 'package:mobileqmspro_flutter/utils/constants.dart';
-import 'package:mobileqmspro_flutter/utils/functions.dart';
-import 'package:mobileqmspro_flutter/utils/validation_function.dart';
+import 'package:mobileqmspro/generated/l10n.dart';
+import 'package:mobileqmspro/logger.dart';
+import 'package:mobileqmspro/pages/passcode_page.dart';
+import 'package:mobileqmspro/serverpod_client.dart';
+import 'package:mobileqmspro/utils/constants.dart';
+import 'package:mobileqmspro/utils/functions.dart';
+import 'package:mobileqmspro/utils/validation_function.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class WizardDemo extends StatefulWidget {

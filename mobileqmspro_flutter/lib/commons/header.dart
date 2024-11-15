@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_custom_clippers/flutter_custom_clippers.dart';
-import 'package:mobileqmspro_flutter/generated/l10n.dart';
-import 'package:mobileqmspro_flutter/utils/functions.dart';
+import 'package:mobileqmspro/generated/l10n.dart';
+import 'package:mobileqmspro/utils/functions.dart';
 
 class Header extends StatelessWidget {
   const Header({super.key});

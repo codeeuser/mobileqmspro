@@ -1,6 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:mobileqmspro_flutter/utils/functions.dart';
+import 'package:mobileqmspro/utils/functions.dart';
 
 class Constant {
   static bool sendTestException = false;

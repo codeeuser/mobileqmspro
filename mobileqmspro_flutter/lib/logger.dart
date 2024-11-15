@@ -2,7 +2,7 @@ import 'package:catcher_2/catcher_2.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:mobileqmspro_flutter/app_log.dart';
+import 'package:mobileqmspro/app_log.dart';
 import 'package:provider/provider.dart';
 
 class Logger {

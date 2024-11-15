@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mobileqmspro_flutter/utils/constants.dart';
+import 'package:mobileqmspro/utils/constants.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class AppTheme extends ChangeNotifier {
