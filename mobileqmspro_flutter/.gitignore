@@ -52,3 +52,4 @@ app.*.map.json
 /android
 /windows
 *.babel
+/assets/config/production.yaml

@@ -4,6 +4,7 @@ logLogin:
   - create:
   - delete:
 profileUser:
+  - login:
   - findByEmail:
   - update:
   - create:

@@ -508,5 +508,8 @@
 	"createDemoProject": "Create a Demo Project",
 	"proceed": "Proceed",
 	"runningTokens": "Running Tokens",
-	"loading": "Loading"
+	"loading": "Loading",
+	"login": "Login",
+	"passcode": "Passcode",
+	"invalid": "Invalid"
 }

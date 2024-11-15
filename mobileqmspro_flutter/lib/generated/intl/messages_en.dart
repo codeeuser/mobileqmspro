@@ -66,8 +66,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "fontScale": MessageLookupByLibrary.simpleMessage("Font Scale"),
         "inAppPurchase":
             MessageLookupByLibrary.simpleMessage("In App Purchase"),
+        "invalid": MessageLookupByLibrary.simpleMessage("Invalid"),
         "issueToken": MessageLookupByLibrary.simpleMessage("Issue Token"),
         "loading": MessageLookupByLibrary.simpleMessage("Loading"),
+        "login": MessageLookupByLibrary.simpleMessage("Login"),
         "logout": MessageLookupByLibrary.simpleMessage("Logout"),
         "markAllAsCompleted":
             MessageLookupByLibrary.simpleMessage("Mark All As Completed"),
@@ -97,6 +99,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "packageName": MessageLookupByLibrary.simpleMessage("Package Name"),
         "pageSize": MessageLookupByLibrary.simpleMessage("Page Size"),
         "pairCode": MessageLookupByLibrary.simpleMessage("Pair Code"),
+        "passcode": MessageLookupByLibrary.simpleMessage("Passcode"),
         "permission": MessageLookupByLibrary.simpleMessage("Permission"),
         "phone": MessageLookupByLibrary.simpleMessage("Phone"),
         "pleaseWait": MessageLookupByLibrary.simpleMessage("Please Wait"),

@@ -7,7 +7,10 @@ environment:
   sdk: '>=3.3.0 <4.0.0'
 
 dependencies:
-  serverpod: 2.1.5
+  mailer: ^6.2.0
+  yaml: ^3.1.2
+  serverpod: 
+    path: ../../serverpod-2.2.0-beta.1/packages/serverpod
 
 dev_dependencies:
   lints: '>=3.0.0 <6.0.0'

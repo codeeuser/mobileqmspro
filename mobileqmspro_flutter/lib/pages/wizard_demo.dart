@@ -1,11 +1,10 @@
 // ignore_for_file: use_build_context_synchronously
 
-import 'package:adaptive_dialog/adaptive_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:mobileqmspro_client/mobileqmspro_client.dart';
 import 'package:mobileqmspro_flutter/generated/l10n.dart';
 import 'package:mobileqmspro_flutter/logger.dart';
-import 'package:mobileqmspro_flutter/pages/ways_page.dart';
+import 'package:mobileqmspro_flutter/pages/passcode_page.dart';
 import 'package:mobileqmspro_flutter/serverpod_client.dart';
 import 'package:mobileqmspro_flutter/utils/constants.dart';
 import 'package:mobileqmspro_flutter/utils/functions.dart';
@@ -130,45 +129,17 @@ class _WizardDemoState extends State<WizardDemo> {
                 }
                 String email = _emailController.text;
                 ProfileUser? profileUser =
-                    await client.profileUser.findByEmail(email);
-                final count = await client.queueWindow.countByEmail(email);
-                final hasProject = count > 0;
-                final result = await showOkCancelAlertDialog(
-                  context: context,
-                  title: (hasProject)
-                      ? S.of(context).proceed.toUpperCase()
-                      : S.of(context).createDemoProject.toUpperCase(),
-                  message: '${S.of(context).doYouAccept}?',
-                  onPopInvokedWithResult: (didPop, result) {
-                    Logger.log(tag,
-                        message: 'didPop: $didPop, result: $result');
-                  },
-                );
-                Logger.log(tag, message: 'resulttt: $result');
-                if (result == OkCancelResult.ok) {
-                  if (profileUser == null) {
-                    profileUser = ProfileUser(
-                        email: email,
-                        passcode: Utils.randomDigit(6),
-                        membership: Membership.basic,
-                        createdDate: DateTime.now());
-                    profileUser = await client.profileUser.create(profileUser);
-                  }
-                  if (hasProject == false) {
-                    bool success = await _createDemo(profileUser);
-                    if (success == false) {
-                      Utils.overlayInfoMessage(msg: S.of(context).noAction);
-                    }
-                  }
-                  await widget.prefs
-                      .setString(Prefs.windowEmail, profileUser.email);
-                  Utils.pushPage(
-                      context,
-                      WaysPage(
-                          key: const ValueKey('ways-page'),
-                          prefs: widget.prefs),
-                      'WaysPage');
-                }
+                    await client.profileUser.login(email);
+                Logger.log(tag, message: 'email: $email');
+
+                Utils.pushPage(
+                    context,
+                    PasscodePage(
+                      key: const ValueKey('ways-page'),
+                      prefs: widget.prefs,
+                      profileUser: profileUser,
+                    ),
+                    'PasscodePage');
               },
             ),
             const SizedBox(height: 50),
@@ -184,53 +155,5 @@ class _WizardDemoState extends State<WizardDemo> {
         ),
       ),
     );
-  }
-
-  Future<bool> _createDemo(ProfileUser profileUser) async {
-    final profileUserId = profileUser.id;
-    if (profileUserId != null) {
-      DateTime now = DateTime.now();
-      QueueWindow window = QueueWindow(
-          name: 'Demo Wheref',
-          selected: true,
-          orderNum: 1,
-          createdDate: now,
-          profileUserId: profileUserId);
-      window = await client.queueWindow.create(window);
-
-      final windowId = window.id;
-      if (windowId != null) {
-        QueueService service01 = QueueService(
-            name: 'Payment',
-            letter: 'P',
-            start: 100,
-            orderNum: 1,
-            enable: true,
-            createdDate: now,
-            queueWindowId: windowId,
-            profileUserId: profileUserId);
-        QueueService service02 = QueueService(
-            name: 'Booking',
-            letter: 'B',
-            start: 200,
-            orderNum: 2,
-            enable: true,
-            createdDate: now,
-            queueWindowId: windowId,
-            profileUserId: profileUserId);
-        QueueService service03 = QueueService(
-            name: 'Information',
-            letter: 'INF',
-            start: 300,
-            orderNum: 3,
-            enable: true,
-            createdDate: now,
-            queueWindowId: windowId,
-            profileUserId: profileUserId);
-        await client.queueService.createAll([service01, service02, service03]);
-        return true;
-      }
-    }
-    return false;
   }
 }

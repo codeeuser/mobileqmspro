@@ -1209,6 +1209,36 @@ class S {
       args: [],
     );
   }
+
+  /// `Login`
+  String get login {
+    return Intl.message(
+      'Login',
+      name: 'login',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Passcode`
+  String get passcode {
+    return Intl.message(
+      'Passcode',
+      name: 'passcode',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Invalid`
+  String get invalid {
+    return Intl.message(
+      'Invalid',
+      name: 'invalid',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

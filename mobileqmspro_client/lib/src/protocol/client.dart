@@ -69,6 +69,13 @@ class EndpointProfileUser extends _i1.EndpointRef {
   @override
   String get name => 'profileUser';
 
+  _i2.Future<_i4.ProfileUser> login(String email) =>
+      caller.callServerEndpoint<_i4.ProfileUser>(
+        'profileUser',
+        'login',
+        {'email': email},
+      );
+
   _i2.Future<_i4.ProfileUser?> findByEmail(String email) =>
       caller.callServerEndpoint<_i4.ProfileUser?>(
         'profileUser',

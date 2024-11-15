@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:serverpod/serverpod.dart';
 
 import 'package:mobileqmspro_server/src/web/routes/root.dart';
@@ -14,9 +16,8 @@ void run(List<String> args) async {
   final pod = Serverpod(
     args,
     Protocol(),
-    Endpoints(),
+    Endpoints(), // modified serverpod code
   );
-
   // If you are using any future calls, they need to be registered here.
   // pod.registerFutureCall(ExampleFutureCall(), 'exampleFutureCall');
 
@@ -28,6 +29,27 @@ void run(List<String> args) async {
     RouteStaticDirectory(serverDirectory: 'static', basePath: '/'),
     '/*',
   );
+
+  String runMode = pod.runMode;
+  String serverId = pod.serverId;
+  String publicScheme = pod.config.apiServer.publicScheme;
+  String basePath = '..';
+  String privatekeyPath = '$basePath/certificates/${runMode}_$serverId.key';
+  String fullchainPath = '$basePath/certificates/${runMode}_$serverId.crt';
+  print('privatekeyPath: $privatekeyPath');
+  String key = Platform.script.resolve(privatekeyPath).toFilePath();
+  String crt = Platform.script.resolve(fullchainPath).toFilePath();
+  bool existKey = File(key).existsSync();
+  bool existCrt = File(key).existsSync();
+  SecurityContext? sc;
+  print(
+      'publicScheme: $publicScheme, existKey: $existKey, existCrt: $existCrt');
+  if (publicScheme == 'https' && existKey && existCrt) {
+    sc = SecurityContext();
+    pod.securityContext = sc;
+    sc.usePrivateKey(key, password: '');
+    sc.useCertificateChain(crt, password: '');
+  }
 
   // Start the server.
   await pod.start();
