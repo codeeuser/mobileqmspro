@@ -172,7 +172,12 @@ class _TokenStatusListPageState extends State<TokenStatusListPage> {
 
   Widget _buildSettingMenu(BuildContext context, TokenIssued tokenIssued) {
     double margin = (MediaQuery.of(context).size.width / 2) - 200;
+    double height =
+        (MediaQuery.of(context).size.height > ScreenProp.heightSettingMenu)
+            ? ScreenProp.heightSettingMenu
+            : MediaQuery.of(context).size.height;
     return Container(
+        height: height,
         margin: EdgeInsets.symmetric(horizontal: (margin < 0) ? 0 : margin),
         child: ListView(children: <Widget>[
           Container(

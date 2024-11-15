@@ -111,6 +111,7 @@ class ScreenProp {
   static const double width = 700;
   static const double widthScreenLimit = 900;
   static const double widthPhoneScreenLimit = 500;
+  static const double heightSettingMenu = 300;
 
   static double widthExpanded(BuildContext context) {
     double widthExpanded = (Utils.isPhoneSize(context) == true) ? 240 : 280;

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:mobileqmspro/utils/constants.dart';
 import 'package:mobileqmspro_client/mobileqmspro_client.dart';
 import 'package:mobileqmspro/commons/no_data.dart';
 import 'package:mobileqmspro/generated/l10n.dart';
@@ -147,10 +146,9 @@ class _WebPageState extends State<WebPage> {
     await for (final update in tokenUpdates) {
       List<TokenIssued> list = update.tokens;
       list.sort((a, b) => b.statusCode.compareTo(a.statusCode));
-      final listCompleted =
-          list.where((e) => e.statusCode == StatusCode.completed).toList();
+      final listCompleted = list.where((e) => e.isCompleted).toList();
       final listNoneCompleted =
-          list.where((e) => e.statusCode != StatusCode.completed).toList();
+          list.where((e) => e.isCompleted == false).toList();
       _tokenIssuedList.value = listNoneCompleted..addAll(listCompleted);
     }
   }

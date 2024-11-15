@@ -2,6 +2,7 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:mobileqmspro/utils/constants.dart';
 import 'package:mobileqmspro_client/mobileqmspro_client.dart';
 import 'package:mobileqmspro/app_profile.dart';
 import 'package:mobileqmspro/commons/custom_appbar.dart';
@@ -163,7 +164,12 @@ class _ServiceListPageState extends State<ServiceListPage> {
 
   Widget _buildSettingMenu(BuildContext context, QueueService service) {
     double margin = (MediaQuery.of(context).size.width / 2) - 200;
+    double height =
+        (MediaQuery.of(context).size.height > ScreenProp.heightSettingMenu)
+            ? ScreenProp.heightSettingMenu
+            : MediaQuery.of(context).size.height - 20;
     return Container(
+        height: height,
         margin: EdgeInsets.symmetric(horizontal: (margin < 0) ? 0 : margin),
         child: Column(children: <Widget>[
           ListTile(

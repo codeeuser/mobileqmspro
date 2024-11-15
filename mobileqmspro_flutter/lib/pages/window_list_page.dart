@@ -5,6 +5,7 @@ import 'dart:async';
 import 'package:adaptive_dialog/adaptive_dialog.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:mobileqmspro/utils/constants.dart';
 import 'package:mobileqmspro_client/mobileqmspro_client.dart';
 import 'package:mobileqmspro/app_profile.dart';
 import 'package:mobileqmspro/commons/custom_appbar.dart';
@@ -170,8 +171,13 @@ class _WindowListPageState extends State<WindowListPage> {
 
   Widget _buildSettingMenu(BuildContext context, QueueWindow window) {
     double margin = (MediaQuery.of(context).size.width / 2) - 200;
+    double height =
+        (MediaQuery.of(context).size.height > ScreenProp.heightSettingMenu)
+            ? ScreenProp.heightSettingMenu
+            : MediaQuery.of(context).size.height - 20;
     return SingleChildScrollView(
       child: Container(
+          height: height,
           margin: EdgeInsets.symmetric(horizontal: (margin < 0) ? 0 : margin),
           child: Column(children: <Widget>[
             Text(window.name, style: Theme.of(context).textTheme.labelMedium),
