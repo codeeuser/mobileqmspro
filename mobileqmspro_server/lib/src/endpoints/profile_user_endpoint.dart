@@ -73,8 +73,8 @@ class ProfileUserEndpoint extends Endpoint {
     bool ssl = map['ssl'] ?? false;
     String? mailAddress = map['mailAddress'];
     String? username = map['username'];
-    print('mailAddress: $mailAddress, port: $port');
-    if (smtp == null || mailAddress == null) return;
+    session.log('mailAddress: $mailAddress, port: $port');
+    if (smtp == null || mailAddress == null || username == null) return;
     // Use the SmtpServer class to configure an SMTP server:
     final smtpServer = SmtpServer(smtp,
         port: port, ssl: ssl, username: username, password: password);
@@ -85,7 +85,7 @@ class ProfileUserEndpoint extends Endpoint {
     var html = 'Hello,<br/><br/>';
     html += 'PASSCODE is <strong><h1>$passcode</h1></strong><br/><br/>';
     html +=
-        'Please use this passcode to verify your MobileQMS account.<br/><br/>';
+        'Please use this passcode to verify your MobileQMSPro account.<br/><br/>';
     html +=
         'If you did not make this request, please ignore this email.<br/><br/>';
     html += 'Thank you for using mobileQMSPro.<br/><br/>';
@@ -93,7 +93,6 @@ class ProfileUserEndpoint extends Endpoint {
     final message = Message()
       ..from = Address(mailAddress, 'MobileQMSPro')
       ..recipients.add(profileUser.email)
-      ..bccRecipients.add(Address('hello@wheref.com'))
       ..subject = subject
       ..text = 'Your MobileQMSPro Passcode\n\n$passcode.'
       ..html = html;

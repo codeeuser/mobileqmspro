@@ -14,7 +14,6 @@ config/certificates.yaml
 config/production.yaml
 config/staging.yaml
 config/production_mail.yaml
-config/development_mail.yaml
 
 # Firebase service account key for Firebase auth
 config/firebase_service_account_key.json
