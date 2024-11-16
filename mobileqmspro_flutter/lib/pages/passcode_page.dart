@@ -120,15 +120,16 @@ class _PasscodePageState extends State<PasscodePage> {
                           if (success == false) {
                             Utils.overlayInfoMessage(
                                 msg: S.of(context).noAction);
+                            return;
                           }
                         }
-                        await widget.prefs
-                            .setString(Prefs.windowEmail, profileUser.email);
+                        await widget.prefs.setString(Prefs.windowEmail, email);
 
                         PackageInfo packageInfo =
                             await PackageInfo.fromPlatform();
                         DeviceInfoPlugin deviceInfoPlugin = DeviceInfoPlugin();
                         final deviceIfo = await deviceInfoPlugin.deviceInfo;
+                        final ipInfo = await getMyIpInfo();
                         final logLogin = LogLogin(
                             createdDate: DateTime.now(),
                             appVersion: packageInfo.version,
@@ -140,12 +141,16 @@ class _PasscodePageState extends State<PasscodePage> {
                                     : (Utils.isMacos)
                                         ? 'macos'
                                         : '',
-                            deviceName: jsonEncode(await getMyIpInfo()),
+                            deviceName: jsonEncode(ipInfo),
                             deviceOs: json.encode(deviceIfo.data),
                             deviceRelease: '',
                             msgToken: '',
                             profileUserId: profileId);
                         await client.logLogin.create(logLogin);
+
+                        profileUser.verified = true;
+                        profileUser.ipAddress = ipInfo?.ip;
+                        await client.profileUser.update(profileUser);
                         Utils.pushPage(
                             context,
                             WaysPage(

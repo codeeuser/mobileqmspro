@@ -255,8 +255,8 @@ class _MorePageState extends State<MorePage> {
             if (result == OkCancelResult.ok) {
               AppProfile appProfile = context.read<AppProfile>();
               final profileUser = appProfile.profileUser;
-              if (profileUser != null) {
-                final email = profileUser.email;
+              final email = profileUser?.email;
+              if (profileUser != null && email != null) {
                 await client.tokenIssued.deleteByEmail(email);
                 await client.queueService.deleteByEmail(email);
                 await client.queueWindow.deleteByEmail(email);
@@ -269,9 +269,10 @@ class _MorePageState extends State<MorePage> {
                     WaysPage(
                       key: const ValueKey('ways-page'),
                       prefs: widget.prefs,
-                      window: widget.window,
                     ),
                     'WaysPage');
+              } else {
+                Utils.overlayInfoMessage(msg: S.of(context).noAction);
               }
             }
           },
@@ -325,7 +326,6 @@ class _MorePageState extends State<MorePage> {
                   WaysPage(
                     key: const ValueKey('ways-page'),
                     prefs: widget.prefs,
-                    window: widget.window,
                   ),
                   'WaysPage');
             }
