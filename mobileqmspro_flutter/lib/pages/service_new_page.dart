@@ -1,6 +1,7 @@
 // ignore_for_file: use_build_context_synchronously
 
 import 'package:flutter/material.dart';
+import 'package:mobileqmspro/utils/constants.dart';
 import 'package:mobileqmspro_client/mobileqmspro_client.dart';
 import 'package:mobileqmspro/app_profile.dart';
 import 'package:mobileqmspro/generated/l10n.dart';
@@ -67,71 +68,84 @@ class _ServiceNewPageState extends State<ServiceNewPage> {
   Widget build(BuildContext context) {
     return LayoutBuilder(
         builder: (BuildContext context, BoxConstraints constraints) {
-      return Scaffold(
-          key: _scaffoldKey,
-          appBar: AppBar(
-            centerTitle: true,
-            title: Text(S.of(context).serviceForm),
-            backgroundColor: const Color.fromRGBO(35, 197, 221, 1.0),
-            actions: [
-              TextButton(
-                child: (_service == null)
-                    ? Text(S.of(context).save.toUpperCase(),
-                        style: Styles.actionBtn)
-                    : Text(S.of(context).update.toUpperCase(),
-                        style: Styles.actionBtn),
-                onPressed: () async {
-                  Logger.log(tag, message: 'SAVE/UPDATE');
-                  _formKey.currentState?.save();
-                  if (_formKey.currentState?.validate() == false) {
-                    return;
-                  }
-                  AppProfile appProfile = context.read<AppProfile>();
-                  final profileUser = appProfile.profileUser;
-                  final profileUserId = profileUser?.id;
-                  final email = profileUser?.email;
-                  if (profileUserId == null || email == null) return;
-                  final windowId = widget.window.id;
-                  if (windowId == null) return;
-                  String name = _nameController.text.trim();
-                  String letter = _letterController.text.trim();
-                  int start = int.parse(_startController.text.trim());
-                  int? count =
-                      await client.queueService.countByWindow(windowId);
-                  int orderNum = count + 1;
-                  DateTime now = DateTime.now();
-                  QueueService? service = _service;
-                  if (service == null) {
-                    QueueService serviceNew = QueueService(
-                        name: name,
-                        letter: letter,
-                        start: start,
-                        enable: false,
-                        orderNum: orderNum,
-                        createdDate: now,
-                        modifiedDate: now,
-                        queueWindowId: windowId,
-                        profileUserId: profileUserId);
-                    _service = await client.queueService.create(serviceNew);
-                  } else {
-                    service.name = name;
-                    service.letter = letter;
-                    service.start = start;
-                    service.modifiedDate = now;
-                    await client.queueService.update(service);
-                  }
-                  Utils.pushPage(
-                      context,
-                      ServiceListPage(
-                        prefs: widget.prefs,
-                        window: widget.window,
-                      ),
-                      'ServiceListPage');
-                },
+      return Align(
+          alignment: Alignment.topCenter,
+          child: SizedBox(
+            child: SizedBox(
+              width: (constraints.maxWidth > WidgetProp.width)
+                  ? WidgetProp.width
+                  : constraints.maxWidth,
+              child: PopScope(
+                canPop: true,
+                child: Scaffold(
+                    key: _scaffoldKey,
+                    appBar: AppBar(
+                      centerTitle: true,
+                      title: Text(S.of(context).serviceForm),
+                      backgroundColor: const Color.fromRGBO(35, 197, 221, 1.0),
+                      actions: [
+                        TextButton(
+                          child: (_service == null)
+                              ? Text(S.of(context).save.toUpperCase(),
+                                  style: Styles.actionBtn)
+                              : Text(S.of(context).update.toUpperCase(),
+                                  style: Styles.actionBtn),
+                          onPressed: () async {
+                            Logger.log(tag, message: 'SAVE/UPDATE');
+                            _formKey.currentState?.save();
+                            if (_formKey.currentState?.validate() == false) {
+                              return;
+                            }
+                            AppProfile appProfile = context.read<AppProfile>();
+                            final profileUser = appProfile.profileUser;
+                            final profileUserId = profileUser?.id;
+                            final email = profileUser?.email;
+                            if (profileUserId == null || email == null) return;
+                            final windowId = widget.window.id;
+                            if (windowId == null) return;
+                            String name = _nameController.text.trim();
+                            String letter = _letterController.text.trim();
+                            int start = int.parse(_startController.text.trim());
+                            int? count = await client.queueService
+                                .countByWindow(windowId);
+                            int orderNum = count + 1;
+                            DateTime now = DateTime.now();
+                            QueueService? service = _service;
+                            if (service == null) {
+                              QueueService serviceNew = QueueService(
+                                  name: name,
+                                  letter: letter,
+                                  start: start,
+                                  enable: false,
+                                  orderNum: orderNum,
+                                  createdDate: now,
+                                  modifiedDate: now,
+                                  queueWindowId: windowId,
+                                  profileUserId: profileUserId);
+                              _service =
+                                  await client.queueService.create(serviceNew);
+                            } else {
+                              service.name = name;
+                              service.letter = letter;
+                              service.start = start;
+                              service.modifiedDate = now;
+                              await client.queueService.update(service);
+                            }
+                            Utils.pushPage(
+                                context,
+                                ServiceListPage(
+                                  prefs: widget.prefs,
+                                  window: widget.window,
+                                ),
+                                'ServiceListPage');
+                          },
+                        ),
+                      ],
+                    ),
+                    body: _buildContent(context)),
               ),
-            ],
-          ),
-          body: _buildContent(context));
+            ),
+          ));
     });
   }
 

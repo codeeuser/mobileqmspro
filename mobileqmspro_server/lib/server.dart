@@ -17,7 +17,6 @@ void run(List<String> args) async {
     args,
     Protocol(),
     Endpoints(), // modified serverpod code
-    securityContext: SecurityContext.defaultContext,
   );
   // If you are using any future calls, they need to be registered here.
   // pod.registerFutureCall(ExampleFutureCall(), 'exampleFutureCall');
@@ -41,14 +40,15 @@ void run(List<String> args) async {
   String p12 = Platform.script.resolve(p12Path).toFilePath();
   bool existKey = File(key).existsSync();
   bool existP12 = File(p12).existsSync();
-  SecurityContext? sc;
+
   print(
       'publicScheme: $publicScheme, existKey: $existKey, existP12: $existP12');
   if (publicScheme == 'https' && existKey) {
     String? sslPassword = pod.getPassword('sslPassword');
-    sc = pod.securityContext;
-    sc?.usePrivateKey(key, password: '');
-    sc?.useCertificateChain(p12, password: sslPassword);
+    SecurityContext sc = SecurityContext.defaultContext;
+    pod.securityContext = sc;
+    sc.usePrivateKey(key, password: '');
+    sc.useCertificateChain(p12, password: sslPassword);
   }
 
   // Start the server.

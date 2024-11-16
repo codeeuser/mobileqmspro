@@ -4,6 +4,7 @@ import 'package:adaptive_dialog/adaptive_dialog.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:mobileqmspro/utils/constants.dart';
 import 'package:mobileqmspro_client/mobileqmspro_client.dart';
 import 'package:mobileqmspro/generated/l10n.dart';
 import 'package:mobileqmspro/logger.dart';
@@ -50,16 +51,25 @@ class _TokenNumPageState extends State<TokenNumPage> {
 
   @override
   Widget build(BuildContext context) {
-    return PopScope(
-        canPop: true,
-        child: SafeArea(
-          child: Scaffold(
-              key: _scaffoldKey,
-              body: SafeArea(
-                top: false,
-                child: _buildContent(context),
-              )),
-        ));
+    return LayoutBuilder(
+        builder: (BuildContext context, BoxConstraints constraints) {
+      return Align(
+          alignment: Alignment.topCenter,
+          child: SizedBox(
+              width: (constraints.maxWidth > WidgetProp.width)
+                  ? WidgetProp.width
+                  : constraints.maxWidth,
+              child: PopScope(
+                  canPop: true,
+                  child: SafeArea(
+                    child: Scaffold(
+                        key: _scaffoldKey,
+                        body: SafeArea(
+                          top: false,
+                          child: _buildContent(context),
+                        )),
+                  ))));
+    });
   }
 
   Widget _buildContent(BuildContext context) {

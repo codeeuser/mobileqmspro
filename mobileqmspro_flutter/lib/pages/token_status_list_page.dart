@@ -59,16 +59,29 @@ class _TokenStatusListPageState extends State<TokenStatusListPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        key: _scaffoldKey,
-        appBar: CustomAppBar(
-            title: Utils.getAppBarTitle(S.of(context).tokenList, context),
-            goBackButton: Utils.goBackButton(() => Utils.pushPage(
-                context,
-                MorePage(prefs: widget.prefs, window: widget.window),
-                'MorePage')),
-            label: S.of(context).title),
-        body: _buildContent(context));
+    return LayoutBuilder(
+        builder: (BuildContext context, BoxConstraints constraints) {
+      return Align(
+          alignment: Alignment.topCenter,
+          child: SizedBox(
+              width: (constraints.maxWidth > WidgetProp.width)
+                  ? WidgetProp.width
+                  : constraints.maxWidth,
+              child: PopScope(
+                  canPop: true,
+                  child: Scaffold(
+                      key: _scaffoldKey,
+                      appBar: CustomAppBar(
+                          title: Utils.getAppBarTitle(
+                              S.of(context).tokenList, context),
+                          goBackButton: Utils.goBackButton(() => Utils.pushPage(
+                              context,
+                              MorePage(
+                                  prefs: widget.prefs, window: widget.window),
+                              'MorePage')),
+                          label: S.of(context).title),
+                      body: _buildContent(context)))));
+    });
   }
 
   Widget _buildContent(BuildContext context) {
@@ -171,7 +184,7 @@ class _TokenStatusListPageState extends State<TokenStatusListPage> {
   }
 
   Widget _buildSettingMenu(BuildContext context, TokenIssued tokenIssued) {
-    double margin = (MediaQuery.of(context).size.width / 2) - 200;
+    double margin = (MediaQuery.of(context).size.width / 2) - ScreenProp.width;
     double height =
         (MediaQuery.of(context).size.height > ScreenProp.heightSettingMenu)
             ? ScreenProp.heightSettingMenu

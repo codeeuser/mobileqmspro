@@ -207,7 +207,7 @@ class _TokenListPageState extends State<TokenListPage> {
   }
 
   Widget _buildSettingMenu(BuildContext context, TokenIssued tokenIssued) {
-    double margin = (MediaQuery.of(context).size.width / 2) - 200;
+    double margin = (MediaQuery.of(context).size.width / 2) - ScreenProp.width;
     double height =
         (MediaQuery.of(context).size.height > ScreenProp.heightSettingMenu)
             ? ScreenProp.heightSettingMenu

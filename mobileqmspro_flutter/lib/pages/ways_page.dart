@@ -68,15 +68,24 @@ class _WaysPageState extends State<WaysPage> {
 
   @override
   Widget build(BuildContext context) {
-    return ValueListenableBuilder<dynamic>(
-        valueListenable: _screen,
-        builder: (BuildContext context, screen, _) {
-          if (screen == null) {
-            return _buildContent();
-          } else {
-            return screen;
-          }
-        });
+    return LayoutBuilder(
+        builder: (BuildContext context, BoxConstraints constraints) {
+      return Align(
+          alignment: Alignment.topCenter,
+          child: SizedBox(
+              width: (constraints.maxWidth > WidgetProp.width)
+                  ? WidgetProp.width
+                  : constraints.maxWidth,
+              child: ValueListenableBuilder<dynamic>(
+                  valueListenable: _screen,
+                  builder: (BuildContext context, screen, _) {
+                    if (screen == null) {
+                      return _buildContent();
+                    } else {
+                      return screen;
+                    }
+                  })));
+    });
   }
 
   Widget _buildContent() {

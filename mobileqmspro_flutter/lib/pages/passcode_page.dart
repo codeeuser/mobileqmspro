@@ -36,15 +36,25 @@ class _PasscodePageState extends State<PasscodePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        key: _scaffoldKey,
-        appBar: AppBar(
-          centerTitle: true,
-          automaticallyImplyLeading: true,
-          title: Text(S.of(context).passcode),
-          backgroundColor: const Color.fromRGBO(35, 197, 221, 1.0),
-        ),
-        body: _buildContent());
+    return LayoutBuilder(
+        builder: (BuildContext context, BoxConstraints constraints) {
+      return Scaffold(
+          key: _scaffoldKey,
+          appBar: AppBar(
+            centerTitle: true,
+            automaticallyImplyLeading: true,
+            title: Text(S.of(context).passcode),
+            backgroundColor: const Color.fromRGBO(35, 197, 221, 1.0),
+          ),
+          body: Align(
+              alignment: Alignment.topCenter,
+              child: SizedBox(
+                width: (constraints.maxWidth > WidgetProp.width)
+                    ? WidgetProp.width
+                    : constraints.maxWidth,
+                child: _buildContent(),
+              )));
+    });
   }
 
   Widget _buildContent() {

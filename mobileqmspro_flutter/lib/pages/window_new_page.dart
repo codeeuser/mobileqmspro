@@ -1,6 +1,7 @@
 // ignore_for_file: use_build_context_synchronously
 
 import 'package:flutter/material.dart';
+import 'package:mobileqmspro/utils/constants.dart';
 import 'package:mobileqmspro_client/mobileqmspro_client.dart';
 import 'package:mobileqmspro/app_profile.dart';
 import 'package:mobileqmspro/generated/l10n.dart';
@@ -56,55 +57,74 @@ class _WindowNewPageState extends State<WindowNewPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        key: _scaffoldKey,
-        appBar: AppBar(
-          centerTitle: true,
-          title: Text(S.of(context).windowForm),
-          backgroundColor: const Color.fromRGBO(35, 197, 221, 1.0),
-          actions: [
-            TextButton(
-                onPressed: () async {
-                  Logger.log(tag, message: 'SAVE/UPDATE');
-                  _formKey.currentState?.save();
-                  if (_formKey.currentState?.validate() == false) {
-                    return;
-                  }
-                  AppProfile appProfile = context.read<AppProfile>();
-                  final profileUser = appProfile.profileUser;
-                  final profileUserId = profileUser?.id;
-                  final email = profileUser?.email;
-                  if (profileUserId == null || email == null) return;
-                  String name = _nameController.text.trim();
-                  int count = await client.queueWindow.countByEmail(email);
-                  int orderNum = count + 1;
-                  DateTime now = DateTime.now();
-                  QueueWindow? window = _window;
-                  if (window == null) {
-                    QueueWindow windowNew = QueueWindow(
-                        name: name,
-                        selected: false,
-                        orderNum: orderNum,
-                        createdDate: now,
-                        modifiedDate: now,
-                        profileUserId: profileUserId);
-                    _window = await client.queueWindow.create(windowNew);
-                  } else {
-                    window.name = name;
-                    window.modifiedDate = now;
-                    await client.queueWindow.update(window);
-                  }
-                  Utils.pushPage(context, WindowListPage(prefs: widget.prefs),
-                      'WindowListPage');
-                },
-                child: (_window == null)
-                    ? Text(S.of(context).save.toUpperCase(),
-                        style: Styles.actionBtn)
-                    : Text(S.of(context).update.toUpperCase(),
-                        style: Styles.actionBtn))
-          ],
-        ),
-        body: _buildContent(context));
+    return LayoutBuilder(
+        builder: (BuildContext context, BoxConstraints constraints) {
+      return Align(
+          alignment: Alignment.topCenter,
+          child: SizedBox(
+              width: (constraints.maxWidth > WidgetProp.width)
+                  ? WidgetProp.width
+                  : constraints.maxWidth,
+              child: PopScope(
+                  canPop: true,
+                  child: Scaffold(
+                      key: _scaffoldKey,
+                      appBar: AppBar(
+                        centerTitle: true,
+                        title: Text(S.of(context).windowForm),
+                        backgroundColor:
+                            const Color.fromRGBO(35, 197, 221, 1.0),
+                        actions: [
+                          TextButton(
+                              onPressed: () async {
+                                Logger.log(tag, message: 'SAVE/UPDATE');
+                                _formKey.currentState?.save();
+                                if (_formKey.currentState?.validate() ==
+                                    false) {
+                                  return;
+                                }
+                                AppProfile appProfile =
+                                    context.read<AppProfile>();
+                                final profileUser = appProfile.profileUser;
+                                final profileUserId = profileUser?.id;
+                                final email = profileUser?.email;
+                                if (profileUserId == null || email == null)
+                                  return;
+                                String name = _nameController.text.trim();
+                                int count = await client.queueWindow
+                                    .countByEmail(email);
+                                int orderNum = count + 1;
+                                DateTime now = DateTime.now();
+                                QueueWindow? window = _window;
+                                if (window == null) {
+                                  QueueWindow windowNew = QueueWindow(
+                                      name: name,
+                                      selected: false,
+                                      orderNum: orderNum,
+                                      createdDate: now,
+                                      modifiedDate: now,
+                                      profileUserId: profileUserId);
+                                  _window = await client.queueWindow
+                                      .create(windowNew);
+                                } else {
+                                  window.name = name;
+                                  window.modifiedDate = now;
+                                  await client.queueWindow.update(window);
+                                }
+                                Utils.pushPage(
+                                    context,
+                                    WindowListPage(prefs: widget.prefs),
+                                    'WindowListPage');
+                              },
+                              child: (_window == null)
+                                  ? Text(S.of(context).save.toUpperCase(),
+                                      style: Styles.actionBtn)
+                                  : Text(S.of(context).update.toUpperCase(),
+                                      style: Styles.actionBtn))
+                        ],
+                      ),
+                      body: _buildContent(context)))));
+    });
   }
 
   Widget _buildContent(BuildContext context) {

@@ -298,114 +298,117 @@ class Utils {
   static Widget buildDesc(double size) {
     double fontSize = size / 2;
     TextStyle textStyle = TextStyle(color: Colors.blueGrey, fontSize: fontSize);
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: <Widget>[
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: <Widget>[
-            Padding(
-              padding: const EdgeInsets.all(2),
-              child: ClipOval(
-                child: Container(
-                  color: Utils.getStatusColor(Status.onwait),
-                  width: size,
-                  height: size,
-                  child: Center(
-                      child: Text(StatusAcronym.onwait,
-                          style: TextStyle(
-                              fontSize: fontSize, color: Colors.white))),
+    return SingleChildScrollView(
+      scrollDirection: Axis.horizontal,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: <Widget>[
+              Padding(
+                padding: const EdgeInsets.all(2),
+                child: ClipOval(
+                  child: Container(
+                    color: Utils.getStatusColor(Status.onwait),
+                    width: size,
+                    height: size,
+                    child: Center(
+                        child: Text(StatusAcronym.onwait,
+                            style: TextStyle(
+                                fontSize: fontSize, color: Colors.white))),
+                  ),
                 ),
               ),
-            ),
-            Text(Status.onwait.toUpperCase(), style: textStyle)
-          ],
-        ),
-        const SizedBox(width: 30),
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: <Widget>[
-            Padding(
-              padding: const EdgeInsets.all(2),
-              child: ClipOval(
-                child: Container(
-                  color: Utils.getStatusColor(Status.onqueue),
-                  width: size,
-                  height: size,
-                  child: Center(
-                      child: Text(StatusAcronym.onqueue,
-                          style: TextStyle(
-                              fontSize: fontSize, color: Colors.white))),
+              Text(Status.onwait.toUpperCase(), style: textStyle)
+            ],
+          ),
+          const SizedBox(width: 30),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: <Widget>[
+              Padding(
+                padding: const EdgeInsets.all(2),
+                child: ClipOval(
+                  child: Container(
+                    color: Utils.getStatusColor(Status.onqueue),
+                    width: size,
+                    height: size,
+                    child: Center(
+                        child: Text(StatusAcronym.onqueue,
+                            style: TextStyle(
+                                fontSize: fontSize, color: Colors.white))),
+                  ),
                 ),
               ),
-            ),
-            Text(Status.onqueue.toUpperCase(), style: textStyle)
-          ],
-        ),
-        const SizedBox(width: 30),
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: <Widget>[
-            Padding(
-              padding: const EdgeInsets.all(2),
-              child: ClipOval(
-                child: Container(
-                  color: Utils.getStatusColor(Status.completed),
-                  width: size,
-                  height: size,
-                  child: Center(
-                      child: Text(StatusAcronym.completed,
-                          style: TextStyle(
-                              fontSize: fontSize, color: Colors.white))),
+              Text(Status.onqueue.toUpperCase(), style: textStyle)
+            ],
+          ),
+          const SizedBox(width: 30),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: <Widget>[
+              Padding(
+                padding: const EdgeInsets.all(2),
+                child: ClipOval(
+                  child: Container(
+                    color: Utils.getStatusColor(Status.completed),
+                    width: size,
+                    height: size,
+                    child: Center(
+                        child: Text(StatusAcronym.completed,
+                            style: TextStyle(
+                                fontSize: fontSize, color: Colors.white))),
+                  ),
                 ),
               ),
-            ),
-            Text(Status.completed.toUpperCase(), style: textStyle)
-          ],
-        ),
-        const SizedBox(width: 30),
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: <Widget>[
-            Padding(
-              padding: const EdgeInsets.all(2),
-              child: ClipOval(
-                child: Container(
-                  color: Utils.getStatusColor(Status.recall),
-                  width: size,
-                  height: size,
-                  child: Center(
-                      child: Text(StatusAcronym.recall,
-                          style: TextStyle(
-                              fontSize: fontSize, color: Colors.white))),
+              Text(Status.completed.toUpperCase(), style: textStyle)
+            ],
+          ),
+          const SizedBox(width: 30),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: <Widget>[
+              Padding(
+                padding: const EdgeInsets.all(2),
+                child: ClipOval(
+                  child: Container(
+                    color: Utils.getStatusColor(Status.recall),
+                    width: size,
+                    height: size,
+                    child: Center(
+                        child: Text(StatusAcronym.recall,
+                            style: TextStyle(
+                                fontSize: fontSize, color: Colors.white))),
+                  ),
                 ),
               ),
-            ),
-            Text(Status.recall.toUpperCase(), style: textStyle)
-          ],
-        ),
-        const SizedBox(width: 30),
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: <Widget>[
-            Padding(
-              padding: const EdgeInsets.all(2),
-              child: ClipOval(
-                child: Container(
-                  color: Utils.getStatusColor(Status.timeout),
-                  width: size,
-                  height: size,
-                  child: Center(
-                      child: Text(StatusAcronym.timeout,
-                          style: TextStyle(
-                              fontSize: fontSize, color: Colors.white))),
+              Text(Status.recall.toUpperCase(), style: textStyle)
+            ],
+          ),
+          const SizedBox(width: 30),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: <Widget>[
+              Padding(
+                padding: const EdgeInsets.all(2),
+                child: ClipOval(
+                  child: Container(
+                    color: Utils.getStatusColor(Status.timeout),
+                    width: size,
+                    height: size,
+                    child: Center(
+                        child: Text(StatusAcronym.timeout,
+                            style: TextStyle(
+                                fontSize: fontSize, color: Colors.white))),
+                  ),
                 ),
               ),
-            ),
-            Text(Status.timeout.toUpperCase(), style: textStyle)
-          ],
-        ),
-      ],
+              Text(Status.timeout.toUpperCase(), style: textStyle)
+            ],
+          ),
+        ],
+      ),
     );
   }
 }

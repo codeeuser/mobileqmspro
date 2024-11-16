@@ -211,7 +211,7 @@ class _TokenCallPageState extends State<TokenCallPage> {
   }
 
   Widget _buildSettingMenu(BuildContext context, TokenIssued tokenIssued) {
-    double margin = (MediaQuery.of(context).size.width / 2) - 200;
+    double margin = (MediaQuery.of(context).size.width / 2) - ScreenProp.width;
     return Container(
         margin: EdgeInsets.symmetric(horizontal: (margin < 0) ? 0 : margin),
         child: SingleChildScrollView(

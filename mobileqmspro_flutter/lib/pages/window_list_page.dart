@@ -48,39 +48,55 @@ class _WindowListPageState extends State<WindowListPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      key: _scaffoldKey,
-      appBar: CustomAppBar(
-        label: S.of(context).title,
-        title: Utils.getAppBarTitle(
-            S.of(context).setupWindow.toUpperCase(), context),
-        goBackButton: Utils.goBackButton(() async {
-          AppProfile appProfile = context.read<AppProfile>();
-          final profileUser = appProfile.profileUser;
-          final profileUserId = profileUser?.id;
-          final email = profileUser?.email;
-          if (profileUserId == null || email == null) return;
-          QueueWindow? window =
-              await client.queueWindow.getSelectedByEmail(email);
-          if (window == null) return;
-          Utils.pushPage(context, MorePage(prefs: widget.prefs, window: window),
-              'MorePage');
-        }),
-      ),
-      body: _buildContent(context),
-      floatingActionButton: Visibility(
-        visible: _isVisible ?? true,
-        child: Visibility(
-          child: FloatingActionButton(
-            child: const Icon(CupertinoIcons.plus, semanticLabel: 'Add Window'),
-            onPressed: () async {
-              Utils.pushPage(
-                  context, WindowNewPage(prefs: widget.prefs), 'WindowNewPage');
-            },
-          ),
-        ),
-      ),
-    );
+    return LayoutBuilder(
+        builder: (BuildContext context, BoxConstraints constraints) {
+      return Align(
+          alignment: Alignment.topCenter,
+          child: SizedBox(
+              width: (constraints.maxWidth > WidgetProp.width)
+                  ? WidgetProp.width
+                  : constraints.maxWidth,
+              child: PopScope(
+                  canPop: true,
+                  child: Scaffold(
+                    key: _scaffoldKey,
+                    appBar: CustomAppBar(
+                      label: S.of(context).title,
+                      title: Utils.getAppBarTitle(
+                          S.of(context).setupWindow.toUpperCase(), context),
+                      goBackButton: Utils.goBackButton(() async {
+                        AppProfile appProfile = context.read<AppProfile>();
+                        final profileUser = appProfile.profileUser;
+                        final profileUserId = profileUser?.id;
+                        final email = profileUser?.email;
+                        if (profileUserId == null || email == null) return;
+                        QueueWindow? window =
+                            await client.queueWindow.getSelectedByEmail(email);
+                        if (window == null) return;
+                        Utils.pushPage(
+                            context,
+                            MorePage(prefs: widget.prefs, window: window),
+                            'MorePage');
+                      }),
+                    ),
+                    body: _buildContent(context),
+                    floatingActionButton: Visibility(
+                      visible: _isVisible ?? true,
+                      child: Visibility(
+                        child: FloatingActionButton(
+                          child: const Icon(CupertinoIcons.plus,
+                              semanticLabel: 'Add Window'),
+                          onPressed: () async {
+                            Utils.pushPage(
+                                context,
+                                WindowNewPage(prefs: widget.prefs),
+                                'WindowNewPage');
+                          },
+                        ),
+                      ),
+                    ),
+                  ))));
+    });
   }
 
   Widget _buildContent(BuildContext context) {
@@ -170,7 +186,7 @@ class _WindowListPageState extends State<WindowListPage> {
   }
 
   Widget _buildSettingMenu(BuildContext context, QueueWindow window) {
-    double margin = (MediaQuery.of(context).size.width / 2) - 200;
+    double margin = (MediaQuery.of(context).size.width / 2) - ScreenProp.width;
     double height =
         (MediaQuery.of(context).size.height > ScreenProp.heightSettingMenu)
             ? ScreenProp.heightSettingMenu

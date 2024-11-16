@@ -10,6 +10,7 @@ const String myBaseUrl =
     (kReleaseMode == true) ? 'https://wheref.com/' : 'http://localhost:1234/';
 const String privacyUrl = 'https://wheref.com/privacy.html';
 const String termUrl = 'https://wheref.com/terms.html';
+const String baseMobileQMSProWeb = '${myBaseUrl}mobileqmspro/';
 const String configFile =
     (kReleaseMode == true) ? 'production.yaml' : 'development.yaml';
 

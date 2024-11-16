@@ -69,27 +69,36 @@ class _MorePageState extends State<MorePage> {
 
   @override
   Widget build(BuildContext context) {
-    return PopScope(
-        canPop: true,
-        child: Scaffold(
-            key: _scaffoldKey,
-            appBar: CustomAppBar(
-              label: S.of(context).title,
-              title: Utils.getAppBarTitle(
-                  S.of(context).moreOptions.toUpperCase(), context),
-              goBackButton: Utils.goBackButton(() => Utils.pushPage(
-                  context,
-                  WaysPage(
-                    key: const ValueKey('ways-page'),
-                    prefs: widget.prefs,
-                    window: widget.window,
-                  ),
-                  'WaysPage')),
-            ),
-            body: SafeArea(
-              top: false,
-              child: _buildContent(),
-            )));
+    return LayoutBuilder(
+        builder: (BuildContext context, BoxConstraints constraints) {
+      return Align(
+          alignment: Alignment.topCenter,
+          child: SizedBox(
+              width: (constraints.maxWidth > WidgetProp.width)
+                  ? WidgetProp.width
+                  : constraints.maxWidth,
+              child: PopScope(
+                  canPop: true,
+                  child: Scaffold(
+                      key: _scaffoldKey,
+                      appBar: CustomAppBar(
+                        label: S.of(context).title,
+                        title: Utils.getAppBarTitle(
+                            S.of(context).moreOptions.toUpperCase(), context),
+                        goBackButton: Utils.goBackButton(() => Utils.pushPage(
+                            context,
+                            WaysPage(
+                              key: const ValueKey('ways-page'),
+                              prefs: widget.prefs,
+                              window: widget.window,
+                            ),
+                            'WaysPage')),
+                      ),
+                      body: SafeArea(
+                        top: false,
+                        child: _buildContent(),
+                      )))));
+    });
   }
 
   Widget _buildContent() {
@@ -235,7 +244,8 @@ class _MorePageState extends State<MorePage> {
           trailing:
               const Icon(CupertinoIcons.chevron_right, semanticLabel: 'Next'),
           onTap: () async {
-            await Utils.launchURLString('$myBaseUrl${widget.window.id}');
+            await Utils.launchURLString(
+                '$baseMobileQMSProWeb${widget.window.id}');
           },
         ),
         const Divider(color: Colors.grey),
