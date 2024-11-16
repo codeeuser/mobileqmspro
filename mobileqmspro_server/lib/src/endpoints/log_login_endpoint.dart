@@ -24,4 +24,12 @@ class LogLoginEndpoint extends Endpoint {
   Future<void> delete(Session session, LogLogin logLogin) async {
     await LogLogin.db.deleteRow(session, logLogin);
   }
+
+  Future<void> deleteByEmail(Session session, String email) async {
+    List<LogLogin> list = await LogLogin.db.find(
+      session,
+      where: (t) => t.profileUser.email.equals(email),
+    );
+    await LogLogin.db.delete(session, list);
+  }
 }

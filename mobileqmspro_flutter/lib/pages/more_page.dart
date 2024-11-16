@@ -237,6 +237,48 @@ class _MorePageState extends State<MorePage> {
         const Divider(color: Colors.grey),
         ListTile(
           leading:
+              const Icon(CupertinoIcons.person, semanticLabel: 'Runing Token'),
+          title: Text(S.of(context).deleteAccount),
+          subtitle: const Text('Do you want delete this Account?'),
+          trailing:
+              const Icon(CupertinoIcons.chevron_right, semanticLabel: 'Next'),
+          onTap: () async {
+            final result = await showOkCancelAlertDialog(
+              context: context,
+              title: S.of(context).deleteAccount.toUpperCase(),
+              message: '${S.of(context).doYouAccept}?',
+              onPopInvokedWithResult: (didPop, result) {
+                Logger.log(tag, message: 'didPop: $didPop, result: $result');
+              },
+            );
+            Logger.log(tag, message: 'resulttt: $result');
+            if (result == OkCancelResult.ok) {
+              AppProfile appProfile = context.read<AppProfile>();
+              final profileUser = appProfile.profileUser;
+              if (profileUser != null) {
+                final email = profileUser.email;
+                await client.tokenIssued.deleteByEmail(email);
+                await client.queueService.deleteByEmail(email);
+                await client.queueWindow.deleteByEmail(email);
+                await client.logLogin.deleteByEmail(email);
+                await client.profileUser.delete(profileUser);
+                appProfile.profileUser = null;
+                await widget.prefs.clear();
+                Utils.pushPage(
+                    context,
+                    WaysPage(
+                      key: const ValueKey('ways-page'),
+                      prefs: widget.prefs,
+                      window: widget.window,
+                    ),
+                    'WaysPage');
+              }
+            }
+          },
+        ),
+        const Divider(color: Colors.grey),
+        ListTile(
+          leading:
               const Icon(CupertinoIcons.info, semanticLabel: 'Runing Token'),
           title: Text(S.of(context).runningTokens),
           subtitle:

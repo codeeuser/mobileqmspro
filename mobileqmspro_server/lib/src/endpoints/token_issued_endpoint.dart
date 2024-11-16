@@ -130,6 +130,14 @@ class TokenIssuedEndpoint extends Endpoint {
     await _updateRunningStream(session);
   }
 
+  Future<void> deleteByEmail(Session session, String email) async {
+    List<TokenIssued> list = await TokenIssued.db.find(
+      session,
+      where: (t) => t.profileUser.email.equals(email),
+    );
+    await TokenIssued.db.delete(session, list);
+  }
+
   Future<int> countIsQueueStatus(Session session, int windowId) async {
     var count = await TokenIssued.db.count(
       session,

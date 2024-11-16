@@ -511,5 +511,6 @@
 	"loading": "Loading",
 	"login": "Login",
 	"passcode": "Passcode",
-	"invalid": "Invalid"
+	"invalid": "Invalid",
+	"deleteAccount": "Delete Account"
 }

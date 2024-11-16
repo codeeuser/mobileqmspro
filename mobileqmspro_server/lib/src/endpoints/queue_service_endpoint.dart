@@ -48,6 +48,14 @@ class QueueServiceEndpoint extends Endpoint {
     await QueueService.db.deleteRow(session, queueService);
   }
 
+  Future<void> deleteByEmail(Session session, String email) async {
+    List<QueueService> list = await QueueService.db.find(
+      session,
+      where: (t) => t.profileUser.email.equals(email),
+    );
+    await QueueService.db.delete(session, list);
+  }
+
   Future<int> countByWindow(Session session, int windowId) async {
     return await QueueService.db.count(
       session,

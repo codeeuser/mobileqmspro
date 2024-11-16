@@ -1,7 +1,11 @@
 // ignore_for_file: use_build_context_synchronously
 
+import 'dart:convert';
+
+import 'package:device_info_plus/device_info_plus.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:ipwhois/ipwhois.dart';
 import 'package:mobileqmspro_client/mobileqmspro_client.dart';
 import 'package:mobileqmspro/generated/l10n.dart';
 import 'package:mobileqmspro/logger.dart';
@@ -10,6 +14,7 @@ import 'package:mobileqmspro/serverpod_client.dart';
 import 'package:mobileqmspro/utils/constants.dart';
 import 'package:mobileqmspro/utils/functions.dart';
 import 'package:mobileqmspro/utils/validation_function.dart';
+import 'package:package_info_plus/package_info_plus.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class PasscodePage extends StatefulWidget {
@@ -101,10 +106,12 @@ class _PasscodePageState extends State<PasscodePage> {
                       final passcode = _passcodeController.text;
                       final profileUser = widget.profileUser;
                       final email = profileUser.email;
+                      final profileId = profileUser.id;
                       Logger.log(tag,
                           message:
                               'passcode: $passcode, code: ${profileUser.passcode}');
-                      if (profileUser.passcode == passcode) {
+                      if (profileId != null &&
+                          profileUser.passcode == passcode) {
                         final count =
                             await client.queueWindow.countByEmail(email);
                         final hasProject = count > 0;
@@ -117,6 +124,28 @@ class _PasscodePageState extends State<PasscodePage> {
                         }
                         await widget.prefs
                             .setString(Prefs.windowEmail, profileUser.email);
+
+                        PackageInfo packageInfo =
+                            await PackageInfo.fromPlatform();
+                        DeviceInfoPlugin deviceInfoPlugin = DeviceInfoPlugin();
+                        final deviceIfo = await deviceInfoPlugin.deviceInfo;
+                        final logLogin = LogLogin(
+                            createdDate: DateTime.now(),
+                            appVersion: packageInfo.version,
+                            appVersionCode: packageInfo.buildNumber,
+                            platform: (Utils.isIos)
+                                ? 'ios'
+                                : (Utils.isAndroid)
+                                    ? 'android'
+                                    : (Utils.isMacos)
+                                        ? 'macos'
+                                        : '',
+                            deviceName: jsonEncode(await getMyIpInfo()),
+                            deviceOs: json.encode(deviceIfo.data),
+                            deviceRelease: '',
+                            msgToken: '',
+                            profileUserId: profileId);
+                        await client.logLogin.create(logLogin);
                         Utils.pushPage(
                             context,
                             WaysPage(

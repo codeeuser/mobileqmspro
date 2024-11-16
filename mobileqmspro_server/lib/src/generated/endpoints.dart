@@ -144,6 +144,24 @@ class Endpoints extends _i1.EndpointDispatch {
             params['logLogin'],
           ),
         ),
+        'deleteByEmail': _i1.MethodConnector(
+          name: 'deleteByEmail',
+          params: {
+            'email': _i1.ParameterDescription(
+              name: 'email',
+              type: _i1.getType<String>(),
+              nullable: false,
+            )
+          },
+          call: (
+            _i1.Session session,
+            Map<String, dynamic> params,
+          ) async =>
+              (endpoints['logLogin'] as _i2.LogLoginEndpoint).deleteByEmail(
+            session,
+            params['email'],
+          ),
+        ),
       },
     );
     connectors['profileUser'] = _i1.EndpointConnector(
@@ -398,6 +416,25 @@ class Endpoints extends _i1.EndpointDispatch {
             params['queueService'],
           ),
         ),
+        'deleteByEmail': _i1.MethodConnector(
+          name: 'deleteByEmail',
+          params: {
+            'email': _i1.ParameterDescription(
+              name: 'email',
+              type: _i1.getType<String>(),
+              nullable: false,
+            )
+          },
+          call: (
+            _i1.Session session,
+            Map<String, dynamic> params,
+          ) async =>
+              (endpoints['queueService'] as _i4.QueueServiceEndpoint)
+                  .deleteByEmail(
+            session,
+            params['email'],
+          ),
+        ),
         'countByWindow': _i1.MethodConnector(
           name: 'countByWindow',
           params: {
@@ -574,6 +611,25 @@ class Endpoints extends _i1.EndpointDispatch {
               (endpoints['queueWindow'] as _i5.QueueWindowEndpoint).delete(
             session,
             params['queueWindow'],
+          ),
+        ),
+        'deleteByEmail': _i1.MethodConnector(
+          name: 'deleteByEmail',
+          params: {
+            'email': _i1.ParameterDescription(
+              name: 'email',
+              type: _i1.getType<String>(),
+              nullable: false,
+            )
+          },
+          call: (
+            _i1.Session session,
+            Map<String, dynamic> params,
+          ) async =>
+              (endpoints['queueWindow'] as _i5.QueueWindowEndpoint)
+                  .deleteByEmail(
+            session,
+            params['email'],
           ),
         ),
         'countByEmail': _i1.MethodConnector(
@@ -910,6 +966,25 @@ class Endpoints extends _i1.EndpointDispatch {
               (endpoints['tokenIssued'] as _i6.TokenIssuedEndpoint).delete(
             session,
             params['tokenIssued'],
+          ),
+        ),
+        'deleteByEmail': _i1.MethodConnector(
+          name: 'deleteByEmail',
+          params: {
+            'email': _i1.ParameterDescription(
+              name: 'email',
+              type: _i1.getType<String>(),
+              nullable: false,
+            )
+          },
+          call: (
+            _i1.Session session,
+            Map<String, dynamic> params,
+          ) async =>
+              (endpoints['tokenIssued'] as _i6.TokenIssuedEndpoint)
+                  .deleteByEmail(
+            session,
+            params['email'],
           ),
         ),
         'countIsQueueStatus': _i1.MethodConnector(

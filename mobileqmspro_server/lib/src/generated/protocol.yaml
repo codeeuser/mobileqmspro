@@ -3,6 +3,7 @@ logLogin:
   - update:
   - create:
   - delete:
+  - deleteByEmail:
 profileUser:
   - login:
   - findByEmail:
@@ -17,6 +18,7 @@ queueService:
   - createAll:
   - create:
   - delete:
+  - deleteByEmail:
   - countByWindow:
 queueWindow:
   - getAllByEmail:
@@ -26,6 +28,7 @@ queueWindow:
   - update:
   - create:
   - delete:
+  - deleteByEmail:
   - countByEmail:
 tokenIssued:
   - getAllByWindowId:
@@ -40,6 +43,7 @@ tokenIssued:
   - resetAll:
   - create:
   - delete:
+  - deleteByEmail:
   - countIsQueueStatus:
   - countStatus:
   - echoStatusStream:

@@ -50,6 +50,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "currentWindowName":
             MessageLookupByLibrary.simpleMessage("Current Window Name"),
         "dashboard": MessageLookupByLibrary.simpleMessage("Dashboard"),
+        "deleteAccount": MessageLookupByLibrary.simpleMessage("Delete Account"),
         "device": MessageLookupByLibrary.simpleMessage("Device"),
         "disconnect": MessageLookupByLibrary.simpleMessage("Disconnect"),
         "displayTheRunningQueueNumber": MessageLookupByLibrary.simpleMessage(

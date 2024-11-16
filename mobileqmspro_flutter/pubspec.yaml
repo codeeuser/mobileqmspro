@@ -41,7 +41,8 @@ dependencies:
   intl_utils: ^2.8.7
   catcher_2: ^2.0.1
   provider: ^6.1.2
-  package_info_plus: ^8.0.2
+  package_info_plus: ^8.1.1
+  device_info_plus: ^11.1.1
   shared_preferences: ^2.3.2
   window_manager: ^0.4.3
   string_validator: ^1.1.0

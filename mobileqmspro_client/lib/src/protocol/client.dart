@@ -60,6 +60,13 @@ class EndpointLogLogin extends _i1.EndpointRef {
         'delete',
         {'logLogin': logLogin},
       );
+
+  _i2.Future<void> deleteByEmail(String email) =>
+      caller.callServerEndpoint<void>(
+        'logLogin',
+        'deleteByEmail',
+        {'email': email},
+      );
 }
 
 /// {@category Endpoint}
@@ -178,6 +185,13 @@ class EndpointQueueService extends _i1.EndpointRef {
         {'queueService': queueService},
       );
 
+  _i2.Future<void> deleteByEmail(String email) =>
+      caller.callServerEndpoint<void>(
+        'queueService',
+        'deleteByEmail',
+        {'email': email},
+      );
+
   _i2.Future<int> countByWindow(int windowId) => caller.callServerEndpoint<int>(
         'queueService',
         'countByWindow',
@@ -255,6 +269,13 @@ class EndpointQueueWindow extends _i1.EndpointRef {
         'queueWindow',
         'delete',
         {'queueWindow': queueWindow},
+      );
+
+  _i2.Future<void> deleteByEmail(String email) =>
+      caller.callServerEndpoint<void>(
+        'queueWindow',
+        'deleteByEmail',
+        {'email': email},
       );
 
   _i2.Future<int> countByEmail(String email) => caller.callServerEndpoint<int>(
@@ -408,6 +429,13 @@ class EndpointTokenIssued extends _i1.EndpointRef {
         'tokenIssued',
         'delete',
         {'tokenIssued': tokenIssued},
+      );
+
+  _i2.Future<void> deleteByEmail(String email) =>
+      caller.callServerEndpoint<void>(
+        'tokenIssued',
+        'deleteByEmail',
+        {'email': email},
       );
 
   _i2.Future<int> countIsQueueStatus(int windowId) =>
