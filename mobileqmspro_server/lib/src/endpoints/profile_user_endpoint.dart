@@ -61,9 +61,11 @@ class ProfileUserEndpoint extends Endpoint {
   Future<void> _sendMail(Session session, ProfileUser profileUser) async {
     Map<String, String> passwords = session.passwords;
     String? password = passwords['mailPassword'];
+    if (password == null) return;
 
     String filename = '${session.server.runMode}_mail.yaml';
     final file = File('config/$filename');
+    if (file.existsSync() == false) return;
     final yamlString = file.readAsStringSync();
     final map = loadYaml(yamlString)['mail'];
     String? smtp = map['smtp'];
