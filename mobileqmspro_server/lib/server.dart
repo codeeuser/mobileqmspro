@@ -15,7 +15,9 @@ void run(List<String> args) async {
     args,
     Protocol(),
     Endpoints(),
-    securityContext: SecurityContext.defaultContext, // modified serverpod code
+    securityContext: (args.contains('production'))
+        ? SecurityContext.defaultContext
+        : null, // modified serverpod code
   );
   // If you are using any future calls, they need to be registered here.
   // pod.registerFutureCall(ExampleFutureCall(), 'exampleFutureCall');
