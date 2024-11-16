@@ -2,8 +2,6 @@ import 'dart:io';
 
 import 'package:serverpod/serverpod.dart';
 
-import 'package:mobileqmspro_server/src/web/routes/root.dart';
-
 import 'src/generated/protocol.dart';
 import 'src/generated/endpoints.dart';
 
@@ -16,19 +14,20 @@ void run(List<String> args) async {
   final pod = Serverpod(
     args,
     Protocol(),
-    Endpoints(), // modified serverpod code
+    Endpoints(),
+    securityContext: SecurityContext.defaultContext, // modified serverpod code
   );
   // If you are using any future calls, they need to be registered here.
   // pod.registerFutureCall(ExampleFutureCall(), 'exampleFutureCall');
 
   // Setup a default page at the web root.
-  pod.webServer.addRoute(RouteRoot(), '/');
-  pod.webServer.addRoute(RouteRoot(), '/index.html');
-  // Serve all files in the /static directory.
-  pod.webServer.addRoute(
-    RouteStaticDirectory(serverDirectory: 'static', basePath: '/'),
-    '/*',
-  );
+  // pod.webServer.addRoute(RouteRoot(), '/');
+  // pod.webServer.addRoute(RouteRoot(), '/index.html');
+  // // Serve all files in the /static directory.
+  // pod.webServer.addRoute(
+  //   RouteStaticDirectory(serverDirectory: 'static', basePath: '/'),
+  //   '/*',
+  // );
 
   String runMode = pod.runMode;
   String serverId = pod.serverId;
@@ -43,12 +42,11 @@ void run(List<String> args) async {
 
   print(
       'publicScheme: $publicScheme, existKey: $existKey, existP12: $existP12');
-  if (publicScheme == 'https' && existKey) {
+  if (publicScheme == 'https' && existKey && existP12) {
     String? sslPassword = pod.getPassword('sslPassword');
-    SecurityContext sc = SecurityContext.defaultContext;
-    pod.securityContext = sc;
-    sc.usePrivateKey(key, password: '');
-    sc.useCertificateChain(p12, password: sslPassword);
+    final sc = pod.securityContext;
+    sc?.usePrivateKey(key, password: '');
+    sc?.useCertificateChain(p12, password: sslPassword);
   }
 
   // Start the server.

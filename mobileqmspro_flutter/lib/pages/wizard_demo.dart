@@ -151,6 +151,12 @@ class _WizardDemoState extends State<WizardDemo> {
                 await Utils.exitApp(context);
               },
             ),
+            const SizedBox(height: 50),
+            Text(
+              'Server is ${client.host}',
+              style: Theme.of(context).textTheme.bodySmall,
+              textAlign: TextAlign.center,
+            ),
           ],
         ),
       ),

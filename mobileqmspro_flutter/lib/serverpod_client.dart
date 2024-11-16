@@ -7,11 +7,12 @@ import 'package:yaml/yaml.dart';
 
 // late SessionManager sessionManager;
 late Client client;
+late dynamic mapConfig;
 
 Future<void> initializeServerpodClient() async {
   const tag = 'initializeServerpodClient';
   final config = await rootBundle.loadString('assets/config/$configFile');
-  final mapConfig = loadYaml(config);
+  mapConfig = loadYaml(config);
   final apiHost = mapConfig['serverpod']['apiHost'];
   Logger.log(tag, message: 'apiHost: $apiHost');
   // Sets up a singleton client object that can be used to talk to the server from

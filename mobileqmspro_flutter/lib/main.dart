@@ -54,6 +54,8 @@ void main() async {
       usePathUrlStrategy();
     }
 
+    String? reportUrl = mapConfig['serverpod']['reportUrl'];
+
     Catcher2Options debugOptions = Catcher2Options(SilentReportMode(), [
       ConsoleHandler(
           enableApplicationParameters: false,
@@ -61,6 +63,14 @@ void main() async {
           enableCustomParameters: false)
     ]);
     Catcher2Options releaseOptions = Catcher2Options(SilentReportMode(), [
+      if (reportUrl != null && reportUrl.trim() != '') ...[
+        HttpHandler(
+          HttpRequestType.post,
+          Uri.parse(reportUrl),
+          enableCustomParameters: true,
+          printLogs: true,
+        ),
+      ],
       ConsoleHandler(
           enableApplicationParameters: false,
           enableDeviceParameters: false,

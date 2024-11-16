@@ -88,8 +88,9 @@ class _WindowNewPageState extends State<WindowNewPage> {
                                 final profileUser = appProfile.profileUser;
                                 final profileUserId = profileUser?.id;
                                 final email = profileUser?.email;
-                                if (profileUserId == null || email == null)
+                                if (profileUserId == null || email == null) {
                                   return;
+                                }
                                 String name = _nameController.text.trim();
                                 int count = await client.queueWindow
                                     .countByEmail(email);

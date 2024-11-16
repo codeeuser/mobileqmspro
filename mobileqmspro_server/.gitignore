@@ -23,3 +23,5 @@ config/firebase_service_account_key.json
 bin/*.aot
 certificates/
 pubspec.lock
+mobileqmspro-start.sh
+mobileqmspro.service
