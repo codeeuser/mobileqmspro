@@ -1,3 +1,4 @@
 .DS_Store
 helper.txt
 pubspec.lock
+*.sql
