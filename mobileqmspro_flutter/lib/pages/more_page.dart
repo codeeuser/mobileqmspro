@@ -230,11 +230,12 @@ class _MorePageState extends State<MorePage> {
           leading:
               const Icon(CupertinoIcons.info, semanticLabel: 'Runing Token'),
           title: Text(S.of(context).runningTokens),
-          subtitle: const Text('Show Running Tokens on Web Page'),
+          subtitle:
+              Text('Show Running Tokens on Web Page (id=${widget.window.id})'),
           trailing:
               const Icon(CupertinoIcons.chevron_right, semanticLabel: 'Next'),
-          onTap: () {
-            Utils.launchURLString('$myBaseUrl${widget.window.id}');
+          onTap: () async {
+            await Utils.launchURLString('$myBaseUrl${widget.window.id}');
           },
         ),
         const Divider(color: Colors.grey),

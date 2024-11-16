@@ -151,7 +151,7 @@ class MyApp extends StatelessWidget {
           Logger.log(tag, message: 'name: $name');
           List<String>? segments = name?.split('/');
           String param = segments?.first ?? '';
-          Logger.log(tag, message: 'param: $param');
+          Logger.debug(tag, message: 'param: $param');
           int windowId = int.tryParse(param) ?? 0;
           return MaterialPageRoute(builder: (context) {
             return (kIsWeb)
