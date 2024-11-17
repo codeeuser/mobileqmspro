@@ -146,23 +146,17 @@ class _WebPageState extends State<WebPage> {
           FutureBuilder<QueueWindow?>(
               future: client.queueWindow.findById(widget.windowId),
               builder: (context, snapshot) {
-                switch (snapshot.connectionState) {
-                  case ConnectionState.waiting:
-                    return Utils.loadingScreen();
-                  case ConnectionState.active:
-                  case ConnectionState.done:
-                    final window = (snapshot.hasData) ? snapshot.data : null;
-                    return Center(
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Text(
-                            window?.name ?? '${S.of(context).loading}...',
-                            style: Theme.of(context).textTheme.titleLarge),
-                      ),
-                    );
-                  default:
-                    return const NoData();
+                if (snapshot.hasData) {
+                  final window = snapshot.data;
+                  return Center(
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text(window?.name ?? '${S.of(context).loading}...',
+                          style: Theme.of(context).textTheme.titleLarge),
+                    ),
+                  );
                 }
+                return Utils.loadingScreen();
               }),
           ValueListenableBuilder<List<TokenIssued>>(
               valueListenable: _tokenIssuedList,

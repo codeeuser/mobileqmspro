@@ -113,28 +113,20 @@ class _WindowListPageState extends State<WindowListPage> {
                           .getAllByEmail(email, null, null, false),
                       builder:
                           (context, AsyncSnapshot<List<QueueWindow>> snapshot) {
-                        switch (snapshot.connectionState) {
-                          case ConnectionState.waiting:
-                            return Utils.loadingScreen();
-                          case ConnectionState.active:
-                          case ConnectionState.done:
-                            List<QueueWindow>? windowList =
-                                (snapshot.hasData) ? snapshot.data : null;
-                            if (windowList == null) {
-                              return Utils.loadingScreen();
-                            } else if (windowList.isEmpty) {
-                              return const NoData();
-                            }
-
-                            return ListView.builder(
-                                itemCount: windowList.length,
-                                itemBuilder: (BuildContext ctxt, int index) {
-                                  QueueWindow? w = windowList.elementAt(index);
-                                  return _windowItem(w, index);
-                                });
-                          default:
+                        if (snapshot.hasData) {
+                          List<QueueWindow>? windowList = snapshot.data;
+                          if (windowList == null || windowList.isEmpty) {
                             return const NoData();
+                          }
+
+                          return ListView.builder(
+                              itemCount: windowList.length,
+                              itemBuilder: (BuildContext ctxt, int index) {
+                                QueueWindow? w = windowList.elementAt(index);
+                                return _windowItem(w, index);
+                              });
                         }
+                        return Utils.loadingScreen();
                       }),
                 ),
               ],
@@ -227,7 +219,7 @@ class _WindowListPageState extends State<WindowListPage> {
   Future<bool> _buildDialogEnableWindow(QueueWindow window) async {
     final result = await showOkCancelAlertDialog(
       context: context,
-      title: S.of(context).enableWindow.toUpperCase(),
+      title: '${S.of(context).enableWindow.toUpperCase()}\n(${window.name})',
       message: '${S.of(context).doYouAccept}?',
       onPopInvokedWithResult: (didPop, result) {
         Logger.log(tag, message: 'didPop: $didPop, result: $result');

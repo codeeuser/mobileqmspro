@@ -106,28 +106,20 @@ class _TokenStatusListPageState extends State<TokenStatusListPage> {
                         windowId, widget.statusCode, _maxLimit, 0, true),
                     builder: (BuildContext context,
                         AsyncSnapshot<List<TokenIssued>> snapshot) {
-                      switch (snapshot.connectionState) {
-                        case ConnectionState.waiting:
-                          return Utils.loadingScreen();
-                        case ConnectionState.active:
-                        case ConnectionState.done:
-                          List<TokenIssued>? tokenIssuedList =
-                              (snapshot.hasData) ? snapshot.data : null;
-                          if (tokenIssuedList == null) {
-                            return Utils.loadingScreen();
-                          } else if (tokenIssuedList.isEmpty) {
-                            return const NoData();
-                          }
-
-                          return ListView.builder(
-                              itemCount: tokenIssuedList.length,
-                              itemBuilder: (BuildContext ctxt, int index) {
-                                return _tokenIssuedItem(
-                                    tokenIssuedList.elementAt(index), index);
-                              });
-                        default:
+                      if (snapshot.hasData) {
+                        List<TokenIssued>? tokenIssuedList = snapshot.data;
+                        if (tokenIssuedList == null ||
+                            tokenIssuedList.isEmpty) {
                           return const NoData();
+                        }
+                        return ListView.builder(
+                            itemCount: tokenIssuedList.length,
+                            itemBuilder: (BuildContext ctxt, int index) {
+                              return _tokenIssuedItem(
+                                  tokenIssuedList.elementAt(index), index);
+                            });
                       }
+                      return Utils.loadingScreen();
                     }),
               ),
             ],
