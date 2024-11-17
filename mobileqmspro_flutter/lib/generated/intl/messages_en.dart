@@ -72,6 +72,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "loading": MessageLookupByLibrary.simpleMessage("Loading"),
         "login": MessageLookupByLibrary.simpleMessage("Login"),
         "logout": MessageLookupByLibrary.simpleMessage("Logout"),
+        "mainMenu": MessageLookupByLibrary.simpleMessage("Main Menu"),
         "markAllAsCompleted":
             MessageLookupByLibrary.simpleMessage("Mark All As Completed"),
         "markAllAsTimeout":

@@ -144,8 +144,8 @@ class _TokenNumPageState extends State<TokenNumPage> {
                   children: <Widget>[
                     OutlinedButton.icon(
                       icon: const Icon(CupertinoIcons.home,
-                          semanticLabel: 'Dashboard'),
-                      label: Text(S.of(context).dashboard),
+                          semanticLabel: 'Main Menu'),
+                      label: Text(S.of(context).mainMenu),
                       style: buttonStyle,
                       onPressed: () async {
                         Utils.pushAndRemoveUntilPage(

@@ -176,8 +176,10 @@ class _MorePageState extends State<MorePage> {
                 trailing: const Icon(CupertinoIcons.chevron_right,
                     semanticLabel: 'Next'),
                 onTap: () async {
-                  await _buildDialogResetToken(widget.window);
-                  setState(() {});
+                  bool b = await _buildDialogResetToken(widget.window);
+                  if (b) {
+                    setState(() {});
+                  }
                 },
               ),
               CustomDivider(
@@ -348,9 +350,9 @@ class _MorePageState extends State<MorePage> {
     );
   }
 
-  Future<void> _buildDialogResetToken(QueueWindow window) async {
+  Future<bool> _buildDialogResetToken(QueueWindow window) async {
     final windowId = window.id;
-    if (windowId == null) return;
+    if (windowId == null) return false;
     final result = await showOkCancelAlertDialog(
       context: context,
       title: S.of(context).resetTokenNumber.toUpperCase(),
@@ -362,6 +364,8 @@ class _MorePageState extends State<MorePage> {
     Logger.log(tag, message: 'resulttt: $result');
     if (result == OkCancelResult.ok) {
       await client.tokenIssued.resetAll(windowId);
+      return true;
     }
+    return false;
   }
 }

@@ -114,8 +114,10 @@ class _TokenListPageState extends State<TokenListPage> {
                       onPressed: () async {
                         await _player.seek(Duration.zero);
                         _player.play();
-                        await _buildDialogCompleteAllToken(windowId);
-                        setState(() {});
+                        bool b = await _buildDialogCompleteAllToken(windowId);
+                        if (b) {
+                          setState(() {});
+                        }
                       },
                     ),
                     IconButton(
@@ -142,8 +144,7 @@ class _TokenListPageState extends State<TokenListPage> {
                           List<TokenIssued>? tokenIssuedList = snapshot.data;
                           _tokenIssuedList = tokenIssuedList;
                           if (tokenIssuedList == null) {
-                            return const Center(
-                                child: CircularProgressIndicator());
+                            return Utils.loadingScreen();
                           } else if (tokenIssuedList.isEmpty) {
                             return const NoData();
                           }
@@ -194,8 +195,10 @@ class _TokenListPageState extends State<TokenListPage> {
           onTap: () async {
             await _player.seek(Duration.zero);
             _player.play();
-            await _buildDialogCompleteToken(tokenIssued);
-            setState(() {});
+            bool b = await _buildDialogCompleteToken(tokenIssued);
+            if (b) {
+              setState(() {});
+            }
           },
           trailing: IconButton(
             icon: const Icon(CupertinoIcons.ellipsis_vertical,
@@ -237,9 +240,11 @@ class _TokenListPageState extends State<TokenListPage> {
                 semanticLabel: 'Completed'),
             title: Text(S.of(context).markAsCompleted),
             onTap: () async {
-              await _buildDialogCompleteToken(tokenIssued);
+              bool b = await _buildDialogCompleteToken(tokenIssued);
               Navigator.of(context).pop();
-              setState(() {});
+              if (b) {
+                setState(() {});
+              }
             },
           ),
           ListTile(
@@ -262,10 +267,11 @@ class _TokenListPageState extends State<TokenListPage> {
         ])));
   }
 
-  Future<void> _buildDialogCompleteToken(TokenIssued tokenIssued) async {
+  Future<bool> _buildDialogCompleteToken(TokenIssued tokenIssued) async {
     final result = await showOkCancelAlertDialog(
       context: context,
-      title: S.of(context).markComplete.toUpperCase(),
+      title:
+          '${S.of(context).markComplete.toUpperCase()} ${tokenIssued.tokenLetter}-${tokenIssued.tokenNumber}',
       message: '${S.of(context).doYouAccept}?',
       onPopInvokedWithResult: (didPop, result) {
         Logger.log(tag, message: 'didPop: $didPop, result: $result');
@@ -284,10 +290,12 @@ class _TokenListPageState extends State<TokenListPage> {
       tokenIssued.assignedDate = now;
       tokenIssued.modifiedDate = now;
       await client.tokenIssued.update(tokenIssued);
+      return true;
     }
+    return false;
   }
 
-  Future<void> _buildDialogCompleteAllToken(int windowId) async {
+  Future<bool> _buildDialogCompleteAllToken(int windowId) async {
     final result = await showOkCancelAlertDialog(
       context: context,
       title: S.of(context).markAllAsCompleted.toUpperCase(),
@@ -311,6 +319,8 @@ class _TokenListPageState extends State<TokenListPage> {
         tokenIssued.modifiedDate = now;
       }
       await client.tokenIssued.updateAll(_tokenIssuedList ?? []);
+      return true;
     }
+    return false;
   }
 }

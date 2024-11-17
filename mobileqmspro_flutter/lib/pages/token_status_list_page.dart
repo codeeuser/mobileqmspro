@@ -113,8 +113,7 @@ class _TokenStatusListPageState extends State<TokenStatusListPage> {
                         case ConnectionState.done:
                           List<TokenIssued>? tokenIssuedList = snapshot.data;
                           if (tokenIssuedList == null) {
-                            return const Center(
-                                child: CircularProgressIndicator());
+                            return Utils.loadingScreen();
                           } else if (tokenIssuedList.isEmpty) {
                             return const NoData();
                           }
@@ -216,8 +215,10 @@ class _TokenStatusListPageState extends State<TokenStatusListPage> {
               TokenIssued? latestTokenIssued =
                   await client.tokenIssued.findById(tokenIssuedId);
               if (latestTokenIssued != null) {
-                await _buildDialogRecallToken(tokenIssued);
-                setState(() {});
+                bool b = await _buildDialogRecallToken(tokenIssued);
+                if (b) {
+                  setState(() {});
+                }
               } else {
                 Utils.overlayInfoMessage(msg: S.of(context).noAction);
               }
@@ -228,7 +229,7 @@ class _TokenStatusListPageState extends State<TokenStatusListPage> {
         ]));
   }
 
-  Future<void> _buildDialogRecallToken(TokenIssued tokenIssued) async {
+  Future<bool> _buildDialogRecallToken(TokenIssued tokenIssued) async {
     final result = await showOkCancelAlertDialog(
       context: context,
       title:
@@ -251,6 +252,8 @@ class _TokenStatusListPageState extends State<TokenStatusListPage> {
       tokenIssued.assignedDate = now;
       tokenIssued.modifiedDate = now;
       await client.tokenIssued.update(tokenIssued);
+      return true;
     }
+    return false;
   }
 }

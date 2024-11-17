@@ -1249,6 +1249,16 @@ class S {
       args: [],
     );
   }
+
+  /// `Main Menu`
+  String get mainMenu {
+    return Intl.message(
+      'Main Menu',
+      name: 'mainMenu',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

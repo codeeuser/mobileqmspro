@@ -93,7 +93,7 @@ class _TokenIssuePageState extends State<TokenIssuePage> {
                   case ConnectionState.done:
                     List<QueueService>? serviceList = snapshot.data;
                     if (serviceList == null) {
-                      return const Center(child: CircularProgressIndicator());
+                      return Utils.loadingScreen();
                     } else if (serviceList.isEmpty) {
                       return const NoData();
                     }

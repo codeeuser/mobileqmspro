@@ -512,5 +512,6 @@
 	"login": "Login",
 	"passcode": "Passcode",
 	"invalid": "Invalid",
-	"deleteAccount": "Delete Account"
+	"deleteAccount": "Delete Account",
+	"mainMenu": "Main Menu"
 }

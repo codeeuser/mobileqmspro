@@ -111,8 +111,7 @@ class _ServiceListPageState extends State<ServiceListPage> {
                       case ConnectionState.done:
                         List<QueueService>? serviceList = snapshot.data;
                         if (serviceList == null) {
-                          return const Center(
-                              child: CircularProgressIndicator());
+                          return Utils.loadingScreen();
                         } else if (serviceList.isEmpty) {
                           return const NoData();
                         }

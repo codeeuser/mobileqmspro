@@ -118,8 +118,7 @@ class _WindowListPageState extends State<WindowListPage> {
                           case ConnectionState.done:
                             List<QueueWindow>? windowList = snapshot.data;
                             if (windowList == null) {
-                              return const Center(
-                                  child: CircularProgressIndicator());
+                              return Utils.loadingScreen();
                             } else if (windowList.isEmpty) {
                               return const NoData();
                             }
@@ -200,9 +199,11 @@ class _WindowListPageState extends State<WindowListPage> {
                   semanticLabel: 'Enable Window'),
               title: Text(S.of(context).enableWindow),
               onTap: () async {
-                await _buildDialogEnableWindow(window);
+                bool b = await _buildDialogEnableWindow(window);
                 Navigator.of(context).pop();
-                setState(() {});
+                if (b) {
+                  setState(() {});
+                }
               },
             ),
             ListTile(
@@ -220,7 +221,7 @@ class _WindowListPageState extends State<WindowListPage> {
     );
   }
 
-  Future<void> _buildDialogEnableWindow(QueueWindow window) async {
+  Future<bool> _buildDialogEnableWindow(QueueWindow window) async {
     final result = await showOkCancelAlertDialog(
       context: context,
       title: S.of(context).enableWindow.toUpperCase(),
@@ -235,11 +236,13 @@ class _WindowListPageState extends State<WindowListPage> {
       final profileUser = appProfile.profileUser;
       final profileUserId = profileUser?.id;
       final email = profileUser?.email;
-      if (profileUserId == null || email == null) return;
+      if (profileUserId == null || email == null) return false;
       DateTime now = DateTime.now();
       window.selected = true;
       window.modifiedDate = now;
       await client.queueWindow.updateSelected(window, email);
+      return true;
     }
+    return false;
   }
 }

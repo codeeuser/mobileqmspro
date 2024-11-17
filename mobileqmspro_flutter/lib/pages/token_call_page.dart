@@ -117,8 +117,10 @@ class _TokenCallPageState extends State<TokenCallPage> {
                     onPressed: () async {
                       await _player.seek(Duration.zero);
                       _player.play();
-                      await _buildDialogTimeoutAllToken();
-                      setState(() {});
+                      bool b = await _buildDialogTimeoutAllToken();
+                      if (b) {
+                        setState(() {});
+                      }
                     },
                   ),
                   IconButton(
@@ -145,8 +147,7 @@ class _TokenCallPageState extends State<TokenCallPage> {
                         List<TokenIssued>? tokenIssuedList = snapshot.data;
                         _tokenIssuedList = tokenIssuedList;
                         if (tokenIssuedList == null) {
-                          return const Center(
-                              child: CircularProgressIndicator());
+                          return Utils.loadingScreen();
                         } else if (tokenIssuedList.isEmpty == true) {
                           return const NoData();
                         }
@@ -196,9 +197,10 @@ class _TokenCallPageState extends State<TokenCallPage> {
           onTap: () async {
             await _player.seek(Duration.zero);
             _player.play();
-            await _buildDialogCallToken(tokenIssued);
-            // await _appReview();
-            setState(() {});
+            bool b = await _buildDialogCallToken(tokenIssued);
+            if (b) {
+              setState(() {});
+            }
           },
           trailing: IconButton(
             icon: const Icon(CupertinoIcons.ellipsis_vertical,
@@ -236,9 +238,11 @@ class _TokenCallPageState extends State<TokenCallPage> {
                   const Icon(CupertinoIcons.play, semanticLabel: 'Call Token'),
               title: Text(S.of(context).callToken),
               onTap: () async {
-                await _buildDialogCallToken(tokenIssued);
+                bool b = await _buildDialogCallToken(tokenIssued);
                 Navigator.of(context).pop();
-                setState(() {});
+                if (b) {
+                  setState(() {});
+                }
               },
             ),
             const Divider(),
@@ -247,9 +251,11 @@ class _TokenCallPageState extends State<TokenCallPage> {
                   semanticLabel: 'Timeout Token'),
               title: Text(S.of(context).timeoutToken),
               onTap: () async {
-                await _buildDialogTimeoutToken(tokenIssued);
+                bool b = await _buildDialogTimeoutToken(tokenIssued);
                 Navigator.of(context).pop();
-                setState(() {});
+                if (b) {
+                  setState(() {});
+                }
               },
             ),
             const Divider(),
@@ -308,7 +314,7 @@ class _TokenCallPageState extends State<TokenCallPage> {
         ));
   }
 
-  Future<void> _buildDialogTimeoutToken(TokenIssued tokenIssued) async {
+  Future<bool> _buildDialogTimeoutToken(TokenIssued tokenIssued) async {
     final result = await showOkCancelAlertDialog(
       context: context,
       title: S.of(context).timeoutToken.toUpperCase(),
@@ -330,13 +336,16 @@ class _TokenCallPageState extends State<TokenCallPage> {
       tokenIssued.assignedDate = now;
       tokenIssued.modifiedDate = now;
       await client.tokenIssued.update(tokenIssued);
+      return true;
     }
+    return false;
   }
 
-  Future<void> _buildDialogCallToken(TokenIssued tokenIssued) async {
+  Future<bool> _buildDialogCallToken(TokenIssued tokenIssued) async {
     final result = await showOkCancelAlertDialog(
       context: context,
-      title: S.of(context).callToken.toUpperCase(),
+      title:
+          '${S.of(context).callToken.toUpperCase()} ${tokenIssued.tokenLetter}-${tokenIssued.tokenNumber}',
       message: '${S.of(context).doYouAccept}?',
       onPopInvokedWithResult: (didPop, result) {
         Logger.log(tag, message: 'didPop: $didPop, result: $result');
@@ -355,10 +364,12 @@ class _TokenCallPageState extends State<TokenCallPage> {
       tokenIssued.assignedDate = now;
       tokenIssued.modifiedDate = now;
       await client.tokenIssued.update(tokenIssued);
+      return true;
     }
+    return false;
   }
 
-  Future<void> _buildDialogTimeoutAllToken() async {
+  Future<bool> _buildDialogTimeoutAllToken() async {
     final result = await showOkCancelAlertDialog(
       context: context,
       title: S.of(context).markAllAsTimeout.toUpperCase(),
@@ -382,6 +393,8 @@ class _TokenCallPageState extends State<TokenCallPage> {
         tokenIssued.modifiedDate = now;
       }
       await client.tokenIssued.updateAll(_tokenIssuedList ?? []);
+      return true;
     }
+    return false;
   }
 }
