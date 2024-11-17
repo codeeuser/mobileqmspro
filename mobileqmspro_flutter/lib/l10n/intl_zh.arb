@@ -505,5 +505,6 @@
 	"invalid": "无效的",
 	"login": "登录",
 	"mainMenu": "主菜单",
-	"passcode": "密码"
+	"passcode": "密码",
+	"membershipLimitation": "会员限制"
 }

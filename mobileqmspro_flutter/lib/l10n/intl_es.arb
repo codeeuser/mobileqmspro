@@ -505,5 +505,6 @@
 	"invalid": "Inválido",
 	"login": "Acceso",
 	"mainMenu": "Menú principal",
-	"passcode": "Código de acceso"
+	"passcode": "Código de acceso",
+	"membershipLimitation": "Limitación de membresía"
 }

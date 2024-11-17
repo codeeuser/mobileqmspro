@@ -505,5 +505,6 @@
 	"invalid": "غير صالح",
 	"login": "تسجيل الدخول",
 	"mainMenu": "القائمة الرئيسية",
-	"passcode": "رمز المرور"
+	"passcode": "رمز المرور",
+	"membershipLimitation": "حدود العضوية"
 }

@@ -71,6 +71,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("모두 시간 초과로 표시"),
         "markAsCompleted": MessageLookupByLibrary.simpleMessage("완료로 표시"),
         "markComplete": MessageLookupByLibrary.simpleMessage("마크 완료"),
+        "membershipLimitation": MessageLookupByLibrary.simpleMessage("회원 제한"),
         "mobileqmsBoardPadApp":
             MessageLookupByLibrary.simpleMessage("MobileQMS 보드 패드 앱"),
         "more": MessageLookupByLibrary.simpleMessage("더"),

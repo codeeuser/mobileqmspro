@@ -86,6 +86,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Tandakan sebagai Selesai"),
         "markComplete":
             MessageLookupByLibrary.simpleMessage("Tandakan Selesai"),
+        "membershipLimitation":
+            MessageLookupByLibrary.simpleMessage("Had Keahlian"),
         "mobileqmsBoardPadApp": MessageLookupByLibrary.simpleMessage(
             "Aplikasi MobileQMS Board Pad"),
         "more": MessageLookupByLibrary.simpleMessage("Lebih banyak lagi"),

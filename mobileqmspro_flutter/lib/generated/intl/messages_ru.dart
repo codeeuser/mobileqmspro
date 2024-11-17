@@ -83,6 +83,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("отметить как выполненное"),
         "markComplete":
             MessageLookupByLibrary.simpleMessage("Отметка завершена"),
+        "membershipLimitation":
+            MessageLookupByLibrary.simpleMessage("Ограничение членства"),
         "mobileqmsBoardPadApp": MessageLookupByLibrary.simpleMessage(
             "Приложение MobileQMS Board Pad"),
         "more": MessageLookupByLibrary.simpleMessage("Больше"),

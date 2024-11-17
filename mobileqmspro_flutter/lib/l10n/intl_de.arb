@@ -505,5 +505,6 @@
 	"invalid": "Ungültig",
 	"login": "Anmeldung",
 	"mainMenu": "Hauptmenü",
-	"passcode": "Passcode"
+	"passcode": "Passcode",
+	"membershipLimitation": "Mitgliedschaftsbeschränkung"
 }

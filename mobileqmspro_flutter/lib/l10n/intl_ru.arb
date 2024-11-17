@@ -505,5 +505,6 @@
 	"invalid": "Неверный",
 	"login": "Авторизоваться",
 	"mainMenu": "Главное меню",
-	"passcode": "пароль"
+	"passcode": "пароль",
+	"membershipLimitation": "Ограничение членства"
 }

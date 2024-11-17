@@ -90,6 +90,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "markAsCompleted":
             MessageLookupByLibrary.simpleMessage("Marquer comme terminé"),
         "markComplete": MessageLookupByLibrary.simpleMessage("Mark Complete"),
+        "membershipLimitation":
+            MessageLookupByLibrary.simpleMessage("Limite d\'adhésion"),
         "mobileqmsBoardPadApp":
             MessageLookupByLibrary.simpleMessage("MobileQMS Board Pad App"),
         "more": MessageLookupByLibrary.simpleMessage("Plus"),

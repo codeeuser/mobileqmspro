@@ -69,6 +69,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "markAllAsTimeout": MessageLookupByLibrary.simpleMessage("全部标记为超时"),
         "markAsCompleted": MessageLookupByLibrary.simpleMessage("标记为完成"),
         "markComplete": MessageLookupByLibrary.simpleMessage("标记为完成"),
+        "membershipLimitation": MessageLookupByLibrary.simpleMessage("会员限制"),
         "mobileqmsBoardPadApp":
             MessageLookupByLibrary.simpleMessage("MobileQMS Board Pad应用"),
         "more": MessageLookupByLibrary.simpleMessage("更多"),

@@ -505,5 +505,6 @@
 	"invalid": "유효하지 않은",
 	"login": "로그인",
 	"mainMenu": "메인 메뉴",
-	"passcode": "암호"
+	"passcode": "암호",
+	"membershipLimitation": "회원 제한"
 }
