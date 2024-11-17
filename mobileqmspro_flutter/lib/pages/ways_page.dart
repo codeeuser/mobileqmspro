@@ -116,7 +116,9 @@ class _WaysPageState extends State<WaysPage> {
 
   Widget _buildPhoneContent(QueueWindow window) {
     double shortestSide = MediaQuery.of(context).size.shortestSide;
-    double sizeButton = shortestSide * 0.15;
+    double sizeButton = (Utils.isPhoneSize(context))
+        ? shortestSide * 0.25
+        : shortestSide * 0.15;
     return PopScope(
         canPop: true,
         child: Scaffold(
