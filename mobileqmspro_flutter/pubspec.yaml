@@ -58,6 +58,8 @@ dependencies:
   overlay_support: ^2.1.0
   yaml: ^3.1.2
   app_tracking_transparency: ^2.0.6
+  animate_do: ^3.3.4
+  collection: ^1.18.0
 
 dependency_overrides:
   archive: ^3.6.1
