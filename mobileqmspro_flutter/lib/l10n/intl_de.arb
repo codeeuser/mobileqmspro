@@ -500,5 +500,10 @@
 	"logout": "Ausloggen",
 	"noAction": "Keine Aktion",
 	"proceed": "Fortfahren",
-	"runningTokens": "Laufende Token"
+	"runningTokens": "Laufende Token",
+	"deleteAccount": "Konto löschen",
+	"invalid": "Ungültig",
+	"login": "Anmeldung",
+	"mainMenu": "Hauptmenü",
+	"passcode": "Passcode"
 }

@@ -500,5 +500,10 @@
 	"logout": "Se déconnecter",
 	"noAction": "Aucune action",
 	"proceed": "Procéder",
-	"runningTokens": "Jetons en cours d'exécution"
+	"runningTokens": "Jetons en cours d'exécution",
+	"deleteAccount": "Supprimer le compte",
+	"invalid": "invalide",
+	"login": "Se connecter",
+	"mainMenu": "Menu principal",
+	"passcode": "Code d'accès"
 }

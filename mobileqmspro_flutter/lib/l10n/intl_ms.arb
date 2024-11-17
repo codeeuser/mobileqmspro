@@ -500,5 +500,10 @@
 	"logout": "Log keluar",
 	"noAction": "Tiada Tindakan",
 	"proceed": "teruskan",
-	"runningTokens": "Token Larian"
+	"runningTokens": "Token Larian",
+	"deleteAccount": "Padam akaun",
+	"invalid": "Tidak sah",
+	"login": "Log masuk",
+	"mainMenu": "Menu Utama",
+	"passcode": "Kod laluan"
 }

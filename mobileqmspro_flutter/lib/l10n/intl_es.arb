@@ -500,5 +500,10 @@
 	"logout": "Cerrar sesión",
 	"noAction": "Sin acción",
 	"proceed": "Proceder",
-	"runningTokens": "Fichas de funcionamiento"
+	"runningTokens": "Fichas de funcionamiento",
+	"deleteAccount": "Borrar cuenta",
+	"invalid": "Inválido",
+	"login": "Acceso",
+	"mainMenu": "Menú principal",
+	"passcode": "Código de acceso"
 }

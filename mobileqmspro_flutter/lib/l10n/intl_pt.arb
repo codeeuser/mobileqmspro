@@ -500,5 +500,10 @@
 	"logout": "sair",
 	"noAction": "Nenhuma ação",
 	"proceed": "Continuar",
-	"runningTokens": "Fichas de Corrida"
+	"runningTokens": "Fichas de Corrida",
+	"deleteAccount": "Excluir conta",
+	"invalid": "Inválido",
+	"login": "Conecte-se",
+	"mainMenu": "Menu Principal",
+	"passcode": "senha"
 }

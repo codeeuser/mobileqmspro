@@ -500,5 +500,10 @@
 	"logout": "로그 아웃",
 	"noAction": "행동 없음",
 	"proceed": "진행하다",
-	"runningTokens": "토큰 실행"
+	"runningTokens": "토큰 실행",
+	"deleteAccount": "계정 삭제",
+	"invalid": "유효하지 않은",
+	"login": "로그인",
+	"mainMenu": "메인 메뉴",
+	"passcode": "암호"
 }

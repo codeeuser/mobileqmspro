@@ -500,5 +500,10 @@
 	"logout": "تسجيل خروج",
 	"noAction": "لا يوجد إجراء",
 	"proceed": "يتابع",
-	"runningTokens": "رموز التشغيل"
+	"runningTokens": "رموز التشغيل",
+	"deleteAccount": "حذف الحساب",
+	"invalid": "غير صالح",
+	"login": "تسجيل الدخول",
+	"mainMenu": "القائمة الرئيسية",
+	"passcode": "رمز المرور"
 }

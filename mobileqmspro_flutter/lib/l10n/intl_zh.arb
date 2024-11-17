@@ -500,5 +500,10 @@
 	"logout": "登出",
 	"noAction": "没有行动",
 	"proceed": "继续",
-	"runningTokens": "运行座号"
+	"runningTokens": "运行座号",
+	"deleteAccount": "删除帐户",
+	"invalid": "无效的",
+	"login": "登录",
+	"mainMenu": "主菜单",
+	"passcode": "密码"
 }

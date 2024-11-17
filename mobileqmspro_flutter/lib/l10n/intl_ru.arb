@@ -500,5 +500,10 @@
 	"logout": "Выйти",
 	"noAction": "Никаких действий",
 	"proceed": "Продолжить",
-	"runningTokens": "Запуск токенов"
+	"runningTokens": "Запуск токенов",
+	"deleteAccount": "Удалить аккаунт",
+	"invalid": "Неверный",
+	"login": "Авторизоваться",
+	"mainMenu": "Главное меню",
+	"passcode": "пароль"
 }
