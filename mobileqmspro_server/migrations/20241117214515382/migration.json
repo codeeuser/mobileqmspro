@@ -1,0 +1,158 @@
+{
+  "actions": [
+    {
+      "type": "alterTable",
+      "alterTable": {
+        "name": "profile_user",
+        "schema": "public",
+        "addColumns": [],
+        "deleteColumns": [],
+        "modifyColumns": [],
+        "addIndexes": [
+          {
+            "indexName": "email_idx",
+            "elements": [
+              {
+                "type": 0,
+                "definition": "email"
+              }
+            ],
+            "type": "btree",
+            "isUnique": true,
+            "isPrimary": false
+          }
+        ],
+        "deleteIndexes": [],
+        "addForeignKeys": [],
+        "deleteForeignKeys": [],
+        "warnings": [
+          {
+            "type": "uniqueIndexCreated",
+            "message": "Unique index \"email_idx\" is added to table \"profile_user\". If there are existing rows with duplicate values, this migration will fail.",
+            "table": "profile_user",
+            "columns": [
+              "email"
+            ],
+            "destrucive": false
+          }
+        ]
+      }
+    },
+    {
+      "type": "alterTable",
+      "alterTable": {
+        "name": "queue_service",
+        "schema": "public",
+        "addColumns": [],
+        "deleteColumns": [],
+        "modifyColumns": [],
+        "addIndexes": [
+          {
+            "indexName": "window_idx",
+            "elements": [
+              {
+                "type": 0,
+                "definition": "queueWindowId"
+              }
+            ],
+            "type": "btree",
+            "isUnique": false,
+            "isPrimary": false
+          }
+        ],
+        "deleteIndexes": [],
+        "addForeignKeys": [],
+        "deleteForeignKeys": [],
+        "warnings": [
+          {
+            "type": "uniqueIndexCreated",
+            "message": "Unique index \"email_idx\" is added to table \"profile_user\". If there are existing rows with duplicate values, this migration will fail.",
+            "table": "profile_user",
+            "columns": [
+              "email"
+            ],
+            "destrucive": false
+          }
+        ]
+      }
+    },
+    {
+      "type": "alterTable",
+      "alterTable": {
+        "name": "token_issued",
+        "schema": "public",
+        "addColumns": [],
+        "deleteColumns": [],
+        "modifyColumns": [],
+        "addIndexes": [
+          {
+            "indexName": "token_window_idx",
+            "elements": [
+              {
+                "type": 0,
+                "definition": "queueWindowId"
+              }
+            ],
+            "type": "btree",
+            "isUnique": false,
+            "isPrimary": false
+          },
+          {
+            "indexName": "token_service_idx",
+            "elements": [
+              {
+                "type": 0,
+                "definition": "queueServiceId"
+              }
+            ],
+            "type": "btree",
+            "isUnique": false,
+            "isPrimary": false
+          },
+          {
+            "indexName": "token_window_service_idx",
+            "elements": [
+              {
+                "type": 0,
+                "definition": "queueWindowId"
+              },
+              {
+                "type": 0,
+                "definition": "queueServiceId"
+              }
+            ],
+            "type": "btree",
+            "isUnique": false,
+            "isPrimary": false
+          }
+        ],
+        "deleteIndexes": [],
+        "addForeignKeys": [],
+        "deleteForeignKeys": [],
+        "warnings": [
+          {
+            "type": "uniqueIndexCreated",
+            "message": "Unique index \"email_idx\" is added to table \"profile_user\". If there are existing rows with duplicate values, this migration will fail.",
+            "table": "profile_user",
+            "columns": [
+              "email"
+            ],
+            "destrucive": false
+          }
+        ]
+      }
+    }
+  ],
+  "warnings": [
+    {
+      "type": "uniqueIndexCreated",
+      "message": "Unique index \"email_idx\" is added to table \"profile_user\". If there are existing rows with duplicate values, this migration will fail.",
+      "table": "profile_user",
+      "columns": [
+        "email"
+      ],
+      "destrucive": false
+    }
+  ],
+  "migrationApiVersion": 1
+}

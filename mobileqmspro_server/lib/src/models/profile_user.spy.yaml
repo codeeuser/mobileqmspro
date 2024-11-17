@@ -30,3 +30,7 @@ fields:
   gender: String?
   createdDate: DateTime
   modifiedDate: DateTime?
+indexes:
+  email_idx:
+    fields: email
+    unique: true

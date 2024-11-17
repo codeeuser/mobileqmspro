@@ -28,3 +28,6 @@ fields:
   modifiedDate: DateTime?
   queueWindow: QueueWindow?, relation
   profileUser: ProfileUser?, relation
+indexes:
+  window_idx:
+    fields: queueWindowId

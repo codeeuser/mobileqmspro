@@ -35,3 +35,10 @@ fields:
   queueWindow: QueueWindow?, relation
   queueService: QueueService?, relation
   profileUser: ProfileUser?, relation
+indexes:
+  token_window_idx:
+    fields: queueWindowId
+  token_service_idx:
+    fields: queueServiceId
+  token_window_service_idx:
+    fields: queueWindowId, queueServiceId
