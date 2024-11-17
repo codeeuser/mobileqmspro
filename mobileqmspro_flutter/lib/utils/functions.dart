@@ -248,7 +248,7 @@ class Utils {
 
   static Widget loadingScreen() {
     return Container(
-      color: Colors.grey.shade100,
+      padding: const EdgeInsets.all(16),
       child: const Center(child: CircularProgressIndicator()),
     );
   }
