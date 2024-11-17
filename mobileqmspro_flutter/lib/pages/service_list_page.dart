@@ -35,6 +35,11 @@ class _ServiceListPageState extends State<ServiceListPage> {
   @override
   void initState() {
     super.initState();
+    _initialize();
+  }
+
+  Future<void> _initialize() async {
+    Logger.log(tag, message: '_initialize---');
   }
 
   @override

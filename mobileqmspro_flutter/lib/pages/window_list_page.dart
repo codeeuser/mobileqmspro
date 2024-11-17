@@ -39,7 +39,9 @@ class _WindowListPageState extends State<WindowListPage> {
     _initialize();
   }
 
-  Future<void> _initialize() async {}
+  Future<void> _initialize() async {
+    Logger.log(tag, message: '_initialize---');
+  }
 
   @override
   void dispose() {
