@@ -8,7 +8,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_web_plugins/url_strategy.dart';
 import 'package:ipwhois/ipwhois.dart';
-import 'package:mobileqmspro/app_log.dart';
 import 'package:mobileqmspro/app_profile.dart';
 import 'package:mobileqmspro/app_theme.dart';
 import 'package:mobileqmspro/generated/l10n.dart';
@@ -100,7 +99,6 @@ void main() async {
 Widget buildProvider(SharedPreferences prefs) {
   return MultiProvider(
     providers: [
-      ChangeNotifierProvider(create: (_) => AppLog()),
       ChangeNotifierProvider(create: (_) => AppProfile()),
       ChangeNotifierProvider(create: (_) => AppTheme(prefs: prefs)),
     ],

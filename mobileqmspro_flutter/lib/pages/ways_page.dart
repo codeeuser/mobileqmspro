@@ -38,6 +38,8 @@ class _WaysPageState extends State<WaysPage> {
   final ValueNotifier<int> _countMyNonOnWait = ValueNotifier(0);
   final ValueNotifier<dynamic> _screen = ValueNotifier(null);
 
+  bool sendTestException = false;
+
   @override
   void initState() {
     super.initState();
@@ -104,6 +106,11 @@ class _WaysPageState extends State<WaysPage> {
                 final windowId = window?.id;
                 if (window != null && windowId != null) {
                   _listenToUpdates(windowId);
+                  if (sendTestException == false) {
+                    Logger.sendCatcherError(tag, 'Test Exception',
+                        'Window: ${widget.window?.name}, Email: $email');
+                    sendTestException = true;
+                  }
                   return _buildPhoneContent(window);
                 }
                 return Utils.loadingScreen();
