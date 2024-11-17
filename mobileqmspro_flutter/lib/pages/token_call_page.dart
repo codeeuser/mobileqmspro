@@ -144,7 +144,8 @@ class _TokenCallPageState extends State<TokenCallPage> {
                         return Utils.loadingScreen();
                       case ConnectionState.active:
                       case ConnectionState.done:
-                        List<TokenIssued>? tokenIssuedList = snapshot.data;
+                        List<TokenIssued>? tokenIssuedList =
+                            (snapshot.hasData) ? snapshot.data : null;
                         _tokenIssuedList = tokenIssuedList;
                         if (tokenIssuedList == null) {
                           return Utils.loadingScreen();

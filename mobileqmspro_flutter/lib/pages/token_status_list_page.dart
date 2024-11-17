@@ -111,7 +111,8 @@ class _TokenStatusListPageState extends State<TokenStatusListPage> {
                           return Utils.loadingScreen();
                         case ConnectionState.active:
                         case ConnectionState.done:
-                          List<TokenIssued>? tokenIssuedList = snapshot.data;
+                          List<TokenIssued>? tokenIssuedList =
+                              (snapshot.hasData) ? snapshot.data : null;
                           if (tokenIssuedList == null) {
                             return Utils.loadingScreen();
                           } else if (tokenIssuedList.isEmpty) {

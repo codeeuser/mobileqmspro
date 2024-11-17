@@ -56,10 +56,6 @@ class _WaysPageState extends State<WaysPage> {
       ProfileUser? profileUser = await client.profileUser.findByEmail(email);
       appProfile.profileUser = profileUser;
     }
-    int? windowId = widget.window?.id;
-    if (windowId != null) {
-      await _listenToUpdates(windowId);
-    }
   }
 
   @override

@@ -109,7 +109,8 @@ class _ServiceListPageState extends State<ServiceListPage> {
                         return Utils.loadingScreen();
                       case ConnectionState.active:
                       case ConnectionState.done:
-                        List<QueueService>? serviceList = snapshot.data;
+                        List<QueueService>? serviceList =
+                            (snapshot.hasData) ? snapshot.data : null;
                         if (serviceList == null) {
                           return Utils.loadingScreen();
                         } else if (serviceList.isEmpty) {

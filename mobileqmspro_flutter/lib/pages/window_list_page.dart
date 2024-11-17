@@ -116,7 +116,8 @@ class _WindowListPageState extends State<WindowListPage> {
                             return Utils.loadingScreen();
                           case ConnectionState.active:
                           case ConnectionState.done:
-                            List<QueueWindow>? windowList = snapshot.data;
+                            List<QueueWindow>? windowList =
+                                (snapshot.hasData) ? snapshot.data : null;
                             if (windowList == null) {
                               return Utils.loadingScreen();
                             } else if (windowList.isEmpty) {
