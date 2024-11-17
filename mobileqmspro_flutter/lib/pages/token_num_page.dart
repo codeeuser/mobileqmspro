@@ -51,25 +51,16 @@ class _TokenNumPageState extends State<TokenNumPage> {
 
   @override
   Widget build(BuildContext context) {
-    return LayoutBuilder(
-        builder: (BuildContext context, BoxConstraints constraints) {
-      return Align(
-          alignment: Alignment.topCenter,
-          child: SizedBox(
-              width: (constraints.maxWidth > WidgetProp.width)
-                  ? WidgetProp.width
-                  : constraints.maxWidth,
-              child: PopScope(
-                  canPop: true,
-                  child: SafeArea(
-                    child: Scaffold(
-                        key: _scaffoldKey,
-                        body: SafeArea(
-                          top: false,
-                          child: _buildContent(context),
-                        )),
-                  ))));
-    });
+    return PopScope(
+        canPop: true,
+        child: SafeArea(
+          child: Scaffold(
+              key: _scaffoldKey,
+              body: SafeArea(
+                top: false,
+                child: _buildContent(context),
+              )),
+        ));
   }
 
   Widget _buildContent(BuildContext context) {
@@ -79,117 +70,130 @@ class _TokenNumPageState extends State<TokenNumPage> {
     QueueWindow window = widget.window;
     QueueService service = widget.service;
     TokenIssued tokenIssued = widget.tokenIssued;
-    return SingleChildScrollView(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: <Widget>[
-          const SizedBox(height: 20),
-          ElevatedButton.icon(
-              icon: const Icon(CupertinoIcons.phone_circle,
-                  color: Colors.blue, semanticLabel: 'SMS'),
-              label: Text(S.of(context).sendSms,
-                  style: const TextStyle(color: Colors.blue)),
-              style: buttonStyle,
-              onPressed: () async {
-                final result = await showTextInputDialog(
-                    context: context,
-                    style: AdaptiveStyle.iOS,
-                    textFields: [
-                      const DialogTextField(
-                          keyboardType: TextInputType.numberWithOptions(
-                              decimal: false, signed: false),
-                          hintText: '+601234567'),
-                    ]);
-                Logger.log(tag, message: 'result: $result');
-                if (result != null &&
-                    result.isNotEmpty == true &&
-                    Utils.isMobile &&
-                    !kIsWeb) {
-                  String phone = result.first;
-                  var text = Utils.printTokenInfo(
-                      widget.window.name,
-                      tokenIssued.queueService?.name,
-                      tokenIssued.tokenLetter,
-                      tokenIssued.tokenNumber);
-                  if (text != null) {
-                    await Utils.sendMessage(text, [phone]);
-                  } else {
-                    Utils.overlayInfoMessage(msg: S.of(context).noAction);
-                  }
-                }
-              }),
-          const SizedBox(height: 30),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: FittedBox(
-                child: Text(window.name, style: const TextStyle(fontSize: 30))),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: FittedBox(
-              child: Text(
-                  '${tokenIssued.tokenLetter}-${tokenIssued.tokenNumber}',
-                  style: const TextStyle(fontSize: 70)),
+    return Align(
+      alignment: Alignment.topCenter,
+      child: LayoutBuilder(
+          builder: (BuildContext context, BoxConstraints constraints) {
+        return SizedBox(
+          width: (constraints.maxWidth > WidgetProp.width)
+              ? WidgetProp.width
+              : constraints.maxWidth,
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: <Widget>[
+                const SizedBox(height: 60),
+                ElevatedButton.icon(
+                    icon: const Icon(CupertinoIcons.phone_circle,
+                        color: Colors.blue, semanticLabel: 'SMS'),
+                    label: Text(S.of(context).sendSms,
+                        style: const TextStyle(color: Colors.blue)),
+                    style: buttonStyle,
+                    onPressed: () async {
+                      final result = await showTextInputDialog(
+                          context: context,
+                          style: AdaptiveStyle.iOS,
+                          textFields: [
+                            const DialogTextField(
+                                keyboardType: TextInputType.numberWithOptions(
+                                    decimal: false, signed: false),
+                                hintText: '+601234567'),
+                          ]);
+                      Logger.log(tag, message: 'result: $result');
+                      if (result != null &&
+                          result.isNotEmpty == true &&
+                          Utils.isMobile &&
+                          !kIsWeb) {
+                        String phone = result.first;
+                        var text = Utils.printTokenInfo(
+                            widget.window.name,
+                            tokenIssued.queueService?.name,
+                            tokenIssued.tokenLetter,
+                            tokenIssued.tokenNumber);
+                        if (text != null) {
+                          await Utils.sendMessage(text, [phone]);
+                        } else {
+                          Utils.overlayInfoMessage(msg: S.of(context).noAction);
+                        }
+                      }
+                    }),
+                const SizedBox(height: 30),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: FittedBox(
+                      child: Text(window.name,
+                          style: const TextStyle(fontSize: 30))),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: FittedBox(
+                    child: Text(
+                        '${tokenIssued.tokenLetter}-${tokenIssued.tokenNumber}',
+                        style: const TextStyle(fontSize: 70)),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: FittedBox(
+                      child: Text(service.name,
+                          style: const TextStyle(fontSize: 40))),
+                ),
+                const SizedBox(height: 20),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: <Widget>[
+                    OutlinedButton.icon(
+                      icon: const Icon(CupertinoIcons.home,
+                          semanticLabel: 'Dashboard'),
+                      label: Text(S.of(context).dashboard),
+                      style: buttonStyle,
+                      onPressed: () async {
+                        Utils.pushAndRemoveUntilPage(
+                            context,
+                            WaysPage(
+                              key: const ValueKey('ways-page'),
+                              prefs: widget.prefs,
+                              window: widget.window,
+                            ),
+                            'WaysPage');
+                      },
+                    ),
+                    OutlinedButton.icon(
+                      icon: const Icon(CupertinoIcons.plus_rectangle,
+                          semanticLabel: 'Issue Token'),
+                      label: Text(S.of(context).issueToken),
+                      style: buttonStyle,
+                      onPressed: () async {
+                        Navigator.of(context).pop();
+                      },
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 30),
+                OutlinedButton.icon(
+                  icon:
+                      const Icon(CupertinoIcons.share, semanticLabel: 'Share'),
+                  label: Text(S.of(context).shareTokenInfo),
+                  style: buttonStyle,
+                  onPressed: () async {
+                    var text = Utils.printTokenInfo(
+                        widget.window.name,
+                        tokenIssued.queueService?.name,
+                        tokenIssued.tokenLetter,
+                        tokenIssued.tokenNumber);
+                    if (text != null) {
+                      await Share.share(text, subject: 'Token Info');
+                    } else {
+                      Utils.overlayInfoMessage(msg: S.of(context).noAction);
+                    }
+                  },
+                ),
+                const SizedBox(height: 30),
+              ],
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: FittedBox(
-                child:
-                    Text(service.name, style: const TextStyle(fontSize: 40))),
-          ),
-          const SizedBox(height: 20),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: <Widget>[
-              OutlinedButton.icon(
-                icon:
-                    const Icon(CupertinoIcons.home, semanticLabel: 'Dashboard'),
-                label: Text(S.of(context).dashboard),
-                style: buttonStyle,
-                onPressed: () async {
-                  Utils.pushAndRemoveUntilPage(
-                      context,
-                      WaysPage(
-                        key: const ValueKey('ways-page'),
-                        prefs: widget.prefs,
-                        window: widget.window,
-                      ),
-                      'WaysPage');
-                },
-              ),
-              OutlinedButton.icon(
-                icon: const Icon(CupertinoIcons.plus_rectangle,
-                    semanticLabel: 'Issue Token'),
-                label: Text(S.of(context).issueToken),
-                style: buttonStyle,
-                onPressed: () async {
-                  Navigator.of(context).pop();
-                },
-              ),
-            ],
-          ),
-          const SizedBox(height: 30),
-          OutlinedButton.icon(
-            icon: const Icon(CupertinoIcons.share, semanticLabel: 'Share'),
-            label: Text(S.of(context).shareTokenInfo),
-            style: buttonStyle,
-            onPressed: () async {
-              var text = Utils.printTokenInfo(
-                  widget.window.name,
-                  tokenIssued.queueService?.name,
-                  tokenIssued.tokenLetter,
-                  tokenIssued.tokenNumber);
-              if (text != null) {
-                await Share.share(text, subject: 'Token Info');
-              } else {
-                Utils.overlayInfoMessage(msg: S.of(context).noAction);
-              }
-            },
-          ),
-          const SizedBox(height: 30),
-        ],
-      ),
+        );
+      }),
     );
   }
 }

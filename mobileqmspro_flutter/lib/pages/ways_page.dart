@@ -68,24 +68,17 @@ class _WaysPageState extends State<WaysPage> {
 
   @override
   Widget build(BuildContext context) {
-    return LayoutBuilder(
-        builder: (BuildContext context, BoxConstraints constraints) {
-      return Align(
-          alignment: Alignment.topCenter,
-          child: SizedBox(
-              width: (constraints.maxWidth > WidgetProp.width)
-                  ? WidgetProp.width
-                  : constraints.maxWidth,
-              child: ValueListenableBuilder<dynamic>(
-                  valueListenable: _screen,
-                  builder: (BuildContext context, screen, _) {
-                    if (screen == null) {
-                      return _buildContent();
-                    } else {
-                      return screen;
-                    }
-                  })));
-    });
+    return Align(
+        alignment: Alignment.topCenter,
+        child: ValueListenableBuilder<dynamic>(
+            valueListenable: _screen,
+            builder: (BuildContext context, screen, _) {
+              if (screen == null) {
+                return _buildContent();
+              } else {
+                return screen;
+              }
+            }));
   }
 
   Widget _buildContent() {
@@ -113,7 +106,7 @@ class _WaysPageState extends State<WaysPage> {
                   _listenToUpdates(windowId);
                   return _buildPhoneContent(window);
                 }
-                return WizardLanguage(prefs: widget.prefs);
+                return Utils.loadingScreen();
               default:
                 return const NoData();
             }
@@ -123,164 +116,192 @@ class _WaysPageState extends State<WaysPage> {
 
   Widget _buildPhoneContent(QueueWindow window) {
     double shortestSide = MediaQuery.of(context).size.shortestSide;
-    double sizeButton =
-        (shortestSide > 300) ? shortestSide * 0.25 : shortestSide * 0.15;
+    double sizeButton = shortestSide * 0.15;
     return PopScope(
         canPop: true,
         child: Scaffold(
             key: _scaffoldKey,
             body: SafeArea(
               top: false,
-              child: Column(
-                children: <Widget>[
-                  const Header(),
-                  Expanded(
-                    child: ListView(
-                      scrollDirection: Axis.vertical,
+              child: Align(
+                alignment: Alignment.topCenter,
+                child: LayoutBuilder(builder:
+                    (BuildContext context, BoxConstraints constraints) {
+                  return SizedBox(
+                    width: (constraints.maxWidth > WidgetProp.width)
+                        ? WidgetProp.width
+                        : constraints.maxWidth,
+                    child: Column(
                       children: <Widget>[
-                        Center(
-                          child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Text(window.name,
-                                style: Theme.of(context).textTheme.titleMedium),
-                          ),
-                        ),
-                        Row(
-                          children: [
-                            Expanded(
-                              child: Center(
-                                child: SizedBox(
-                                  width: shortestSide * 0.9,
-                                  height: shortestSide,
-                                  child: SizedBox(
-                                      child: GridView.count(
-                                    crossAxisCount: 2,
-                                    physics:
-                                        const NeverScrollableScrollPhysics(), // It disables scrolling functionality of GridView, which means now we have only SingleChildScrollView who provide the scrolling functionality.
-                                    children: <Widget>[
-                                      ValueListenableBuilder<int>(
-                                          valueListenable: _countMyNonOnWait,
-                                          builder: (BuildContext context,
-                                              countMyNonOnWait, _) {
-                                            return _buildButton(
-                                                Icon(FontAwesomeIcons.list,
-                                                    size: sizeButton,
-                                                    color: Colors.redAccent,
-                                                    semanticLabel: 'List'),
-                                                S
-                                                    .of(context)
-                                                    .markComplete
-                                                    .toUpperCase(),
-                                                countMyNonOnWait, () async {
-                                              _screen.value = TokenListPage(
-                                                  prefs: widget.prefs,
-                                                  window: window);
-                                            });
-                                          }),
-                                      _buildButton(
-                                          Icon(FontAwesomeIcons.squarePlus,
-                                              size: sizeButton,
-                                              color: Colors.redAccent,
-                                              semanticLabel: 'Issue Token'),
-                                          S
-                                              .of(context)
-                                              .issueToken
-                                              .toUpperCase(),
-                                          null, () async {
-                                        _screen.value = TokenIssuePage(
-                                            key: const ValueKey(
-                                                'token-issued-page'),
-                                            prefs: widget.prefs,
-                                            window: window);
-                                      }),
-                                      ValueListenableBuilder<int>(
-                                          valueListenable: _countMyOnWait,
-                                          builder: (BuildContext context,
-                                              countMyOnWait, _) {
-                                            return _buildButton(
+                        const Header(),
+                        Expanded(
+                          child: ListView(
+                            scrollDirection: Axis.vertical,
+                            children: <Widget>[
+                              Center(
+                                child: Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Text(window.name,
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .titleMedium),
+                                ),
+                              ),
+                              Row(
+                                children: [
+                                  Expanded(
+                                    child: Center(
+                                      child: SizedBox(
+                                        width: shortestSide * 0.9,
+                                        height: shortestSide,
+                                        child: SizedBox(
+                                            child: GridView.count(
+                                          crossAxisCount: 2,
+                                          physics:
+                                              const NeverScrollableScrollPhysics(), // It disables scrolling functionality of GridView, which means now we have only SingleChildScrollView who provide the scrolling functionality.
+                                          children: <Widget>[
+                                            ValueListenableBuilder<int>(
+                                                valueListenable:
+                                                    _countMyNonOnWait,
+                                                builder: (BuildContext context,
+                                                    countMyNonOnWait, _) {
+                                                  return _buildButton(
+                                                      Icon(
+                                                          FontAwesomeIcons.list,
+                                                          size: sizeButton,
+                                                          color:
+                                                              Colors.redAccent,
+                                                          semanticLabel:
+                                                              'List'),
+                                                      S
+                                                          .of(context)
+                                                          .markComplete
+                                                          .toUpperCase(),
+                                                      countMyNonOnWait,
+                                                      () async {
+                                                    _screen.value =
+                                                        TokenListPage(
+                                                            prefs: widget.prefs,
+                                                            window: window);
+                                                  });
+                                                }),
+                                            _buildButton(
                                                 Icon(
-                                                    FontAwesomeIcons
-                                                        .forwardStep,
+                                                    FontAwesomeIcons.squarePlus,
                                                     size: sizeButton,
                                                     color: Colors.redAccent,
                                                     semanticLabel:
-                                                        'Call Token'),
+                                                        'Issue Token'),
                                                 S
                                                     .of(context)
-                                                    .callToken
+                                                    .issueToken
                                                     .toUpperCase(),
-                                                countMyOnWait, () async {
-                                              _screen.value = TokenCallPage(
+                                                null, () async {
+                                              _screen.value = TokenIssuePage(
+                                                  key: const ValueKey(
+                                                      'token-issued-page'),
                                                   prefs: widget.prefs,
                                                   window: window);
-                                            });
-                                          }),
-                                      _buildButton(
-                                          Icon(FontAwesomeIcons.ellipsis,
-                                              size: sizeButton,
-                                              color: Colors.redAccent,
-                                              semanticLabel: 'More'),
-                                          S.of(context).more.toUpperCase(),
-                                          null, () async {
-                                        _screen.value = MorePage(
-                                          prefs: widget.prefs,
-                                          window: window,
-                                        );
-                                      }),
-                                    ],
-                                  )),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                        IconButton(
-                          icon: const Icon(CupertinoIcons.question_circle,
-                              color: Colors.blue, semanticLabel: 'Help'),
-                          iconSize: 30,
-                          onPressed: () async {
-                            await showModalBottomSheet(
-                                context: context,
-                                builder: (context2) {
-                                  return Container(
-                                    decoration: BoxDecoration(
-                                        color: Theme.of(context).canvasColor,
-                                        borderRadius: const BorderRadius.only(
-                                          topLeft: Radius.circular(10),
-                                          topRight: Radius.circular(10),
+                                            }),
+                                            ValueListenableBuilder<int>(
+                                                valueListenable: _countMyOnWait,
+                                                builder: (BuildContext context,
+                                                    countMyOnWait, _) {
+                                                  return _buildButton(
+                                                      Icon(
+                                                          FontAwesomeIcons
+                                                              .forwardStep,
+                                                          size: sizeButton,
+                                                          color:
+                                                              Colors.redAccent,
+                                                          semanticLabel:
+                                                              'Call Token'),
+                                                      S
+                                                          .of(context)
+                                                          .callToken
+                                                          .toUpperCase(),
+                                                      countMyOnWait, () async {
+                                                    _screen.value =
+                                                        TokenCallPage(
+                                                            prefs: widget.prefs,
+                                                            window: window);
+                                                  });
+                                                }),
+                                            _buildButton(
+                                                Icon(FontAwesomeIcons.ellipsis,
+                                                    size: sizeButton,
+                                                    color: Colors.redAccent,
+                                                    semanticLabel: 'More'),
+                                                S
+                                                    .of(context)
+                                                    .more
+                                                    .toUpperCase(),
+                                                null, () async {
+                                              _screen.value = MorePage(
+                                                prefs: widget.prefs,
+                                                window: window,
+                                              );
+                                            }),
+                                          ],
                                         )),
-                                    child: _buildHelpMenu(context),
-                                  );
-                                });
-                          },
-                        ),
-                        const SizedBox(height: 10),
-                        TextButton(
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: <Widget>[
-                              const Icon(CupertinoIcons.link,
-                                  semanticLabel: 'Link'),
-                              const SizedBox(width: 10),
-                              Text('Powered by Wheref.com',
-                                  style:
-                                      Theme.of(context).textTheme.titleMedium),
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              IconButton(
+                                icon: const Icon(CupertinoIcons.question_circle,
+                                    color: Colors.blue, semanticLabel: 'Help'),
+                                iconSize: 30,
+                                onPressed: () async {
+                                  await showModalBottomSheet(
+                                      context: context,
+                                      builder: (context2) {
+                                        return Container(
+                                          decoration: BoxDecoration(
+                                              color:
+                                                  Theme.of(context).canvasColor,
+                                              borderRadius:
+                                                  const BorderRadius.only(
+                                                topLeft: Radius.circular(10),
+                                                topRight: Radius.circular(10),
+                                              )),
+                                          child: _buildHelpMenu(context),
+                                        );
+                                      });
+                                },
+                              ),
+                              const SizedBox(height: 10),
+                              TextButton(
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: <Widget>[
+                                    const Icon(CupertinoIcons.link,
+                                        semanticLabel: 'Link'),
+                                    const SizedBox(width: 10),
+                                    Text('Powered by Wheref.com',
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .titleMedium),
+                                  ],
+                                ),
+                                onPressed: () async {
+                                  Utils.launchURLString(myBaseUrl);
+                                },
+                              ),
+                              const SizedBox(height: 10),
+                              Text(
+                                'Server is ${client.host}',
+                                style: Theme.of(context).textTheme.bodySmall,
+                                textAlign: TextAlign.center,
+                              ),
                             ],
                           ),
-                          onPressed: () async {
-                            Utils.launchURLString(myBaseUrl);
-                          },
-                        ),
-                        const SizedBox(height: 10),
-                        Text(
-                          'Server is ${client.host}',
-                          style: Theme.of(context).textTheme.bodySmall,
-                          textAlign: TextAlign.center,
-                        ),
+                        )
                       ],
                     ),
-                  )
-                ],
+                  );
+                }),
               ),
             )));
   }

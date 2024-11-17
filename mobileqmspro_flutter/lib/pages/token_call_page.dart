@@ -95,65 +95,77 @@ class _TokenCallPageState extends State<TokenCallPage> {
         ],
       ),
     );
-    return Column(children: <Widget>[
-      Padding(
-          padding: const EdgeInsets.only(top: 20.0, left: 10, right: 10),
-          child: text),
-      Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            OutlinedButton(
-              child: Text(S.of(context).markAllAsTimeout),
-              onPressed: () async {
-                await _player.seek(Duration.zero);
-                _player.play();
-                await _buildDialogTimeoutAllToken();
-                setState(() {});
-              },
+    return Align(
+      alignment: Alignment.topCenter,
+      child: LayoutBuilder(
+          builder: (BuildContext context, BoxConstraints constraints) {
+        return SizedBox(
+          width: (constraints.maxWidth > WidgetProp.width)
+              ? WidgetProp.width
+              : constraints.maxWidth,
+          child: Column(children: <Widget>[
+            Padding(
+                padding: const EdgeInsets.only(top: 20.0, left: 10, right: 10),
+                child: text),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  OutlinedButton(
+                    child: Text(S.of(context).markAllAsTimeout),
+                    onPressed: () async {
+                      await _player.seek(Duration.zero);
+                      _player.play();
+                      await _buildDialogTimeoutAllToken();
+                      setState(() {});
+                    },
+                  ),
+                  IconButton(
+                    icon: const Icon(CupertinoIcons.refresh,
+                        semanticLabel: 'Refresh'),
+                    onPressed: () async {
+                      setState(() {});
+                    },
+                  ),
+                ],
+              ),
             ),
-            IconButton(
-              icon:
-                  const Icon(CupertinoIcons.refresh, semanticLabel: 'Refresh'),
-              onPressed: () async {
-                setState(() {});
-              },
-            ),
-          ],
-        ),
-      ),
-      Expanded(
-        child: FutureBuilder(
-            future: client.tokenIssued.getAllByWindowAndStatus(
-                windowId, StatusCode.onwait, null, null, false),
-            builder: (BuildContext context,
-                AsyncSnapshot<List<TokenIssued>> snapshot) {
-              switch (snapshot.connectionState) {
-                case ConnectionState.waiting:
-                  return Utils.loadingScreen();
-                case ConnectionState.active:
-                case ConnectionState.done:
-                  List<TokenIssued>? tokenIssuedList = snapshot.data;
-                  _tokenIssuedList = tokenIssuedList;
-                  if (tokenIssuedList == null) {
-                    return const Center(child: CircularProgressIndicator());
-                  } else if (tokenIssuedList.isEmpty == true) {
-                    return const NoData();
-                  }
+            Expanded(
+              child: FutureBuilder(
+                  future: client.tokenIssued.getAllByWindowAndStatus(
+                      windowId, StatusCode.onwait, null, null, false),
+                  builder: (BuildContext context,
+                      AsyncSnapshot<List<TokenIssued>> snapshot) {
+                    switch (snapshot.connectionState) {
+                      case ConnectionState.waiting:
+                        return Utils.loadingScreen();
+                      case ConnectionState.active:
+                      case ConnectionState.done:
+                        List<TokenIssued>? tokenIssuedList = snapshot.data;
+                        _tokenIssuedList = tokenIssuedList;
+                        if (tokenIssuedList == null) {
+                          return const Center(
+                              child: CircularProgressIndicator());
+                        } else if (tokenIssuedList.isEmpty == true) {
+                          return const NoData();
+                        }
 
-                  return ListView.builder(
-                      itemCount: tokenIssuedList.length,
-                      itemBuilder: (BuildContext ctxt, int index) {
-                        return _tokenIssuedItem(
-                            tokenIssuedList.elementAt(index), index);
-                      });
-                default:
-                  return const NoData();
-              }
-            }),
-      )
-    ]);
+                        return ListView.builder(
+                            itemCount: tokenIssuedList.length,
+                            itemBuilder: (BuildContext ctxt, int index) {
+                              return _tokenIssuedItem(
+                                  tokenIssuedList.elementAt(index), index);
+                            });
+                      default:
+                        return const NoData();
+                    }
+                  }),
+            )
+          ]),
+        );
+      }),
+    );
   }
 
   Widget _tokenIssuedItem(TokenIssued tokenIssued, int index) {

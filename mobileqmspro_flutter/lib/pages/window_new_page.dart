@@ -57,122 +57,119 @@ class _WindowNewPageState extends State<WindowNewPage> {
 
   @override
   Widget build(BuildContext context) {
-    return LayoutBuilder(
-        builder: (BuildContext context, BoxConstraints constraints) {
-      return Align(
-          alignment: Alignment.topCenter,
-          child: SizedBox(
-              width: (constraints.maxWidth > WidgetProp.width)
-                  ? WidgetProp.width
-                  : constraints.maxWidth,
-              child: PopScope(
-                  canPop: true,
-                  child: Scaffold(
-                      key: _scaffoldKey,
-                      appBar: AppBar(
-                        centerTitle: true,
-                        title: Text(S.of(context).windowForm),
-                        backgroundColor:
-                            const Color.fromRGBO(35, 197, 221, 1.0),
-                        actions: [
-                          TextButton(
-                              onPressed: () async {
-                                Logger.log(tag, message: 'SAVE/UPDATE');
-                                _formKey.currentState?.save();
-                                if (_formKey.currentState?.validate() ==
-                                    false) {
-                                  return;
-                                }
-                                AppProfile appProfile =
-                                    context.read<AppProfile>();
-                                final profileUser = appProfile.profileUser;
-                                final profileUserId = profileUser?.id;
-                                final email = profileUser?.email;
-                                if (profileUserId == null || email == null) {
-                                  return;
-                                }
-                                String name = _nameController.text.trim();
-                                int count = await client.queueWindow
-                                    .countByEmail(email);
-                                int orderNum = count + 1;
-                                DateTime now = DateTime.now();
-                                QueueWindow? window = _window;
-                                if (window == null) {
-                                  QueueWindow windowNew = QueueWindow(
-                                      name: name,
-                                      selected: false,
-                                      orderNum: orderNum,
-                                      createdDate: now,
-                                      modifiedDate: now,
-                                      profileUserId: profileUserId);
-                                  _window = await client.queueWindow
-                                      .create(windowNew);
-                                } else {
-                                  window.name = name;
-                                  window.modifiedDate = now;
-                                  await client.queueWindow.update(window);
-                                }
-                                Utils.pushPage(
-                                    context,
-                                    WindowListPage(prefs: widget.prefs),
-                                    'WindowListPage');
-                              },
-                              child: (_window == null)
-                                  ? Text(S.of(context).save.toUpperCase(),
-                                      style: Styles.actionBtn)
-                                  : Text(S.of(context).update.toUpperCase(),
-                                      style: Styles.actionBtn))
-                        ],
-                      ),
-                      body: _buildContent(context)))));
-    });
+    return PopScope(
+        canPop: true,
+        child: Scaffold(
+            key: _scaffoldKey,
+            appBar: AppBar(
+              centerTitle: true,
+              title: Text(S.of(context).windowForm),
+              backgroundColor: const Color.fromRGBO(35, 197, 221, 1.0),
+              actions: [
+                TextButton(
+                    onPressed: () async {
+                      Logger.log(tag, message: 'SAVE/UPDATE');
+                      _formKey.currentState?.save();
+                      if (_formKey.currentState?.validate() == false) {
+                        return;
+                      }
+                      AppProfile appProfile = context.read<AppProfile>();
+                      final profileUser = appProfile.profileUser;
+                      final profileUserId = profileUser?.id;
+                      final email = profileUser?.email;
+                      if (profileUserId == null || email == null) {
+                        return;
+                      }
+                      String name = _nameController.text.trim();
+                      int count = await client.queueWindow.countByEmail(email);
+                      int orderNum = count + 1;
+                      DateTime now = DateTime.now();
+                      QueueWindow? window = _window;
+                      if (window == null) {
+                        QueueWindow windowNew = QueueWindow(
+                            name: name,
+                            selected: false,
+                            orderNum: orderNum,
+                            createdDate: now,
+                            modifiedDate: now,
+                            profileUserId: profileUserId);
+                        _window = await client.queueWindow.create(windowNew);
+                      } else {
+                        window.name = name;
+                        window.modifiedDate = now;
+                        await client.queueWindow.update(window);
+                      }
+                      Utils.pushPage(
+                          context,
+                          WindowListPage(prefs: widget.prefs),
+                          'WindowListPage');
+                    },
+                    child: (_window == null)
+                        ? Text(S.of(context).save.toUpperCase(),
+                            style: Styles.actionBtn)
+                        : Text(S.of(context).update.toUpperCase(),
+                            style: Styles.actionBtn))
+              ],
+            ),
+            body: _buildContent(context)));
   }
 
   Widget _buildContent(BuildContext context) {
-    return SingleChildScrollView(
-      padding: const EdgeInsets.all(20),
-      child: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: <Widget>[
-            Padding(
-              padding: const EdgeInsets.all(15.0),
+    return Align(
+      alignment: Alignment.topCenter,
+      child: LayoutBuilder(
+          builder: (BuildContext context, BoxConstraints constraints) {
+        return SizedBox(
+          width: (constraints.maxWidth > WidgetProp.width)
+              ? WidgetProp.width
+              : constraints.maxWidth,
+          child: SingleChildScrollView(
+            padding: const EdgeInsets.all(20),
+            child: Center(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: <Widget>[
-                  Text(
-                      'Window name may be your business name. For example, ABC Clinic, Wheref Restaurant, DEF Service Center, etc',
-                      style: Theme.of(context).textTheme.labelMedium)
+                  Padding(
+                    padding: const EdgeInsets.all(15.0),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: <Widget>[
+                        Text(
+                            'Window name may be your business name. For example, ABC Clinic, Wheref Restaurant, DEF Service Center, etc',
+                            style: Theme.of(context).textTheme.labelMedium)
+                      ],
+                    ),
+                  ),
+                  const Divider(height: 12.0),
+                  const SizedBox(height: 20),
+                  Form(
+                      key: _formKey,
+                      child: Column(
+                        children: <Widget>[
+                          TextFormField(
+                            keyboardType: TextInputType.text,
+                            textCapitalization: TextCapitalization.words,
+                            decoration: InputDecoration(
+                              border: const UnderlineInputBorder(),
+                              icon: const Icon(Icons.widgets,
+                                  color: Colors.grey, semanticLabel: 'Name'),
+                              hintText: 'What is the window name?',
+                              labelText: S.of(context).windowName,
+                            ),
+                            controller: _nameController,
+                            maxLength: 30,
+                            validator: (value) {
+                              return validateStringMinMax(value, 1, 30);
+                            },
+                          ),
+                        ],
+                      ))
                 ],
               ),
             ),
-            const Divider(height: 12.0),
-            const SizedBox(height: 20),
-            Form(
-                key: _formKey,
-                child: Column(
-                  children: <Widget>[
-                    TextFormField(
-                      keyboardType: TextInputType.text,
-                      textCapitalization: TextCapitalization.words,
-                      decoration: InputDecoration(
-                        border: const UnderlineInputBorder(),
-                        icon: const Icon(Icons.widgets,
-                            color: Colors.grey, semanticLabel: 'Name'),
-                        hintText: 'What is the window name?',
-                        labelText: S.of(context).windowName,
-                      ),
-                      controller: _nameController,
-                      maxLength: 30,
-                      validator: (value) {
-                        return validateStringMinMax(value, 1, 30);
-                      },
-                    ),
-                  ],
-                ))
-          ],
-        ),
-      ),
+          ),
+        );
+      }),
     );
   }
 }

@@ -59,29 +59,18 @@ class _TokenStatusListPageState extends State<TokenStatusListPage> {
 
   @override
   Widget build(BuildContext context) {
-    return LayoutBuilder(
-        builder: (BuildContext context, BoxConstraints constraints) {
-      return Align(
-          alignment: Alignment.topCenter,
-          child: SizedBox(
-              width: (constraints.maxWidth > WidgetProp.width)
-                  ? WidgetProp.width
-                  : constraints.maxWidth,
-              child: PopScope(
-                  canPop: true,
-                  child: Scaffold(
-                      key: _scaffoldKey,
-                      appBar: CustomAppBar(
-                          title: Utils.getAppBarTitle(
-                              S.of(context).tokenList, context),
-                          goBackButton: Utils.goBackButton(() => Utils.pushPage(
-                              context,
-                              MorePage(
-                                  prefs: widget.prefs, window: widget.window),
-                              'MorePage')),
-                          label: S.of(context).title),
-                      body: _buildContent(context)))));
-    });
+    return PopScope(
+        canPop: true,
+        child: Scaffold(
+            key: _scaffoldKey,
+            appBar: CustomAppBar(
+                title: Utils.getAppBarTitle(S.of(context).tokenList, context),
+                goBackButton: Utils.goBackButton(() => Utils.pushPage(
+                    context,
+                    MorePage(prefs: widget.prefs, window: widget.window),
+                    'MorePage')),
+                label: S.of(context).title),
+            body: _buildContent(context)));
   }
 
   Widget _buildContent(BuildContext context) {
@@ -100,39 +89,51 @@ class _TokenStatusListPageState extends State<TokenStatusListPage> {
         ],
       ),
     );
-    return Column(
-      children: [
-        Padding(padding: const EdgeInsets.all(10), child: text),
-        Expanded(
-          child: FutureBuilder(
-              future: client.tokenIssued.getAllByWindowAndStatus(
-                  windowId, widget.statusCode, _maxLimit, 0, true),
-              builder: (BuildContext context,
-                  AsyncSnapshot<List<TokenIssued>> snapshot) {
-                switch (snapshot.connectionState) {
-                  case ConnectionState.waiting:
-                    return Utils.loadingScreen();
-                  case ConnectionState.active:
-                  case ConnectionState.done:
-                    List<TokenIssued>? tokenIssuedList = snapshot.data;
-                    if (tokenIssuedList == null) {
-                      return const Center(child: CircularProgressIndicator());
-                    } else if (tokenIssuedList.isEmpty) {
-                      return const NoData();
-                    }
+    return Align(
+      alignment: Alignment.topCenter,
+      child: LayoutBuilder(
+          builder: (BuildContext context, BoxConstraints constraints) {
+        return SizedBox(
+          width: (constraints.maxWidth > WidgetProp.width)
+              ? WidgetProp.width
+              : constraints.maxWidth,
+          child: Column(
+            children: [
+              Padding(padding: const EdgeInsets.all(10), child: text),
+              Expanded(
+                child: FutureBuilder(
+                    future: client.tokenIssued.getAllByWindowAndStatus(
+                        windowId, widget.statusCode, _maxLimit, 0, true),
+                    builder: (BuildContext context,
+                        AsyncSnapshot<List<TokenIssued>> snapshot) {
+                      switch (snapshot.connectionState) {
+                        case ConnectionState.waiting:
+                          return Utils.loadingScreen();
+                        case ConnectionState.active:
+                        case ConnectionState.done:
+                          List<TokenIssued>? tokenIssuedList = snapshot.data;
+                          if (tokenIssuedList == null) {
+                            return const Center(
+                                child: CircularProgressIndicator());
+                          } else if (tokenIssuedList.isEmpty) {
+                            return const NoData();
+                          }
 
-                    return ListView.builder(
-                        itemCount: tokenIssuedList.length,
-                        itemBuilder: (BuildContext ctxt, int index) {
-                          return _tokenIssuedItem(
-                              tokenIssuedList.elementAt(index), index);
-                        });
-                  default:
-                    return const NoData();
-                }
-              }),
-        ),
-      ],
+                          return ListView.builder(
+                              itemCount: tokenIssuedList.length,
+                              itemBuilder: (BuildContext ctxt, int index) {
+                                return _tokenIssuedItem(
+                                    tokenIssuedList.elementAt(index), index);
+                              });
+                        default:
+                          return const NoData();
+                      }
+                    }),
+              ),
+            ],
+          ),
+        );
+      }),
     );
   }
 
