@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'dart:async';
 
 import 'package:flutter/cupertino.dart';
@@ -38,8 +40,6 @@ class _WaysPageState extends State<WaysPage> {
   final ValueNotifier<int> _countMyNonOnWait = ValueNotifier(0);
   final ValueNotifier<dynamic> _screen = ValueNotifier(null);
 
-  bool sendTestException = false;
-
   @override
   void initState() {
     super.initState();
@@ -48,6 +48,8 @@ class _WaysPageState extends State<WaysPage> {
 
   Future<void> _initialize() async {
     Logger.log(tag, message: '_initialize---');
+    await Utils.assignLanguage(widget.prefs);
+
     AppProfile appProfile = context.read<AppProfile>();
     final email = widget.prefs.getString(Prefs.windowEmail);
     if (email != null) {
@@ -86,12 +88,8 @@ class _WaysPageState extends State<WaysPage> {
   Widget _buildContent() {
     return Consumer<AppProfile>(builder: (_, appProfile, child) {
       final email = appProfile.profileUser?.email;
-      final window = widget.window;
       if (email == null) {
         return WizardLanguage(prefs: widget.prefs);
-      }
-      if (window != null) {
-        return _buildPhoneContent(window);
       }
       return FutureBuilder(
           future: client.queueWindow.getSelectedByEmail(email),
@@ -106,10 +104,10 @@ class _WaysPageState extends State<WaysPage> {
                 final windowId = window?.id;
                 if (window != null && windowId != null) {
                   _listenToUpdates(windowId);
-                  if (sendTestException == false) {
+                  if (Constant.sendTestException == false) {
                     Logger.sendCatcherError(tag, 'Test Exception',
-                        'Window: ${widget.window?.name}, Email: $email');
-                    sendTestException = true;
+                        'Window: ${window.name}, Email: $email');
+                    Constant.sendTestException = true;
                   }
                   return _buildPhoneContent(window);
                 }

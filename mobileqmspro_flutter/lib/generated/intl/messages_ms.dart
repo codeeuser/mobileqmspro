@@ -50,6 +50,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "currentWindowName":
             MessageLookupByLibrary.simpleMessage("Nama Tetingkap Semasa"),
         "dashboard": MessageLookupByLibrary.simpleMessage("Papan Pemuka"),
+        "deleteAccount": MessageLookupByLibrary.simpleMessage("Padam akaun"),
         "device": MessageLookupByLibrary.simpleMessage("Peranti"),
         "disconnect":
             MessageLookupByLibrary.simpleMessage("Putuskan sambungan"),
@@ -71,9 +72,12 @@ class MessageLookup extends MessageLookupByLibrary {
         "fontScale": MessageLookupByLibrary.simpleMessage("Skala Font"),
         "inAppPurchase":
             MessageLookupByLibrary.simpleMessage("Dalam Pembelian Aplikasi"),
+        "invalid": MessageLookupByLibrary.simpleMessage("Tidak sah"),
         "issueToken": MessageLookupByLibrary.simpleMessage("Token Isu"),
         "loading": MessageLookupByLibrary.simpleMessage("MEMBUAT"),
+        "login": MessageLookupByLibrary.simpleMessage("Log masuk"),
         "logout": MessageLookupByLibrary.simpleMessage("Log keluar"),
+        "mainMenu": MessageLookupByLibrary.simpleMessage("Menu Utama"),
         "markAllAsCompleted": MessageLookupByLibrary.simpleMessage(
             "Tandakan Semua sebagai Selesai"),
         "markAllAsTimeout": MessageLookupByLibrary.simpleMessage(
@@ -104,6 +108,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "packageName": MessageLookupByLibrary.simpleMessage("Nama Pakej"),
         "pageSize": MessageLookupByLibrary.simpleMessage("Saiz Halaman"),
         "pairCode": MessageLookupByLibrary.simpleMessage("Kod Pasangan"),
+        "passcode": MessageLookupByLibrary.simpleMessage("Kod laluan"),
         "permission": MessageLookupByLibrary.simpleMessage("Kebenaran"),
         "phone": MessageLookupByLibrary.simpleMessage("Telefon"),
         "pleaseWait": MessageLookupByLibrary.simpleMessage("Sila tunggu"),

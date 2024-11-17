@@ -51,6 +51,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "currentWindowName":
             MessageLookupByLibrary.simpleMessage("Aktueller Fenstername"),
         "dashboard": MessageLookupByLibrary.simpleMessage("Instrumententafel"),
+        "deleteAccount": MessageLookupByLibrary.simpleMessage("Konto löschen"),
         "device": MessageLookupByLibrary.simpleMessage("Gerät"),
         "disconnect": MessageLookupByLibrary.simpleMessage("Trennen"),
         "displayTheRunningQueueNumber": MessageLookupByLibrary.simpleMessage(
@@ -70,9 +71,12 @@ class MessageLookup extends MessageLookupByLibrary {
         "feedback": MessageLookupByLibrary.simpleMessage("Feedback"),
         "fontScale": MessageLookupByLibrary.simpleMessage("Schriftskala"),
         "inAppPurchase": MessageLookupByLibrary.simpleMessage("In-App-Kauf"),
+        "invalid": MessageLookupByLibrary.simpleMessage("Ungültig"),
         "issueToken": MessageLookupByLibrary.simpleMessage("Token ausgeben"),
         "loading": MessageLookupByLibrary.simpleMessage("Wird geladen"),
+        "login": MessageLookupByLibrary.simpleMessage("Anmeldung"),
         "logout": MessageLookupByLibrary.simpleMessage("Ausloggen"),
+        "mainMenu": MessageLookupByLibrary.simpleMessage("Hauptmenü"),
         "markAllAsCompleted": MessageLookupByLibrary.simpleMessage(
             "Alle als abgeschlossen markieren"),
         "markAllAsTimeout": MessageLookupByLibrary.simpleMessage(
@@ -103,6 +107,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "packageName": MessageLookupByLibrary.simpleMessage("Paketnamen"),
         "pageSize": MessageLookupByLibrary.simpleMessage("Seitengröße"),
         "pairCode": MessageLookupByLibrary.simpleMessage("Paarcode"),
+        "passcode": MessageLookupByLibrary.simpleMessage("Passcode"),
         "permission": MessageLookupByLibrary.simpleMessage("Genehmigung"),
         "phone": MessageLookupByLibrary.simpleMessage("Telefon"),
         "pleaseWait": MessageLookupByLibrary.simpleMessage("Warten Sie mal"),

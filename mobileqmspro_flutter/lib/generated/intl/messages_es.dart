@@ -52,6 +52,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "currentWindowName":
             MessageLookupByLibrary.simpleMessage("Nombre de ventana actual"),
         "dashboard": MessageLookupByLibrary.simpleMessage("Tablero"),
+        "deleteAccount": MessageLookupByLibrary.simpleMessage("Borrar cuenta"),
         "device": MessageLookupByLibrary.simpleMessage("Dispositivo"),
         "disconnect": MessageLookupByLibrary.simpleMessage("desconectar"),
         "displayTheRunningQueueNumber": MessageLookupByLibrary.simpleMessage(
@@ -71,9 +72,12 @@ class MessageLookup extends MessageLookupByLibrary {
         "fontScale": MessageLookupByLibrary.simpleMessage("Escala de fuente"),
         "inAppPurchase":
             MessageLookupByLibrary.simpleMessage("Aplicación en la compra"),
+        "invalid": MessageLookupByLibrary.simpleMessage("Inválido"),
         "issueToken": MessageLookupByLibrary.simpleMessage("Token de emisión"),
         "loading": MessageLookupByLibrary.simpleMessage("Cargando"),
+        "login": MessageLookupByLibrary.simpleMessage("Acceso"),
         "logout": MessageLookupByLibrary.simpleMessage("Cerrar sesión"),
+        "mainMenu": MessageLookupByLibrary.simpleMessage("Menú principal"),
         "markAllAsCompleted":
             MessageLookupByLibrary.simpleMessage("Marcar todo como completado"),
         "markAllAsTimeout": MessageLookupByLibrary.simpleMessage(
@@ -103,6 +107,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Nombre del paquete"),
         "pageSize": MessageLookupByLibrary.simpleMessage("Tamaño de página"),
         "pairCode": MessageLookupByLibrary.simpleMessage("Código de par"),
+        "passcode": MessageLookupByLibrary.simpleMessage("Código de acceso"),
         "permission": MessageLookupByLibrary.simpleMessage("Permiso"),
         "phone": MessageLookupByLibrary.simpleMessage("Teléfono"),
         "pleaseWait": MessageLookupByLibrary.simpleMessage("por favor espera"),

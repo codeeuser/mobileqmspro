@@ -48,6 +48,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "currentWindowName":
             MessageLookupByLibrary.simpleMessage("Текущее имя окна"),
         "dashboard": MessageLookupByLibrary.simpleMessage("Приборная доска"),
+        "deleteAccount":
+            MessageLookupByLibrary.simpleMessage("Удалить аккаунт"),
         "device": MessageLookupByLibrary.simpleMessage("Устройство"),
         "disconnect": MessageLookupByLibrary.simpleMessage("Отключить"),
         "displayTheRunningQueueNumber": MessageLookupByLibrary.simpleMessage(
@@ -67,9 +69,12 @@ class MessageLookup extends MessageLookupByLibrary {
         "fontScale": MessageLookupByLibrary.simpleMessage("Масштаб шрифта"),
         "inAppPurchase":
             MessageLookupByLibrary.simpleMessage("Покупки в приложении"),
+        "invalid": MessageLookupByLibrary.simpleMessage("Неверный"),
         "issueToken": MessageLookupByLibrary.simpleMessage("Выдача токена"),
         "loading": MessageLookupByLibrary.simpleMessage("Загрузка"),
+        "login": MessageLookupByLibrary.simpleMessage("Авторизоваться"),
         "logout": MessageLookupByLibrary.simpleMessage("Выйти"),
+        "mainMenu": MessageLookupByLibrary.simpleMessage("Главное меню"),
         "markAllAsCompleted": MessageLookupByLibrary.simpleMessage(
             "Отметить все как выполненное"),
         "markAllAsTimeout":
@@ -99,6 +104,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "packageName": MessageLookupByLibrary.simpleMessage("Имя пакета"),
         "pageSize": MessageLookupByLibrary.simpleMessage("Размер страницы"),
         "pairCode": MessageLookupByLibrary.simpleMessage("Код пары"),
+        "passcode": MessageLookupByLibrary.simpleMessage("пароль"),
         "permission": MessageLookupByLibrary.simpleMessage("разрешение"),
         "phone": MessageLookupByLibrary.simpleMessage("Телефон"),
         "pleaseWait":

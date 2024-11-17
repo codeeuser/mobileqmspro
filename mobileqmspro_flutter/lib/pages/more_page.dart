@@ -246,7 +246,7 @@ class _MorePageState extends State<MorePage> {
               const Divider(color: Colors.grey),
               ListTile(
                 leading: const Icon(CupertinoIcons.person,
-                    semanticLabel: 'Runing Token'),
+                    semanticLabel: 'Delete Account'),
                 title: Text(S.of(context).deleteAccount),
                 subtitle: const Text('Do you want delete this Account?'),
                 trailing: const Icon(CupertinoIcons.chevron_right,
@@ -306,7 +306,7 @@ class _MorePageState extends State<MorePage> {
                 tileColor: Colors.red.shade500,
                 leading: const Icon(
                   FontAwesomeIcons.rightFromBracket,
-                  semanticLabel: 'Version',
+                  semanticLabel: 'Signout',
                   color: Colors.white,
                 ),
                 title: Text(
@@ -314,7 +314,7 @@ class _MorePageState extends State<MorePage> {
                   style: const TextStyle(color: Colors.white),
                 ),
                 subtitle: const Text(
-                  'The Place for signing out',
+                  'The place for signing out',
                   style: TextStyle(color: Colors.white),
                 ),
                 onTap: () async {
@@ -331,6 +331,7 @@ class _MorePageState extends State<MorePage> {
                   if (result == OkCancelResult.ok) {
                     AppProfile appProfile = context.read<AppProfile>();
                     appProfile.profileUser = null;
+                    Constant.sendTestException = false;
                     await widget.prefs.clear();
                     Utils.pushPage(
                         context,

@@ -46,6 +46,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "currentWindowName":
             MessageLookupByLibrary.simpleMessage("اسم النافذة الحالية"),
         "dashboard": MessageLookupByLibrary.simpleMessage("لوحة القيادة"),
+        "deleteAccount": MessageLookupByLibrary.simpleMessage("حذف الحساب"),
         "device": MessageLookupByLibrary.simpleMessage("جهاز"),
         "disconnect": MessageLookupByLibrary.simpleMessage("قطع الاتصال"),
         "displayTheRunningQueueNumber": MessageLookupByLibrary.simpleMessage(
@@ -63,9 +64,12 @@ class MessageLookup extends MessageLookupByLibrary {
         "fontScale": MessageLookupByLibrary.simpleMessage("مقياس الخط"),
         "inAppPurchase":
             MessageLookupByLibrary.simpleMessage("شراء داخل التطبيق"),
+        "invalid": MessageLookupByLibrary.simpleMessage("غير صالح"),
         "issueToken": MessageLookupByLibrary.simpleMessage("رمز الإصدار"),
         "loading": MessageLookupByLibrary.simpleMessage("تحميل"),
+        "login": MessageLookupByLibrary.simpleMessage("تسجيل الدخول"),
         "logout": MessageLookupByLibrary.simpleMessage("تسجيل خروج"),
+        "mainMenu": MessageLookupByLibrary.simpleMessage("القائمة الرئيسية"),
         "markAllAsCompleted":
             MessageLookupByLibrary.simpleMessage("اجعل الكل مكتمل"),
         "markAllAsTimeout":
@@ -96,6 +100,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "packageName": MessageLookupByLibrary.simpleMessage("اسم الحزمة"),
         "pageSize": MessageLookupByLibrary.simpleMessage("مقاس الصفحه"),
         "pairCode": MessageLookupByLibrary.simpleMessage("كود الزوج"),
+        "passcode": MessageLookupByLibrary.simpleMessage("رمز المرور"),
         "permission": MessageLookupByLibrary.simpleMessage("الإذن"),
         "phone": MessageLookupByLibrary.simpleMessage("هاتف"),
         "pleaseWait": MessageLookupByLibrary.simpleMessage("ارجوك انتظر"),

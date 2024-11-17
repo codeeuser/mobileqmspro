@@ -45,6 +45,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "currentToken": MessageLookupByLibrary.simpleMessage("현재 토큰"),
         "currentWindowName": MessageLookupByLibrary.simpleMessage("현재 창 이름"),
         "dashboard": MessageLookupByLibrary.simpleMessage("계기반"),
+        "deleteAccount": MessageLookupByLibrary.simpleMessage("계정 삭제"),
         "device": MessageLookupByLibrary.simpleMessage("장치"),
         "disconnect": MessageLookupByLibrary.simpleMessage("분리"),
         "displayTheRunningQueueNumber":
@@ -59,9 +60,12 @@ class MessageLookup extends MessageLookupByLibrary {
         "feedback": MessageLookupByLibrary.simpleMessage("피드백"),
         "fontScale": MessageLookupByLibrary.simpleMessage("폰트 스케일"),
         "inAppPurchase": MessageLookupByLibrary.simpleMessage("인앱 구매"),
+        "invalid": MessageLookupByLibrary.simpleMessage("유효하지 않은"),
         "issueToken": MessageLookupByLibrary.simpleMessage("이슈 토큰"),
         "loading": MessageLookupByLibrary.simpleMessage("로딩 중"),
+        "login": MessageLookupByLibrary.simpleMessage("로그인"),
         "logout": MessageLookupByLibrary.simpleMessage("로그 아웃"),
+        "mainMenu": MessageLookupByLibrary.simpleMessage("메인 메뉴"),
         "markAllAsCompleted": MessageLookupByLibrary.simpleMessage("모두 완료로 표시"),
         "markAllAsTimeout":
             MessageLookupByLibrary.simpleMessage("모두 시간 초과로 표시"),
@@ -85,6 +89,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "packageName": MessageLookupByLibrary.simpleMessage("패키지 이름"),
         "pageSize": MessageLookupByLibrary.simpleMessage("페이지 크기"),
         "pairCode": MessageLookupByLibrary.simpleMessage("페어 코드"),
+        "passcode": MessageLookupByLibrary.simpleMessage("암호"),
         "permission": MessageLookupByLibrary.simpleMessage("허가"),
         "phone": MessageLookupByLibrary.simpleMessage("전화"),
         "pleaseWait": MessageLookupByLibrary.simpleMessage("기다려주세요"),
