@@ -513,5 +513,6 @@
 	"passcode": "Passcode",
 	"invalid": "Invalid",
 	"deleteAccount": "Delete Account",
-	"mainMenu": "Main Menu"
+	"mainMenu": "Main Menu",
+	"membershipLimitation": "Membership Limitation"
 }

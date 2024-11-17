@@ -77,9 +77,30 @@ class _WindowNewPageState extends State<WindowNewPage> {
                       final profileUser = appProfile.profileUser;
                       final profileUserId = profileUser?.id;
                       final email = profileUser?.email;
+                      Membership? membership = profileUser?.membership;
                       if (profileUserId == null || email == null) {
                         return;
                       }
+                      int countWindow =
+                          await client.queueWindow.countByEmail(email);
+                      Logger.log(tag, message: 'countWindow: $countWindow');
+                      // Check Membership - SAVE Window
+                      if (_window == null) {
+                        if (membership == Membership.basic &&
+                            (countWindow >= 1)) {
+                          Utils.overlayInfoMessage(
+                              msg: S.of(context).membershipLimitation);
+                          return;
+                        }
+                        if (membership == Membership.advance &&
+                            countWindow >= 3) {
+                          Utils.overlayInfoMessage(
+                              msg: S.of(context).membershipLimitation);
+                          return;
+                        }
+                      }
+                      // Check Membership END
+
                       String name = _nameController.text.trim();
                       int count = await client.queueWindow.countByEmail(email);
                       int orderNum = count + 1;

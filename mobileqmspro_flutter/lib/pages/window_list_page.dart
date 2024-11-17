@@ -79,8 +79,17 @@ class _WindowListPageState extends State<WindowListPage> {
                 child: const Icon(CupertinoIcons.plus,
                     semanticLabel: 'Add Window'),
                 onPressed: () async {
-                  Utils.pushPage(context, WindowNewPage(prefs: widget.prefs),
-                      'WindowNewPage');
+                  AppProfile appProfile = context.read<AppProfile>();
+                  Membership? membership = appProfile.profileUser?.membership;
+                  if (membership != null &&
+                      (membership == Membership.advance ||
+                          membership == Membership.premium)) {
+                    Utils.pushPage(context, WindowNewPage(prefs: widget.prefs),
+                        'WindowNewPage');
+                  } else {
+                    Utils.overlayInfoMessage(
+                        msg: S.of(context).membershipLimitation);
+                  }
                 },
               ),
             ),

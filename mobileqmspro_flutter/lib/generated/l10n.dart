@@ -1259,6 +1259,16 @@ class S {
       args: [],
     );
   }
+
+  /// `Membership Limitation`
+  String get membershipLimitation {
+    return Intl.message(
+      'Membership Limitation',
+      name: 'membershipLimitation',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
