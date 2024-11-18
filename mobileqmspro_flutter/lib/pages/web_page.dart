@@ -31,6 +31,7 @@ class _WebPageState extends State<WebPage> {
   }
 
   Future<void> _initialize() async {
+    Logger.debug(tag, message: '_initialize---');
     final windowId = widget.windowId;
     await _listenToUpdates(windowId);
   }
@@ -66,6 +67,7 @@ class _WebPageState extends State<WebPage> {
       children: [
         const SizedBox(height: 4),
         Utils.buildDesc(60),
+        _buildWindowName(),
         Expanded(
           child: ValueListenableBuilder<List<TokenIssued>>(
               valueListenable: _tokenIssuedList,
@@ -143,21 +145,7 @@ class _WebPageState extends State<WebPage> {
         children: [
           const SizedBox(height: 4),
           Utils.buildDesc(60),
-          FutureBuilder<QueueWindow?>(
-              future: client.queueWindow.findById(widget.windowId),
-              builder: (context, snapshot) {
-                if (snapshot.hasData) {
-                  final window = snapshot.data;
-                  return Center(
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Text(window?.name ?? '${S.of(context).loading}...',
-                          style: Theme.of(context).textTheme.titleLarge),
-                    ),
-                  );
-                }
-                return Utils.loadingScreen();
-              }),
+          _buildWindowName(),
           ValueListenableBuilder<List<TokenIssued>>(
               valueListenable: _tokenIssuedList,
               builder: (BuildContext context, tokenIssuedList, _) {
@@ -226,6 +214,24 @@ class _WebPageState extends State<WebPage> {
         ),
       ),
     );
+  }
+
+  Widget _buildWindowName() {
+    return FutureBuilder<QueueWindow?>(
+        future: client.queueWindow.findById(widget.windowId),
+        builder: (context, snapshot) {
+          if (snapshot.hasData) {
+            final window = snapshot.data;
+            return Center(
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text(window?.name ?? '${S.of(context).loading}...',
+                    style: Theme.of(context).textTheme.titleLarge),
+              ),
+            );
+          }
+          return Utils.loadingScreen();
+        });
   }
 
   Future<void> _listenToUpdates(int windowId) async {

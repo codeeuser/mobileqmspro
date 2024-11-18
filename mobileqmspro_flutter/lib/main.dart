@@ -160,11 +160,13 @@ class MyApp extends StatelessWidget {
           List<String>? segments = name?.split('/');
           String param = segments?.first ?? '';
           Logger.debug(tag, message: 'param: $param');
-          int windowId = int.tryParse(param) ?? 0;
+          int? windowId = int.tryParse(param);
           return MaterialPageRoute(builder: (context) {
-            return (kIsWeb)
+            return (kIsWeb && windowId != null)
                 ? WebPage(windowId: windowId)
-                : WaysPage(key: const ValueKey('ways-page'), prefs: prefs);
+                : (kIsWeb == false)
+                    ? WaysPage(key: const ValueKey('ways-page'), prefs: prefs)
+                    : const Placeholder();
           });
         },
       ));
