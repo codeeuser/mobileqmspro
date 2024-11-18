@@ -52,7 +52,7 @@ class _WaysPageState extends State<WaysPage> {
 
     AppProfile appProfile = context.read<AppProfile>();
     final email = widget.prefs.getString(Prefs.windowEmail);
-    if (email != null) {
+    if (email != null && appProfile.profileUser?.email == null) {
       ProfileUser? profileUser = await client.profileUser.findByEmail(email);
       appProfile.profileUser = profileUser;
     }
