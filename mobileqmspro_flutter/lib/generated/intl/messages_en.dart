@@ -60,11 +60,14 @@ class MessageLookup extends MessageLookupByLibrary {
         "editService": MessageLookupByLibrary.simpleMessage("Edit Service"),
         "editWindow": MessageLookupByLibrary.simpleMessage("Edit Window"),
         "email": MessageLookupByLibrary.simpleMessage("Email"),
+        "emailPasscode": MessageLookupByLibrary.simpleMessage("Email Passcode"),
         "enableWindow": MessageLookupByLibrary.simpleMessage("Enable Window"),
         "exitApplication":
             MessageLookupByLibrary.simpleMessage("Exit Application"),
         "feedback": MessageLookupByLibrary.simpleMessage("Feedback"),
         "fontScale": MessageLookupByLibrary.simpleMessage("Font Scale"),
+        "forgotPasscode":
+            MessageLookupByLibrary.simpleMessage("Forgot Passcode"),
         "inAppPurchase":
             MessageLookupByLibrary.simpleMessage("In App Purchase"),
         "invalid": MessageLookupByLibrary.simpleMessage("Invalid"),
@@ -104,6 +107,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "pageSize": MessageLookupByLibrary.simpleMessage("Page Size"),
         "pairCode": MessageLookupByLibrary.simpleMessage("Pair Code"),
         "passcode": MessageLookupByLibrary.simpleMessage("Passcode"),
+        "passcodeHasBeenSent":
+            MessageLookupByLibrary.simpleMessage("Passcode Has Been Sent"),
         "permission": MessageLookupByLibrary.simpleMessage("Permission"),
         "phone": MessageLookupByLibrary.simpleMessage("Phone"),
         "pleaseWait": MessageLookupByLibrary.simpleMessage("Please Wait"),

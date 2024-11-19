@@ -514,5 +514,8 @@
 	"invalid": "Invalid",
 	"deleteAccount": "Delete Account",
 	"mainMenu": "Main Menu",
-	"membershipLimitation": "Membership Limitation"
+	"membershipLimitation": "Membership Limitation",
+	"forgotPasscode": "Forgot Passcode",
+	"emailPasscode": "Email Passcode",
+	"passcodeHasBeenSent": "Passcode Has Been Sent"
 }

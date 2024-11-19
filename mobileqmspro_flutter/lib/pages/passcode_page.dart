@@ -2,6 +2,7 @@
 
 import 'dart:convert';
 
+import 'package:adaptive_dialog/adaptive_dialog.dart';
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -33,9 +34,13 @@ class _PasscodePageState extends State<PasscodePage> {
   final _formPasscodeKey = GlobalKey<FormState>();
   final TextEditingController _passcodeController = TextEditingController();
 
+  ProfileUser? _profileUser;
+
   @override
   void initState() {
-    Logger.log(tag, message: 'passcode: ${widget.profileUser.passcode}');
+    Logger.log(tag,
+        message: 'initState---, passcode: ${widget.profileUser.passcode}');
+    _profileUser = widget.profileUser;
     super.initState();
   }
 
@@ -72,7 +77,7 @@ class _PasscodePageState extends State<PasscodePage> {
             children: [
               _showPasscodeMessage(),
               const SizedBox(height: 10),
-              Text(widget.profileUser.email,
+              Text(_profileUser?.email ?? '',
                   style: Theme.of(context).textTheme.titleLarge),
               const SizedBox(height: 10),
               TextFormField(
@@ -96,7 +101,7 @@ class _PasscodePageState extends State<PasscodePage> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  TextButton(
+                  ElevatedButton(
                     child: Text(S.of(context).login.toUpperCase()),
                     onPressed: () async {
                       if (_formPasscodeKey.currentState?.validate() == false) {
@@ -104,7 +109,8 @@ class _PasscodePageState extends State<PasscodePage> {
                         return;
                       }
                       final passcode = _passcodeController.text;
-                      final profileUser = widget.profileUser;
+                      final profileUser = _profileUser;
+                      if (profileUser == null) return;
                       final email = profileUser.email;
                       final profileId = profileUser.id;
                       Logger.log(tag,
@@ -162,6 +168,37 @@ class _PasscodePageState extends State<PasscodePage> {
                       }
                     },
                   ),
+                  const SizedBox(width: 16),
+                  TextButton(
+                    child: Text(S.of(context).forgotPasscode),
+                    onPressed: () async {
+                      final user = _profileUser;
+                      if (user == null) return;
+                      final profileUser =
+                          await client.profileUser.forgetPasscode(user.email);
+                      if (profileUser == null) {
+                        Utils.overlayInfoMessage(msg: S.of(context).noAction);
+                        return;
+                      }
+                      final result = await showOkAlertDialog(
+                        context: context,
+                        title: S.of(context).emailPasscode.toUpperCase(),
+                        message: S.of(context).passcodeHasBeenSent,
+                        onPopInvokedWithResult: (didPop, result) {
+                          Logger.log(tag,
+                              message: 'didPop: $didPop, result: $result');
+                        },
+                      );
+                      Logger.log(tag, message: 'resulttt: $result');
+                      if (result == OkCancelResult.ok) {
+                        Logger.log(tag,
+                            message:
+                                'FORGOT: ${profileUser.email} : ${profileUser.passcode}');
+                        _profileUser = profileUser;
+                        setState(() {});
+                      }
+                    },
+                  )
                 ],
               ),
               const SizedBox(height: 20),
@@ -179,7 +216,7 @@ class _PasscodePageState extends State<PasscodePage> {
             children: const <TextSpan>[
           TextSpan(
               text:
-                  'An Email has been sent to you about the Passcode. Wait for couple of minutes. Do not share the Passcode with others.'),
+                  'Enter the Passcode that you have OR check your email for getting the passcode. Wait for couple of minutes. Do not share the Passcode with others.'),
         ]));
     return Padding(
         padding: const EdgeInsets.fromLTRB(0.0, 20.0, 0.0, 20.0),

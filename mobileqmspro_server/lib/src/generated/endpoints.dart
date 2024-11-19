@@ -186,6 +186,25 @@ class Endpoints extends _i1.EndpointDispatch {
             params['email'],
           ),
         ),
+        'forgetPasscode': _i1.MethodConnector(
+          name: 'forgetPasscode',
+          params: {
+            'email': _i1.ParameterDescription(
+              name: 'email',
+              type: _i1.getType<String>(),
+              nullable: false,
+            )
+          },
+          call: (
+            _i1.Session session,
+            Map<String, dynamic> params,
+          ) async =>
+              (endpoints['profileUser'] as _i3.ProfileUserEndpoint)
+                  .forgetPasscode(
+            session,
+            params['email'],
+          ),
+        ),
         'findByEmail': _i1.MethodConnector(
           name: 'findByEmail',
           params: {

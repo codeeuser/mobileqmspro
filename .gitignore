@@ -2,3 +2,4 @@
 helper.txt
 pubspec.lock
 *.sql
+*.json

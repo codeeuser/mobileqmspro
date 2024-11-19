@@ -1269,6 +1269,36 @@ class S {
       args: [],
     );
   }
+
+  /// `Forgot Passcode`
+  String get forgotPasscode {
+    return Intl.message(
+      'Forgot Passcode',
+      name: 'forgotPasscode',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Email Passcode`
+  String get emailPasscode {
+    return Intl.message(
+      'Email Passcode',
+      name: 'emailPasscode',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Passcode Has Been Sent`
+  String get passcodeHasBeenSent {
+    return Intl.message(
+      'Passcode Has Been Sent',
+      name: 'passcodeHasBeenSent',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

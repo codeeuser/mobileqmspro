@@ -19,14 +19,26 @@ class ProfileUserEndpoint extends Endpoint {
           membership: Membership.basic,
           createdDate: DateTime.now());
       profileUser = await ProfileUser.db.insertRow(session, profileUser);
+      // send mail
+      await _sendMail(session, profileUser);
     } else {
+      profileUser = list.last;
+    }
+    return profileUser;
+  }
+
+  Future<ProfileUser?> forgetPasscode(Session session, String email) async {
+    List<ProfileUser> list =
+        await ProfileUser.db.find(session, where: (t) => t.email.equals(email));
+    ProfileUser? profileUser;
+    if (list.isNotEmpty) {
       profileUser = list.last;
       profileUser.passcode = _randomDigit(6);
       profileUser.modifiedDate = DateTime.now();
       profileUser = await ProfileUser.db.updateRow(session, profileUser);
+      // send mail
+      await _sendMail(session, profileUser);
     }
-    // send mail
-    await _sendMail(session, profileUser);
     return profileUser;
   }
 
@@ -59,6 +71,7 @@ class ProfileUserEndpoint extends Endpoint {
   }
 
   Future<void> _sendMail(Session session, ProfileUser profileUser) async {
+    session.log('_sendMail---, email: ${profileUser.email}');
     Map<String, String> passwords = session.passwords;
     String? password = passwords['mailPassword'];
     if (password == null) return;

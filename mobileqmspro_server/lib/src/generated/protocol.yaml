@@ -6,6 +6,7 @@ logLogin:
   - deleteByEmail:
 profileUser:
   - login:
+  - forgetPasscode:
   - findByEmail:
   - update:
   - create:

@@ -83,6 +83,13 @@ class EndpointProfileUser extends _i1.EndpointRef {
         {'email': email},
       );
 
+  _i2.Future<_i4.ProfileUser?> forgetPasscode(String email) =>
+      caller.callServerEndpoint<_i4.ProfileUser?>(
+        'profileUser',
+        'forgetPasscode',
+        {'email': email},
+      );
+
   _i2.Future<_i4.ProfileUser?> findByEmail(String email) =>
       caller.callServerEndpoint<_i4.ProfileUser?>(
         'profileUser',
