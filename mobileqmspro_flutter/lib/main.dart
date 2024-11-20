@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:convert';
 
 import 'package:catcher_2/catcher_2.dart';
 import 'package:flutter/cupertino.dart';
@@ -7,7 +6,6 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_web_plugins/url_strategy.dart';
-import 'package:ipwhois/ipwhois.dart';
 import 'package:mobileqmspro/app_profile.dart';
 import 'package:mobileqmspro/app_theme.dart';
 import 'package:mobileqmspro/generated/l10n.dart';
@@ -81,7 +79,7 @@ void main() async {
       'appVersion':
           '${packageInfo.version}, buildNumber:${packageInfo.buildNumber}',
       'platform': Utils.getPlatformName(),
-      'ipInfo': jsonEncode(await getMyIpInfo()),
+      'ipInfo': '',
     });
     Catcher2.addDefaultErrorWidget(showStacktrace: true);
 

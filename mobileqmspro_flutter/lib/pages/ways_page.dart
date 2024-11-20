@@ -2,10 +2,10 @@
 
 import 'dart:async';
 
+import 'package:app_tracking_transparency/app_tracking_transparency.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:mobileqmspro_client/mobileqmspro_client.dart';
 import 'package:mobileqmspro/app_profile.dart';
 import 'package:mobileqmspro/commons/header.dart';
 import 'package:mobileqmspro/commons/no_data.dart';
@@ -19,6 +19,7 @@ import 'package:mobileqmspro/pages/wizard_language.dart';
 import 'package:mobileqmspro/serverpod_client.dart';
 import 'package:mobileqmspro/utils/constants.dart';
 import 'package:mobileqmspro/utils/functions.dart';
+import 'package:mobileqmspro_client/mobileqmspro_client.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -50,12 +51,7 @@ class _WaysPageState extends State<WaysPage> {
     Logger.log(tag, message: '_initialize---');
     await Utils.assignLanguage(widget.prefs);
 
-    AppProfile appProfile = context.read<AppProfile>();
-    final email = widget.prefs.getString(Prefs.windowEmail);
-    if (email != null && appProfile.profileUser?.email == null) {
-      ProfileUser? profileUser = await client.profileUser.findByEmail(email);
-      appProfile.profileUser = profileUser;
-    }
+    await AppTrackingTransparency.requestTrackingAuthorization();
   }
 
   @override
@@ -82,32 +78,43 @@ class _WaysPageState extends State<WaysPage> {
   }
 
   Widget _buildContent() {
-    return Consumer<AppProfile>(builder: (_, appProfile, child) {
-      final email = appProfile.profileUser?.email;
-      if (email == null) {
-        return WizardLanguage(prefs: widget.prefs);
-      }
-      return FutureBuilder(
-          future: client.queueWindow.getSelectedByEmail(email),
-          builder:
-              (BuildContext builder, AsyncSnapshot<QueueWindow?> snapshot) {
-            if (snapshot.hasData) {
-              final window = snapshot.data;
-              final windowId = window?.id;
-              if (window != null && windowId != null) {
-                _listenToUpdates(windowId);
-                if (Constant.sendTestException == false) {
-                  Logger.sendCatcherError(tag, 'Test Exception',
-                      'Window: ${window.name}, Email: $email');
-                  Constant.sendTestException = true;
-                }
-                return _buildPhoneContent(window);
-              }
-              return const NoData();
+    final email = widget.prefs.getString(Prefs.windowEmail);
+    if (email == null) {
+      return WizardLanguage(prefs: widget.prefs);
+    }
+    return FutureBuilder(
+        future: client.profileUser.findByEmail(email),
+        builder:
+            (BuildContext builder, AsyncSnapshot<ProfileUser?> snapshotUser) {
+          if (snapshotUser.hasData) {
+            final profileUser = snapshotUser.data;
+            if (profileUser?.email == null) {
+              return WizardLanguage(prefs: widget.prefs);
             }
-            return Utils.loadingScreen();
-          });
-    });
+            context.read<AppProfile>().fetchProfileUser(profileUser);
+            return FutureBuilder(
+                future: client.queueWindow.getSelectedByEmail(email),
+                builder: (BuildContext builder,
+                    AsyncSnapshot<QueueWindow?> snapshot) {
+                  if (snapshot.hasData) {
+                    final window = snapshot.data;
+                    final windowId = window?.id;
+                    if (window != null && windowId != null) {
+                      _listenToUpdates(windowId);
+                      if (Constant.sendTestException == false) {
+                        Logger.sendCatcherError(tag, 'Test Exception',
+                            'Window: ${window.name}, Email: $email');
+                        Constant.sendTestException = true;
+                      }
+                      return _buildPhoneContent(window);
+                    }
+                    return const NoData();
+                  }
+                  return Utils.loadingScreen();
+                });
+          }
+          return Utils.loadingScreen();
+        });
   }
 
   Widget _buildPhoneContent(QueueWindow window) {

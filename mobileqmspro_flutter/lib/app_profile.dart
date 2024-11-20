@@ -8,4 +8,8 @@ class AppProfile extends ChangeNotifier {
     _profileUser = profileUser;
     notifyListeners();
   }
+
+  void fetchProfileUser(ProfileUser? profileUser) {
+    _profileUser = profileUser;
+  }
 }

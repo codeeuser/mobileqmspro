@@ -6,7 +6,7 @@ import 'package:adaptive_dialog/adaptive_dialog.dart';
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:ipwhois/ipwhois.dart';
+import 'package:mobileqmspro/app_profile.dart';
 import 'package:mobileqmspro_client/mobileqmspro_client.dart';
 import 'package:mobileqmspro/generated/l10n.dart';
 import 'package:mobileqmspro/logger.dart';
@@ -16,6 +16,7 @@ import 'package:mobileqmspro/utils/constants.dart';
 import 'package:mobileqmspro/utils/functions.dart';
 import 'package:mobileqmspro/utils/validation_function.dart';
 import 'package:package_info_plus/package_info_plus.dart';
+import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class PasscodePage extends StatefulWidget {
@@ -134,8 +135,7 @@ class _PasscodePageState extends State<PasscodePage> {
                         PackageInfo packageInfo =
                             await PackageInfo.fromPlatform();
                         DeviceInfoPlugin deviceInfoPlugin = DeviceInfoPlugin();
-                        final deviceIfo = await deviceInfoPlugin.deviceInfo;
-                        final ipInfo = await getMyIpInfo();
+                        final deviceInfo = await deviceInfoPlugin.deviceInfo;
                         final logLogin = LogLogin(
                             createdDate: DateTime.now(),
                             appVersion: packageInfo.version,
@@ -147,16 +147,21 @@ class _PasscodePageState extends State<PasscodePage> {
                                     : (Utils.isMacos)
                                         ? 'macos'
                                         : '',
-                            deviceName: jsonEncode(ipInfo),
-                            deviceOs: json.encode(deviceIfo.data),
+                            deviceName: '',
+                            deviceOs: json.encode(deviceInfo.data),
                             deviceRelease: '',
                             msgToken: '',
                             profileUserId: profileId);
                         await client.logLogin.create(logLogin);
 
                         profileUser.verified = true;
-                        profileUser.ipAddress = ipInfo?.ip;
-                        await client.profileUser.update(profileUser);
+                        // profileUser.ipAddress = '';
+                        final profileUserUpdate =
+                            await client.profileUser.update(profileUser);
+
+                        AppProfile appProfile = context.read<AppProfile>();
+                        appProfile.profileUser = profileUserUpdate;
+
                         Utils.pushPage(
                             context,
                             WaysPage(
