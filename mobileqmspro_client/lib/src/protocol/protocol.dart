@@ -24,6 +24,7 @@ import 'package:mobileqmspro_client/src/protocol/log_login.dart' as _i11;
 import 'package:mobileqmspro_client/src/protocol/queue_service.dart' as _i12;
 import 'package:mobileqmspro_client/src/protocol/queue_window.dart' as _i13;
 import 'package:mobileqmspro_client/src/protocol/token_issued.dart' as _i14;
+import 'package:serverpod_auth_client/serverpod_auth_client.dart' as _i15;
 export 'count_token.dart';
 export 'log_login.dart';
 export 'membership_enum.dart';
@@ -119,6 +120,9 @@ class Protocol extends _i1.SerializationManager {
           .map((e) => deserialize<_i14.TokenIssued>(e))
           .toList() as dynamic;
     }
+    try {
+      return _i15.Protocol().deserialize<T>(data, t);
+    } on _i1.DeserializationTypeNotFoundException catch (_) {}
     return super.deserialize<T>(data, t);
   }
 
@@ -150,6 +154,10 @@ class Protocol extends _i1.SerializationManager {
     if (data is _i9.TokenIssued) {
       return 'TokenIssued';
     }
+    className = _i15.Protocol().getClassNameForObject(data);
+    if (className != null) {
+      return 'serverpod_auth.$className';
+    }
     return null;
   }
 
@@ -178,6 +186,10 @@ class Protocol extends _i1.SerializationManager {
     }
     if (data['className'] == 'TokenIssued') {
       return deserialize<_i9.TokenIssued>(data['data']);
+    }
+    if (data['className'].startsWith('serverpod_auth.')) {
+      data['className'] = data['className'].substring(15);
+      return _i15.Protocol().deserializeByClassName(data);
     }
     return super.deserializeByClassName(data);
   }

@@ -6,3 +6,5 @@ environment:
 
 dependencies:
   serverpod_client: 2.1.5
+  serverpod_auth_client: 2.1.5 
+

@@ -1,12 +1,14 @@
 import 'package:flutter/services.dart';
 import 'package:mobileqmspro/logger.dart';
 import 'package:mobileqmspro/utils/constants.dart';
+import 'package:serverpod_auth_shared_flutter/serverpod_auth_shared_flutter.dart';
 import 'package:serverpod_flutter/serverpod_flutter.dart';
 import 'package:mobileqmspro_client/mobileqmspro_client.dart';
 import 'package:yaml/yaml.dart';
 
 // late SessionManager sessionManager;
 late Client client;
+late SessionManager sessionManager;
 late dynamic mapConfig;
 
 Future<void> initializeServerpodClient() async {
@@ -22,6 +24,13 @@ Future<void> initializeServerpodClient() async {
   // production servers.
   client = Client(
     apiHost,
+    authenticationKeyManager: FlutterAuthenticationKeyManager(),
   )..connectivityMonitor = FlutterConnectivityMonitor();
   Logger.log(tag, message: 'client: ${client.host}');
+
+  sessionManager = SessionManager(
+    caller: client.modules.auth,
+    storage: SharedPreferenceStorage(),
+  );
+  await sessionManager.initialize();
 }

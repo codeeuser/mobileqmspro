@@ -91,7 +91,7 @@ class _TokenCallPageState extends State<TokenCallPage> {
               style: const TextStyle(fontWeight: FontWeight.bold)),
           const TextSpan(
               text:
-                  'window. Select one of the waiting tokens for proceed to counter'),
+                  ' window. Select one of the waiting tokens for proceed to counter'),
         ],
       ),
     );
@@ -308,7 +308,8 @@ class _TokenCallPageState extends State<TokenCallPage> {
   Future<bool> _buildDialogTimeoutToken(TokenIssued tokenIssued) async {
     final result = await showOkCancelAlertDialog(
       context: context,
-      title: S.of(context).timeoutToken.toUpperCase(),
+      title:
+          '${S.of(context).timeoutToken.toUpperCase()} ${tokenIssued.tokenLetter}-${tokenIssued.tokenNumber}',
       message: '${S.of(context).doYouAccept}?',
       onPopInvokedWithResult: (didPop, result) {
         Logger.log(tag, message: 'didPop: $didPop, result: $result');

@@ -23,6 +23,10 @@ import 'package:window_manager/window_manager.dart';
 void main() async {
   runZoned(() async {
     WidgetsFlutterBinding.ensureInitialized();
+
+    SharedPreferences.setPrefix('mobileqmspro_');
+    final sharedPreference = await SharedPreferences.getInstance();
+
     await initializeServerpodClient();
 
     // handle Windows Size
@@ -82,9 +86,6 @@ void main() async {
       'ipInfo': '',
     });
     Catcher2.addDefaultErrorWidget(showStacktrace: true);
-
-    SharedPreferences.setPrefix('mobileqmspro_');
-    final sharedPreference = await SharedPreferences.getInstance();
 
     Catcher2(
         navigatorKey: Catcher2.navigatorKey,

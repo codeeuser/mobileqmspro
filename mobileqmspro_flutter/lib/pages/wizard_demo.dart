@@ -1,14 +1,21 @@
 // ignore_for_file: use_build_context_synchronously
 
+import 'dart:convert';
+
+import 'package:device_info_plus/device_info_plus.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:mobileqmspro_client/mobileqmspro_client.dart';
+import 'package:mobileqmspro/app_profile.dart';
 import 'package:mobileqmspro/generated/l10n.dart';
 import 'package:mobileqmspro/logger.dart';
-import 'package:mobileqmspro/pages/passcode_page.dart';
+import 'package:mobileqmspro/pages/ways_page.dart';
 import 'package:mobileqmspro/serverpod_client.dart';
 import 'package:mobileqmspro/utils/constants.dart';
 import 'package:mobileqmspro/utils/functions.dart';
-import 'package:mobileqmspro/utils/validation_function.dart';
+import 'package:mobileqmspro_client/mobileqmspro_client.dart';
+import 'package:package_info_plus/package_info_plus.dart';
+import 'package:provider/provider.dart';
+import 'package:serverpod_auth_email_flutter/serverpod_auth_email_flutter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class WizardDemo extends StatefulWidget {
@@ -23,8 +30,6 @@ class WizardDemo extends StatefulWidget {
 class _WizardDemoState extends State<WizardDemo> {
   static const String tag = "WizardDemo";
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey();
-  final _formKey = GlobalKey<FormState>();
-  final TextEditingController _emailController = TextEditingController();
 
   @override
   void initState() {
@@ -36,7 +41,6 @@ class _WizardDemoState extends State<WizardDemo> {
 
   @override
   void dispose() {
-    _emailController.dispose();
     super.dispose();
   }
 
@@ -94,72 +98,177 @@ class _WizardDemoState extends State<WizardDemo> {
         ],
       ),
     );
-    return Form(
-      key: _formKey,
-      child: SingleChildScrollView(
-        padding: const EdgeInsets.all(20),
-        child: Column(
-          children: <Widget>[
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: text,
-            ),
-            const SizedBox(height: 20),
-            TextFormField(
-              keyboardType: TextInputType.emailAddress,
-              decoration: InputDecoration(
-                border: const UnderlineInputBorder(),
-                icon: const Icon(Icons.email,
-                    color: Colors.grey, semanticLabel: 'Email'),
-                hintText: 'Email Passcode here.',
-                labelText: S.of(context).email,
-              ),
-              controller: _emailController,
-              maxLength: 100,
-              validator: (value) {
-                return validateEmail(value);
-              },
-            ),
-            OutlinedButton(
-              child: Text(S.of(context).next),
-              onPressed: () async {
-                if (_formKey.currentState?.validate() == false) {
-                  Utils.overlayInfoMessage(msg: S.of(context).noAction);
-                  return;
-                }
-                String email = _emailController.text;
-                ProfileUser? profileUser =
-                    await client.profileUser.login(email);
-                Logger.log(tag, message: 'email: $email');
+    return SingleChildScrollView(
+      child: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: text,
+          ),
+          const SizedBox(height: 20),
+          SignInWithEmailButton(
+            caller: client.modules.auth,
+            minPasswordLength: 8,
+            onSignedIn: () async {
+              final userInfo = sessionManager.signedInUser;
+              final email = userInfo?.email;
+              if (userInfo == null || email == null) {
+                Utils.overlayInfoMessage(msg: S.of(context).noAction);
+                return;
+              }
+              // login
+              ProfileUser? profileUser = await client.profileUser.login(email);
+              Logger.log(tag, message: 'email: $email');
+              await _createDemoProject(profileUser);
+              await _logLogin(profileUser.id);
+              final profileUserUpdate = await _updateProfileUser(profileUser);
 
-                Utils.pushPage(
-                    context,
-                    PasscodePage(
-                      key: const ValueKey('ways-page'),
-                      prefs: widget.prefs,
-                      profileUser: profileUser,
-                    ),
-                    'PasscodePage');
-              },
-            ),
-            const SizedBox(height: 50),
-            const Text('--- OR ---'),
-            const SizedBox(height: 50),
-            OutlinedButton(
-              child: const Text('Exit'),
-              onPressed: () async {
-                await Utils.exitApp(context);
-              },
-            ),
-            const SizedBox(height: 50),
-            Text(
-              'Server is ${client.host}',
-              style: Theme.of(context).textTheme.bodySmall,
-              textAlign: TextAlign.center,
-            ),
-          ],
-        ),
+              AppProfile appProfile = context.read<AppProfile>();
+              appProfile.profileUser = profileUserUpdate;
+              await widget.prefs.setString(Prefs.windowEmail, email);
+
+              Utils.pushPage(
+                  context,
+                  WaysPage(
+                    key: const ValueKey('ways-page'),
+                    prefs: widget.prefs,
+                  ),
+                  'PasscodePage');
+            },
+          ),
+          const SizedBox(height: 60),
+          _showAgreement(),
+          const SizedBox(height: 20),
+        ],
       ),
     );
+  }
+
+  Widget _showAgreement() {
+    var text = RichText(
+      text: TextSpan(
+        style: Theme.of(context).textTheme.bodySmall,
+        children: <TextSpan>[
+          const TextSpan(text: 'By clicking '),
+          const TextSpan(
+              text: 'Log In ', style: TextStyle(fontWeight: FontWeight.bold)),
+          const TextSpan(text: ', you agree to our '),
+          TextSpan(
+              text: 'Terms of Service',
+              style: const TextStyle(
+                  fontWeight: FontWeight.bold, color: Colors.blue),
+              recognizer: TapGestureRecognizer()
+                ..onTap = () {
+                  Utils.launchURLString(termUrl);
+                }),
+          const TextSpan(text: ' and '),
+          TextSpan(
+              text: 'Privacy Policy',
+              style: const TextStyle(
+                  fontWeight: FontWeight.bold, color: Colors.blue),
+              recognizer: TapGestureRecognizer()
+                ..onTap = () {
+                  Utils.launchURLString(privacyUrl);
+                }),
+          const TextSpan(
+              text:
+                  '. You may receive Email Notifications or Push Notification from ${Utils.titleApp} '),
+          const TextSpan(text: 'and can opt out at any time. '),
+        ],
+      ),
+    );
+    return Padding(
+        padding: const EdgeInsets.all(16), child: Container(child: text));
+  }
+
+  Future<ProfileUser> _updateProfileUser(ProfileUser profileUser) async {
+    profileUser.verified = true;
+    // profileUser.ipAddress = '';
+    final profileUserUpdate = await client.profileUser.update(profileUser);
+    return profileUserUpdate;
+  }
+
+  Future<void> _logLogin(int? profileId) async {
+    if (profileId == null) return;
+    PackageInfo packageInfo = await PackageInfo.fromPlatform();
+    DeviceInfoPlugin deviceInfoPlugin = DeviceInfoPlugin();
+    final deviceInfo = await deviceInfoPlugin.deviceInfo;
+    final logLogin = LogLogin(
+        createdDate: DateTime.now(),
+        appVersion: packageInfo.version,
+        appVersionCode: packageInfo.buildNumber,
+        platform: (Utils.isIos)
+            ? 'ios'
+            : (Utils.isAndroid)
+                ? 'android'
+                : (Utils.isMacos)
+                    ? 'macos'
+                    : '',
+        deviceName: '',
+        deviceOs: json.encode(deviceInfo.data),
+        deviceRelease: '',
+        msgToken: '',
+        profileUserId: profileId);
+    await client.logLogin.create(logLogin);
+  }
+
+  Future<void> _createDemoProject(ProfileUser profileUser) async {
+    final count = await client.queueWindow.countByEmail(profileUser.email);
+    final hasProject = count > 0;
+    if (hasProject == false) {
+      bool success = await _createDemo(profileUser);
+      if (success == false) {
+        Utils.overlayInfoMessage(msg: S.of(context).noAction);
+        return;
+      }
+    }
+  }
+
+  Future<bool> _createDemo(ProfileUser profileUser) async {
+    final profileUserId = profileUser.id;
+    if (profileUserId != null) {
+      DateTime now = DateTime.now();
+      QueueWindow window = QueueWindow(
+          name: 'Demo Wheref',
+          selected: true,
+          orderNum: 1,
+          createdDate: now,
+          profileUserId: profileUserId);
+      window = await client.queueWindow.create(window);
+
+      final windowId = window.id;
+      if (windowId != null) {
+        QueueService service01 = QueueService(
+            name: 'Payment',
+            letter: 'P',
+            start: 100,
+            orderNum: 1,
+            enable: true,
+            createdDate: now,
+            queueWindowId: windowId,
+            profileUserId: profileUserId);
+        QueueService service02 = QueueService(
+            name: 'Booking',
+            letter: 'B',
+            start: 200,
+            orderNum: 2,
+            enable: true,
+            createdDate: now,
+            queueWindowId: windowId,
+            profileUserId: profileUserId);
+        QueueService service03 = QueueService(
+            name: 'Information',
+            letter: 'INF',
+            start: 300,
+            orderNum: 3,
+            enable: true,
+            createdDate: now,
+            queueWindowId: windowId,
+            profileUserId: profileUserId);
+        await client.queueService.createAll([service01, service02, service03]);
+        return true;
+      }
+    }
+    return false;
   }
 }

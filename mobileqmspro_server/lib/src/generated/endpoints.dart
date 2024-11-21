@@ -20,6 +20,7 @@ import 'package:mobileqmspro_server/src/generated/profile_user.dart' as _i8;
 import 'package:mobileqmspro_server/src/generated/queue_service.dart' as _i9;
 import 'package:mobileqmspro_server/src/generated/queue_window.dart' as _i10;
 import 'package:mobileqmspro_server/src/generated/token_issued.dart' as _i11;
+import 'package:serverpod_auth_server/serverpod_auth_server.dart' as _i12;
 
 class Endpoints extends _i1.EndpointDispatch {
   @override
@@ -1101,5 +1102,6 @@ class Endpoints extends _i1.EndpointDispatch {
         ),
       },
     );
+    modules['serverpod_auth'] = _i12.Endpoints()..initializeEndpoints(server);
   }
 }

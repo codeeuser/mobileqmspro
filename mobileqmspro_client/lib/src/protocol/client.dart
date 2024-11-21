@@ -16,7 +16,8 @@ import 'package:mobileqmspro_client/src/protocol/profile_user.dart' as _i4;
 import 'package:mobileqmspro_client/src/protocol/queue_service.dart' as _i5;
 import 'package:mobileqmspro_client/src/protocol/queue_window.dart' as _i6;
 import 'package:mobileqmspro_client/src/protocol/token_issued.dart' as _i7;
-import 'protocol.dart' as _i8;
+import 'package:serverpod_auth_client/serverpod_auth_client.dart' as _i8;
+import 'protocol.dart' as _i9;
 
 /// {@category Endpoint}
 class EndpointLogLogin extends _i1.EndpointRef {
@@ -488,6 +489,14 @@ class EndpointTokenIssued extends _i1.EndpointRef {
       );
 }
 
+class _Modules {
+  _Modules(Client client) {
+    auth = _i8.Caller(client);
+  }
+
+  late final _i8.Caller auth;
+}
+
 class Client extends _i1.ServerpodClientShared {
   Client(
     String host, {
@@ -504,7 +513,7 @@ class Client extends _i1.ServerpodClientShared {
     bool? disconnectStreamsOnLostInternetConnection,
   }) : super(
           host,
-          _i8.Protocol(),
+          _i9.Protocol(),
           securityContext: securityContext,
           authenticationKeyManager: authenticationKeyManager,
           streamingConnectionTimeout: streamingConnectionTimeout,
@@ -519,6 +528,7 @@ class Client extends _i1.ServerpodClientShared {
     queueService = EndpointQueueService(this);
     queueWindow = EndpointQueueWindow(this);
     tokenIssued = EndpointTokenIssued(this);
+    modules = _Modules(this);
   }
 
   late final EndpointLogLogin logLogin;
@@ -531,6 +541,8 @@ class Client extends _i1.ServerpodClientShared {
 
   late final EndpointTokenIssued tokenIssued;
 
+  late final _Modules modules;
+
   @override
   Map<String, _i1.EndpointRef> get endpointRefLookup => {
         'logLogin': logLogin,
@@ -541,5 +553,6 @@ class Client extends _i1.ServerpodClientShared {
       };
 
   @override
-  Map<String, _i1.ModuleEndpointCaller> get moduleLookup => {};
+  Map<String, _i1.ModuleEndpointCaller> get moduleLookup =>
+      {'auth': modules.auth};
 }

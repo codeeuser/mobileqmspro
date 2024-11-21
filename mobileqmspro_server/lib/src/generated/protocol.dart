@@ -12,19 +12,20 @@ library protocol; // ignore_for_file: no_leading_underscores_for_library_prefixe
 
 import 'package:serverpod/serverpod.dart' as _i1;
 import 'package:serverpod/protocol.dart' as _i2;
-import 'count_token.dart' as _i3;
-import 'log_login.dart' as _i4;
-import 'membership_enum.dart' as _i5;
-import 'profile_user.dart' as _i6;
-import 'queue_service.dart' as _i7;
-import 'queue_window.dart' as _i8;
-import 'running_tokens.dart' as _i9;
-import 'token_issued.dart' as _i10;
-import 'protocol.dart' as _i11;
-import 'package:mobileqmspro_server/src/generated/log_login.dart' as _i12;
-import 'package:mobileqmspro_server/src/generated/queue_service.dart' as _i13;
-import 'package:mobileqmspro_server/src/generated/queue_window.dart' as _i14;
-import 'package:mobileqmspro_server/src/generated/token_issued.dart' as _i15;
+import 'package:serverpod_auth_server/serverpod_auth_server.dart' as _i3;
+import 'count_token.dart' as _i4;
+import 'log_login.dart' as _i5;
+import 'membership_enum.dart' as _i6;
+import 'profile_user.dart' as _i7;
+import 'queue_service.dart' as _i8;
+import 'queue_window.dart' as _i9;
+import 'running_tokens.dart' as _i10;
+import 'token_issued.dart' as _i11;
+import 'protocol.dart' as _i12;
+import 'package:mobileqmspro_server/src/generated/log_login.dart' as _i13;
+import 'package:mobileqmspro_server/src/generated/queue_service.dart' as _i14;
+import 'package:mobileqmspro_server/src/generated/queue_window.dart' as _i15;
+import 'package:mobileqmspro_server/src/generated/token_issued.dart' as _i16;
 export 'count_token.dart';
 export 'log_login.dart';
 export 'membership_enum.dart';
@@ -651,6 +652,7 @@ class Protocol extends _i1.SerializationManagerServer {
       ],
       managed: true,
     ),
+    ..._i3.Protocol.targetTableDefinitions,
     ..._i2.Protocol.targetTableDefinitions,
   ];
 
@@ -660,78 +662,81 @@ class Protocol extends _i1.SerializationManagerServer {
     Type? t,
   ]) {
     t ??= T;
-    if (t == _i3.CountToken) {
-      return _i3.CountToken.fromJson(data) as T;
+    if (t == _i4.CountToken) {
+      return _i4.CountToken.fromJson(data) as T;
     }
-    if (t == _i4.LogLogin) {
-      return _i4.LogLogin.fromJson(data) as T;
+    if (t == _i5.LogLogin) {
+      return _i5.LogLogin.fromJson(data) as T;
     }
-    if (t == _i5.Membership) {
-      return _i5.Membership.fromJson(data) as T;
+    if (t == _i6.Membership) {
+      return _i6.Membership.fromJson(data) as T;
     }
-    if (t == _i6.ProfileUser) {
-      return _i6.ProfileUser.fromJson(data) as T;
+    if (t == _i7.ProfileUser) {
+      return _i7.ProfileUser.fromJson(data) as T;
     }
-    if (t == _i7.QueueService) {
-      return _i7.QueueService.fromJson(data) as T;
+    if (t == _i8.QueueService) {
+      return _i8.QueueService.fromJson(data) as T;
     }
-    if (t == _i8.QueueWindow) {
-      return _i8.QueueWindow.fromJson(data) as T;
+    if (t == _i9.QueueWindow) {
+      return _i9.QueueWindow.fromJson(data) as T;
     }
-    if (t == _i9.RunningTokens) {
-      return _i9.RunningTokens.fromJson(data) as T;
+    if (t == _i10.RunningTokens) {
+      return _i10.RunningTokens.fromJson(data) as T;
     }
-    if (t == _i10.TokenIssued) {
-      return _i10.TokenIssued.fromJson(data) as T;
+    if (t == _i11.TokenIssued) {
+      return _i11.TokenIssued.fromJson(data) as T;
     }
-    if (t == _i1.getType<_i3.CountToken?>()) {
-      return (data != null ? _i3.CountToken.fromJson(data) : null) as T;
+    if (t == _i1.getType<_i4.CountToken?>()) {
+      return (data != null ? _i4.CountToken.fromJson(data) : null) as T;
     }
-    if (t == _i1.getType<_i4.LogLogin?>()) {
-      return (data != null ? _i4.LogLogin.fromJson(data) : null) as T;
+    if (t == _i1.getType<_i5.LogLogin?>()) {
+      return (data != null ? _i5.LogLogin.fromJson(data) : null) as T;
     }
-    if (t == _i1.getType<_i5.Membership?>()) {
-      return (data != null ? _i5.Membership.fromJson(data) : null) as T;
+    if (t == _i1.getType<_i6.Membership?>()) {
+      return (data != null ? _i6.Membership.fromJson(data) : null) as T;
     }
-    if (t == _i1.getType<_i6.ProfileUser?>()) {
-      return (data != null ? _i6.ProfileUser.fromJson(data) : null) as T;
+    if (t == _i1.getType<_i7.ProfileUser?>()) {
+      return (data != null ? _i7.ProfileUser.fromJson(data) : null) as T;
     }
-    if (t == _i1.getType<_i7.QueueService?>()) {
-      return (data != null ? _i7.QueueService.fromJson(data) : null) as T;
+    if (t == _i1.getType<_i8.QueueService?>()) {
+      return (data != null ? _i8.QueueService.fromJson(data) : null) as T;
     }
-    if (t == _i1.getType<_i8.QueueWindow?>()) {
-      return (data != null ? _i8.QueueWindow.fromJson(data) : null) as T;
+    if (t == _i1.getType<_i9.QueueWindow?>()) {
+      return (data != null ? _i9.QueueWindow.fromJson(data) : null) as T;
     }
-    if (t == _i1.getType<_i9.RunningTokens?>()) {
-      return (data != null ? _i9.RunningTokens.fromJson(data) : null) as T;
+    if (t == _i1.getType<_i10.RunningTokens?>()) {
+      return (data != null ? _i10.RunningTokens.fromJson(data) : null) as T;
     }
-    if (t == _i1.getType<_i10.TokenIssued?>()) {
-      return (data != null ? _i10.TokenIssued.fromJson(data) : null) as T;
+    if (t == _i1.getType<_i11.TokenIssued?>()) {
+      return (data != null ? _i11.TokenIssued.fromJson(data) : null) as T;
     }
-    if (t == _i1.getType<List<_i11.TokenIssued>?>()) {
+    if (t == _i1.getType<List<_i12.TokenIssued>?>()) {
       return (data != null
-          ? (data as List).map((e) => deserialize<_i11.TokenIssued>(e)).toList()
+          ? (data as List).map((e) => deserialize<_i12.TokenIssued>(e)).toList()
           : null) as dynamic;
     }
-    if (t == List<_i12.LogLogin>) {
-      return (data as List).map((e) => deserialize<_i12.LogLogin>(e)).toList()
+    if (t == List<_i13.LogLogin>) {
+      return (data as List).map((e) => deserialize<_i13.LogLogin>(e)).toList()
           as dynamic;
     }
-    if (t == List<_i13.QueueService>) {
+    if (t == List<_i14.QueueService>) {
       return (data as List)
-          .map((e) => deserialize<_i13.QueueService>(e))
+          .map((e) => deserialize<_i14.QueueService>(e))
           .toList() as dynamic;
     }
-    if (t == List<_i14.QueueWindow>) {
+    if (t == List<_i15.QueueWindow>) {
       return (data as List)
-          .map((e) => deserialize<_i14.QueueWindow>(e))
+          .map((e) => deserialize<_i15.QueueWindow>(e))
           .toList() as dynamic;
     }
-    if (t == List<_i15.TokenIssued>) {
+    if (t == List<_i16.TokenIssued>) {
       return (data as List)
-          .map((e) => deserialize<_i15.TokenIssued>(e))
+          .map((e) => deserialize<_i16.TokenIssued>(e))
           .toList() as dynamic;
     }
+    try {
+      return _i3.Protocol().deserialize<T>(data, t);
+    } on _i1.DeserializationTypeNotFoundException catch (_) {}
     try {
       return _i2.Protocol().deserialize<T>(data, t);
     } on _i1.DeserializationTypeNotFoundException catch (_) {}
@@ -742,33 +747,37 @@ class Protocol extends _i1.SerializationManagerServer {
   String? getClassNameForObject(Object? data) {
     String? className = super.getClassNameForObject(data);
     if (className != null) return className;
-    if (data is _i3.CountToken) {
+    if (data is _i4.CountToken) {
       return 'CountToken';
     }
-    if (data is _i4.LogLogin) {
+    if (data is _i5.LogLogin) {
       return 'LogLogin';
     }
-    if (data is _i5.Membership) {
+    if (data is _i6.Membership) {
       return 'Membership';
     }
-    if (data is _i6.ProfileUser) {
+    if (data is _i7.ProfileUser) {
       return 'ProfileUser';
     }
-    if (data is _i7.QueueService) {
+    if (data is _i8.QueueService) {
       return 'QueueService';
     }
-    if (data is _i8.QueueWindow) {
+    if (data is _i9.QueueWindow) {
       return 'QueueWindow';
     }
-    if (data is _i9.RunningTokens) {
+    if (data is _i10.RunningTokens) {
       return 'RunningTokens';
     }
-    if (data is _i10.TokenIssued) {
+    if (data is _i11.TokenIssued) {
       return 'TokenIssued';
     }
     className = _i2.Protocol().getClassNameForObject(data);
     if (className != null) {
       return 'serverpod.$className';
+    }
+    className = _i3.Protocol().getClassNameForObject(data);
+    if (className != null) {
+      return 'serverpod_auth.$className';
     }
     return null;
   }
@@ -776,32 +785,36 @@ class Protocol extends _i1.SerializationManagerServer {
   @override
   dynamic deserializeByClassName(Map<String, dynamic> data) {
     if (data['className'] == 'CountToken') {
-      return deserialize<_i3.CountToken>(data['data']);
+      return deserialize<_i4.CountToken>(data['data']);
     }
     if (data['className'] == 'LogLogin') {
-      return deserialize<_i4.LogLogin>(data['data']);
+      return deserialize<_i5.LogLogin>(data['data']);
     }
     if (data['className'] == 'Membership') {
-      return deserialize<_i5.Membership>(data['data']);
+      return deserialize<_i6.Membership>(data['data']);
     }
     if (data['className'] == 'ProfileUser') {
-      return deserialize<_i6.ProfileUser>(data['data']);
+      return deserialize<_i7.ProfileUser>(data['data']);
     }
     if (data['className'] == 'QueueService') {
-      return deserialize<_i7.QueueService>(data['data']);
+      return deserialize<_i8.QueueService>(data['data']);
     }
     if (data['className'] == 'QueueWindow') {
-      return deserialize<_i8.QueueWindow>(data['data']);
+      return deserialize<_i9.QueueWindow>(data['data']);
     }
     if (data['className'] == 'RunningTokens') {
-      return deserialize<_i9.RunningTokens>(data['data']);
+      return deserialize<_i10.RunningTokens>(data['data']);
     }
     if (data['className'] == 'TokenIssued') {
-      return deserialize<_i10.TokenIssued>(data['data']);
+      return deserialize<_i11.TokenIssued>(data['data']);
     }
     if (data['className'].startsWith('serverpod.')) {
       data['className'] = data['className'].substring(10);
       return _i2.Protocol().deserializeByClassName(data);
+    }
+    if (data['className'].startsWith('serverpod_auth.')) {
+      data['className'] = data['className'].substring(15);
+      return _i3.Protocol().deserializeByClassName(data);
     }
     return super.deserializeByClassName(data);
   }
@@ -809,22 +822,28 @@ class Protocol extends _i1.SerializationManagerServer {
   @override
   _i1.Table? getTableForType(Type t) {
     {
+      var table = _i3.Protocol().getTableForType(t);
+      if (table != null) {
+        return table;
+      }
+    }
+    {
       var table = _i2.Protocol().getTableForType(t);
       if (table != null) {
         return table;
       }
     }
     switch (t) {
-      case _i4.LogLogin:
-        return _i4.LogLogin.t;
-      case _i6.ProfileUser:
-        return _i6.ProfileUser.t;
-      case _i7.QueueService:
-        return _i7.QueueService.t;
-      case _i8.QueueWindow:
-        return _i8.QueueWindow.t;
-      case _i10.TokenIssued:
-        return _i10.TokenIssued.t;
+      case _i5.LogLogin:
+        return _i5.LogLogin.t;
+      case _i7.ProfileUser:
+        return _i7.ProfileUser.t;
+      case _i8.QueueService:
+        return _i8.QueueService.t;
+      case _i9.QueueWindow:
+        return _i9.QueueWindow.t;
+      case _i11.TokenIssued:
+        return _i11.TokenIssued.t;
     }
     return null;
   }

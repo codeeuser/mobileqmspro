@@ -5,6 +5,7 @@ import 'package:mailer/mailer.dart';
 import 'package:mailer/smtp_server.dart';
 import 'package:mobileqmspro_server/src/generated/protocol.dart';
 import 'package:serverpod/serverpod.dart';
+import 'package:serverpod_auth_server/serverpod_auth_server.dart';
 import 'package:yaml/yaml.dart';
 
 class ProfileUserEndpoint extends Endpoint {
@@ -59,6 +60,25 @@ class ProfileUserEndpoint extends Endpoint {
 
   Future<void> delete(Session session, ProfileUser profileUser) async {
     await ProfileUser.db.deleteRow(session, profileUser);
+    var rows = await UserInfo.db
+        .find(session, where: (t) => t.email.equals(profileUser.email));
+
+    await EmailCreateAccountRequest.db
+        .deleteWhere(session, where: (t) => t.email.equals(profileUser.email));
+    await EmailAuth.db.deleteWhere(
+      session,
+      where: (t) => t.email.equals(profileUser.email),
+    );
+    for (var row in rows) {
+      await UserImage.db.deleteWhere(
+        session,
+        where: (t) => t.userId.equals(row.id),
+      );
+    }
+    await UserInfo.db.deleteWhere(
+      session,
+      where: (t) => t.email.equals(profileUser.email),
+    );
   }
 
   String _randomDigit(int numberOfDigit) {

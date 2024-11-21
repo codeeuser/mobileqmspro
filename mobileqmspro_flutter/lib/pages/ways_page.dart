@@ -79,7 +79,9 @@ class _WaysPageState extends State<WaysPage> {
 
   Widget _buildContent() {
     final email = widget.prefs.getString(Prefs.windowEmail);
-    if (email == null) {
+    bool isSignedIn = sessionManager.isSignedIn;
+    Logger.log(tag, message: 'isSignedIn: $isSignedIn');
+    if (email == null || isSignedIn == false) {
       return WizardLanguage(prefs: widget.prefs);
     }
     return FutureBuilder(
