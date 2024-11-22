@@ -111,7 +111,11 @@ class _TokenNumPageState extends State<TokenNumPage> {
                             tokenIssued.tokenLetter,
                             tokenIssued.tokenNumber);
                         if (text != null) {
-                          await Utils.sendMessage(text, [phone]);
+                          final result = await Utils.sendMessage(text, [phone]);
+                          if (result == null) {
+                            Utils.overlayInfoMessage(
+                                msg: S.of(context).noAction);
+                          }
                         } else {
                           Utils.overlayInfoMessage(msg: S.of(context).noAction);
                         }
@@ -182,7 +186,13 @@ class _TokenNumPageState extends State<TokenNumPage> {
                         tokenIssued.tokenLetter,
                         tokenIssued.tokenNumber);
                     if (text != null) {
-                      await Share.share(text, subject: 'Token Info');
+                      final box = context.findRenderObject() as RenderBox?;
+                      await Share.share(text,
+                          subject: 'Token Info',
+                          sharePositionOrigin:
+                              (Utils.isPhoneSize(context) == false)
+                                  ? box!.localToGlobal(Offset.zero) & box.size
+                                  : null);
                     } else {
                       Utils.overlayInfoMessage(msg: S.of(context).noAction);
                     }
