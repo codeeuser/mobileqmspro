@@ -16,6 +16,7 @@ import 'package:mobileqmspro_client/mobileqmspro_client.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:provider/provider.dart';
 import 'package:serverpod_auth_email_flutter/serverpod_auth_email_flutter.dart';
+import 'package:serverpod_auth_google_flutter/serverpod_auth_google_flutter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class WizardDemo extends StatefulWidget {
@@ -107,33 +108,20 @@ class _WizardDemoState extends State<WizardDemo> {
           ),
           const SizedBox(height: 20),
           SignInWithEmailButton(
+              caller: client.modules.auth,
+              minPasswordLength: 8,
+              onSignedIn: () async {
+                await _onSignedIn();
+              }),
+          const SizedBox(height: 20),
+          SignInWithGoogleButton(
             caller: client.modules.auth,
-            minPasswordLength: 8,
+            redirectUri: Uri.parse('https://wheref.com/mobileqmspro.php'),
             onSignedIn: () async {
-              final userInfo = sessionManager.signedInUser;
-              final email = userInfo?.email;
-              if (userInfo == null || email == null) {
-                Utils.overlayInfoMessage(msg: S.of(context).noAction);
-                return;
-              }
-              // login
-              ProfileUser? profileUser = await client.profileUser.login(email);
-              Logger.log(tag, message: 'email: $email');
-              await _createDemoProject(profileUser);
-              await _logLogin(profileUser.id);
-              final profileUserUpdate = await _updateProfileUser(profileUser);
-
-              AppProfile appProfile = context.read<AppProfile>();
-              appProfile.profileUser = profileUserUpdate;
-              await widget.prefs.setString(Prefs.windowEmail, email);
-
-              Utils.pushPage(
-                  context,
-                  WaysPage(
-                    key: const ValueKey('ways-page'),
-                    prefs: widget.prefs,
-                  ),
-                  'PasscodePage');
+              await _onSignedIn();
+            },
+            onFailure: () {
+              Logger.log(tag, message: 'SignInWithGoogleButton onFailure---');
             },
           ),
           const SizedBox(height: 60),
@@ -270,5 +258,33 @@ class _WizardDemoState extends State<WizardDemo> {
       }
     }
     return false;
+  }
+
+  Future<void> _onSignedIn() async {
+    final userInfo = sessionManager.signedInUser;
+    final email = userInfo?.email;
+    Logger.log(tag, message: 'userInfo: $userInfo');
+    if (userInfo == null || email == null) {
+      Utils.overlayInfoMessage(msg: S.of(context).noAction);
+      return;
+    }
+    // login
+    ProfileUser? profileUser = await client.profileUser.login(email);
+    Logger.log(tag, message: 'email: $email');
+    await _createDemoProject(profileUser);
+    await _logLogin(profileUser.id);
+    final profileUserUpdate = await _updateProfileUser(profileUser);
+
+    AppProfile appProfile = context.read<AppProfile>();
+    appProfile.profileUser = profileUserUpdate;
+    await widget.prefs.setString(Prefs.windowEmail, email);
+
+    Utils.pushPage(
+        context,
+        WaysPage(
+          key: const ValueKey('ways-page'),
+          prefs: widget.prefs,
+        ),
+        'PasscodePage');
   }
 }
