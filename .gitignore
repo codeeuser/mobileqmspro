@@ -3,3 +3,4 @@ helper.txt
 pubspec.lock
 *.sql
 *.json
+*.zip
