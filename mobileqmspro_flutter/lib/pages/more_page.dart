@@ -274,7 +274,7 @@ class _MorePageState extends State<MorePage> {
                       await client.profileUser.delete(profileUser);
                       appProfile.profileUser = null;
                       await widget.prefs.clear();
-                      await sessionManager.signOut();
+                      await sessionManager.signOutDevice();
                       Utils.pushPage(
                           context,
                           WaysPage(
@@ -334,7 +334,7 @@ class _MorePageState extends State<MorePage> {
                     appProfile.profileUser = null;
                     Constant.sendTestException = false;
                     await widget.prefs.clear();
-                    await sessionManager.signOut();
+                    await sessionManager.signOutDevice();
                     Utils.pushPage(
                         context,
                         WaysPage(

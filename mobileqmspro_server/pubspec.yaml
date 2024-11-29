@@ -9,14 +9,14 @@ environment:
 dependencies:
   mailer: ^6.2.0
   yaml: ^3.1.2
-  serverpod: 2.1.5
-  serverpod_auth_server: 2.1.5
+  serverpod: 2.2.0
+  serverpod_auth_server: 2.2.0
 
 dev_dependencies:
   lints: '>=3.0.0 <6.0.0'
 
 dependency_overrides:
   serverpod:
-    path: ../../serverpod-version-2.1.5/packages/serverpod
+    path: ../../serverpod-2.2.0/packages/serverpod
   serverpod_auth_server:
-      path: ../../serverpod-version-2.1.5/modules/serverpod_auth/serverpod_auth_server
+      path: ../../serverpod-2.2.0/modules/serverpod_auth/serverpod_auth_server
