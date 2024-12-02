@@ -8,11 +8,9 @@
 // ignore_for_file: type_literal_in_constant_pattern
 // ignore_for_file: use_super_parameters
 
-// ignore_for_file: invalid_use_of_visible_for_testing_member
-
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:serverpod/serverpod.dart' as _i1;
-import 'protocol.dart' as _i2;
+import 'profile_user.dart' as _i2;
 
 abstract class LogLogin implements _i1.TableRow, _i1.ProtocolSerialization {
   LogLogin._({
@@ -386,7 +384,7 @@ class LogLoginRepository {
       orderDescending: orderDescending,
       limit: limit,
       offset: offset,
-      transaction: transaction ?? session.transaction,
+      transaction: transaction,
       include: include,
     );
   }
@@ -407,7 +405,7 @@ class LogLoginRepository {
       orderByList: orderByList?.call(LogLogin.t),
       orderDescending: orderDescending,
       offset: offset,
-      transaction: transaction ?? session.transaction,
+      transaction: transaction,
       include: include,
     );
   }
@@ -420,7 +418,7 @@ class LogLoginRepository {
   }) async {
     return session.db.findById<LogLogin>(
       id,
-      transaction: transaction ?? session.transaction,
+      transaction: transaction,
       include: include,
     );
   }
@@ -432,7 +430,7 @@ class LogLoginRepository {
   }) async {
     return session.db.insert<LogLogin>(
       rows,
-      transaction: transaction ?? session.transaction,
+      transaction: transaction,
     );
   }
 
@@ -443,7 +441,7 @@ class LogLoginRepository {
   }) async {
     return session.db.insertRow<LogLogin>(
       row,
-      transaction: transaction ?? session.transaction,
+      transaction: transaction,
     );
   }
 
@@ -456,7 +454,7 @@ class LogLoginRepository {
     return session.db.update<LogLogin>(
       rows,
       columns: columns?.call(LogLogin.t),
-      transaction: transaction ?? session.transaction,
+      transaction: transaction,
     );
   }
 
@@ -469,7 +467,7 @@ class LogLoginRepository {
     return session.db.updateRow<LogLogin>(
       row,
       columns: columns?.call(LogLogin.t),
-      transaction: transaction ?? session.transaction,
+      transaction: transaction,
     );
   }
 
@@ -480,7 +478,7 @@ class LogLoginRepository {
   }) async {
     return session.db.delete<LogLogin>(
       rows,
-      transaction: transaction ?? session.transaction,
+      transaction: transaction,
     );
   }
 
@@ -491,7 +489,7 @@ class LogLoginRepository {
   }) async {
     return session.db.deleteRow<LogLogin>(
       row,
-      transaction: transaction ?? session.transaction,
+      transaction: transaction,
     );
   }
 
@@ -502,7 +500,7 @@ class LogLoginRepository {
   }) async {
     return session.db.deleteWhere<LogLogin>(
       where: where(LogLogin.t),
-      transaction: transaction ?? session.transaction,
+      transaction: transaction,
     );
   }
 
@@ -515,7 +513,7 @@ class LogLoginRepository {
     return session.db.count<LogLogin>(
       where: where?.call(LogLogin.t),
       limit: limit,
-      transaction: transaction ?? session.transaction,
+      transaction: transaction,
     );
   }
 }
@@ -540,7 +538,7 @@ class LogLoginAttachRowRepository {
     await session.db.updateRow<LogLogin>(
       $logLogin,
       columns: [LogLogin.t.profileUserId],
-      transaction: transaction ?? session.transaction,
+      transaction: transaction,
     );
   }
 }

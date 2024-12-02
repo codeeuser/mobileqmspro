@@ -8,8 +8,7 @@
 // ignore_for_file: type_literal_in_constant_pattern
 // ignore_for_file: use_super_parameters
 
-library protocol; // ignore_for_file: no_leading_underscores_for_library_prefixes
-
+// ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:serverpod/serverpod.dart' as _i1;
 import 'package:serverpod/protocol.dart' as _i2;
 import 'package:serverpod_auth_server/serverpod_auth_server.dart' as _i3;
@@ -21,11 +20,10 @@ import 'queue_service.dart' as _i8;
 import 'queue_window.dart' as _i9;
 import 'running_tokens.dart' as _i10;
 import 'token_issued.dart' as _i11;
-import 'protocol.dart' as _i12;
-import 'package:mobileqmspro_server/src/generated/log_login.dart' as _i13;
-import 'package:mobileqmspro_server/src/generated/queue_service.dart' as _i14;
-import 'package:mobileqmspro_server/src/generated/queue_window.dart' as _i15;
-import 'package:mobileqmspro_server/src/generated/token_issued.dart' as _i16;
+import 'package:mobileqmspro_server/src/generated/log_login.dart' as _i12;
+import 'package:mobileqmspro_server/src/generated/queue_service.dart' as _i13;
+import 'package:mobileqmspro_server/src/generated/queue_window.dart' as _i14;
+import 'package:mobileqmspro_server/src/generated/token_issued.dart' as _i15;
 export 'count_token.dart';
 export 'log_login.dart';
 export 'membership_enum.dart';
@@ -710,28 +708,28 @@ class Protocol extends _i1.SerializationManagerServer {
     if (t == _i1.getType<_i11.TokenIssued?>()) {
       return (data != null ? _i11.TokenIssued.fromJson(data) : null) as T;
     }
-    if (t == _i1.getType<List<_i12.TokenIssued>?>()) {
+    if (t == _i1.getType<List<_i11.TokenIssued>?>()) {
       return (data != null
-          ? (data as List).map((e) => deserialize<_i12.TokenIssued>(e)).toList()
+          ? (data as List).map((e) => deserialize<_i11.TokenIssued>(e)).toList()
           : null) as dynamic;
     }
-    if (t == List<_i13.LogLogin>) {
-      return (data as List).map((e) => deserialize<_i13.LogLogin>(e)).toList()
+    if (t == List<_i12.LogLogin>) {
+      return (data as List).map((e) => deserialize<_i12.LogLogin>(e)).toList()
           as dynamic;
     }
-    if (t == List<_i14.QueueService>) {
+    if (t == List<_i13.QueueService>) {
       return (data as List)
-          .map((e) => deserialize<_i14.QueueService>(e))
+          .map((e) => deserialize<_i13.QueueService>(e))
           .toList() as dynamic;
     }
-    if (t == List<_i15.QueueWindow>) {
+    if (t == List<_i14.QueueWindow>) {
       return (data as List)
-          .map((e) => deserialize<_i15.QueueWindow>(e))
+          .map((e) => deserialize<_i14.QueueWindow>(e))
           .toList() as dynamic;
     }
-    if (t == List<_i16.TokenIssued>) {
+    if (t == List<_i15.TokenIssued>) {
       return (data as List)
-          .map((e) => deserialize<_i16.TokenIssued>(e))
+          .map((e) => deserialize<_i15.TokenIssued>(e))
           .toList() as dynamic;
     }
     try {
@@ -784,36 +782,40 @@ class Protocol extends _i1.SerializationManagerServer {
 
   @override
   dynamic deserializeByClassName(Map<String, dynamic> data) {
-    if (data['className'] == 'CountToken') {
+    var dataClassName = data['className'];
+    if (dataClassName is! String) {
+      return super.deserializeByClassName(data);
+    }
+    if (dataClassName == 'CountToken') {
       return deserialize<_i4.CountToken>(data['data']);
     }
-    if (data['className'] == 'LogLogin') {
+    if (dataClassName == 'LogLogin') {
       return deserialize<_i5.LogLogin>(data['data']);
     }
-    if (data['className'] == 'Membership') {
+    if (dataClassName == 'Membership') {
       return deserialize<_i6.Membership>(data['data']);
     }
-    if (data['className'] == 'ProfileUser') {
+    if (dataClassName == 'ProfileUser') {
       return deserialize<_i7.ProfileUser>(data['data']);
     }
-    if (data['className'] == 'QueueService') {
+    if (dataClassName == 'QueueService') {
       return deserialize<_i8.QueueService>(data['data']);
     }
-    if (data['className'] == 'QueueWindow') {
+    if (dataClassName == 'QueueWindow') {
       return deserialize<_i9.QueueWindow>(data['data']);
     }
-    if (data['className'] == 'RunningTokens') {
+    if (dataClassName == 'RunningTokens') {
       return deserialize<_i10.RunningTokens>(data['data']);
     }
-    if (data['className'] == 'TokenIssued') {
+    if (dataClassName == 'TokenIssued') {
       return deserialize<_i11.TokenIssued>(data['data']);
     }
-    if (data['className'].startsWith('serverpod.')) {
-      data['className'] = data['className'].substring(10);
+    if (dataClassName.startsWith('serverpod.')) {
+      data['className'] = dataClassName.substring(10);
       return _i2.Protocol().deserializeByClassName(data);
     }
-    if (data['className'].startsWith('serverpod_auth.')) {
-      data['className'] = data['className'].substring(15);
+    if (dataClassName.startsWith('serverpod_auth.')) {
+      data['className'] = dataClassName.substring(15);
       return _i3.Protocol().deserializeByClassName(data);
     }
     return super.deserializeByClassName(data);

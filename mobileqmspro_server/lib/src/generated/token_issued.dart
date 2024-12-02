@@ -8,11 +8,11 @@
 // ignore_for_file: type_literal_in_constant_pattern
 // ignore_for_file: use_super_parameters
 
-// ignore_for_file: invalid_use_of_visible_for_testing_member
-
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:serverpod/serverpod.dart' as _i1;
-import 'protocol.dart' as _i2;
+import 'queue_window.dart' as _i2;
+import 'queue_service.dart' as _i3;
+import 'profile_user.dart' as _i4;
 
 abstract class TokenIssued implements _i1.TableRow, _i1.ProtocolSerialization {
   TokenIssued._({
@@ -56,9 +56,9 @@ abstract class TokenIssued implements _i1.TableRow, _i1.ProtocolSerialization {
     required int queueWindowId,
     _i2.QueueWindow? queueWindow,
     required int queueServiceId,
-    _i2.QueueService? queueService,
+    _i3.QueueService? queueService,
     required int profileUserId,
-    _i2.ProfileUser? profileUser,
+    _i4.ProfileUser? profileUser,
   }) = _TokenIssuedImpl;
 
   factory TokenIssued.fromJson(Map<String, dynamic> jsonSerialization) {
@@ -92,12 +92,12 @@ abstract class TokenIssued implements _i1.TableRow, _i1.ProtocolSerialization {
       queueServiceId: jsonSerialization['queueServiceId'] as int,
       queueService: jsonSerialization['queueService'] == null
           ? null
-          : _i2.QueueService.fromJson(
+          : _i3.QueueService.fromJson(
               (jsonSerialization['queueService'] as Map<String, dynamic>)),
       profileUserId: jsonSerialization['profileUserId'] as int,
       profileUser: jsonSerialization['profileUser'] == null
           ? null
-          : _i2.ProfileUser.fromJson(
+          : _i4.ProfileUser.fromJson(
               (jsonSerialization['profileUser'] as Map<String, dynamic>)),
     );
   }
@@ -141,11 +141,11 @@ abstract class TokenIssued implements _i1.TableRow, _i1.ProtocolSerialization {
 
   int queueServiceId;
 
-  _i2.QueueService? queueService;
+  _i3.QueueService? queueService;
 
   int profileUserId;
 
-  _i2.ProfileUser? profileUser;
+  _i4.ProfileUser? profileUser;
 
   @override
   _i1.Table get table => t;
@@ -168,9 +168,9 @@ abstract class TokenIssued implements _i1.TableRow, _i1.ProtocolSerialization {
     int? queueWindowId,
     _i2.QueueWindow? queueWindow,
     int? queueServiceId,
-    _i2.QueueService? queueService,
+    _i3.QueueService? queueService,
     int? profileUserId,
-    _i2.ProfileUser? profileUser,
+    _i4.ProfileUser? profileUser,
   });
   @override
   Map<String, dynamic> toJson() {
@@ -227,8 +227,8 @@ abstract class TokenIssued implements _i1.TableRow, _i1.ProtocolSerialization {
 
   static TokenIssuedInclude include({
     _i2.QueueWindowInclude? queueWindow,
-    _i2.QueueServiceInclude? queueService,
-    _i2.ProfileUserInclude? profileUser,
+    _i3.QueueServiceInclude? queueService,
+    _i4.ProfileUserInclude? profileUser,
   }) {
     return TokenIssuedInclude._(
       queueWindow: queueWindow,
@@ -284,9 +284,9 @@ class _TokenIssuedImpl extends TokenIssued {
     required int queueWindowId,
     _i2.QueueWindow? queueWindow,
     required int queueServiceId,
-    _i2.QueueService? queueService,
+    _i3.QueueService? queueService,
     required int profileUserId,
-    _i2.ProfileUser? profileUser,
+    _i4.ProfileUser? profileUser,
   }) : super._(
           id: id,
           tokenLetter: tokenLetter,
@@ -355,11 +355,11 @@ class _TokenIssuedImpl extends TokenIssued {
           ? queueWindow
           : this.queueWindow?.copyWith(),
       queueServiceId: queueServiceId ?? this.queueServiceId,
-      queueService: queueService is _i2.QueueService?
+      queueService: queueService is _i3.QueueService?
           ? queueService
           : this.queueService?.copyWith(),
       profileUserId: profileUserId ?? this.profileUserId,
-      profileUser: profileUser is _i2.ProfileUser?
+      profileUser: profileUser is _i4.ProfileUser?
           ? profileUser
           : this.profileUser?.copyWith(),
     );
@@ -466,11 +466,11 @@ class TokenIssuedTable extends _i1.Table {
 
   late final _i1.ColumnInt queueServiceId;
 
-  _i2.QueueServiceTable? _queueService;
+  _i3.QueueServiceTable? _queueService;
 
   late final _i1.ColumnInt profileUserId;
 
-  _i2.ProfileUserTable? _profileUser;
+  _i4.ProfileUserTable? _profileUser;
 
   _i2.QueueWindowTable get queueWindow {
     if (_queueWindow != null) return _queueWindow!;
@@ -485,28 +485,28 @@ class TokenIssuedTable extends _i1.Table {
     return _queueWindow!;
   }
 
-  _i2.QueueServiceTable get queueService {
+  _i3.QueueServiceTable get queueService {
     if (_queueService != null) return _queueService!;
     _queueService = _i1.createRelationTable(
       relationFieldName: 'queueService',
       field: TokenIssued.t.queueServiceId,
-      foreignField: _i2.QueueService.t.id,
+      foreignField: _i3.QueueService.t.id,
       tableRelation: tableRelation,
       createTable: (foreignTableRelation) =>
-          _i2.QueueServiceTable(tableRelation: foreignTableRelation),
+          _i3.QueueServiceTable(tableRelation: foreignTableRelation),
     );
     return _queueService!;
   }
 
-  _i2.ProfileUserTable get profileUser {
+  _i4.ProfileUserTable get profileUser {
     if (_profileUser != null) return _profileUser!;
     _profileUser = _i1.createRelationTable(
       relationFieldName: 'profileUser',
       field: TokenIssued.t.profileUserId,
-      foreignField: _i2.ProfileUser.t.id,
+      foreignField: _i4.ProfileUser.t.id,
       tableRelation: tableRelation,
       createTable: (foreignTableRelation) =>
-          _i2.ProfileUserTable(tableRelation: foreignTableRelation),
+          _i4.ProfileUserTable(tableRelation: foreignTableRelation),
     );
     return _profileUser!;
   }
@@ -550,8 +550,8 @@ class TokenIssuedTable extends _i1.Table {
 class TokenIssuedInclude extends _i1.IncludeObject {
   TokenIssuedInclude._({
     _i2.QueueWindowInclude? queueWindow,
-    _i2.QueueServiceInclude? queueService,
-    _i2.ProfileUserInclude? profileUser,
+    _i3.QueueServiceInclude? queueService,
+    _i4.ProfileUserInclude? profileUser,
   }) {
     _queueWindow = queueWindow;
     _queueService = queueService;
@@ -560,9 +560,9 @@ class TokenIssuedInclude extends _i1.IncludeObject {
 
   _i2.QueueWindowInclude? _queueWindow;
 
-  _i2.QueueServiceInclude? _queueService;
+  _i3.QueueServiceInclude? _queueService;
 
-  _i2.ProfileUserInclude? _profileUser;
+  _i4.ProfileUserInclude? _profileUser;
 
   @override
   Map<String, _i1.Include?> get includes => {
@@ -618,7 +618,7 @@ class TokenIssuedRepository {
       orderDescending: orderDescending,
       limit: limit,
       offset: offset,
-      transaction: transaction ?? session.transaction,
+      transaction: transaction,
       include: include,
     );
   }
@@ -639,7 +639,7 @@ class TokenIssuedRepository {
       orderByList: orderByList?.call(TokenIssued.t),
       orderDescending: orderDescending,
       offset: offset,
-      transaction: transaction ?? session.transaction,
+      transaction: transaction,
       include: include,
     );
   }
@@ -652,7 +652,7 @@ class TokenIssuedRepository {
   }) async {
     return session.db.findById<TokenIssued>(
       id,
-      transaction: transaction ?? session.transaction,
+      transaction: transaction,
       include: include,
     );
   }
@@ -664,7 +664,7 @@ class TokenIssuedRepository {
   }) async {
     return session.db.insert<TokenIssued>(
       rows,
-      transaction: transaction ?? session.transaction,
+      transaction: transaction,
     );
   }
 
@@ -675,7 +675,7 @@ class TokenIssuedRepository {
   }) async {
     return session.db.insertRow<TokenIssued>(
       row,
-      transaction: transaction ?? session.transaction,
+      transaction: transaction,
     );
   }
 
@@ -688,7 +688,7 @@ class TokenIssuedRepository {
     return session.db.update<TokenIssued>(
       rows,
       columns: columns?.call(TokenIssued.t),
-      transaction: transaction ?? session.transaction,
+      transaction: transaction,
     );
   }
 
@@ -701,7 +701,7 @@ class TokenIssuedRepository {
     return session.db.updateRow<TokenIssued>(
       row,
       columns: columns?.call(TokenIssued.t),
-      transaction: transaction ?? session.transaction,
+      transaction: transaction,
     );
   }
 
@@ -712,7 +712,7 @@ class TokenIssuedRepository {
   }) async {
     return session.db.delete<TokenIssued>(
       rows,
-      transaction: transaction ?? session.transaction,
+      transaction: transaction,
     );
   }
 
@@ -723,7 +723,7 @@ class TokenIssuedRepository {
   }) async {
     return session.db.deleteRow<TokenIssued>(
       row,
-      transaction: transaction ?? session.transaction,
+      transaction: transaction,
     );
   }
 
@@ -734,7 +734,7 @@ class TokenIssuedRepository {
   }) async {
     return session.db.deleteWhere<TokenIssued>(
       where: where(TokenIssued.t),
-      transaction: transaction ?? session.transaction,
+      transaction: transaction,
     );
   }
 
@@ -747,7 +747,7 @@ class TokenIssuedRepository {
     return session.db.count<TokenIssued>(
       where: where?.call(TokenIssued.t),
       limit: limit,
-      transaction: transaction ?? session.transaction,
+      transaction: transaction,
     );
   }
 }
@@ -772,14 +772,14 @@ class TokenIssuedAttachRowRepository {
     await session.db.updateRow<TokenIssued>(
       $tokenIssued,
       columns: [TokenIssued.t.queueWindowId],
-      transaction: transaction ?? session.transaction,
+      transaction: transaction,
     );
   }
 
   Future<void> queueService(
     _i1.Session session,
     TokenIssued tokenIssued,
-    _i2.QueueService queueService, {
+    _i3.QueueService queueService, {
     _i1.Transaction? transaction,
   }) async {
     if (tokenIssued.id == null) {
@@ -793,14 +793,14 @@ class TokenIssuedAttachRowRepository {
     await session.db.updateRow<TokenIssued>(
       $tokenIssued,
       columns: [TokenIssued.t.queueServiceId],
-      transaction: transaction ?? session.transaction,
+      transaction: transaction,
     );
   }
 
   Future<void> profileUser(
     _i1.Session session,
     TokenIssued tokenIssued,
-    _i2.ProfileUser profileUser, {
+    _i4.ProfileUser profileUser, {
     _i1.Transaction? transaction,
   }) async {
     if (tokenIssued.id == null) {
@@ -814,7 +814,7 @@ class TokenIssuedAttachRowRepository {
     await session.db.updateRow<TokenIssued>(
       $tokenIssued,
       columns: [TokenIssued.t.profileUserId],
-      transaction: transaction ?? session.transaction,
+      transaction: transaction,
     );
   }
 }

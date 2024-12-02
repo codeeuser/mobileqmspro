@@ -489,8 +489,8 @@ class EndpointTokenIssued extends _i1.EndpointRef {
       );
 }
 
-class _Modules {
-  _Modules(Client client) {
+class Modules {
+  Modules(Client client) {
     auth = _i8.Caller(client);
   }
 
@@ -528,7 +528,7 @@ class Client extends _i1.ServerpodClientShared {
     queueService = EndpointQueueService(this);
     queueWindow = EndpointQueueWindow(this);
     tokenIssued = EndpointTokenIssued(this);
-    modules = _Modules(this);
+    modules = Modules(this);
   }
 
   late final EndpointLogLogin logLogin;
@@ -541,7 +541,7 @@ class Client extends _i1.ServerpodClientShared {
 
   late final EndpointTokenIssued tokenIssued;
 
-  late final _Modules modules;
+  late final Modules modules;
 
   @override
   Map<String, _i1.EndpointRef> get endpointRefLookup => {

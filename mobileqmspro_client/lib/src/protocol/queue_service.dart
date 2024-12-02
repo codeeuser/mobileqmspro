@@ -10,7 +10,8 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:serverpod_client/serverpod_client.dart' as _i1;
-import 'protocol.dart' as _i2;
+import 'queue_window.dart' as _i2;
+import 'profile_user.dart' as _i3;
 
 abstract class QueueService implements _i1.SerializableModel {
   QueueService._({
@@ -40,7 +41,7 @@ abstract class QueueService implements _i1.SerializableModel {
     required int queueWindowId,
     _i2.QueueWindow? queueWindow,
     required int profileUserId,
-    _i2.ProfileUser? profileUser,
+    _i3.ProfileUser? profileUser,
   }) = _QueueServiceImpl;
 
   factory QueueService.fromJson(Map<String, dynamic> jsonSerialization) {
@@ -65,7 +66,7 @@ abstract class QueueService implements _i1.SerializableModel {
       profileUserId: jsonSerialization['profileUserId'] as int,
       profileUser: jsonSerialization['profileUser'] == null
           ? null
-          : _i2.ProfileUser.fromJson(
+          : _i3.ProfileUser.fromJson(
               (jsonSerialization['profileUser'] as Map<String, dynamic>)),
     );
   }
@@ -95,7 +96,7 @@ abstract class QueueService implements _i1.SerializableModel {
 
   int profileUserId;
 
-  _i2.ProfileUser? profileUser;
+  _i3.ProfileUser? profileUser;
 
   QueueService copyWith({
     int? id,
@@ -109,7 +110,7 @@ abstract class QueueService implements _i1.SerializableModel {
     int? queueWindowId,
     _i2.QueueWindow? queueWindow,
     int? profileUserId,
-    _i2.ProfileUser? profileUser,
+    _i3.ProfileUser? profileUser,
   });
   @override
   Map<String, dynamic> toJson() {
@@ -150,7 +151,7 @@ class _QueueServiceImpl extends QueueService {
     required int queueWindowId,
     _i2.QueueWindow? queueWindow,
     required int profileUserId,
-    _i2.ProfileUser? profileUser,
+    _i3.ProfileUser? profileUser,
   }) : super._(
           id: id,
           name: name,
@@ -196,7 +197,7 @@ class _QueueServiceImpl extends QueueService {
           ? queueWindow
           : this.queueWindow?.copyWith(),
       profileUserId: profileUserId ?? this.profileUserId,
-      profileUser: profileUser is _i2.ProfileUser?
+      profileUser: profileUser is _i3.ProfileUser?
           ? profileUser
           : this.profileUser?.copyWith(),
     );

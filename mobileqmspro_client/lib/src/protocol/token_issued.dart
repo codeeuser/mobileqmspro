@@ -10,7 +10,9 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:serverpod_client/serverpod_client.dart' as _i1;
-import 'protocol.dart' as _i2;
+import 'queue_window.dart' as _i2;
+import 'queue_service.dart' as _i3;
+import 'profile_user.dart' as _i4;
 
 abstract class TokenIssued implements _i1.SerializableModel {
   TokenIssued._({
@@ -54,9 +56,9 @@ abstract class TokenIssued implements _i1.SerializableModel {
     required int queueWindowId,
     _i2.QueueWindow? queueWindow,
     required int queueServiceId,
-    _i2.QueueService? queueService,
+    _i3.QueueService? queueService,
     required int profileUserId,
-    _i2.ProfileUser? profileUser,
+    _i4.ProfileUser? profileUser,
   }) = _TokenIssuedImpl;
 
   factory TokenIssued.fromJson(Map<String, dynamic> jsonSerialization) {
@@ -90,12 +92,12 @@ abstract class TokenIssued implements _i1.SerializableModel {
       queueServiceId: jsonSerialization['queueServiceId'] as int,
       queueService: jsonSerialization['queueService'] == null
           ? null
-          : _i2.QueueService.fromJson(
+          : _i3.QueueService.fromJson(
               (jsonSerialization['queueService'] as Map<String, dynamic>)),
       profileUserId: jsonSerialization['profileUserId'] as int,
       profileUser: jsonSerialization['profileUser'] == null
           ? null
-          : _i2.ProfileUser.fromJson(
+          : _i4.ProfileUser.fromJson(
               (jsonSerialization['profileUser'] as Map<String, dynamic>)),
     );
   }
@@ -137,11 +139,11 @@ abstract class TokenIssued implements _i1.SerializableModel {
 
   int queueServiceId;
 
-  _i2.QueueService? queueService;
+  _i3.QueueService? queueService;
 
   int profileUserId;
 
-  _i2.ProfileUser? profileUser;
+  _i4.ProfileUser? profileUser;
 
   TokenIssued copyWith({
     int? id,
@@ -161,9 +163,9 @@ abstract class TokenIssued implements _i1.SerializableModel {
     int? queueWindowId,
     _i2.QueueWindow? queueWindow,
     int? queueServiceId,
-    _i2.QueueService? queueService,
+    _i3.QueueService? queueService,
     int? profileUserId,
-    _i2.ProfileUser? profileUser,
+    _i4.ProfileUser? profileUser,
   });
   @override
   Map<String, dynamic> toJson() {
@@ -218,9 +220,9 @@ class _TokenIssuedImpl extends TokenIssued {
     required int queueWindowId,
     _i2.QueueWindow? queueWindow,
     required int queueServiceId,
-    _i2.QueueService? queueService,
+    _i3.QueueService? queueService,
     required int profileUserId,
-    _i2.ProfileUser? profileUser,
+    _i4.ProfileUser? profileUser,
   }) : super._(
           id: id,
           tokenLetter: tokenLetter,
@@ -289,11 +291,11 @@ class _TokenIssuedImpl extends TokenIssued {
           ? queueWindow
           : this.queueWindow?.copyWith(),
       queueServiceId: queueServiceId ?? this.queueServiceId,
-      queueService: queueService is _i2.QueueService?
+      queueService: queueService is _i3.QueueService?
           ? queueService
           : this.queueService?.copyWith(),
       profileUserId: profileUserId ?? this.profileUserId,
-      profileUser: profileUser is _i2.ProfileUser?
+      profileUser: profileUser is _i4.ProfileUser?
           ? profileUser
           : this.profileUser?.copyWith(),
     );

@@ -8,11 +8,9 @@
 // ignore_for_file: type_literal_in_constant_pattern
 // ignore_for_file: use_super_parameters
 
-// ignore_for_file: invalid_use_of_visible_for_testing_member
-
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:serverpod/serverpod.dart' as _i1;
-import 'protocol.dart' as _i2;
+import 'membership_enum.dart' as _i2;
 
 abstract class ProfileUser implements _i1.TableRow, _i1.ProtocolSerialization {
   ProfileUser._({
@@ -383,7 +381,7 @@ class ProfileUserRepository {
       orderDescending: orderDescending,
       limit: limit,
       offset: offset,
-      transaction: transaction ?? session.transaction,
+      transaction: transaction,
     );
   }
 
@@ -402,7 +400,7 @@ class ProfileUserRepository {
       orderByList: orderByList?.call(ProfileUser.t),
       orderDescending: orderDescending,
       offset: offset,
-      transaction: transaction ?? session.transaction,
+      transaction: transaction,
     );
   }
 
@@ -413,7 +411,7 @@ class ProfileUserRepository {
   }) async {
     return session.db.findById<ProfileUser>(
       id,
-      transaction: transaction ?? session.transaction,
+      transaction: transaction,
     );
   }
 
@@ -424,7 +422,7 @@ class ProfileUserRepository {
   }) async {
     return session.db.insert<ProfileUser>(
       rows,
-      transaction: transaction ?? session.transaction,
+      transaction: transaction,
     );
   }
 
@@ -435,7 +433,7 @@ class ProfileUserRepository {
   }) async {
     return session.db.insertRow<ProfileUser>(
       row,
-      transaction: transaction ?? session.transaction,
+      transaction: transaction,
     );
   }
 
@@ -448,7 +446,7 @@ class ProfileUserRepository {
     return session.db.update<ProfileUser>(
       rows,
       columns: columns?.call(ProfileUser.t),
-      transaction: transaction ?? session.transaction,
+      transaction: transaction,
     );
   }
 
@@ -461,7 +459,7 @@ class ProfileUserRepository {
     return session.db.updateRow<ProfileUser>(
       row,
       columns: columns?.call(ProfileUser.t),
-      transaction: transaction ?? session.transaction,
+      transaction: transaction,
     );
   }
 
@@ -472,7 +470,7 @@ class ProfileUserRepository {
   }) async {
     return session.db.delete<ProfileUser>(
       rows,
-      transaction: transaction ?? session.transaction,
+      transaction: transaction,
     );
   }
 
@@ -483,7 +481,7 @@ class ProfileUserRepository {
   }) async {
     return session.db.deleteRow<ProfileUser>(
       row,
-      transaction: transaction ?? session.transaction,
+      transaction: transaction,
     );
   }
 
@@ -494,7 +492,7 @@ class ProfileUserRepository {
   }) async {
     return session.db.deleteWhere<ProfileUser>(
       where: where(ProfileUser.t),
-      transaction: transaction ?? session.transaction,
+      transaction: transaction,
     );
   }
 
@@ -507,7 +505,7 @@ class ProfileUserRepository {
     return session.db.count<ProfileUser>(
       where: where?.call(ProfileUser.t),
       limit: limit,
-      transaction: transaction ?? session.transaction,
+      transaction: transaction,
     );
   }
 }

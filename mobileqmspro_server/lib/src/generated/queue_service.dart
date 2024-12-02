@@ -8,11 +8,10 @@
 // ignore_for_file: type_literal_in_constant_pattern
 // ignore_for_file: use_super_parameters
 
-// ignore_for_file: invalid_use_of_visible_for_testing_member
-
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:serverpod/serverpod.dart' as _i1;
-import 'protocol.dart' as _i2;
+import 'queue_window.dart' as _i2;
+import 'profile_user.dart' as _i3;
 
 abstract class QueueService implements _i1.TableRow, _i1.ProtocolSerialization {
   QueueService._({
@@ -42,7 +41,7 @@ abstract class QueueService implements _i1.TableRow, _i1.ProtocolSerialization {
     required int queueWindowId,
     _i2.QueueWindow? queueWindow,
     required int profileUserId,
-    _i2.ProfileUser? profileUser,
+    _i3.ProfileUser? profileUser,
   }) = _QueueServiceImpl;
 
   factory QueueService.fromJson(Map<String, dynamic> jsonSerialization) {
@@ -67,7 +66,7 @@ abstract class QueueService implements _i1.TableRow, _i1.ProtocolSerialization {
       profileUserId: jsonSerialization['profileUserId'] as int,
       profileUser: jsonSerialization['profileUser'] == null
           ? null
-          : _i2.ProfileUser.fromJson(
+          : _i3.ProfileUser.fromJson(
               (jsonSerialization['profileUser'] as Map<String, dynamic>)),
     );
   }
@@ -99,7 +98,7 @@ abstract class QueueService implements _i1.TableRow, _i1.ProtocolSerialization {
 
   int profileUserId;
 
-  _i2.ProfileUser? profileUser;
+  _i3.ProfileUser? profileUser;
 
   @override
   _i1.Table get table => t;
@@ -116,7 +115,7 @@ abstract class QueueService implements _i1.TableRow, _i1.ProtocolSerialization {
     int? queueWindowId,
     _i2.QueueWindow? queueWindow,
     int? profileUserId,
-    _i2.ProfileUser? profileUser,
+    _i3.ProfileUser? profileUser,
   });
   @override
   Map<String, dynamic> toJson() {
@@ -156,7 +155,7 @@ abstract class QueueService implements _i1.TableRow, _i1.ProtocolSerialization {
 
   static QueueServiceInclude include({
     _i2.QueueWindowInclude? queueWindow,
-    _i2.ProfileUserInclude? profileUser,
+    _i3.ProfileUserInclude? profileUser,
   }) {
     return QueueServiceInclude._(
       queueWindow: queueWindow,
@@ -205,7 +204,7 @@ class _QueueServiceImpl extends QueueService {
     required int queueWindowId,
     _i2.QueueWindow? queueWindow,
     required int profileUserId,
-    _i2.ProfileUser? profileUser,
+    _i3.ProfileUser? profileUser,
   }) : super._(
           id: id,
           name: name,
@@ -251,7 +250,7 @@ class _QueueServiceImpl extends QueueService {
           ? queueWindow
           : this.queueWindow?.copyWith(),
       profileUserId: profileUserId ?? this.profileUserId,
-      profileUser: profileUser is _i2.ProfileUser?
+      profileUser: profileUser is _i3.ProfileUser?
           ? profileUser
           : this.profileUser?.copyWith(),
     );
@@ -318,7 +317,7 @@ class QueueServiceTable extends _i1.Table {
 
   late final _i1.ColumnInt profileUserId;
 
-  _i2.ProfileUserTable? _profileUser;
+  _i3.ProfileUserTable? _profileUser;
 
   _i2.QueueWindowTable get queueWindow {
     if (_queueWindow != null) return _queueWindow!;
@@ -333,15 +332,15 @@ class QueueServiceTable extends _i1.Table {
     return _queueWindow!;
   }
 
-  _i2.ProfileUserTable get profileUser {
+  _i3.ProfileUserTable get profileUser {
     if (_profileUser != null) return _profileUser!;
     _profileUser = _i1.createRelationTable(
       relationFieldName: 'profileUser',
       field: QueueService.t.profileUserId,
-      foreignField: _i2.ProfileUser.t.id,
+      foreignField: _i3.ProfileUser.t.id,
       tableRelation: tableRelation,
       createTable: (foreignTableRelation) =>
-          _i2.ProfileUserTable(tableRelation: foreignTableRelation),
+          _i3.ProfileUserTable(tableRelation: foreignTableRelation),
     );
     return _profileUser!;
   }
@@ -375,7 +374,7 @@ class QueueServiceTable extends _i1.Table {
 class QueueServiceInclude extends _i1.IncludeObject {
   QueueServiceInclude._({
     _i2.QueueWindowInclude? queueWindow,
-    _i2.ProfileUserInclude? profileUser,
+    _i3.ProfileUserInclude? profileUser,
   }) {
     _queueWindow = queueWindow;
     _profileUser = profileUser;
@@ -383,7 +382,7 @@ class QueueServiceInclude extends _i1.IncludeObject {
 
   _i2.QueueWindowInclude? _queueWindow;
 
-  _i2.ProfileUserInclude? _profileUser;
+  _i3.ProfileUserInclude? _profileUser;
 
   @override
   Map<String, _i1.Include?> get includes => {
@@ -438,7 +437,7 @@ class QueueServiceRepository {
       orderDescending: orderDescending,
       limit: limit,
       offset: offset,
-      transaction: transaction ?? session.transaction,
+      transaction: transaction,
       include: include,
     );
   }
@@ -459,7 +458,7 @@ class QueueServiceRepository {
       orderByList: orderByList?.call(QueueService.t),
       orderDescending: orderDescending,
       offset: offset,
-      transaction: transaction ?? session.transaction,
+      transaction: transaction,
       include: include,
     );
   }
@@ -472,7 +471,7 @@ class QueueServiceRepository {
   }) async {
     return session.db.findById<QueueService>(
       id,
-      transaction: transaction ?? session.transaction,
+      transaction: transaction,
       include: include,
     );
   }
@@ -484,7 +483,7 @@ class QueueServiceRepository {
   }) async {
     return session.db.insert<QueueService>(
       rows,
-      transaction: transaction ?? session.transaction,
+      transaction: transaction,
     );
   }
 
@@ -495,7 +494,7 @@ class QueueServiceRepository {
   }) async {
     return session.db.insertRow<QueueService>(
       row,
-      transaction: transaction ?? session.transaction,
+      transaction: transaction,
     );
   }
 
@@ -508,7 +507,7 @@ class QueueServiceRepository {
     return session.db.update<QueueService>(
       rows,
       columns: columns?.call(QueueService.t),
-      transaction: transaction ?? session.transaction,
+      transaction: transaction,
     );
   }
 
@@ -521,7 +520,7 @@ class QueueServiceRepository {
     return session.db.updateRow<QueueService>(
       row,
       columns: columns?.call(QueueService.t),
-      transaction: transaction ?? session.transaction,
+      transaction: transaction,
     );
   }
 
@@ -532,7 +531,7 @@ class QueueServiceRepository {
   }) async {
     return session.db.delete<QueueService>(
       rows,
-      transaction: transaction ?? session.transaction,
+      transaction: transaction,
     );
   }
 
@@ -543,7 +542,7 @@ class QueueServiceRepository {
   }) async {
     return session.db.deleteRow<QueueService>(
       row,
-      transaction: transaction ?? session.transaction,
+      transaction: transaction,
     );
   }
 
@@ -554,7 +553,7 @@ class QueueServiceRepository {
   }) async {
     return session.db.deleteWhere<QueueService>(
       where: where(QueueService.t),
-      transaction: transaction ?? session.transaction,
+      transaction: transaction,
     );
   }
 
@@ -567,7 +566,7 @@ class QueueServiceRepository {
     return session.db.count<QueueService>(
       where: where?.call(QueueService.t),
       limit: limit,
-      transaction: transaction ?? session.transaction,
+      transaction: transaction,
     );
   }
 }
@@ -592,14 +591,14 @@ class QueueServiceAttachRowRepository {
     await session.db.updateRow<QueueService>(
       $queueService,
       columns: [QueueService.t.queueWindowId],
-      transaction: transaction ?? session.transaction,
+      transaction: transaction,
     );
   }
 
   Future<void> profileUser(
     _i1.Session session,
     QueueService queueService,
-    _i2.ProfileUser profileUser, {
+    _i3.ProfileUser profileUser, {
     _i1.Transaction? transaction,
   }) async {
     if (queueService.id == null) {
@@ -613,7 +612,7 @@ class QueueServiceAttachRowRepository {
     await session.db.updateRow<QueueService>(
       $queueService,
       columns: [QueueService.t.profileUserId],
-      transaction: transaction ?? session.transaction,
+      transaction: transaction,
     );
   }
 }
