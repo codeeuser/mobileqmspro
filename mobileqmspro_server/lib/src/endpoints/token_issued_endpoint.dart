@@ -4,6 +4,7 @@ import 'package:serverpod/serverpod.dart';
 class TokenIssuedEndpoint extends Endpoint {
   static const _channelRunningTokens = 'running-tokens';
   static const _channelCountToken = 'count-token';
+  Stream<CountToken>? _updateStatusStream;
   Future<List<TokenIssued>> getAllByWindowId(
       Session session, int windowId, int? limit, int? offset, bool desc) async {
     return await TokenIssued.db.find(session,
@@ -92,14 +93,14 @@ class TokenIssuedEndpoint extends Endpoint {
 
   Future<TokenIssued> update(Session session, TokenIssued tokenIssued) async {
     final item = await TokenIssued.db.updateRow(session, tokenIssued);
-    await _updateRunningStream(session);
+    await _updateRunningStream(session, tokenIssued.queueWindowId);
     return item;
   }
 
   Future<List<TokenIssued>> updateAll(
       Session session, List<TokenIssued> tokenIssuedList) async {
     final listNew = await TokenIssued.db.update(session, tokenIssuedList);
-    await _updateRunningStream(session);
+    await _updateRunningStream(session, tokenIssuedList.first.queueWindowId);
     return listNew;
   }
 
@@ -110,7 +111,7 @@ class TokenIssuedEndpoint extends Endpoint {
       issued.reset = true;
     }
     final listNew = await TokenIssued.db.update(session, list);
-    await _updateRunningStream(session);
+    await _updateRunningStream(session, windowId);
     return listNew;
   }
 
@@ -121,13 +122,13 @@ class TokenIssuedEndpoint extends Endpoint {
     if (id != null) {
       tokenIssuedNew = await findById(session, id);
     }
-    await _updateRunningStream(session);
+    await _updateRunningStream(session, tokenIssued.queueWindowId);
     return tokenIssuedNew;
   }
 
   Future<void> delete(Session session, TokenIssued tokenIssued) async {
     await TokenIssued.db.deleteRow(session, tokenIssued);
-    await _updateRunningStream(session);
+    await _updateRunningStream(session, tokenIssued.queueWindowId);
   }
 
   Future<void> deleteByEmail(Session session, String email) async {
@@ -160,19 +161,25 @@ class TokenIssuedEndpoint extends Endpoint {
     return count;
   }
 
-  Future<void> _updateRunningStream(Session session) async {
-    await session.messages.postMessage(_channelRunningTokens, RunningTokens());
+  Future<void> _updateRunningStream(Session session, int windowId) async {
+    await session.messages
+        .postMessage('$_channelRunningTokens-$windowId', RunningTokens());
   }
 
   Stream echoStatusStream(
       Session session, int statusCode, int windowId) async* {
-    session.log('echoStatusStream---');
-    var updateStream =
-        session.messages.createStream<CountToken>(_channelCountToken);
+    session.log(
+        'echoStatusStream---_updateStatusStream: ${_updateStatusStream?.hashCode}');
+    _updateStatusStream ??= session.messages
+        .createStream<CountToken>('$_channelCountToken-$windowId');
     final count = await countStatus(session, statusCode, windowId);
     final countIsQueue = await countIsQueueStatus(session, windowId);
-    yield CountToken(countIsQueue: countIsQueue, countWait: count);
-    await for (var update in updateStream) {
+    if (_updateStatusStream != null) {
+      session.log('yield---');
+      yield CountToken(countIsQueue: countIsQueue, countWait: count);
+      return;
+    }
+    await for (var update in _updateStatusStream!) {
       session.log('update: $update');
       final count = await countStatus(session, statusCode, windowId);
       final countIsQueue = await countIsQueueStatus(session, windowId);
@@ -181,13 +188,12 @@ class TokenIssuedEndpoint extends Endpoint {
   }
 
   Stream echoTokensStream(Session session, int windowId) async* {
-    session.log('echoTokensStream---');
-    var updateStream =
-        session.messages.createStream<RunningTokens>(_channelRunningTokens);
+    var updateTokenStream = session.messages
+        .createStream<RunningTokens>('$_channelRunningTokens-$windowId');
     List<TokenIssued> list =
         await getAllByWindowId(session, windowId, 25, 0, true);
     yield RunningTokens(tokens: list);
-    await for (var update in updateStream) {
+    await for (var update in updateTokenStream) {
       session.log('update: $update');
       List<TokenIssued> list =
           await getAllByWindowId(session, windowId, 25, 0, true);
