@@ -142,6 +142,7 @@ class _TokenListPageState extends State<TokenListPage> {
                             tokenIssuedList.isEmpty) {
                           return const NoData();
                         }
+                        _tokenIssuedList = tokenIssuedList;
                         return ListView.builder(
                             itemCount: tokenIssuedList.length,
                             itemBuilder: (BuildContext ctxt, int index) {

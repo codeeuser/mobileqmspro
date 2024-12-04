@@ -16,8 +16,10 @@ import 'package:mobileqmspro_client/src/protocol/profile_user.dart' as _i4;
 import 'package:mobileqmspro_client/src/protocol/queue_service.dart' as _i5;
 import 'package:mobileqmspro_client/src/protocol/queue_window.dart' as _i6;
 import 'package:mobileqmspro_client/src/protocol/token_issued.dart' as _i7;
-import 'package:serverpod_auth_client/serverpod_auth_client.dart' as _i8;
-import 'protocol.dart' as _i9;
+import 'package:mobileqmspro_client/src/protocol/count_token.dart' as _i8;
+import 'package:mobileqmspro_client/src/protocol/running_tokens.dart' as _i9;
+import 'package:serverpod_auth_client/serverpod_auth_client.dart' as _i10;
+import 'protocol.dart' as _i11;
 
 /// {@category Endpoint}
 class EndpointLogLogin extends _i1.EndpointRef {
@@ -466,11 +468,12 @@ class EndpointTokenIssued extends _i1.EndpointRef {
         },
       );
 
-  _i2.Stream<dynamic> echoStatusStream(
+  _i2.Stream<_i8.CountToken> echoStatusStream(
     int statusCode,
     int windowId,
   ) =>
-      caller.callStreamingServerEndpoint<_i2.Stream<dynamic>, dynamic>(
+      caller.callStreamingServerEndpoint<_i2.Stream<_i8.CountToken>,
+          _i8.CountToken>(
         'tokenIssued',
         'echoStatusStream',
         {
@@ -480,8 +483,9 @@ class EndpointTokenIssued extends _i1.EndpointRef {
         {},
       );
 
-  _i2.Stream<dynamic> echoTokensStream(int windowId) =>
-      caller.callStreamingServerEndpoint<_i2.Stream<dynamic>, dynamic>(
+  _i2.Stream<_i9.RunningTokens> echoTokensStream(int windowId) =>
+      caller.callStreamingServerEndpoint<_i2.Stream<_i9.RunningTokens>,
+          _i9.RunningTokens>(
         'tokenIssued',
         'echoTokensStream',
         {'windowId': windowId},
@@ -491,10 +495,10 @@ class EndpointTokenIssued extends _i1.EndpointRef {
 
 class Modules {
   Modules(Client client) {
-    auth = _i8.Caller(client);
+    auth = _i10.Caller(client);
   }
 
-  late final _i8.Caller auth;
+  late final _i10.Caller auth;
 }
 
 class Client extends _i1.ServerpodClientShared {
@@ -513,7 +517,7 @@ class Client extends _i1.ServerpodClientShared {
     bool? disconnectStreamsOnLostInternetConnection,
   }) : super(
           host,
-          _i9.Protocol(),
+          _i11.Protocol(),
           securityContext: securityContext,
           authenticationKeyManager: authenticationKeyManager,
           streamingConnectionTimeout: streamingConnectionTimeout,

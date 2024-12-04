@@ -144,6 +144,7 @@ class _TokenCallPageState extends State<TokenCallPage> {
                       if (tokenIssuedList == null || tokenIssuedList.isEmpty) {
                         return const NoData();
                       }
+                      _tokenIssuedList = tokenIssuedList;
                       return ListView.builder(
                           itemCount: tokenIssuedList.length,
                           itemBuilder: (BuildContext ctxt, int index) {

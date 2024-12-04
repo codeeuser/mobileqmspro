@@ -166,7 +166,7 @@ class TokenIssuedEndpoint extends Endpoint {
         .postMessage('$_channelRunningTokens-$windowId', RunningTokens());
   }
 
-  Stream echoStatusStream(
+  Stream<CountToken> echoStatusStream(
       Session session, int statusCode, int windowId) async* {
     session.log(
         'echoStatusStream---_updateStatusStream: ${_updateStatusStream?.hashCode}');
@@ -187,7 +187,7 @@ class TokenIssuedEndpoint extends Endpoint {
     }
   }
 
-  Stream echoTokensStream(Session session, int windowId) async* {
+  Stream<RunningTokens> echoTokensStream(Session session, int windowId) async* {
     var updateTokenStream = session.messages
         .createStream<RunningTokens>('$_channelRunningTokens-$windowId');
     List<TokenIssued> list =

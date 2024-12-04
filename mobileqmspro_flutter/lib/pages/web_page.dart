@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:animate_do/animate_do.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
@@ -23,6 +25,7 @@ class _WebPageState extends State<WebPage> {
   final ValueNotifier<List<TokenIssued>> _tokenIssuedList = ValueNotifier([]);
 
   TokenIssued? _latest;
+  StreamSubscription<RunningTokens>? _sub;
 
   @override
   void initState() {
@@ -40,6 +43,7 @@ class _WebPageState extends State<WebPage> {
   void dispose() async {
     _tokenIssuedList.dispose();
     await client.closeStreamingConnection();
+    await _sub?.cancel();
     super.dispose();
   }
 
@@ -238,13 +242,22 @@ class _WebPageState extends State<WebPage> {
   Future<void> _listenToUpdates(int windowId) async {
     Logger.log(tag, message: '_listenToUpdates');
     final tokenUpdates = client.tokenIssued.echoTokensStream(windowId);
-    await for (final update in tokenUpdates) {
-      List<TokenIssued> list = update.tokens;
+    // await for (final update in tokenUpdates) {
+    //   List<TokenIssued>? list = update.tokens;
+    //   list.sort((a, b) => b.statusCode.compareTo(a.statusCode));
+    //   final listCompleted = list.where((e) => e.isCompleted).toList();
+    //   final listNoneCompleted =
+    //       list.where((e) => e.isCompleted == false).toList();
+    //   _tokenIssuedList.value = listNoneCompleted..addAll(listCompleted);
+    // }
+    _sub = tokenUpdates.listen((update) {
+      List<TokenIssued>? list = update.tokens;
+      if (list == null) return;
       list.sort((a, b) => b.statusCode.compareTo(a.statusCode));
       final listCompleted = list.where((e) => e.isCompleted).toList();
       final listNoneCompleted =
           list.where((e) => e.isCompleted == false).toList();
       _tokenIssuedList.value = listNoneCompleted..addAll(listCompleted);
-    }
+    });
   }
 }

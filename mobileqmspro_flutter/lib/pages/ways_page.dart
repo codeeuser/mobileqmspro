@@ -41,6 +41,8 @@ class _WaysPageState extends State<WaysPage> {
   final ValueNotifier<int> _countMyNonOnWait = ValueNotifier(0);
   final ValueNotifier<dynamic> _screen = ValueNotifier(null);
 
+  StreamSubscription<CountToken>? _sub;
+
   @override
   void initState() {
     super.initState();
@@ -55,10 +57,12 @@ class _WaysPageState extends State<WaysPage> {
   }
 
   @override
-  void dispose() {
+  void dispose() async {
     _countMyOnWait.dispose();
     _countMyNonOnWait.dispose();
     _screen.dispose();
+    await client.closeStreamingConnection();
+    await _sub?.cancel();
     super.dispose();
   }
 
@@ -421,13 +425,13 @@ class _WaysPageState extends State<WaysPage> {
 
   Future<void> _listenToUpdates(int windowId) async {
     Logger.log(tag, message: '_listenToUpdates, windowId: $windowId');
-    final statusUpdates =
+    final Stream<CountToken> statusUpdates =
         client.tokenIssued.echoStatusStream(StatusCode.onwait, windowId);
     try {
-      await for (final update in statusUpdates) {
+      _sub = statusUpdates.listen((update) {
         _countMyOnWait.value = update.countWait;
         _countMyNonOnWait.value = update.countIsQueue;
-      }
+      });
     } catch (e) {
       Logger.log(tag, message: '_listenToUpdatesError: $e');
     }
