@@ -116,7 +116,7 @@ class _MorePageState extends State<MorePage> {
                 subtitle: const Text('The place to enable Dark Mode'),
                 trailing: CupertinoSwitch(
                   value: _appearanceDark ?? false,
-                  activeColor: Colors.black,
+                  activeTrackColor: Colors.black,
                   onChanged: (bool value) async {
                     AppTheme appTheme = context.read<AppTheme>();
                     appTheme.appearanceDark = value;

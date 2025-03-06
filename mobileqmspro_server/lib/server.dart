@@ -14,15 +14,16 @@ import 'src/generated/protocol.dart';
 // configuring Relic (Serverpod's web-server), or need custom setup work.
 
 void run(List<String> args) async {
+  final sc =
+      (args.contains('production')) ? SecurityContext.defaultContext : null;
   // Initialize Serverpod and connect it with your generated code.
   final pod = Serverpod(
     args,
     Protocol(),
     Endpoints(),
     authenticationHandler: auth.authenticationHandler,
-    securityContext: (args.contains('production'))
-        ? SecurityContext.defaultContext
-        : null, // modified serverpod code
+    securityContextConfig:
+        SecurityContextConfig(apiServer: sc, webServer: sc, insightsServer: sc),
   );
   // If you are using any future calls, they need to be registered here.
   // pod.registerFutureCall(ExampleFutureCall(), 'exampleFutureCall');
@@ -51,7 +52,6 @@ void run(List<String> args) async {
       'publicScheme: $publicScheme, existKey: $existKey, existP12: $existP12');
   if (publicScheme == 'https' && existKey && existP12) {
     String? sslPassword = pod.getPassword('sslPassword');
-    final sc = pod.securityContext;
     sc?.usePrivateKey(key, password: '');
     sc?.useCertificateChain(p12, password: sslPassword);
   }

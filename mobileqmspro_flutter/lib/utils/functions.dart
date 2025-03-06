@@ -223,7 +223,9 @@ class Utils {
     if (windowName == null ||
         serviceName == null ||
         letter == null ||
-        num == null) return null;
+        num == null) {
+      return null;
+    }
     DateTime now = DateTime.now();
     DateFormat formatter = DateFormat('yyyy-MM-dd HH:mm');
     String formatted = formatter.format(now);

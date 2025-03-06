@@ -39,7 +39,9 @@ String? validateWs(String value) {
   if (!isURL(value.toLowerCase().trim(), {
     'protocols': ['ws', 'wss'],
     'require_protocol': true
-  })) return 'Please enter only WebSocket URL with protocol.';
+  })) {
+    return 'Please enter only WebSocket URL with protocol.';
+  }
   return null;
 }
 
