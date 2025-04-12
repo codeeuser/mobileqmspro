@@ -43,7 +43,7 @@ dependencies:
   font_awesome_flutter: ^10.8.0
   intl: ^0.19.0
   intl_utils: ^2.8.7
-  catcher_2: ^2.0.1
+  catcher_2: ^2.1.2
   provider: ^6.1.2
   package_info_plus: ^8.1.1
   device_info_plus: ^11.1.1
@@ -61,7 +61,7 @@ dependencies:
   overlay_support: ^2.1.0
   yaml: ^3.1.2
   app_tracking_transparency: ^2.0.6
-  animate_do: ^3.3.4
+  animate_do: ^4.2.0
   collection: ^1.18.0
 
 dependency_overrides:
@@ -70,7 +70,7 @@ dependency_overrides:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^4.0.0
+  flutter_lints: ^5.0.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
