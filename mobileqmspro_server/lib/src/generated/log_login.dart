@@ -12,7 +12,8 @@
 import 'package:serverpod/serverpod.dart' as _i1;
 import 'profile_user.dart' as _i2;
 
-abstract class LogLogin implements _i1.TableRow, _i1.ProtocolSerialization {
+abstract class LogLogin
+    implements _i1.TableRow<int>, _i1.ProtocolSerialization {
   LogLogin._({
     this.id,
     this.msgToken,
@@ -89,8 +90,11 @@ abstract class LogLogin implements _i1.TableRow, _i1.ProtocolSerialization {
   _i2.ProfileUser? profileUser;
 
   @override
-  _i1.Table get table => t;
+  _i1.Table<int> get table => t;
 
+  /// Returns a shallow copy of this [LogLogin]
+  /// with some or all fields replaced by the given arguments.
+  @_i1.useResult
   LogLogin copyWith({
     int? id,
     String? msgToken,
@@ -197,6 +201,9 @@ class _LogLoginImpl extends LogLogin {
           profileUser: profileUser,
         );
 
+  /// Returns a shallow copy of this [LogLogin]
+  /// with some or all fields replaced by the given arguments.
+  @_i1.useResult
   @override
   LogLogin copyWith({
     Object? id = _Undefined,
@@ -231,7 +238,7 @@ class _LogLoginImpl extends LogLogin {
   }
 }
 
-class LogLoginTable extends _i1.Table {
+class LogLoginTable extends _i1.Table<int> {
   LogLoginTable({super.tableRelation}) : super(tableName: 'log_login') {
     msgToken = _i1.ColumnString(
       'msgToken',
@@ -338,7 +345,7 @@ class LogLoginInclude extends _i1.IncludeObject {
   Map<String, _i1.Include?> get includes => {'profileUser': _profileUser};
 
   @override
-  _i1.Table get table => LogLogin.t;
+  _i1.Table<int> get table => LogLogin.t;
 }
 
 class LogLoginIncludeList extends _i1.IncludeList {
@@ -358,7 +365,7 @@ class LogLoginIncludeList extends _i1.IncludeList {
   Map<String, _i1.Include?> get includes => include?.includes ?? {};
 
   @override
-  _i1.Table get table => LogLogin.t;
+  _i1.Table<int> get table => LogLogin.t;
 }
 
 class LogLoginRepository {
@@ -366,6 +373,28 @@ class LogLoginRepository {
 
   final attachRow = const LogLoginAttachRowRepository._();
 
+  /// Returns a list of [LogLogin]s matching the given query parameters.
+  ///
+  /// Use [where] to specify which items to include in the return value.
+  /// If none is specified, all items will be returned.
+  ///
+  /// To specify the order of the items use [orderBy] or [orderByList]
+  /// when sorting by multiple columns.
+  ///
+  /// The maximum number of items can be set by [limit]. If no limit is set,
+  /// all items matching the query will be returned.
+  ///
+  /// [offset] defines how many items to skip, after which [limit] (or all)
+  /// items are read from the database.
+  ///
+  /// ```dart
+  /// var persons = await Persons.db.find(
+  ///   session,
+  ///   where: (t) => t.lastName.equals('Jones'),
+  ///   orderBy: (t) => t.firstName,
+  ///   limit: 100,
+  /// );
+  /// ```
   Future<List<LogLogin>> find(
     _i1.Session session, {
     _i1.WhereExpressionBuilder<LogLoginTable>? where,
@@ -389,6 +418,23 @@ class LogLoginRepository {
     );
   }
 
+  /// Returns the first matching [LogLogin] matching the given query parameters.
+  ///
+  /// Use [where] to specify which items to include in the return value.
+  /// If none is specified, all items will be returned.
+  ///
+  /// To specify the order use [orderBy] or [orderByList]
+  /// when sorting by multiple columns.
+  ///
+  /// [offset] defines how many items to skip, after which the next one will be picked.
+  ///
+  /// ```dart
+  /// var youngestPerson = await Persons.db.findFirstRow(
+  ///   session,
+  ///   where: (t) => t.lastName.equals('Jones'),
+  ///   orderBy: (t) => t.age,
+  /// );
+  /// ```
   Future<LogLogin?> findFirstRow(
     _i1.Session session, {
     _i1.WhereExpressionBuilder<LogLoginTable>? where,
@@ -410,6 +456,7 @@ class LogLoginRepository {
     );
   }
 
+  /// Finds a single [LogLogin] by its [id] or null if no such row exists.
   Future<LogLogin?> findById(
     _i1.Session session,
     int id, {
@@ -423,6 +470,12 @@ class LogLoginRepository {
     );
   }
 
+  /// Inserts all [LogLogin]s in the list and returns the inserted rows.
+  ///
+  /// The returned [LogLogin]s will have their `id` fields set.
+  ///
+  /// This is an atomic operation, meaning that if one of the rows fails to
+  /// insert, none of the rows will be inserted.
   Future<List<LogLogin>> insert(
     _i1.Session session,
     List<LogLogin> rows, {
@@ -434,6 +487,9 @@ class LogLoginRepository {
     );
   }
 
+  /// Inserts a single [LogLogin] and returns the inserted row.
+  ///
+  /// The returned [LogLogin] will have its `id` field set.
   Future<LogLogin> insertRow(
     _i1.Session session,
     LogLogin row, {
@@ -445,6 +501,11 @@ class LogLoginRepository {
     );
   }
 
+  /// Updates all [LogLogin]s in the list and returns the updated rows. If
+  /// [columns] is provided, only those columns will be updated. Defaults to
+  /// all columns.
+  /// This is an atomic operation, meaning that if one of the rows fails to
+  /// update, none of the rows will be updated.
   Future<List<LogLogin>> update(
     _i1.Session session,
     List<LogLogin> rows, {
@@ -458,6 +519,9 @@ class LogLoginRepository {
     );
   }
 
+  /// Updates a single [LogLogin]. The row needs to have its id set.
+  /// Optionally, a list of [columns] can be provided to only update those
+  /// columns. Defaults to all columns.
   Future<LogLogin> updateRow(
     _i1.Session session,
     LogLogin row, {
@@ -471,6 +535,9 @@ class LogLoginRepository {
     );
   }
 
+  /// Deletes all [LogLogin]s in the list and returns the deleted rows.
+  /// This is an atomic operation, meaning that if one of the rows fail to
+  /// be deleted, none of the rows will be deleted.
   Future<List<LogLogin>> delete(
     _i1.Session session,
     List<LogLogin> rows, {
@@ -482,6 +549,7 @@ class LogLoginRepository {
     );
   }
 
+  /// Deletes a single [LogLogin].
   Future<LogLogin> deleteRow(
     _i1.Session session,
     LogLogin row, {
@@ -493,6 +561,7 @@ class LogLoginRepository {
     );
   }
 
+  /// Deletes all rows matching the [where] expression.
   Future<List<LogLogin>> deleteWhere(
     _i1.Session session, {
     required _i1.WhereExpressionBuilder<LogLoginTable> where,
@@ -504,6 +573,8 @@ class LogLoginRepository {
     );
   }
 
+  /// Counts the number of rows matching the [where] expression. If omitted,
+  /// will return the count of all rows in the table.
   Future<int> count(
     _i1.Session session, {
     _i1.WhereExpressionBuilder<LogLoginTable>? where,
@@ -521,6 +592,8 @@ class LogLoginRepository {
 class LogLoginAttachRowRepository {
   const LogLoginAttachRowRepository._();
 
+  /// Creates a relation between the given [LogLogin] and [ProfileUser]
+  /// by setting the [LogLogin]'s foreign key `profileUserId` to refer to the [ProfileUser].
   Future<void> profileUser(
     _i1.Session session,
     LogLogin logLogin,

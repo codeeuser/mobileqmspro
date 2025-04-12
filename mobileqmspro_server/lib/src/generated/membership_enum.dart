@@ -19,11 +19,11 @@ enum Membership implements _i1.SerializableModel {
   static Membership fromJson(String name) {
     switch (name) {
       case 'basic':
-        return basic;
+        return Membership.basic;
       case 'advance':
-        return advance;
+        return Membership.advance;
       case 'premium':
-        return premium;
+        return Membership.premium;
       default:
         throw ArgumentError(
             'Value "$name" cannot be converted to "Membership"');

@@ -97,26 +97,26 @@ class Protocol extends _i1.SerializationManager {
     if (t == _i1.getType<List<_i9.TokenIssued>?>()) {
       return (data != null
           ? (data as List).map((e) => deserialize<_i9.TokenIssued>(e)).toList()
-          : null) as dynamic;
+          : null) as T;
     }
     if (t == List<_i10.LogLogin>) {
       return (data as List).map((e) => deserialize<_i10.LogLogin>(e)).toList()
-          as dynamic;
+          as T;
     }
     if (t == List<_i11.QueueService>) {
       return (data as List)
           .map((e) => deserialize<_i11.QueueService>(e))
-          .toList() as dynamic;
+          .toList() as T;
     }
     if (t == List<_i12.QueueWindow>) {
       return (data as List)
           .map((e) => deserialize<_i12.QueueWindow>(e))
-          .toList() as dynamic;
+          .toList() as T;
     }
     if (t == List<_i13.TokenIssued>) {
       return (data as List)
           .map((e) => deserialize<_i13.TokenIssued>(e))
-          .toList() as dynamic;
+          .toList() as T;
     }
     try {
       return _i14.Protocol().deserialize<T>(data, t);

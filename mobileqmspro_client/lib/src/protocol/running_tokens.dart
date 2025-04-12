@@ -26,6 +26,9 @@ abstract class RunningTokens implements _i1.SerializableModel {
 
   List<_i2.TokenIssued>? tokens;
 
+  /// Returns a shallow copy of this [RunningTokens]
+  /// with some or all fields replaced by the given arguments.
+  @_i1.useResult
   RunningTokens copyWith({List<_i2.TokenIssued>? tokens});
   @override
   Map<String, dynamic> toJson() {
@@ -46,6 +49,9 @@ class _Undefined {}
 class _RunningTokensImpl extends RunningTokens {
   _RunningTokensImpl({List<_i2.TokenIssued>? tokens}) : super._(tokens: tokens);
 
+  /// Returns a shallow copy of this [RunningTokens]
+  /// with some or all fields replaced by the given arguments.
+  @_i1.useResult
   @override
   RunningTokens copyWith({Object? tokens = _Undefined}) {
     return RunningTokens(

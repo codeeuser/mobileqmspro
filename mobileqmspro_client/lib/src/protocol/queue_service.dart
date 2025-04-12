@@ -98,6 +98,9 @@ abstract class QueueService implements _i1.SerializableModel {
 
   _i3.ProfileUser? profileUser;
 
+  /// Returns a shallow copy of this [QueueService]
+  /// with some or all fields replaced by the given arguments.
+  @_i1.useResult
   QueueService copyWith({
     int? id,
     String? name,
@@ -167,6 +170,9 @@ class _QueueServiceImpl extends QueueService {
           profileUser: profileUser,
         );
 
+  /// Returns a shallow copy of this [QueueService]
+  /// with some or all fields replaced by the given arguments.
+  @_i1.useResult
   @override
   QueueService copyWith({
     Object? id = _Undefined,

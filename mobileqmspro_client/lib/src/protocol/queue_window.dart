@@ -74,6 +74,9 @@ abstract class QueueWindow implements _i1.SerializableModel {
 
   _i2.ProfileUser? profileUser;
 
+  /// Returns a shallow copy of this [QueueWindow]
+  /// with some or all fields replaced by the given arguments.
+  @_i1.useResult
   QueueWindow copyWith({
     int? id,
     String? name,
@@ -127,6 +130,9 @@ class _QueueWindowImpl extends QueueWindow {
           profileUser: profileUser,
         );
 
+  /// Returns a shallow copy of this [QueueWindow]
+  /// with some or all fields replaced by the given arguments.
+  @_i1.useResult
   @override
   QueueWindow copyWith({
     Object? id = _Undefined,

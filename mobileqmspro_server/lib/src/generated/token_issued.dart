@@ -14,7 +14,8 @@ import 'queue_window.dart' as _i2;
 import 'queue_service.dart' as _i3;
 import 'profile_user.dart' as _i4;
 
-abstract class TokenIssued implements _i1.TableRow, _i1.ProtocolSerialization {
+abstract class TokenIssued
+    implements _i1.TableRow<int>, _i1.ProtocolSerialization {
   TokenIssued._({
     this.id,
     required this.tokenLetter,
@@ -148,8 +149,11 @@ abstract class TokenIssued implements _i1.TableRow, _i1.ProtocolSerialization {
   _i4.ProfileUser? profileUser;
 
   @override
-  _i1.Table get table => t;
+  _i1.Table<int> get table => t;
 
+  /// Returns a shallow copy of this [TokenIssued]
+  /// with some or all fields replaced by the given arguments.
+  @_i1.useResult
   TokenIssued copyWith({
     int? id,
     String? tokenLetter,
@@ -310,6 +314,9 @@ class _TokenIssuedImpl extends TokenIssued {
           profileUser: profileUser,
         );
 
+  /// Returns a shallow copy of this [TokenIssued]
+  /// with some or all fields replaced by the given arguments.
+  @_i1.useResult
   @override
   TokenIssued copyWith({
     Object? id = _Undefined,
@@ -366,7 +373,7 @@ class _TokenIssuedImpl extends TokenIssued {
   }
 }
 
-class TokenIssuedTable extends _i1.Table {
+class TokenIssuedTable extends _i1.Table<int> {
   TokenIssuedTable({super.tableRelation}) : super(tableName: 'token_issued') {
     tokenLetter = _i1.ColumnString(
       'tokenLetter',
@@ -572,7 +579,7 @@ class TokenIssuedInclude extends _i1.IncludeObject {
       };
 
   @override
-  _i1.Table get table => TokenIssued.t;
+  _i1.Table<int> get table => TokenIssued.t;
 }
 
 class TokenIssuedIncludeList extends _i1.IncludeList {
@@ -592,7 +599,7 @@ class TokenIssuedIncludeList extends _i1.IncludeList {
   Map<String, _i1.Include?> get includes => include?.includes ?? {};
 
   @override
-  _i1.Table get table => TokenIssued.t;
+  _i1.Table<int> get table => TokenIssued.t;
 }
 
 class TokenIssuedRepository {
@@ -600,6 +607,28 @@ class TokenIssuedRepository {
 
   final attachRow = const TokenIssuedAttachRowRepository._();
 
+  /// Returns a list of [TokenIssued]s matching the given query parameters.
+  ///
+  /// Use [where] to specify which items to include in the return value.
+  /// If none is specified, all items will be returned.
+  ///
+  /// To specify the order of the items use [orderBy] or [orderByList]
+  /// when sorting by multiple columns.
+  ///
+  /// The maximum number of items can be set by [limit]. If no limit is set,
+  /// all items matching the query will be returned.
+  ///
+  /// [offset] defines how many items to skip, after which [limit] (or all)
+  /// items are read from the database.
+  ///
+  /// ```dart
+  /// var persons = await Persons.db.find(
+  ///   session,
+  ///   where: (t) => t.lastName.equals('Jones'),
+  ///   orderBy: (t) => t.firstName,
+  ///   limit: 100,
+  /// );
+  /// ```
   Future<List<TokenIssued>> find(
     _i1.Session session, {
     _i1.WhereExpressionBuilder<TokenIssuedTable>? where,
@@ -623,6 +652,23 @@ class TokenIssuedRepository {
     );
   }
 
+  /// Returns the first matching [TokenIssued] matching the given query parameters.
+  ///
+  /// Use [where] to specify which items to include in the return value.
+  /// If none is specified, all items will be returned.
+  ///
+  /// To specify the order use [orderBy] or [orderByList]
+  /// when sorting by multiple columns.
+  ///
+  /// [offset] defines how many items to skip, after which the next one will be picked.
+  ///
+  /// ```dart
+  /// var youngestPerson = await Persons.db.findFirstRow(
+  ///   session,
+  ///   where: (t) => t.lastName.equals('Jones'),
+  ///   orderBy: (t) => t.age,
+  /// );
+  /// ```
   Future<TokenIssued?> findFirstRow(
     _i1.Session session, {
     _i1.WhereExpressionBuilder<TokenIssuedTable>? where,
@@ -644,6 +690,7 @@ class TokenIssuedRepository {
     );
   }
 
+  /// Finds a single [TokenIssued] by its [id] or null if no such row exists.
   Future<TokenIssued?> findById(
     _i1.Session session,
     int id, {
@@ -657,6 +704,12 @@ class TokenIssuedRepository {
     );
   }
 
+  /// Inserts all [TokenIssued]s in the list and returns the inserted rows.
+  ///
+  /// The returned [TokenIssued]s will have their `id` fields set.
+  ///
+  /// This is an atomic operation, meaning that if one of the rows fails to
+  /// insert, none of the rows will be inserted.
   Future<List<TokenIssued>> insert(
     _i1.Session session,
     List<TokenIssued> rows, {
@@ -668,6 +721,9 @@ class TokenIssuedRepository {
     );
   }
 
+  /// Inserts a single [TokenIssued] and returns the inserted row.
+  ///
+  /// The returned [TokenIssued] will have its `id` field set.
   Future<TokenIssued> insertRow(
     _i1.Session session,
     TokenIssued row, {
@@ -679,6 +735,11 @@ class TokenIssuedRepository {
     );
   }
 
+  /// Updates all [TokenIssued]s in the list and returns the updated rows. If
+  /// [columns] is provided, only those columns will be updated. Defaults to
+  /// all columns.
+  /// This is an atomic operation, meaning that if one of the rows fails to
+  /// update, none of the rows will be updated.
   Future<List<TokenIssued>> update(
     _i1.Session session,
     List<TokenIssued> rows, {
@@ -692,6 +753,9 @@ class TokenIssuedRepository {
     );
   }
 
+  /// Updates a single [TokenIssued]. The row needs to have its id set.
+  /// Optionally, a list of [columns] can be provided to only update those
+  /// columns. Defaults to all columns.
   Future<TokenIssued> updateRow(
     _i1.Session session,
     TokenIssued row, {
@@ -705,6 +769,9 @@ class TokenIssuedRepository {
     );
   }
 
+  /// Deletes all [TokenIssued]s in the list and returns the deleted rows.
+  /// This is an atomic operation, meaning that if one of the rows fail to
+  /// be deleted, none of the rows will be deleted.
   Future<List<TokenIssued>> delete(
     _i1.Session session,
     List<TokenIssued> rows, {
@@ -716,6 +783,7 @@ class TokenIssuedRepository {
     );
   }
 
+  /// Deletes a single [TokenIssued].
   Future<TokenIssued> deleteRow(
     _i1.Session session,
     TokenIssued row, {
@@ -727,6 +795,7 @@ class TokenIssuedRepository {
     );
   }
 
+  /// Deletes all rows matching the [where] expression.
   Future<List<TokenIssued>> deleteWhere(
     _i1.Session session, {
     required _i1.WhereExpressionBuilder<TokenIssuedTable> where,
@@ -738,6 +807,8 @@ class TokenIssuedRepository {
     );
   }
 
+  /// Counts the number of rows matching the [where] expression. If omitted,
+  /// will return the count of all rows in the table.
   Future<int> count(
     _i1.Session session, {
     _i1.WhereExpressionBuilder<TokenIssuedTable>? where,
@@ -755,6 +826,8 @@ class TokenIssuedRepository {
 class TokenIssuedAttachRowRepository {
   const TokenIssuedAttachRowRepository._();
 
+  /// Creates a relation between the given [TokenIssued] and [QueueWindow]
+  /// by setting the [TokenIssued]'s foreign key `queueWindowId` to refer to the [QueueWindow].
   Future<void> queueWindow(
     _i1.Session session,
     TokenIssued tokenIssued,
@@ -776,6 +849,8 @@ class TokenIssuedAttachRowRepository {
     );
   }
 
+  /// Creates a relation between the given [TokenIssued] and [QueueService]
+  /// by setting the [TokenIssued]'s foreign key `queueServiceId` to refer to the [QueueService].
   Future<void> queueService(
     _i1.Session session,
     TokenIssued tokenIssued,
@@ -797,6 +872,8 @@ class TokenIssuedAttachRowRepository {
     );
   }
 
+  /// Creates a relation between the given [TokenIssued] and [ProfileUser]
+  /// by setting the [TokenIssued]'s foreign key `profileUserId` to refer to the [ProfileUser].
   Future<void> profileUser(
     _i1.Session session,
     TokenIssued tokenIssued,

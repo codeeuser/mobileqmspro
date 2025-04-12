@@ -13,7 +13,8 @@ import 'package:serverpod/serverpod.dart' as _i1;
 import 'queue_window.dart' as _i2;
 import 'profile_user.dart' as _i3;
 
-abstract class QueueService implements _i1.TableRow, _i1.ProtocolSerialization {
+abstract class QueueService
+    implements _i1.TableRow<int>, _i1.ProtocolSerialization {
   QueueService._({
     this.id,
     required this.name,
@@ -101,8 +102,11 @@ abstract class QueueService implements _i1.TableRow, _i1.ProtocolSerialization {
   _i3.ProfileUser? profileUser;
 
   @override
-  _i1.Table get table => t;
+  _i1.Table<int> get table => t;
 
+  /// Returns a shallow copy of this [QueueService]
+  /// with some or all fields replaced by the given arguments.
+  @_i1.useResult
   QueueService copyWith({
     int? id,
     String? name,
@@ -220,6 +224,9 @@ class _QueueServiceImpl extends QueueService {
           profileUser: profileUser,
         );
 
+  /// Returns a shallow copy of this [QueueService]
+  /// with some or all fields replaced by the given arguments.
+  @_i1.useResult
   @override
   QueueService copyWith({
     Object? id = _Undefined,
@@ -257,7 +264,7 @@ class _QueueServiceImpl extends QueueService {
   }
 }
 
-class QueueServiceTable extends _i1.Table {
+class QueueServiceTable extends _i1.Table<int> {
   QueueServiceTable({super.tableRelation}) : super(tableName: 'queue_service') {
     name = _i1.ColumnString(
       'name',
@@ -391,7 +398,7 @@ class QueueServiceInclude extends _i1.IncludeObject {
       };
 
   @override
-  _i1.Table get table => QueueService.t;
+  _i1.Table<int> get table => QueueService.t;
 }
 
 class QueueServiceIncludeList extends _i1.IncludeList {
@@ -411,7 +418,7 @@ class QueueServiceIncludeList extends _i1.IncludeList {
   Map<String, _i1.Include?> get includes => include?.includes ?? {};
 
   @override
-  _i1.Table get table => QueueService.t;
+  _i1.Table<int> get table => QueueService.t;
 }
 
 class QueueServiceRepository {
@@ -419,6 +426,28 @@ class QueueServiceRepository {
 
   final attachRow = const QueueServiceAttachRowRepository._();
 
+  /// Returns a list of [QueueService]s matching the given query parameters.
+  ///
+  /// Use [where] to specify which items to include in the return value.
+  /// If none is specified, all items will be returned.
+  ///
+  /// To specify the order of the items use [orderBy] or [orderByList]
+  /// when sorting by multiple columns.
+  ///
+  /// The maximum number of items can be set by [limit]. If no limit is set,
+  /// all items matching the query will be returned.
+  ///
+  /// [offset] defines how many items to skip, after which [limit] (or all)
+  /// items are read from the database.
+  ///
+  /// ```dart
+  /// var persons = await Persons.db.find(
+  ///   session,
+  ///   where: (t) => t.lastName.equals('Jones'),
+  ///   orderBy: (t) => t.firstName,
+  ///   limit: 100,
+  /// );
+  /// ```
   Future<List<QueueService>> find(
     _i1.Session session, {
     _i1.WhereExpressionBuilder<QueueServiceTable>? where,
@@ -442,6 +471,23 @@ class QueueServiceRepository {
     );
   }
 
+  /// Returns the first matching [QueueService] matching the given query parameters.
+  ///
+  /// Use [where] to specify which items to include in the return value.
+  /// If none is specified, all items will be returned.
+  ///
+  /// To specify the order use [orderBy] or [orderByList]
+  /// when sorting by multiple columns.
+  ///
+  /// [offset] defines how many items to skip, after which the next one will be picked.
+  ///
+  /// ```dart
+  /// var youngestPerson = await Persons.db.findFirstRow(
+  ///   session,
+  ///   where: (t) => t.lastName.equals('Jones'),
+  ///   orderBy: (t) => t.age,
+  /// );
+  /// ```
   Future<QueueService?> findFirstRow(
     _i1.Session session, {
     _i1.WhereExpressionBuilder<QueueServiceTable>? where,
@@ -463,6 +509,7 @@ class QueueServiceRepository {
     );
   }
 
+  /// Finds a single [QueueService] by its [id] or null if no such row exists.
   Future<QueueService?> findById(
     _i1.Session session,
     int id, {
@@ -476,6 +523,12 @@ class QueueServiceRepository {
     );
   }
 
+  /// Inserts all [QueueService]s in the list and returns the inserted rows.
+  ///
+  /// The returned [QueueService]s will have their `id` fields set.
+  ///
+  /// This is an atomic operation, meaning that if one of the rows fails to
+  /// insert, none of the rows will be inserted.
   Future<List<QueueService>> insert(
     _i1.Session session,
     List<QueueService> rows, {
@@ -487,6 +540,9 @@ class QueueServiceRepository {
     );
   }
 
+  /// Inserts a single [QueueService] and returns the inserted row.
+  ///
+  /// The returned [QueueService] will have its `id` field set.
   Future<QueueService> insertRow(
     _i1.Session session,
     QueueService row, {
@@ -498,6 +554,11 @@ class QueueServiceRepository {
     );
   }
 
+  /// Updates all [QueueService]s in the list and returns the updated rows. If
+  /// [columns] is provided, only those columns will be updated. Defaults to
+  /// all columns.
+  /// This is an atomic operation, meaning that if one of the rows fails to
+  /// update, none of the rows will be updated.
   Future<List<QueueService>> update(
     _i1.Session session,
     List<QueueService> rows, {
@@ -511,6 +572,9 @@ class QueueServiceRepository {
     );
   }
 
+  /// Updates a single [QueueService]. The row needs to have its id set.
+  /// Optionally, a list of [columns] can be provided to only update those
+  /// columns. Defaults to all columns.
   Future<QueueService> updateRow(
     _i1.Session session,
     QueueService row, {
@@ -524,6 +588,9 @@ class QueueServiceRepository {
     );
   }
 
+  /// Deletes all [QueueService]s in the list and returns the deleted rows.
+  /// This is an atomic operation, meaning that if one of the rows fail to
+  /// be deleted, none of the rows will be deleted.
   Future<List<QueueService>> delete(
     _i1.Session session,
     List<QueueService> rows, {
@@ -535,6 +602,7 @@ class QueueServiceRepository {
     );
   }
 
+  /// Deletes a single [QueueService].
   Future<QueueService> deleteRow(
     _i1.Session session,
     QueueService row, {
@@ -546,6 +614,7 @@ class QueueServiceRepository {
     );
   }
 
+  /// Deletes all rows matching the [where] expression.
   Future<List<QueueService>> deleteWhere(
     _i1.Session session, {
     required _i1.WhereExpressionBuilder<QueueServiceTable> where,
@@ -557,6 +626,8 @@ class QueueServiceRepository {
     );
   }
 
+  /// Counts the number of rows matching the [where] expression. If omitted,
+  /// will return the count of all rows in the table.
   Future<int> count(
     _i1.Session session, {
     _i1.WhereExpressionBuilder<QueueServiceTable>? where,
@@ -574,6 +645,8 @@ class QueueServiceRepository {
 class QueueServiceAttachRowRepository {
   const QueueServiceAttachRowRepository._();
 
+  /// Creates a relation between the given [QueueService] and [QueueWindow]
+  /// by setting the [QueueService]'s foreign key `queueWindowId` to refer to the [QueueWindow].
   Future<void> queueWindow(
     _i1.Session session,
     QueueService queueService,
@@ -595,6 +668,8 @@ class QueueServiceAttachRowRepository {
     );
   }
 
+  /// Creates a relation between the given [QueueService] and [ProfileUser]
+  /// by setting the [QueueService]'s foreign key `profileUserId` to refer to the [ProfileUser].
   Future<void> profileUser(
     _i1.Session session,
     QueueService queueService,

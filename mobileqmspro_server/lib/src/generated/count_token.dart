@@ -34,6 +34,9 @@ abstract class CountToken
 
   int countWait;
 
+  /// Returns a shallow copy of this [CountToken]
+  /// with some or all fields replaced by the given arguments.
+  @_i1.useResult
   CountToken copyWith({
     int? countIsQueue,
     int? countWait,
@@ -69,6 +72,9 @@ class _CountTokenImpl extends CountToken {
           countWait: countWait,
         );
 
+  /// Returns a shallow copy of this [CountToken]
+  /// with some or all fields replaced by the given arguments.
+  @_i1.useResult
   @override
   CountToken copyWith({
     int? countIsQueue,

@@ -86,6 +86,9 @@ abstract class LogLogin implements _i1.SerializableModel {
 
   _i2.ProfileUser? profileUser;
 
+  /// Returns a shallow copy of this [LogLogin]
+  /// with some or all fields replaced by the given arguments.
+  @_i1.useResult
   LogLogin copyWith({
     int? id,
     String? msgToken,
@@ -151,6 +154,9 @@ class _LogLoginImpl extends LogLogin {
           profileUser: profileUser,
         );
 
+  /// Returns a shallow copy of this [LogLogin]
+  /// with some or all fields replaced by the given arguments.
+  @_i1.useResult
   @override
   LogLogin copyWith({
     Object? id = _Undefined,

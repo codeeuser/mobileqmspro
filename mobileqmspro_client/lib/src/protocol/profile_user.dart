@@ -94,6 +94,9 @@ abstract class ProfileUser implements _i1.SerializableModel {
 
   DateTime? modifiedDate;
 
+  /// Returns a shallow copy of this [ProfileUser]
+  /// with some or all fields replaced by the given arguments.
+  @_i1.useResult
   ProfileUser copyWith({
     int? id,
     String? username,
@@ -163,6 +166,9 @@ class _ProfileUserImpl extends ProfileUser {
           modifiedDate: modifiedDate,
         );
 
+  /// Returns a shallow copy of this [ProfileUser]
+  /// with some or all fields replaced by the given arguments.
+  @_i1.useResult
   @override
   ProfileUser copyWith({
     Object? id = _Undefined,

@@ -145,6 +145,9 @@ abstract class TokenIssued implements _i1.SerializableModel {
 
   _i4.ProfileUser? profileUser;
 
+  /// Returns a shallow copy of this [TokenIssued]
+  /// with some or all fields replaced by the given arguments.
+  @_i1.useResult
   TokenIssued copyWith({
     int? id,
     String? tokenLetter,
@@ -246,6 +249,9 @@ class _TokenIssuedImpl extends TokenIssued {
           profileUser: profileUser,
         );
 
+  /// Returns a shallow copy of this [TokenIssued]
+  /// with some or all fields replaced by the given arguments.
+  @_i1.useResult
   @override
   TokenIssued copyWith({
     Object? id = _Undefined,
