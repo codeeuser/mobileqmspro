@@ -72,12 +72,8 @@ void run(List<String> args) async {
   ));
 
   // Start the server.
-  await pod.start().onError((e, s) async {
+  await pod.start().onError((e, s) {
     print('e:$e, s: $s');
-    await Future.delayed(Duration(seconds: 1), () async {
-      await pod.shutdown();
-      await pod.start();
-    });
   });
 }
 
