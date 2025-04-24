@@ -13,7 +13,7 @@ import 'package:serverpod/serverpod.dart' as _i1;
 import 'membership_enum.dart' as _i2;
 
 abstract class ProfileUser
-    implements _i1.TableRow<int>, _i1.ProtocolSerialization {
+    implements _i1.TableRow<int?>, _i1.ProtocolSerialization {
   ProfileUser._({
     this.id,
     this.username,
@@ -98,7 +98,7 @@ abstract class ProfileUser
   DateTime? modifiedDate;
 
   @override
-  _i1.Table<int> get table => t;
+  _i1.Table<int?> get table => t;
 
   /// Returns a shallow copy of this [ProfileUser]
   /// with some or all fields replaced by the given arguments.
@@ -250,7 +250,7 @@ class _ProfileUserImpl extends ProfileUser {
   }
 }
 
-class ProfileUserTable extends _i1.Table<int> {
+class ProfileUserTable extends _i1.Table<int?> {
   ProfileUserTable({super.tableRelation}) : super(tableName: 'profile_user') {
     username = _i1.ColumnString(
       'username',
@@ -345,7 +345,7 @@ class ProfileUserInclude extends _i1.IncludeObject {
   Map<String, _i1.Include?> get includes => {};
 
   @override
-  _i1.Table<int> get table => ProfileUser.t;
+  _i1.Table<int?> get table => ProfileUser.t;
 }
 
 class ProfileUserIncludeList extends _i1.IncludeList {
@@ -365,7 +365,7 @@ class ProfileUserIncludeList extends _i1.IncludeList {
   Map<String, _i1.Include?> get includes => include?.includes ?? {};
 
   @override
-  _i1.Table<int> get table => ProfileUser.t;
+  _i1.Table<int?> get table => ProfileUser.t;
 }
 
 class ProfileUserRepository {

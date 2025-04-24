@@ -8,13 +8,15 @@
 // ignore_for_file: type_literal_in_constant_pattern
 // ignore_for_file: use_super_parameters
 
+// ignore_for_file: unnecessary_null_comparison
+
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:serverpod/serverpod.dart' as _i1;
 import 'queue_window.dart' as _i2;
 import 'profile_user.dart' as _i3;
 
 abstract class QueueService
-    implements _i1.TableRow<int>, _i1.ProtocolSerialization {
+    implements _i1.TableRow<int?>, _i1.ProtocolSerialization {
   QueueService._({
     this.id,
     required this.name,
@@ -102,7 +104,7 @@ abstract class QueueService
   _i3.ProfileUser? profileUser;
 
   @override
-  _i1.Table<int> get table => t;
+  _i1.Table<int?> get table => t;
 
   /// Returns a shallow copy of this [QueueService]
   /// with some or all fields replaced by the given arguments.
@@ -264,7 +266,7 @@ class _QueueServiceImpl extends QueueService {
   }
 }
 
-class QueueServiceTable extends _i1.Table<int> {
+class QueueServiceTable extends _i1.Table<int?> {
   QueueServiceTable({super.tableRelation}) : super(tableName: 'queue_service') {
     name = _i1.ColumnString(
       'name',
@@ -398,7 +400,7 @@ class QueueServiceInclude extends _i1.IncludeObject {
       };
 
   @override
-  _i1.Table<int> get table => QueueService.t;
+  _i1.Table<int?> get table => QueueService.t;
 }
 
 class QueueServiceIncludeList extends _i1.IncludeList {
@@ -418,7 +420,7 @@ class QueueServiceIncludeList extends _i1.IncludeList {
   Map<String, _i1.Include?> get includes => include?.includes ?? {};
 
   @override
-  _i1.Table<int> get table => QueueService.t;
+  _i1.Table<int?> get table => QueueService.t;
 }
 
 class QueueServiceRepository {

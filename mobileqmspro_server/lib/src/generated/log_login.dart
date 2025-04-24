@@ -8,12 +8,14 @@
 // ignore_for_file: type_literal_in_constant_pattern
 // ignore_for_file: use_super_parameters
 
+// ignore_for_file: unnecessary_null_comparison
+
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:serverpod/serverpod.dart' as _i1;
 import 'profile_user.dart' as _i2;
 
 abstract class LogLogin
-    implements _i1.TableRow<int>, _i1.ProtocolSerialization {
+    implements _i1.TableRow<int?>, _i1.ProtocolSerialization {
   LogLogin._({
     this.id,
     this.msgToken,
@@ -90,7 +92,7 @@ abstract class LogLogin
   _i2.ProfileUser? profileUser;
 
   @override
-  _i1.Table<int> get table => t;
+  _i1.Table<int?> get table => t;
 
   /// Returns a shallow copy of this [LogLogin]
   /// with some or all fields replaced by the given arguments.
@@ -238,7 +240,7 @@ class _LogLoginImpl extends LogLogin {
   }
 }
 
-class LogLoginTable extends _i1.Table<int> {
+class LogLoginTable extends _i1.Table<int?> {
   LogLoginTable({super.tableRelation}) : super(tableName: 'log_login') {
     msgToken = _i1.ColumnString(
       'msgToken',
@@ -345,7 +347,7 @@ class LogLoginInclude extends _i1.IncludeObject {
   Map<String, _i1.Include?> get includes => {'profileUser': _profileUser};
 
   @override
-  _i1.Table<int> get table => LogLogin.t;
+  _i1.Table<int?> get table => LogLogin.t;
 }
 
 class LogLoginIncludeList extends _i1.IncludeList {
@@ -365,7 +367,7 @@ class LogLoginIncludeList extends _i1.IncludeList {
   Map<String, _i1.Include?> get includes => include?.includes ?? {};
 
   @override
-  _i1.Table<int> get table => LogLogin.t;
+  _i1.Table<int?> get table => LogLogin.t;
 }
 
 class LogLoginRepository {
