@@ -75,6 +75,8 @@ void run(List<String> args) async {
   await pod.start().onError((e, s) {
     print('e:$e, s: $s');
   });
+
+  await pod.webServer.stop();
 }
 
 Future<bool> sendResetMail(
