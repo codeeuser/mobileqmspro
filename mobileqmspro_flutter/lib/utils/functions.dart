@@ -12,6 +12,9 @@ import 'package:mobileqmspro/generated/l10n.dart';
 import 'package:mobileqmspro/logger.dart';
 import 'package:mobileqmspro/utils/constants.dart';
 import 'package:overlay_support/overlay_support.dart';
+import 'package:pdf/pdf.dart';
+import 'package:pdf/widgets.dart' as pw;
+import 'package:printing/printing.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:timeago/timeago.dart' as timeago;
 import 'package:url_launcher/url_launcher_string.dart';
@@ -232,6 +235,33 @@ class Utils {
     var text =
         '[MOBILEQMSPRO]\n$windowName\nSERVICE: $serviceName\nTOKEN: $letter-$num\n\n$formatted';
     return text;
+  }
+
+  static Future<Uint8List> generatePdf(
+      PdfPageFormat format, String text) async {
+    final pdf = pw.Document(version: PdfVersion.pdf_1_5, compress: true);
+    final font = await PdfGoogleFonts.nunitoExtraLight();
+
+    pdf.addPage(
+      pw.Page(
+        pageFormat: format,
+        build: (context) {
+          return pw.Column(
+            children: [
+              pw.SizedBox(
+                width: double.infinity,
+                child: pw.FittedBox(
+                  child: pw.Text(text, style: pw.TextStyle(font: font)),
+                ),
+              ),
+              pw.SizedBox(height: 20),
+            ],
+          );
+        },
+      ),
+    );
+
+    return pdf.save();
   }
 
   static Future<String?> sendMessage(

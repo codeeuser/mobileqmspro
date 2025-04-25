@@ -4,6 +4,7 @@ import 'package:adaptive_dialog/adaptive_dialog.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:mobileqmspro/pages/printing_page.dart';
 import 'package:mobileqmspro/utils/constants.dart';
 import 'package:mobileqmspro_client/mobileqmspro_client.dart';
 import 'package:mobileqmspro/generated/l10n.dart';
@@ -83,43 +84,64 @@ class _TokenNumPageState extends State<TokenNumPage> {
               mainAxisAlignment: MainAxisAlignment.start,
               children: <Widget>[
                 const SizedBox(height: 60),
-                ElevatedButton.icon(
-                    icon: const Icon(CupertinoIcons.phone_circle,
-                        color: Colors.blue, semanticLabel: 'SMS'),
-                    label: Text(S.of(context).sendSms,
-                        style: const TextStyle(color: Colors.blue)),
-                    style: buttonStyle,
-                    onPressed: () async {
-                      final result = await showTextInputDialog(
-                          context: context,
-                          style: AdaptiveStyle.iOS,
-                          textFields: [
-                            const DialogTextField(
-                                keyboardType: TextInputType.numberWithOptions(
-                                    decimal: false, signed: false),
-                                hintText: '+601234567'),
-                          ]);
-                      Logger.log(tag, message: 'result: $result');
-                      if (result != null &&
-                          result.isNotEmpty == true &&
-                          Utils.isMobile &&
-                          !kIsWeb) {
-                        String phone = result.first;
-                        var text = Utils.printTokenInfo(
-                            widget.window.name,
-                            tokenIssued.queueService?.name,
-                            tokenIssued.tokenLetter,
-                            tokenIssued.tokenNumber);
-                        if (text != null) {
-                          final result = await Utils.sendMessage(text, [phone]);
-                          if (result == null) {
+                if (Utils.isMobile) ...[
+                  ElevatedButton.icon(
+                      icon: const Icon(CupertinoIcons.phone_circle,
+                          color: Colors.blue, semanticLabel: 'SMS'),
+                      label: Text(S.of(context).sendSms,
+                          style: const TextStyle(color: Colors.blue)),
+                      style: buttonStyle,
+                      onPressed: () async {
+                        final result = await showTextInputDialog(
+                            context: context,
+                            style: AdaptiveStyle.iOS,
+                            textFields: [
+                              const DialogTextField(
+                                  keyboardType: TextInputType.numberWithOptions(
+                                      decimal: false, signed: false),
+                                  hintText: '+601234567'),
+                            ]);
+                        Logger.log(tag, message: 'result: $result');
+                        if (result != null &&
+                            result.isNotEmpty == true &&
+                            Utils.isMobile &&
+                            !kIsWeb) {
+                          String phone = result.first;
+                          var text = Utils.printTokenInfo(
+                              widget.window.name,
+                              tokenIssued.queueService?.name,
+                              tokenIssued.tokenLetter,
+                              tokenIssued.tokenNumber);
+                          if (text != null) {
+                            final result =
+                                await Utils.sendMessage(text, [phone]);
+                            if (result == null) {
+                              Utils.overlayInfoMessage(
+                                  msg: S.of(context).noAction);
+                            }
+                          } else {
                             Utils.overlayInfoMessage(
                                 msg: S.of(context).noAction);
                           }
-                        } else {
-                          Utils.overlayInfoMessage(msg: S.of(context).noAction);
                         }
-                      }
+                      }),
+                ],
+                const SizedBox(height: 10),
+                ElevatedButton.icon(
+                    icon: const Icon(CupertinoIcons.printer,
+                        color: Colors.blue, semanticLabel: 'Printing'),
+                    label: Text(S.of(context).printToken,
+                        style: const TextStyle(color: Colors.blue)),
+                    style: buttonStyle,
+                    onPressed: () async {
+                      var text = Utils.printTokenInfo(
+                          widget.window.name,
+                          tokenIssued.queueService?.name,
+                          tokenIssued.tokenLetter,
+                          tokenIssued.tokenNumber);
+                      if (text == null) return;
+                      Utils.pushPage(
+                          context, PrintingPage(text: text), 'Printing');
                     }),
                 const SizedBox(height: 30),
                 Padding(
