@@ -5,6 +5,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:just_audio/just_audio.dart';
+import 'package:mobileqmspro/pages/printing_page.dart';
 import 'package:mobileqmspro_client/mobileqmspro_client.dart';
 import 'package:mobileqmspro/commons/custom_appbar.dart';
 import 'package:mobileqmspro/commons/no_data.dart';
@@ -252,6 +253,21 @@ class _TokenCallPageState extends State<TokenCallPage> {
             ),
             const Divider(),
             ListTile(
+              leading:
+                  const Icon(CupertinoIcons.printer, semanticLabel: 'Printing'),
+              title: Text(S.of(context).printToken),
+              onTap: () async {
+                var text = Utils.printTokenInfo(
+                    widget.window.name,
+                    tokenIssued.queueService?.name,
+                    tokenIssued.tokenLetter,
+                    tokenIssued.tokenNumber);
+                if (text == null) return;
+                Utils.pushPage(context, PrintingPage(text: text), 'Printing');
+              },
+            ),
+            const Divider(),
+            ListTile(
               leading: const Icon(CupertinoIcons.share, semanticLabel: 'Share'),
               title: Text(S.of(context).shareTokenInfo),
               onTap: () async {
@@ -261,7 +277,8 @@ class _TokenCallPageState extends State<TokenCallPage> {
                     tokenIssued.tokenLetter,
                     tokenIssued.tokenNumber);
                 if (text != null) {
-                  await Share.share(text, subject: 'Token Info');
+                  await SharePlus.instance
+                      .share(ShareParams(text: text, subject: 'Token Info'));
                 } else {
                   Utils.overlayInfoMessage(msg: S.of(context).noAction);
                 }

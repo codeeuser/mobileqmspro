@@ -209,12 +209,13 @@ class _TokenNumPageState extends State<TokenNumPage> {
                         tokenIssued.tokenNumber);
                     if (text != null) {
                       final box = context.findRenderObject() as RenderBox?;
-                      await Share.share(text,
+                      await SharePlus.instance.share(ShareParams(
+                          text: text,
                           subject: 'Token Info',
                           sharePositionOrigin:
                               (Utils.isPhoneSize(context) == false)
                                   ? box!.localToGlobal(Offset.zero) & box.size
-                                  : null);
+                                  : null));
                     } else {
                       Utils.overlayInfoMessage(msg: S.of(context).noAction);
                     }

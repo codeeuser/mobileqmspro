@@ -4,6 +4,7 @@ import 'package:adaptive_dialog/adaptive_dialog.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:just_audio/just_audio.dart';
+import 'package:mobileqmspro/pages/printing_page.dart';
 import 'package:mobileqmspro_client/mobileqmspro_client.dart';
 import 'package:mobileqmspro/commons/custom_appbar.dart';
 import 'package:mobileqmspro/commons/no_data.dart';
@@ -228,6 +229,7 @@ class _TokenListPageState extends State<TokenListPage> {
             child: Column(children: <Widget>[
           Text('${tokenIssued.tokenLetter}-${tokenIssued.tokenNumber}',
               style: Theme.of(context).textTheme.labelMedium),
+          const Divider(),
           ListTile(
             leading: const Icon(CupertinoIcons.check_mark,
                 semanticLabel: 'Completed'),
@@ -240,6 +242,22 @@ class _TokenListPageState extends State<TokenListPage> {
               }
             },
           ),
+          const Divider(),
+          ListTile(
+            leading:
+                const Icon(CupertinoIcons.printer, semanticLabel: 'Printing'),
+            title: Text(S.of(context).printToken),
+            onTap: () async {
+              var text = Utils.printTokenInfo(
+                  widget.window.name,
+                  tokenIssued.queueService?.name,
+                  tokenIssued.tokenLetter,
+                  tokenIssued.tokenNumber);
+              if (text == null) return;
+              Utils.pushPage(context, PrintingPage(text: text), 'Printing');
+            },
+          ),
+          const Divider(),
           ListTile(
             leading: const Icon(CupertinoIcons.share, semanticLabel: 'Share'),
             title: Text(S.of(context).shareTokenInfo),
@@ -250,13 +268,15 @@ class _TokenListPageState extends State<TokenListPage> {
                   tokenIssued.tokenLetter,
                   tokenIssued.tokenNumber);
               if (text != null) {
-                await Share.share(text, subject: 'Token Info');
+                await SharePlus.instance
+                    .share(ShareParams(text: text, subject: 'Token Info'));
               } else {
                 Utils.overlayInfoMessage(msg: S.of(context).noAction);
               }
               Navigator.of(context).pop();
             },
           ),
+          const Divider(),
         ])));
   }
 
