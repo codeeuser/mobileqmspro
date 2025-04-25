@@ -42,7 +42,7 @@ void main() async {
       windowManager.waitUntilReadyToShow(windowOptions, () async {
         await windowManager.setTitleBarStyle(
           TitleBarStyle.hidden,
-          windowButtonVisibility: false,
+          windowButtonVisibility: true,
         );
         await windowManager.show();
         await windowManager.focus();
