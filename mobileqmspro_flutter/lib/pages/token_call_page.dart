@@ -161,6 +161,8 @@ class _TokenCallPageState extends State<TokenCallPage> {
                       if (tokenIssuedList == null || tokenIssuedList.isEmpty) {
                         return const NoData();
                       }
+                      tokenIssuedList.sort(
+                          (a, b) => a.createdDate.compareTo(b.createdDate));
                       _tokenIssuedList = tokenIssuedList;
                       return ListView.builder(
                           itemCount: tokenIssuedList.length,
