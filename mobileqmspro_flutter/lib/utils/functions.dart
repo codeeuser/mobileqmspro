@@ -240,7 +240,7 @@ class Utils {
   static Future<Uint8List> generatePdf(
       PdfPageFormat format, String text) async {
     final pdf = pw.Document(version: PdfVersion.pdf_1_5, compress: true);
-    final font = await PdfGoogleFonts.nunitoExtraLight();
+    final font = await PdfGoogleFonts.nunitoExtraBold();
 
     pdf.addPage(
       pw.Page(
