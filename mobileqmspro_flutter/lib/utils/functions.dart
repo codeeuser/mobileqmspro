@@ -233,7 +233,7 @@ class Utils {
     DateFormat formatter = DateFormat('yyyy-MM-dd HH:mm');
     String formatted = formatter.format(now);
     var text =
-        '[MOBILEQMSPRO]\n$windowName\nSERVICE: $serviceName\nTOKEN: $letter-$num\n\n$formatted';
+        '[MOBILEQMSPRO]\n\n$windowName\nSERVICE: $serviceName\nTOKEN: $letter-$num\n\n$formatted';
     return text;
   }
 
