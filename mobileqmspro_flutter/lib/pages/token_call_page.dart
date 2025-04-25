@@ -124,6 +124,22 @@ class _TokenCallPageState extends State<TokenCallPage> {
                       }
                     },
                   ),
+                  ElevatedButton(
+                      child: Text(S.of(context).next),
+                      onPressed: () async {
+                        final tokenIssuedList = await client.tokenIssued
+                            .getAllByWindowAndStatus(
+                                windowId, StatusCode.onwait, null, null, false);
+                        tokenIssuedList.sort(
+                            (a, b) => a.createdDate.compareTo(b.createdDate));
+                        await _player.seek(Duration.zero);
+                        _player.play();
+                        bool b =
+                            await _buildDialogCallToken(tokenIssuedList.first);
+                        if (b) {
+                          setState(() {});
+                        }
+                      }),
                   IconButton(
                     icon: const Icon(CupertinoIcons.refresh,
                         semanticLabel: 'Refresh'),
