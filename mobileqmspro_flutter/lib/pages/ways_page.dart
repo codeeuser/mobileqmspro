@@ -118,7 +118,19 @@ class _WaysPageState extends State<WaysPage> {
                   return Utils.loadingScreen();
                 });
           }
-          return Utils.loadingScreen();
+          return Column(
+            children: [
+              const SizedBox(height: 30),
+              Center(child: NoData(message: 'Network Connection Issues')),
+              const SizedBox(height: 30),
+              ElevatedButton(
+                  child: Text(S.of(context).reconnect),
+                  onPressed: () {
+                    Utils.pushAndRemoveUntilPage(
+                        context, WaysPage(prefs: widget.prefs), 'WaysPage');
+                  })
+            ],
+          );
         });
   }
 
@@ -426,13 +438,21 @@ class _WaysPageState extends State<WaysPage> {
     Logger.log(tag, message: '_listenToUpdates, windowId: $windowId');
     final Stream<CountToken> statusUpdates =
         client.tokenIssued.echoStatusStream(StatusCode.onwait, windowId);
-    try {
-      _sub = statusUpdates.listen((update) {
-        _countMyOnWait.value = update.countWait;
-        _countMyNonOnWait.value = update.countIsQueue;
+
+    _sub = statusUpdates.listen((update) {
+      _handleUpdate(update);
+    })
+      ..onError((error) async {
+        Logger.log(tag, message: '_listenToUpdates: onError: $error');
+        await Future.delayed(Duration(seconds: 3), () async {
+          _sub?.cancel();
+          await _listenToUpdates(windowId);
+        });
       });
-    } catch (e) {
-      Logger.log(tag, message: '_listenToUpdatesError: $e');
-    }
+  }
+
+  void _handleUpdate(update) {
+    _countMyOnWait.value = update.countWait;
+    _countMyNonOnWait.value = update.countIsQueue;
   }
 }

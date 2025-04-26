@@ -22,170 +22,187 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
-        "accept": MessageLookupByLibrary.simpleMessage("Aceitar"),
-        "addLogo": MessageLookupByLibrary.simpleMessage("Adicionar logotipo"),
-        "addPrinter":
-            MessageLookupByLibrary.simpleMessage("Adicionar impressora"),
-        "addService": MessageLookupByLibrary.simpleMessage("Adicionar serviço"),
-        "addWindow": MessageLookupByLibrary.simpleMessage("Adicionar janela"),
-        "alreadyPurchased": MessageLookupByLibrary.simpleMessage("Já comprado"),
-        "appInfo":
-            MessageLookupByLibrary.simpleMessage("Informações do aplicativo"),
-        "appName": MessageLookupByLibrary.simpleMessage("Nome do Aplicativo"),
-        "appearance": MessageLookupByLibrary.simpleMessage("Aparência"),
-        "backgroundColor": MessageLookupByLibrary.simpleMessage("Cor de fundo"),
-        "boardSetting":
-            MessageLookupByLibrary.simpleMessage("Configuração da placa"),
-        "buildNumber":
-            MessageLookupByLibrary.simpleMessage("Número da compilação"),
-        "callToken": MessageLookupByLibrary.simpleMessage("Token de chamada"),
-        "cancel": MessageLookupByLibrary.simpleMessage("Cancelar"),
-        "completedTokens":
-            MessageLookupByLibrary.simpleMessage("Token concluído"),
-        "connect": MessageLookupByLibrary.simpleMessage("Conectar"),
-        "counter": MessageLookupByLibrary.simpleMessage("Contador"),
-        "createDemoProject": MessageLookupByLibrary.simpleMessage(
-            "Criar um projeto de demonstração"),
-        "createdDate": MessageLookupByLibrary.simpleMessage("Criado"),
-        "currentToken": MessageLookupByLibrary.simpleMessage("Token atual"),
-        "currentWindowName":
-            MessageLookupByLibrary.simpleMessage("Nome da janela atual"),
-        "dashboard": MessageLookupByLibrary.simpleMessage("painel de controle"),
-        "deleteAccount": MessageLookupByLibrary.simpleMessage("Excluir conta"),
-        "device": MessageLookupByLibrary.simpleMessage("Dispositivo"),
-        "disconnect": MessageLookupByLibrary.simpleMessage("Desconectar"),
-        "displayTheRunningQueueNumber": MessageLookupByLibrary.simpleMessage(
-            "Exibir o número da fila em execução"),
-        "doYouAccept": MessageLookupByLibrary.simpleMessage("Você aceita"),
-        "dropDatabase":
-            MessageLookupByLibrary.simpleMessage("Eliminar banco de dados"),
-        "editService":
-            MessageLookupByLibrary.simpleMessage("Serviço de edição"),
-        "editWindow": MessageLookupByLibrary.simpleMessage("Janela de edição"),
-        "email": MessageLookupByLibrary.simpleMessage("O email"),
-        "enableWindow": MessageLookupByLibrary.simpleMessage("Ativar janela"),
-        "exitApplication":
-            MessageLookupByLibrary.simpleMessage("Sair do aplicativo"),
-        "feedback": MessageLookupByLibrary.simpleMessage("Comentários"),
-        "fontScale": MessageLookupByLibrary.simpleMessage("Escala de fonte"),
-        "inAppPurchase":
-            MessageLookupByLibrary.simpleMessage("Compra no aplicativo"),
-        "invalid": MessageLookupByLibrary.simpleMessage("Inválido"),
-        "issueToken": MessageLookupByLibrary.simpleMessage("Token de Emissão"),
-        "loading": MessageLookupByLibrary.simpleMessage("CARREGANDO"),
-        "login": MessageLookupByLibrary.simpleMessage("Conecte-se"),
-        "logout": MessageLookupByLibrary.simpleMessage("sair"),
-        "mainMenu": MessageLookupByLibrary.simpleMessage("Menu Principal"),
-        "markAllAsCompleted":
-            MessageLookupByLibrary.simpleMessage("Marcar tudo como concluído"),
-        "markAllAsTimeout": MessageLookupByLibrary.simpleMessage(
-            "Marcar tudo como tempo limite"),
-        "markAsCompleted":
-            MessageLookupByLibrary.simpleMessage("Marcar como concluído"),
-        "markComplete":
-            MessageLookupByLibrary.simpleMessage("Marcar como concluído"),
-        "membershipLimitation":
-            MessageLookupByLibrary.simpleMessage("Limitação de Membros"),
-        "mobileqmsBoardPadApp":
-            MessageLookupByLibrary.simpleMessage("MobileQMS Board Pad App"),
-        "more": MessageLookupByLibrary.simpleMessage("mais"),
-        "moreOptions": MessageLookupByLibrary.simpleMessage("Mais opções"),
-        "moveDown": MessageLookupByLibrary.simpleMessage("Mover para baixo"),
-        "moveUp": MessageLookupByLibrary.simpleMessage("Subir"),
-        "myQueue": MessageLookupByLibrary.simpleMessage("Minha fila"),
-        "name": MessageLookupByLibrary.simpleMessage("Nome"),
-        "next": MessageLookupByLibrary.simpleMessage("Próximo"),
-        "no": MessageLookupByLibrary.simpleMessage("Não"),
-        "noAction": MessageLookupByLibrary.simpleMessage("Nenhuma ação"),
-        "numberOfTokenBox":
-            MessageLookupByLibrary.simpleMessage("Número de caixas de tokens"),
-        "openCamera": MessageLookupByLibrary.simpleMessage("Câmera Aberta"),
-        "openImageGalerry":
-            MessageLookupByLibrary.simpleMessage("Abrir imagem Galerry"),
-        "openServiceList":
-            MessageLookupByLibrary.simpleMessage("Abrir lista de serviços"),
-        "packageName": MessageLookupByLibrary.simpleMessage("Nome do pacote"),
-        "pageSize": MessageLookupByLibrary.simpleMessage("Tamanho da página"),
-        "pairCode": MessageLookupByLibrary.simpleMessage("Código de par"),
-        "passcode": MessageLookupByLibrary.simpleMessage("senha"),
-        "permission": MessageLookupByLibrary.simpleMessage("Permissão"),
-        "phone": MessageLookupByLibrary.simpleMessage("telefone"),
-        "pleaseWait": MessageLookupByLibrary.simpleMessage("Por favor, espere"),
-        "printQRCode":
-            MessageLookupByLibrary.simpleMessage("Imprimir código QR"),
-        "printToken":
-            MessageLookupByLibrary.simpleMessage("Token de impressão"),
-        "privacy": MessageLookupByLibrary.simpleMessage("Privacidade"),
-        "proceed": MessageLookupByLibrary.simpleMessage("Continuar"),
-        "proceedToCounter":
-            MessageLookupByLibrary.simpleMessage("Prossiga para Contador"),
-        "purchasedRecord":
-            MessageLookupByLibrary.simpleMessage("Registro Comprado"),
-        "recall": MessageLookupByLibrary.simpleMessage("Re-Call"),
-        "recallToken": MessageLookupByLibrary.simpleMessage("Lembrar token"),
-        "removeLogo": MessageLookupByLibrary.simpleMessage("Remover logotipo"),
-        "resetTokenNumber":
-            MessageLookupByLibrary.simpleMessage("Redefinir número de token"),
-        "runningTokens":
-            MessageLookupByLibrary.simpleMessage("Fichas de Corrida"),
-        "save": MessageLookupByLibrary.simpleMessage("Salve "),
-        "selectLanguage":
-            MessageLookupByLibrary.simpleMessage("Selecione o idioma"),
-        "sendSms": MessageLookupByLibrary.simpleMessage("Enviar SMS"),
-        "server": MessageLookupByLibrary.simpleMessage("Servidor"),
-        "serverStarted":
-            MessageLookupByLibrary.simpleMessage("Servidor iniciado"),
-        "serverStopped":
-            MessageLookupByLibrary.simpleMessage("Servidor parado"),
-        "service": MessageLookupByLibrary.simpleMessage("Serviço"),
-        "serviceForm":
-            MessageLookupByLibrary.simpleMessage("Formulário de Serviço"),
-        "serviceLetter":
-            MessageLookupByLibrary.simpleMessage("Carta de Serviço"),
-        "serviceList":
-            MessageLookupByLibrary.simpleMessage("Lista de serviços"),
-        "serviceName": MessageLookupByLibrary.simpleMessage("Nome do serviço"),
-        "serviceWizard":
-            MessageLookupByLibrary.simpleMessage("Assistente de serviço"),
-        "setting": MessageLookupByLibrary.simpleMessage("Configuração"),
-        "setupLanguage":
-            MessageLookupByLibrary.simpleMessage("Idioma de configuração"),
-        "setupPrinter":
-            MessageLookupByLibrary.simpleMessage("Configuração da impressora"),
-        "setupTheStall":
-            MessageLookupByLibrary.simpleMessage("Configurar o estol"),
-        "setupWindow":
-            MessageLookupByLibrary.simpleMessage("Janela de configuração"),
-        "share": MessageLookupByLibrary.simpleMessage("Compartilhar"),
-        "shareTokenInfo": MessageLookupByLibrary.simpleMessage(
-            "Compartilhar informações do token"),
-        "startNumber": MessageLookupByLibrary.simpleMessage("Número inicial"),
-        "statusQueue": MessageLookupByLibrary.simpleMessage("Status"),
-        "submit": MessageLookupByLibrary.simpleMessage("Enviar"),
-        "termsOfUse": MessageLookupByLibrary.simpleMessage("termos de uso"),
-        "testPrint": MessageLookupByLibrary.simpleMessage("Impressão de teste"),
-        "text": MessageLookupByLibrary.simpleMessage("Texto"),
-        "textColor": MessageLookupByLibrary.simpleMessage("Cor do texto"),
-        "timeout": MessageLookupByLibrary.simpleMessage("Tempo esgotado"),
-        "timeoutToken":
-            MessageLookupByLibrary.simpleMessage("Token de tempo limite"),
-        "title": MessageLookupByLibrary.simpleMessage("MobileQMS Pro"),
-        "tokenAction": MessageLookupByLibrary.simpleMessage("Ação Token"),
-        "tokenList": MessageLookupByLibrary.simpleMessage("Lista de Token"),
-        "tokenNumber": MessageLookupByLibrary.simpleMessage("Número do token"),
-        "update": MessageLookupByLibrary.simpleMessage("Atualizar"),
-        "version": MessageLookupByLibrary.simpleMessage("Versão"),
-        "visitUsAt": MessageLookupByLibrary.simpleMessage("Visite-nos em"),
-        "window": MessageLookupByLibrary.simpleMessage("Janela"),
-        "windowForm":
-            MessageLookupByLibrary.simpleMessage("Formulário da janela"),
-        "windowName": MessageLookupByLibrary.simpleMessage("Nome da janela"),
-        "windowWizard":
-            MessageLookupByLibrary.simpleMessage("Assistente de janela"),
-        "windows": MessageLookupByLibrary.simpleMessage("janelas"),
-        "wizardProject": MessageLookupByLibrary.simpleMessage("Projeto Wizard"),
-        "yes": MessageLookupByLibrary.simpleMessage("sim"),
-        "youShouldSetupPrinter": MessageLookupByLibrary.simpleMessage(
-            "Você deve configurar a impressora antes de usar")
-      };
+    "accept": MessageLookupByLibrary.simpleMessage("Aceitar"),
+    "addLogo": MessageLookupByLibrary.simpleMessage("Adicionar logotipo"),
+    "addPrinter": MessageLookupByLibrary.simpleMessage("Adicionar impressora"),
+    "addService": MessageLookupByLibrary.simpleMessage("Adicionar serviço"),
+    "addWindow": MessageLookupByLibrary.simpleMessage("Adicionar janela"),
+    "alreadyPurchased": MessageLookupByLibrary.simpleMessage("Já comprado"),
+    "appInfo": MessageLookupByLibrary.simpleMessage(
+      "Informações do aplicativo",
+    ),
+    "appName": MessageLookupByLibrary.simpleMessage("Nome do Aplicativo"),
+    "appearance": MessageLookupByLibrary.simpleMessage("Aparência"),
+    "backgroundColor": MessageLookupByLibrary.simpleMessage("Cor de fundo"),
+    "boardSetting": MessageLookupByLibrary.simpleMessage(
+      "Configuração da placa",
+    ),
+    "buildNumber": MessageLookupByLibrary.simpleMessage("Número da compilação"),
+    "callToken": MessageLookupByLibrary.simpleMessage("Token de chamada"),
+    "cancel": MessageLookupByLibrary.simpleMessage("Cancelar"),
+    "completedTokens": MessageLookupByLibrary.simpleMessage("Token concluído"),
+    "connect": MessageLookupByLibrary.simpleMessage("Conectar"),
+    "counter": MessageLookupByLibrary.simpleMessage("Contador"),
+    "createDemoProject": MessageLookupByLibrary.simpleMessage(
+      "Criar um projeto de demonstração",
+    ),
+    "createdDate": MessageLookupByLibrary.simpleMessage("Criado"),
+    "currentToken": MessageLookupByLibrary.simpleMessage("Token atual"),
+    "currentWindowName": MessageLookupByLibrary.simpleMessage(
+      "Nome da janela atual",
+    ),
+    "dashboard": MessageLookupByLibrary.simpleMessage("painel de controle"),
+    "deleteAccount": MessageLookupByLibrary.simpleMessage("Excluir conta"),
+    "device": MessageLookupByLibrary.simpleMessage("Dispositivo"),
+    "disconnect": MessageLookupByLibrary.simpleMessage("Desconectar"),
+    "displayTheRunningQueueNumber": MessageLookupByLibrary.simpleMessage(
+      "Exibir o número da fila em execução",
+    ),
+    "doYouAccept": MessageLookupByLibrary.simpleMessage("Você aceita"),
+    "dropDatabase": MessageLookupByLibrary.simpleMessage(
+      "Eliminar banco de dados",
+    ),
+    "editService": MessageLookupByLibrary.simpleMessage("Serviço de edição"),
+    "editWindow": MessageLookupByLibrary.simpleMessage("Janela de edição"),
+    "email": MessageLookupByLibrary.simpleMessage("O email"),
+    "enableWindow": MessageLookupByLibrary.simpleMessage("Ativar janela"),
+    "exitApplication": MessageLookupByLibrary.simpleMessage(
+      "Sair do aplicativo",
+    ),
+    "feedback": MessageLookupByLibrary.simpleMessage("Comentários"),
+    "fontScale": MessageLookupByLibrary.simpleMessage("Escala de fonte"),
+    "inAppPurchase": MessageLookupByLibrary.simpleMessage(
+      "Compra no aplicativo",
+    ),
+    "invalid": MessageLookupByLibrary.simpleMessage("Inválido"),
+    "issueToken": MessageLookupByLibrary.simpleMessage("Token de Emissão"),
+    "loading": MessageLookupByLibrary.simpleMessage("CARREGANDO"),
+    "login": MessageLookupByLibrary.simpleMessage("Conecte-se"),
+    "logout": MessageLookupByLibrary.simpleMessage("sair"),
+    "mainMenu": MessageLookupByLibrary.simpleMessage("Menu Principal"),
+    "markAllAsCompleted": MessageLookupByLibrary.simpleMessage(
+      "Marcar tudo como concluído",
+    ),
+    "markAllAsTimeout": MessageLookupByLibrary.simpleMessage(
+      "Marcar tudo como tempo limite",
+    ),
+    "markAsCompleted": MessageLookupByLibrary.simpleMessage(
+      "Marcar como concluído",
+    ),
+    "markComplete": MessageLookupByLibrary.simpleMessage(
+      "Marcar como concluído",
+    ),
+    "membershipLimitation": MessageLookupByLibrary.simpleMessage(
+      "Limitação de Membros",
+    ),
+    "mobileqmsBoardPadApp": MessageLookupByLibrary.simpleMessage(
+      "MobileQMS Board Pad App",
+    ),
+    "more": MessageLookupByLibrary.simpleMessage("mais"),
+    "moreOptions": MessageLookupByLibrary.simpleMessage("Mais opções"),
+    "moveDown": MessageLookupByLibrary.simpleMessage("Mover para baixo"),
+    "moveUp": MessageLookupByLibrary.simpleMessage("Subir"),
+    "myQueue": MessageLookupByLibrary.simpleMessage("Minha fila"),
+    "name": MessageLookupByLibrary.simpleMessage("Nome"),
+    "next": MessageLookupByLibrary.simpleMessage("Próximo"),
+    "no": MessageLookupByLibrary.simpleMessage("Não"),
+    "noAction": MessageLookupByLibrary.simpleMessage("Nenhuma ação"),
+    "numberOfTokenBox": MessageLookupByLibrary.simpleMessage(
+      "Número de caixas de tokens",
+    ),
+    "openCamera": MessageLookupByLibrary.simpleMessage("Câmera Aberta"),
+    "openImageGalerry": MessageLookupByLibrary.simpleMessage(
+      "Abrir imagem Galerry",
+    ),
+    "openServiceList": MessageLookupByLibrary.simpleMessage(
+      "Abrir lista de serviços",
+    ),
+    "packageName": MessageLookupByLibrary.simpleMessage("Nome do pacote"),
+    "pageSize": MessageLookupByLibrary.simpleMessage("Tamanho da página"),
+    "pairCode": MessageLookupByLibrary.simpleMessage("Código de par"),
+    "passcode": MessageLookupByLibrary.simpleMessage("senha"),
+    "permission": MessageLookupByLibrary.simpleMessage("Permissão"),
+    "phone": MessageLookupByLibrary.simpleMessage("telefone"),
+    "pleaseWait": MessageLookupByLibrary.simpleMessage("Por favor, espere"),
+    "printQRCode": MessageLookupByLibrary.simpleMessage("Imprimir código QR"),
+    "printToken": MessageLookupByLibrary.simpleMessage("Token de impressão"),
+    "privacy": MessageLookupByLibrary.simpleMessage("Privacidade"),
+    "proceed": MessageLookupByLibrary.simpleMessage("Continuar"),
+    "proceedToCounter": MessageLookupByLibrary.simpleMessage(
+      "Prossiga para Contador",
+    ),
+    "purchasedRecord": MessageLookupByLibrary.simpleMessage(
+      "Registro Comprado",
+    ),
+    "recall": MessageLookupByLibrary.simpleMessage("Re-Call"),
+    "recallToken": MessageLookupByLibrary.simpleMessage("Lembrar token"),
+    "removeLogo": MessageLookupByLibrary.simpleMessage("Remover logotipo"),
+    "resetTokenNumber": MessageLookupByLibrary.simpleMessage(
+      "Redefinir número de token",
+    ),
+    "runningTokens": MessageLookupByLibrary.simpleMessage("Fichas de Corrida"),
+    "save": MessageLookupByLibrary.simpleMessage("Salve "),
+    "selectLanguage": MessageLookupByLibrary.simpleMessage(
+      "Selecione o idioma",
+    ),
+    "sendSms": MessageLookupByLibrary.simpleMessage("Enviar SMS"),
+    "server": MessageLookupByLibrary.simpleMessage("Servidor"),
+    "serverStarted": MessageLookupByLibrary.simpleMessage("Servidor iniciado"),
+    "serverStopped": MessageLookupByLibrary.simpleMessage("Servidor parado"),
+    "service": MessageLookupByLibrary.simpleMessage("Serviço"),
+    "serviceForm": MessageLookupByLibrary.simpleMessage(
+      "Formulário de Serviço",
+    ),
+    "serviceLetter": MessageLookupByLibrary.simpleMessage("Carta de Serviço"),
+    "serviceList": MessageLookupByLibrary.simpleMessage("Lista de serviços"),
+    "serviceName": MessageLookupByLibrary.simpleMessage("Nome do serviço"),
+    "serviceWizard": MessageLookupByLibrary.simpleMessage(
+      "Assistente de serviço",
+    ),
+    "setting": MessageLookupByLibrary.simpleMessage("Configuração"),
+    "setupLanguage": MessageLookupByLibrary.simpleMessage(
+      "Idioma de configuração",
+    ),
+    "setupPrinter": MessageLookupByLibrary.simpleMessage(
+      "Configuração da impressora",
+    ),
+    "setupTheStall": MessageLookupByLibrary.simpleMessage("Configurar o estol"),
+    "setupWindow": MessageLookupByLibrary.simpleMessage(
+      "Janela de configuração",
+    ),
+    "share": MessageLookupByLibrary.simpleMessage("Compartilhar"),
+    "shareTokenInfo": MessageLookupByLibrary.simpleMessage(
+      "Compartilhar informações do token",
+    ),
+    "startNumber": MessageLookupByLibrary.simpleMessage("Número inicial"),
+    "statusQueue": MessageLookupByLibrary.simpleMessage("Status"),
+    "submit": MessageLookupByLibrary.simpleMessage("Enviar"),
+    "termsOfUse": MessageLookupByLibrary.simpleMessage("termos de uso"),
+    "testPrint": MessageLookupByLibrary.simpleMessage("Impressão de teste"),
+    "text": MessageLookupByLibrary.simpleMessage("Texto"),
+    "textColor": MessageLookupByLibrary.simpleMessage("Cor do texto"),
+    "timeout": MessageLookupByLibrary.simpleMessage("Tempo esgotado"),
+    "timeoutToken": MessageLookupByLibrary.simpleMessage(
+      "Token de tempo limite",
+    ),
+    "title": MessageLookupByLibrary.simpleMessage("MobileQMS Pro"),
+    "tokenAction": MessageLookupByLibrary.simpleMessage("Ação Token"),
+    "tokenList": MessageLookupByLibrary.simpleMessage("Lista de Token"),
+    "tokenNumber": MessageLookupByLibrary.simpleMessage("Número do token"),
+    "update": MessageLookupByLibrary.simpleMessage("Atualizar"),
+    "version": MessageLookupByLibrary.simpleMessage("Versão"),
+    "visitUsAt": MessageLookupByLibrary.simpleMessage("Visite-nos em"),
+    "window": MessageLookupByLibrary.simpleMessage("Janela"),
+    "windowForm": MessageLookupByLibrary.simpleMessage("Formulário da janela"),
+    "windowName": MessageLookupByLibrary.simpleMessage("Nome da janela"),
+    "windowWizard": MessageLookupByLibrary.simpleMessage(
+      "Assistente de janela",
+    ),
+    "windows": MessageLookupByLibrary.simpleMessage("janelas"),
+    "wizardProject": MessageLookupByLibrary.simpleMessage("Projeto Wizard"),
+    "yes": MessageLookupByLibrary.simpleMessage("sim"),
+    "youShouldSetupPrinter": MessageLookupByLibrary.simpleMessage(
+      "Você deve configurar a impressora antes de usar",
+    ),
+  };
 }

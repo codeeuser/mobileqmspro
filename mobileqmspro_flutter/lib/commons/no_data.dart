@@ -15,19 +15,22 @@ class NoData extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             const SizedBox(height: 30),
-            (message != null)
-                ? Text('$message',
-                    style: Theme.of(context).textTheme.headlineMedium)
-                : const SizedBox(height: 0),
             const Icon(CupertinoIcons.nosign,
                 size: 100, color: Colors.red, semanticLabel: 'No Data'),
-            const Center(
-              child: SizedBox(
-                  width: 200,
-                  child: Text(
-                      'Oop!  Look like we don\'t have any data to show you.',
-                      textAlign: TextAlign.center)),
-            )
+            const SizedBox(height: 30),
+            (message != null)
+                ? Center(
+                    child: Text('$message',
+                        textAlign: TextAlign.center,
+                        style: Theme.of(context).textTheme.headlineMedium),
+                  )
+                : const Center(
+                    child: SizedBox(
+                        width: 200,
+                        child: Text(
+                            'Oop!  Look like we don\'t have any data to show you.',
+                            textAlign: TextAlign.center)),
+                  )
           ],
         ),
       ),

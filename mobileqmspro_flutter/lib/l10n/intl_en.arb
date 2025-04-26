@@ -517,5 +517,6 @@
 	"membershipLimitation": "Membership Limitation",
 	"forgotPasscode": "Forgot Passcode",
 	"emailPasscode": "Email Passcode",
-	"passcodeHasBeenSent": "Passcode Has Been Sent"
+	"passcodeHasBeenSent": "Passcode Has Been Sent",
+	"reconnect": "Reconnect"
 }

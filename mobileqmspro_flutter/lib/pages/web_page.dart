@@ -76,6 +76,9 @@ class _WebPageState extends State<WebPage> {
           child: ValueListenableBuilder<List<TokenIssued>>(
               valueListenable: _tokenIssuedList,
               builder: (context, list, _) {
+                if (list.isEmpty) {
+                  return _buildEmptyMessage();
+                }
                 final List<TokenIssued> listClone = List.from(list);
                 listClone
                     .sort((a, b) => b.modifiedDate!.compareTo(a.modifiedDate!));
@@ -99,6 +102,11 @@ class _WebPageState extends State<WebPage> {
         ),
       ],
     );
+  }
+
+  Widget _buildEmptyMessage() {
+    return NoData(
+        message: 'No Data to be shown \nOR \nNetwork Connection Issues');
   }
 
   Widget _buildWaitColumn(List<TokenIssued> list) {
@@ -154,7 +162,7 @@ class _WebPageState extends State<WebPage> {
               valueListenable: _tokenIssuedList,
               builder: (BuildContext context, tokenIssuedList, _) {
                 if (tokenIssuedList.isEmpty) {
-                  return const NoData();
+                  return _buildEmptyMessage();
                 }
                 return Wrap(
                   children: [
@@ -239,24 +247,28 @@ class _WebPageState extends State<WebPage> {
   }
 
   Future<void> _listenToUpdates(int windowId) async {
-    Logger.log(tag, message: '_listenToUpdates');
-    final tokenUpdates = client.tokenIssued.echoTokensStream(windowId);
-    // await for (final update in tokenUpdates) {
-    //   List<TokenIssued>? list = update.tokens;
-    //   list.sort((a, b) => b.statusCode.compareTo(a.statusCode));
-    //   final listCompleted = list.where((e) => e.isCompleted).toList();
-    //   final listNoneCompleted =
-    //       list.where((e) => e.isCompleted == false).toList();
-    //   _tokenIssuedList.value = listNoneCompleted..addAll(listCompleted);
-    // }
+    var tokenUpdates = client.tokenIssued.echoTokensStream(windowId);
     _sub = tokenUpdates.listen((update) {
-      List<TokenIssued>? list = update.tokens;
-      if (list == null) return;
-      list.sort((a, b) => b.statusCode.compareTo(a.statusCode));
-      final listCompleted = list.where((e) => e.isCompleted).toList();
-      final listNoneCompleted =
-          list.where((e) => e.isCompleted == false).toList();
-      _tokenIssuedList.value = listNoneCompleted..addAll(listCompleted);
-    });
+      _handleUpdate(update);
+    })
+      ..onError((error) async {
+        Logger.log(tag, message: '_listenToUpdates: onError: $error');
+        await Future.delayed(Duration(seconds: 3), () async {
+          _sub?.cancel();
+          _tokenIssuedList.value = [];
+          final windowId = widget.windowId;
+          await _listenToUpdates(windowId);
+        });
+      });
+  }
+
+  void _handleUpdate(update) {
+    List<TokenIssued>? list = update.tokens;
+    if (list == null) return;
+    list.sort((a, b) => b.statusCode.compareTo(a.statusCode));
+    final listCompleted = list.where((e) => e.isCompleted).toList();
+    final listNoneCompleted =
+        list.where((e) => e.isCompleted == false).toList();
+    _tokenIssuedList.value = listNoneCompleted..addAll(listCompleted);
   }
 }
