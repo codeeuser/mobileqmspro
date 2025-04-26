@@ -118,6 +118,9 @@ class _WaysPageState extends State<WaysPage> {
                   return Utils.loadingScreen();
                 });
           }
+          if (snapshotUser.connectionState == ConnectionState.waiting) {
+            return Utils.loadingScreen();
+          }
           return Column(
             children: [
               const SizedBox(height: 30),
