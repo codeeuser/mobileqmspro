@@ -38,5 +38,8 @@ $ dart compile aot-snapshot bin/main.dart
 $ dartaotruntime bin/main.aot
 ```
 
+## Download App
+* AppStore: https://apps.apple.com/us/app/mobileqmspro/id6738298234
+
 ## License
 All MobileQMSPro packages are licensed under BSD-3, except for the main `mobileqmspro` package, which uses the SSPL license. In short, this means that you can, without limitation, use any of the client packages in your app. You can also host your MobileQMSPro server without limitation as long as you do not offer mobileqmspro as a cloud service to 3rd parties (this is typically only relevant for cloud service providers).
