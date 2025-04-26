@@ -114,16 +114,18 @@ class _WizardDemoState extends State<WizardDemo> {
                 await _onSignedIn();
               }),
           const SizedBox(height: 20),
-          SignInWithGoogleButton(
-            caller: client.modules.auth,
-            redirectUri: Uri.parse('https://wheref.com/mobileqmspro.php'),
-            onSignedIn: () async {
-              await _onSignedIn();
-            },
-            onFailure: () {
-              Logger.log(tag, message: 'SignInWithGoogleButton onFailure---');
-            },
-          ),
+          if (Utils.isIos) ...[
+            SignInWithGoogleButton(
+              caller: client.modules.auth,
+              redirectUri: Uri.parse('https://wheref.com/mobileqmspro.php'),
+              onSignedIn: () async {
+                await _onSignedIn();
+              },
+              onFailure: () {
+                Logger.log(tag, message: 'SignInWithGoogleButton onFailure---');
+              },
+            ),
+          ],
           const SizedBox(height: 60),
           _showAgreement(),
           const SizedBox(height: 20),
