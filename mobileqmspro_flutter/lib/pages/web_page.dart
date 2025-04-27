@@ -43,6 +43,7 @@ class _WebPageState extends State<WebPage> {
   void dispose() async {
     _tokenIssuedList.dispose();
     await _sub?.cancel();
+    await client.closeStreamingConnection();
     super.dispose();
   }
 

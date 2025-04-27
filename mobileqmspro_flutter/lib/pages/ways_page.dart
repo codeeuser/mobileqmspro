@@ -62,6 +62,7 @@ class _WaysPageState extends State<WaysPage> {
     _countMyNonOnWait.dispose();
     _screen.dispose();
     await _sub?.cancel();
+    await client.closeStreamingConnection();
     super.dispose();
   }
 
