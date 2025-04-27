@@ -37,13 +37,13 @@ class _TokenIssuePageState extends State<TokenIssuePage> {
   }
 
   Future<void> _initialize() async {
-    await _player.setAsset('assets/audio/knock.mp3');
+    await _player.setUrl('asset:assets/audio/knock.mp3');
     await _player.stop();
   }
 
   @override
-  void dispose() {
-    _player.dispose();
+  void dispose() async {
+    await _player.dispose();
     super.dispose();
   }
 

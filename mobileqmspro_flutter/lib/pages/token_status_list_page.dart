@@ -47,7 +47,7 @@ class _TokenStatusListPageState extends State<TokenStatusListPage> {
   }
 
   Future<void> _initialize() async {
-    await _player.setAsset('assets/audio/knock.mp3');
+    await _player.setUrl('asset:assets/audio/knock.mp3');
     await _player.stop();
   }
 

@@ -42,14 +42,14 @@ class _TokenCallPageState extends State<TokenCallPage> {
   }
 
   Future<void> _initialize() async {
-    await _player.setAsset('assets/audio/knock.mp3');
+    await _player.setUrl('asset:assets/audio/knock.mp3');
     await _player.stop();
   }
 
   @override
-  void dispose() {
+  void dispose() async {
     super.dispose();
-    _player.dispose();
+    await _player.dispose();
     _phoneController.dispose();
   }
 
