@@ -518,5 +518,11 @@
 	"forgotPasscode": "Forgot Passcode",
 	"emailPasscode": "Email Passcode",
 	"passcodeHasBeenSent": "Passcode Has Been Sent",
-	"reconnect": "Reconnect"
+	"reconnect": "Reconnect",
+	"callBoard": "Call Board",
+	"windowId": "Window ID",
+	"volumn": "Volumn",
+	"rate": "Rate",
+	"pitch": "Pitch",
+	"kiosk": "Kiosk"
 }

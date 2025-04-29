@@ -4,13 +4,13 @@ import 'package:adaptive_dialog/adaptive_dialog.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:mobileqmspro_client/mobileqmspro_client.dart';
 import 'package:mobileqmspro/app_profile.dart';
 import 'package:mobileqmspro/app_theme.dart';
 import 'package:mobileqmspro/commons/custom_appbar.dart';
 import 'package:mobileqmspro/commons/custom_divider.dart';
 import 'package:mobileqmspro/generated/l10n.dart';
 import 'package:mobileqmspro/logger.dart';
+import 'package:mobileqmspro/pages/call_board_page.dart';
 import 'package:mobileqmspro/pages/service_list_page.dart';
 import 'package:mobileqmspro/pages/summary_page.dart';
 import 'package:mobileqmspro/pages/ways_page.dart';
@@ -18,6 +18,7 @@ import 'package:mobileqmspro/pages/window_list_page.dart';
 import 'package:mobileqmspro/serverpod_client.dart';
 import 'package:mobileqmspro/utils/constants.dart';
 import 'package:mobileqmspro/utils/functions.dart';
+import 'package:mobileqmspro_client/mobileqmspro_client.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -300,6 +301,26 @@ class _MorePageState extends State<MorePage> {
                 onTap: () async {
                   await Utils.launchURLString(
                       '$baseMobileQMSProWeb${widget.window.id}');
+                },
+              ),
+              const Divider(color: Colors.grey),
+              ListTile(
+                leading: const Icon(CupertinoIcons.info,
+                    semanticLabel: 'Call Board'),
+                title: Text(S.of(context).callBoard),
+                subtitle: Text(
+                    'Show Running Tokens on Board (id=${widget.window.id})'),
+                trailing: const Icon(CupertinoIcons.chevron_right,
+                    semanticLabel: 'Next'),
+                onTap: () async {
+                  final window = widget.window;
+                  Utils.pushAndRemoveUntilPage(
+                      context,
+                      CallBoardPage(
+                        window: window,
+                        prefs: widget.prefs,
+                      ),
+                      'CallBaordPage');
                 },
               ),
               const Divider(color: Colors.grey),

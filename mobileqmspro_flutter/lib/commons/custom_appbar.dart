@@ -4,7 +4,11 @@ class CustomAppBar extends PreferredSize {
   final String label;
 
   CustomAppBar(
-      {super.key, Widget? title, Widget? goBackButton, required this.label})
+      {super.key,
+      Widget? title,
+      Widget? goBackButton,
+      required this.label,
+      Widget? actionButton})
       : super(
           preferredSize: const Size.fromHeight(90),
           child: Container(
@@ -41,7 +45,9 @@ class CustomAppBar extends PreferredSize {
                                         fontWeight: FontWeight.bold)))
                           ]),
                     ),
-                    //button
+                    (actionButton == null)
+                        ? const SizedBox(height: 0)
+                        : actionButton,
                   ],
                 )),
           ),

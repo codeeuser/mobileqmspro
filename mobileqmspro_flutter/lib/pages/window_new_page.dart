@@ -1,5 +1,6 @@
 // ignore_for_file: use_build_context_synchronously
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:mobileqmspro/utils/constants.dart';
 import 'package:mobileqmspro_client/mobileqmspro_client.dart';
@@ -176,6 +177,12 @@ class _WindowNewPageState extends State<WindowNewPage> {
                                   color: Colors.grey, semanticLabel: 'Name'),
                               hintText: 'What is the window name?',
                               labelText: S.of(context).windowName,
+                              suffixIcon: IconButton(
+                                icon: Icon(CupertinoIcons.xmark, size: 12),
+                                onPressed: () {
+                                  _nameController.clear();
+                                },
+                              ),
                             ),
                             controller: _nameController,
                             maxLength: 30,

@@ -44,6 +44,9 @@ class Prefs {
   static const String numTokenDaily = "numTokenDaily";
   static const String autoStartServer = "autoStartServer";
   static const String mobileQmsAppReview = "mobileQmsAppReview";
+  static const String volume = "volume";
+  static const String pitch = "pitch";
+  static const String rate = "rate";
 }
 
 class StatusAcronym {

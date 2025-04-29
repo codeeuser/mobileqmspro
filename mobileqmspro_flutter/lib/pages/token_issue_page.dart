@@ -2,8 +2,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:just_audio/just_audio.dart';
-import 'package:mobileqmspro_client/mobileqmspro_client.dart';
-import 'package:mobileqmspro/app_profile.dart';
 import 'package:mobileqmspro/commons/custom_appbar.dart';
 import 'package:mobileqmspro/commons/no_data.dart';
 import 'package:mobileqmspro/generated/l10n.dart';
@@ -11,9 +9,8 @@ import 'package:mobileqmspro/logger.dart';
 import 'package:mobileqmspro/pages/token_num_page.dart';
 import 'package:mobileqmspro/pages/ways_page.dart';
 import 'package:mobileqmspro/serverpod_client.dart';
-import 'package:mobileqmspro/utils/constants.dart';
 import 'package:mobileqmspro/utils/functions.dart';
-import 'package:provider/provider.dart';
+import 'package:mobileqmspro_client/mobileqmspro_client.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class TokenIssuePage extends StatefulWidget {
@@ -121,8 +118,12 @@ class _TokenIssuePageState extends State<TokenIssuePage> {
           onPressed: () async {
             await _player.seek(Duration.zero);
             _player.play();
-            TokenIssued? tokenIssued = await _handleSubmit(service);
+            TokenIssued? tokenIssued =
+                await Utils.handleSubmit(context, widget.window, service);
             if (tokenIssued != null) {
+              Logger.log(tag,
+                  message:
+                      'tokenIssued: ${tokenIssued.tokenLetter}-${tokenIssued.tokenNumber}');
               Utils.pushAndRemoveUntilPage(
                   context,
                   TokenNumPage(
@@ -139,43 +140,5 @@ class _TokenIssuePageState extends State<TokenIssuePage> {
         ),
       ),
     );
-  }
-
-  Future<TokenIssued?> _handleSubmit(QueueService service) async {
-    AppProfile appProfile = context.read<AppProfile>();
-    final windowId = widget.window.id;
-    final serviceId = service.id;
-    Logger.log(tag, message: 'windowId:" $windowId, serviceId: $serviceId');
-    if (windowId != null && serviceId != null) {
-      TokenIssued? tokenIssued = await client.tokenIssued
-          .findLatestTokenIssuedByWindowAndService(windowId, serviceId);
-      int tokenNumber = service.start;
-      String tokenLetter = service.letter;
-      ProfileUser? profileUser = appProfile.profileUser;
-      int? profileUserId = profileUser?.id;
-      if (profileUserId == null) return null;
-      if (tokenIssued != null) {
-        tokenNumber = tokenIssued.tokenNumber + 1;
-      }
-      DateTime now = DateTime.now();
-      TokenIssued tokenIssuedNew = TokenIssued(
-          tokenLetter: tokenLetter,
-          tokenNumber: tokenNumber,
-          statusName: Status.onwait,
-          statusCode: StatusCode.onwait,
-          statusAcronym: StatusAcronym.onwait,
-          isOnWait: true,
-          isOnQueue: false,
-          isRecall: false,
-          isCompleted: false,
-          reset: false,
-          createdDate: now,
-          modifiedDate: now,
-          queueWindowId: windowId,
-          queueServiceId: serviceId,
-          profileUserId: profileUserId);
-      return await client.tokenIssued.create(tokenIssuedNew);
-    }
-    return null;
   }
 }

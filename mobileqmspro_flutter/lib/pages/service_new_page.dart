@@ -1,5 +1,6 @@
 // ignore_for_file: use_build_context_synchronously
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:mobileqmspro/utils/constants.dart';
 import 'package:mobileqmspro_client/mobileqmspro_client.dart';
@@ -177,6 +178,12 @@ class _ServiceNewPageState extends State<ServiceNewPage> {
                                 color: Colors.grey, semanticLabel: 'Name'),
                             hintText: 'What is the service name?',
                             labelText: S.of(context).serviceName,
+                            suffixIcon: IconButton(
+                              icon: Icon(CupertinoIcons.xmark, size: 12),
+                              onPressed: () {
+                                _nameController.clear();
+                              },
+                            ),
                           ),
                           controller: _nameController,
                           maxLength: 20,
@@ -193,6 +200,12 @@ class _ServiceNewPageState extends State<ServiceNewPage> {
                                 color: Colors.grey, semanticLabel: 'Letter'),
                             hintText: 'What is the service letter?',
                             labelText: S.of(context).serviceLetter,
+                            suffixIcon: IconButton(
+                              icon: Icon(CupertinoIcons.xmark, size: 12),
+                              onPressed: () {
+                                _letterController.clear();
+                              },
+                            ),
                           ),
                           controller: _letterController,
                           maxLength: 3,
@@ -208,6 +221,12 @@ class _ServiceNewPageState extends State<ServiceNewPage> {
                                 color: Colors.grey, semanticLabel: 'Number'),
                             hintText: 'What is the start number?',
                             labelText: S.of(context).startNumber,
+                            suffixIcon: IconButton(
+                              icon: Icon(CupertinoIcons.xmark, size: 12),
+                              onPressed: () {
+                                _startController.clear();
+                              },
+                            ),
                           ),
                           controller: _startController,
                           maxLength: 4,

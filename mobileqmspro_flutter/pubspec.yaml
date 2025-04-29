@@ -65,6 +65,7 @@ dependencies:
   collection: ^1.18.0
   printing: ^5.14.2
   pdf: ^3.11.3
+  flutter_tts: ^4.2.2
 
 dependency_overrides:
   file_selector: ^1.0.3

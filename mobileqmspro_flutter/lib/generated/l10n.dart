@@ -974,6 +974,36 @@ class S {
   String get reconnect {
     return Intl.message('Reconnect', name: 'reconnect', desc: '', args: []);
   }
+
+  /// `Call Board`
+  String get callBoard {
+    return Intl.message('Call Board', name: 'callBoard', desc: '', args: []);
+  }
+
+  /// `Window ID`
+  String get windowId {
+    return Intl.message('Window ID', name: 'windowId', desc: '', args: []);
+  }
+
+  /// `Volumn`
+  String get volumn {
+    return Intl.message('Volumn', name: 'volumn', desc: '', args: []);
+  }
+
+  /// `Rate`
+  String get rate {
+    return Intl.message('Rate', name: 'rate', desc: '', args: []);
+  }
+
+  /// `Pitch`
+  String get pitch {
+    return Intl.message('Pitch', name: 'pitch', desc: '', args: []);
+  }
+
+  /// `Kiosk`
+  String get kiosk {
+    return Intl.message('Kiosk', name: 'kiosk', desc: '', args: []);
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

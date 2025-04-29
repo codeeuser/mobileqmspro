@@ -1,7 +1,7 @@
 import 'package:string_validator/string_validator.dart';
 
-String? validatePhone(String value) {
-  if (value.isEmpty) return 'Phone is required.';
+String? validatePhone(String? value) {
+  if (value == null || value.isEmpty) return 'Phone is required.';
   final RegExp nameExp = RegExp(
       r'(^\+[0-9]{2}|^\+[0-9]{2}\(0\)|^\(\+[0-9]{2}\)\(0\)|^00[0-9]{2}|^0)([0-9]{9}$|[0-9\-\s]{10}$)');
   if (!nameExp.hasMatch(value.trim())) {

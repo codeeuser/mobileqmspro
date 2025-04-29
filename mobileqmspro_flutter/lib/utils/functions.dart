@@ -8,13 +8,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_sms/flutter_sms.dart';
 import 'package:intl/intl.dart';
+import 'package:mobileqmspro/app_profile.dart';
 import 'package:mobileqmspro/generated/l10n.dart';
 import 'package:mobileqmspro/logger.dart';
+import 'package:mobileqmspro/serverpod_client.dart';
 import 'package:mobileqmspro/utils/constants.dart';
+import 'package:mobileqmspro_client/mobileqmspro_client.dart';
 import 'package:overlay_support/overlay_support.dart';
 import 'package:pdf/pdf.dart';
 import 'package:pdf/widgets.dart' as pw;
 import 'package:printing/printing.dart';
+import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:timeago/timeago.dart' as timeago;
 import 'package:url_launcher/url_launcher_string.dart';
@@ -442,6 +446,56 @@ class Utils {
         ],
       ),
     );
+  }
+
+  static List toSeparatedString(String s) {
+    var start = 0;
+    final strings = <String>[];
+    while (start < s.length) {
+      final end = start + 1;
+      strings.add(s.substring(start, end));
+      start = end;
+    }
+    return strings.toList();
+  }
+
+  static Future<TokenIssued?> handleSubmit(
+      BuildContext context, QueueWindow window, QueueService service) async {
+    AppProfile appProfile = context.read<AppProfile>();
+    final windowId = window.id;
+    final serviceId = service.id;
+    Logger.log(tag, message: 'windowId:" $windowId, serviceId: $serviceId');
+    if (windowId != null && serviceId != null) {
+      TokenIssued? tokenIssued = await client.tokenIssued
+          .findLatestTokenIssuedByWindowAndService(windowId, serviceId);
+      int tokenNumber = service.start;
+      String tokenLetter = service.letter;
+      ProfileUser? profileUser = appProfile.profileUser;
+      int? profileUserId = profileUser?.id;
+      if (profileUserId == null) return null;
+      if (tokenIssued != null) {
+        tokenNumber = tokenIssued.tokenNumber + 1;
+      }
+      DateTime now = DateTime.now();
+      TokenIssued tokenIssuedNew = TokenIssued(
+          tokenLetter: tokenLetter,
+          tokenNumber: tokenNumber,
+          statusName: Status.onwait,
+          statusCode: StatusCode.onwait,
+          statusAcronym: StatusAcronym.onwait,
+          isOnWait: true,
+          isOnQueue: false,
+          isRecall: false,
+          isCompleted: false,
+          reset: false,
+          createdDate: now,
+          modifiedDate: now,
+          queueWindowId: windowId,
+          queueServiceId: serviceId,
+          profileUserId: profileUserId);
+      return await client.tokenIssued.create(tokenIssuedNew);
+    }
+    return null;
   }
 }
 
