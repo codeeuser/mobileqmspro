@@ -6,11 +6,12 @@ class Constant {
   static bool sendTestException = false;
 }
 
-const String myBaseUrl =
-    (kReleaseMode == true) ? 'https://wheref.com/' : 'http://localhost:1234/';
-const String privacyUrl = 'https://wheref.com/privacy.html';
-const String termUrl = 'https://wheref.com/terms.html';
-const String baseMobileQMSProWeb = '${myBaseUrl}mobileqmspro/';
+const String myBaseUrl = (kReleaseMode == true)
+    ? 'https://mobileqms.com/'
+    : 'http://localhost:1234/';
+const String privacyUrl = 'https://mobileqms.com/privacy.html';
+const String termUrl = 'https://mobileqms.com/terms.html';
+const String baseMobileQMSProWeb = '${myBaseUrl}pro/';
 const String configFile =
     (kReleaseMode == true) ? 'production.yaml' : 'development.yaml';
 

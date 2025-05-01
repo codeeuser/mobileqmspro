@@ -117,7 +117,7 @@ class _WizardDemoState extends State<WizardDemo> {
           if (Utils.isIos) ...[
             SignInWithGoogleButton(
               caller: client.modules.auth,
-              redirectUri: Uri.parse('https://wheref.com/mobileqmspro.php'),
+              redirectUri: Uri.parse('https://mobileqms.com'),
               onSignedIn: () async {
                 await _onSignedIn();
               },

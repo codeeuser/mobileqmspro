@@ -305,7 +305,7 @@ class _WaysPageState extends State<WaysPage> {
                                     const Icon(CupertinoIcons.link,
                                         semanticLabel: 'Link'),
                                     const SizedBox(width: 10),
-                                    Text('Powered by Wheref.com',
+                                    Text('Powered by MobileQMS.com',
                                         style: Theme.of(context)
                                             .textTheme
                                             .titleMedium),
@@ -314,12 +314,6 @@ class _WaysPageState extends State<WaysPage> {
                                 onPressed: () async {
                                   Utils.launchURLString(myBaseUrl);
                                 },
-                              ),
-                              const SizedBox(height: 10),
-                              Text(
-                                'Server is ${client.host}',
-                                style: Theme.of(context).textTheme.bodySmall,
-                                textAlign: TextAlign.center,
                               ),
                             ],
                           ),
