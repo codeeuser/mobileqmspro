@@ -3,6 +3,7 @@
 import 'dart:async';
 
 import 'package:animate_do/animate_do.dart';
+import 'package:collection/collection.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_tts/flutter_tts.dart';
@@ -353,6 +354,15 @@ class _CallBoardPageState extends State<CallBoardPage> {
     final listNoneCompleted =
         list.where((e) => e.isCompleted == false).toList();
     _tokenIssuedList.value = listNoneCompleted..addAll(listCompleted);
+    // initial callIDs
+    if (_calledIds.isEmpty) {
+      for (var token in listCompleted) {
+        final tokenId = token.id;
+        if (tokenId == null) continue;
+        _calledIds.add(tokenId);
+      }
+    }
+    // check speak
     final queueId = queueToken?.id;
     if (queueId != null &&
         (_calledIds.contains(queueId) == false ||
