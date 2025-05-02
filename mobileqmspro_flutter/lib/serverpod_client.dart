@@ -1,3 +1,6 @@
+import 'dart:io';
+
+import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:mobileqmspro/logger.dart';
 import 'package:mobileqmspro/utils/constants.dart';
@@ -22,8 +25,14 @@ Future<void> initializeServerpodClient() async {
   // The client is set up to connect to a Serverpod running on a local server on
   // the default port. You will need to modify this to connect to staging or
   // production servers.
+  final pem =
+      getFromBytes(await rootBundle.load('assets/cert/vpaper_xyz_cert.pem'));
+  final sc = (kReleaseMode && !kIsWeb)
+      ? (SecurityContext()..setTrustedCertificatesBytes(pem))
+      : null;
   client = Client(
     apiHost,
+    securityContext: sc,
     authenticationKeyManager: FlutterAuthenticationKeyManager(),
   )..connectivityMonitor = FlutterConnectivityMonitor();
   Logger.log(tag, message: 'client: ${client.host}');
@@ -33,4 +42,9 @@ Future<void> initializeServerpodClient() async {
     storage: SharedPreferenceStorage(),
   );
   await sessionManager.initialize();
+}
+
+Uint8List getFromBytes(ByteData data) {
+  final buffer = data.buffer;
+  return buffer.asUint8List(data.offsetInBytes, data.lengthInBytes);
 }

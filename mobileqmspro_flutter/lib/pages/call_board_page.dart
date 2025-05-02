@@ -32,6 +32,7 @@ class _CallBoardPageState extends State<CallBoardPage> {
   final _flutterTts = FlutterTts();
   final double _boxWidth = 300;
   final ValueNotifier<List<TokenIssued>> _tokenIssuedList = ValueNotifier([]);
+  final List<int> _calledIds = [];
 
   TokenIssued? _latest;
   StreamSubscription<RunningTokens>? _sub;
@@ -69,7 +70,9 @@ class _CallBoardPageState extends State<CallBoardPage> {
                 S.of(context).callBoard.toUpperCase(), context),
             goBackButton: Utils.goBackButton(() async {
               await _flutterTts.stop();
-              Utils.pushPage(
+              await _sub?.cancel();
+              await client.closeStreamingConnection();
+              Utils.pushAndRemoveUntilPage(
                   context,
                   WaysPage(
                     key: const ValueKey('ways-page'),
@@ -266,7 +269,6 @@ class _CallBoardPageState extends State<CallBoardPage> {
       ),
       onTap: () async {
         await _speak(tokenIssued);
-        _latest = null;
       },
     );
   }
@@ -296,7 +298,9 @@ class _CallBoardPageState extends State<CallBoardPage> {
         });
   }
 
-  Future<void> _speak(TokenIssued tokenIssued) async {
+  Future<void> _speak(TokenIssued? tokenIssued) async {
+    Logger.log(tag, message: '_speak: tokenIssued: $tokenIssued');
+    if (tokenIssued == null) return;
     List numberList =
         Utils.toSeparatedString(tokenIssued.tokenNumber.toString());
     List letterList = Utils.toSeparatedString(tokenIssued.tokenLetter);
@@ -333,13 +337,28 @@ class _CallBoardPageState extends State<CallBoardPage> {
 
   Future<void> _handleUpdate(update) async {
     List<TokenIssued>? list = update.tokens;
-    if (list == null) return;
+    if (list == null || list.isEmpty == true) return;
     list.sort((a, b) => b.statusCode.compareTo(a.statusCode));
-    final queueToken = list.where((e) => e.isOnQueue).toList().first;
+    final listQueue = list.where((e) => e.isOnQueue).toList();
+    listQueue.sort((a, b) {
+      final date1 = a.modifiedDate;
+      final date2 = b.modifiedDate;
+      if (date1 == null && date2 == null) return 0;
+      if (date1 == null) return 1;
+      if (date2 == null) return -1;
+      return date2.compareTo(date1);
+    });
+    final queueToken = (listQueue.isNotEmpty) ? listQueue.first : null;
     final listCompleted = list.where((e) => e.isCompleted).toList();
     final listNoneCompleted =
         list.where((e) => e.isCompleted == false).toList();
     _tokenIssuedList.value = listNoneCompleted..addAll(listCompleted);
-    await _speak(queueToken);
+    final queueId = queueToken?.id;
+    if (queueId != null &&
+        (_calledIds.contains(queueId) == false ||
+            queueToken?.isRecall == true)) {
+      await _speak(queueToken);
+      _calledIds.add(queueId);
+    }
   }
 }
