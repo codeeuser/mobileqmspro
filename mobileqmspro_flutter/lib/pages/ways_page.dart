@@ -102,19 +102,21 @@ class _WaysPageState extends State<WaysPage> {
                 future: client.queueWindow.getSelectedByEmail(email),
                 builder: (BuildContext builder,
                     AsyncSnapshot<QueueWindow?> snapshot) {
-                  if (snapshot.hasData) {
-                    final window = snapshot.data;
-                    final windowId = window?.id;
-                    if (window != null && windowId != null) {
-                      _listenToUpdates(windowId);
-                      if (Constant.sendTestException == false) {
-                        Logger.sendCatcherError(tag, 'Test Exception',
-                            'Window: ${window.name}, Email: $email');
-                        Constant.sendTestException = true;
+                  if (snapshot.connectionState == ConnectionState.done) {
+                    if (snapshot.hasData) {
+                      final window = snapshot.data;
+                      final windowId = window?.id;
+                      if (window != null && windowId != null) {
+                        _listenToUpdates(windowId);
+                        if (Constant.sendTestException == false) {
+                          Logger.sendCatcherError(tag, 'Test Exception',
+                              'Window: ${window.name}, Email: $email');
+                          Constant.sendTestException = true;
+                        }
+                        return _buildPhoneContent(window);
                       }
-                      return _buildPhoneContent(window);
+                      return const NoData();
                     }
-                    return const NoData();
                   }
                   return Utils.loadingScreen();
                 });

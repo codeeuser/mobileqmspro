@@ -136,19 +136,21 @@ class _TokenListPageState extends State<TokenListPage> {
                         .getAllByWindowAndOnQueue(windowId, null, null, true),
                     builder: (BuildContext context,
                         AsyncSnapshot<List<TokenIssued>> snapshot) {
-                      if (snapshot.hasData) {
-                        List<TokenIssued>? tokenIssuedList = snapshot.data;
-                        if (tokenIssuedList == null ||
-                            tokenIssuedList.isEmpty) {
-                          return const NoData();
+                      if (snapshot.connectionState == ConnectionState.done) {
+                        if (snapshot.hasData) {
+                          List<TokenIssued>? tokenIssuedList = snapshot.data;
+                          if (tokenIssuedList == null ||
+                              tokenIssuedList.isEmpty) {
+                            return const NoData();
+                          }
+                          _tokenIssuedList = tokenIssuedList;
+                          return ListView.builder(
+                              itemCount: tokenIssuedList.length,
+                              itemBuilder: (BuildContext ctxt, int index) {
+                                return _tokenIssuedItem(
+                                    tokenIssuedList.elementAt(index), index);
+                              });
                         }
-                        _tokenIssuedList = tokenIssuedList;
-                        return ListView.builder(
-                            itemCount: tokenIssuedList.length,
-                            itemBuilder: (BuildContext ctxt, int index) {
-                              return _tokenIssuedItem(
-                                  tokenIssuedList.elementAt(index), index);
-                            });
                       }
                       return Utils.loadingScreen();
                     }),

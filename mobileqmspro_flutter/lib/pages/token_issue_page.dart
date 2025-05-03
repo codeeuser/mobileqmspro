@@ -82,17 +82,19 @@ class _TokenIssuePageState extends State<TokenIssuePage> {
               future: client.queueService
                   .getAllByWindowIdAndEnable(windowId, false),
               builder: (context, AsyncSnapshot<List<QueueService>> snapshot) {
-                if (snapshot.hasData) {
-                  List<QueueService>? serviceList = snapshot.data;
-                  if (serviceList == null || serviceList.isEmpty) {
-                    return const NoData();
+                if (snapshot.connectionState == ConnectionState.done) {
+                  if (snapshot.hasData) {
+                    List<QueueService>? serviceList = snapshot.data;
+                    if (serviceList == null || serviceList.isEmpty) {
+                      return const NoData();
+                    }
+                    return ListView.builder(
+                        itemCount: serviceList.length,
+                        itemBuilder: (BuildContext ctxt, int index) {
+                          QueueService? service = serviceList.elementAt(index);
+                          return _serviceItem(service, index);
+                        });
                   }
-                  return ListView.builder(
-                      itemCount: serviceList.length,
-                      itemBuilder: (BuildContext ctxt, int index) {
-                        QueueService? service = serviceList.elementAt(index);
-                        return _serviceItem(service, index);
-                      });
                 }
                 return Utils.loadingScreen();
               }),

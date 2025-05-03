@@ -233,15 +233,17 @@ class _WebPageState extends State<WebPage> {
     return FutureBuilder<QueueWindow?>(
         future: client.queueWindow.findById(widget.windowId),
         builder: (context, snapshot) {
-          if (snapshot.hasData) {
-            final window = snapshot.data;
-            return Center(
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text(window?.name ?? '${S.of(context).loading}...',
-                    style: Theme.of(context).textTheme.titleLarge),
-              ),
-            );
+          if (snapshot.connectionState == ConnectionState.done) {
+            if (snapshot.hasData) {
+              final window = snapshot.data;
+              return Center(
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text(window?.name ?? '${S.of(context).loading}...',
+                      style: Theme.of(context).textTheme.titleLarge),
+                ),
+              );
+            }
           }
           return Utils.loadingScreen();
         });

@@ -109,17 +109,19 @@ class _ServiceListPageState extends State<ServiceListPage> {
                       .getAllByWindowId(queueWindowId, null, null, false),
                   builder:
                       (context, AsyncSnapshot<List<QueueService>> snapshot) {
-                    if (snapshot.hasData) {
-                      List<QueueService>? serviceList = snapshot.data;
-                      if (serviceList == null || serviceList.isEmpty) {
-                        return const NoData();
+                    if (snapshot.connectionState == ConnectionState.done) {
+                      if (snapshot.hasData) {
+                        List<QueueService>? serviceList = snapshot.data;
+                        if (serviceList == null || serviceList.isEmpty) {
+                          return const NoData();
+                        }
+                        return ListView.builder(
+                            itemCount: serviceList.length,
+                            itemBuilder: (BuildContext ctxt, int index) {
+                              return _serviceItem(
+                                  serviceList.elementAt(index), index);
+                            });
                       }
-                      return ListView.builder(
-                          itemCount: serviceList.length,
-                          itemBuilder: (BuildContext ctxt, int index) {
-                            return _serviceItem(
-                                serviceList.elementAt(index), index);
-                          });
                     }
                     return Utils.loadingScreen();
                   }),

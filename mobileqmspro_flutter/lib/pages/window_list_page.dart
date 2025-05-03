@@ -122,18 +122,20 @@ class _WindowListPageState extends State<WindowListPage> {
                           .getAllByEmail(email, null, null, false),
                       builder:
                           (context, AsyncSnapshot<List<QueueWindow>> snapshot) {
-                        if (snapshot.hasData) {
-                          List<QueueWindow>? windowList = snapshot.data;
-                          if (windowList == null || windowList.isEmpty) {
-                            return const NoData();
-                          }
+                        if (snapshot.connectionState == ConnectionState.done) {
+                          if (snapshot.hasData) {
+                            List<QueueWindow>? windowList = snapshot.data;
+                            if (windowList == null || windowList.isEmpty) {
+                              return const NoData();
+                            }
 
-                          return ListView.builder(
-                              itemCount: windowList.length,
-                              itemBuilder: (BuildContext ctxt, int index) {
-                                QueueWindow? w = windowList.elementAt(index);
-                                return _windowItem(w, index);
-                              });
+                            return ListView.builder(
+                                itemCount: windowList.length,
+                                itemBuilder: (BuildContext ctxt, int index) {
+                                  QueueWindow? w = windowList.elementAt(index);
+                                  return _windowItem(w, index);
+                                });
+                          }
                         }
                         return Utils.loadingScreen();
                       }),
