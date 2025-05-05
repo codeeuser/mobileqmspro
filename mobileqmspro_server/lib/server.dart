@@ -72,8 +72,13 @@ void run(List<String> args) async {
   ));
 
   // Start the server.
-  await pod.start().onError((e, s) {
-    print('e:$e, s: $s');
+  await pod.start().onError((e, s) async {
+    (await pod.createSession()).log(
+      'POD: e:$e, s: $s',
+      level: LogLevel.error,
+      exception: e,
+      stackTrace: s,
+    );
   });
 
   await pod.webServer.stop();
