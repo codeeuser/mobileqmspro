@@ -3,4 +3,3 @@ mail:
   port: 123
   ssl: true
   username: no_reply@example.com
-  mailAddress: no_reply@example.com

@@ -22,9 +22,11 @@ void run(List<String> args) async {
     Protocol(),
     Endpoints(),
     authenticationHandler: auth.authenticationHandler,
+    healthCheckHandler: serverHealthCheckHandler,
     securityContextConfig:
         SecurityContextConfig(apiServer: sc, webServer: sc, insightsServer: sc),
   );
+  final session = (await pod.createSession());
   // If you are using any future calls, they need to be registered here.
   // pod.registerFutureCall(ExampleFutureCall(), 'exampleFutureCall');
 
@@ -48,7 +50,7 @@ void run(List<String> args) async {
   bool existKey = File(key).existsSync();
   bool existP12 = File(p12).existsSync();
 
-  print(
+  session.log(
       'publicScheme: $publicScheme, existKey: $existKey, existP12: $existP12');
   if (publicScheme == 'https' && existKey && existP12) {
     String? sslPassword = pod.getPassword('sslPassword');
@@ -72,16 +74,14 @@ void run(List<String> args) async {
   ));
 
   // Start the server.
-  await pod.start().onError((e, s) async {
-    (await pod.createSession()).log(
+  await pod.start().catchError((e, s) async {
+    session.log(
       'POD: e:$e, s: $s',
       level: LogLevel.error,
       exception: e,
       stackTrace: s,
     );
   });
-
-  await pod.webServer.stop();
 }
 
 Future<bool> sendResetMail(
@@ -149,10 +149,10 @@ SmtpServer? creatSmtpServer(Session session, String email) {
   if (file.existsSync() == false) return null;
   final yamlString = file.readAsStringSync();
   final map = loadYaml(yamlString)['mail'];
-  String? smtp = map['smtp'];
-  int port = map['port'] ?? 587;
-  bool ssl = map['ssl'] ?? false;
-  String? username = map['username'];
+  final smtp = map['smtp'];
+  final port = map['port'] ?? 587;
+  final ssl = map['ssl'] ?? false;
+  final username = map['username'];
   session.log('username: $username, port: $port');
   if (smtp == null || username == null) return null;
   // Use the SmtpServer class to configure an SMTP server:
@@ -169,10 +169,39 @@ Future<bool> sendMail(
     session.log('Message sent: $sendReport');
     return true;
   } on MailerException catch (e) {
-    print('Message not sent. $e');
+    session.log('Message not sent. $e');
     for (var p in e.problems) {
       session.log('Problem: ${p.code}: ${p.msg}');
     }
     return false;
   }
+}
+
+Future<List<ServerHealthMetric>> serverHealthCheckHandler(
+    Serverpod pod, DateTime timestamp) async {
+  final running = pod.server.running;
+  final runningInsight = pod.serviceServer.running;
+  final runMode = pod.runMode;
+  final session = await pod.createSession();
+  session.log(
+      'runMode: $runMode, running: $running, runningInsight: $runningInsight');
+
+  if (running == false) {
+    session.log('RESTART Server');
+    await pod.server.start();
+  }
+  if (runningInsight == false) {
+    session.log('RESTART InsightServer');
+    await pod.serviceServer.start();
+  }
+  return [
+    ServerHealthMetric(
+      name: 'Server Running',
+      serverId: pod.serverId,
+      timestamp: timestamp,
+      isHealthy: running,
+      value: 1.0,
+      granularity: 1,
+    ),
+  ];
 }
