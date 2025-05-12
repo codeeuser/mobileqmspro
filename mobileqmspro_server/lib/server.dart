@@ -26,7 +26,6 @@ void run(List<String> args) async {
     securityContextConfig:
         SecurityContextConfig(apiServer: sc, webServer: sc, insightsServer: sc),
   );
-  final session = (await pod.createSession());
   // If you are using any future calls, they need to be registered here.
   // pod.registerFutureCall(ExampleFutureCall(), 'exampleFutureCall');
 
@@ -50,7 +49,7 @@ void run(List<String> args) async {
   bool existKey = File(key).existsSync();
   bool existP12 = File(p12).existsSync();
 
-  session.log(
+  pod.logVerbose(
       'publicScheme: $publicScheme, existKey: $existKey, existP12: $existP12');
   if (publicScheme == 'https' && existKey && existP12) {
     String? sslPassword = pod.getPassword('sslPassword');
@@ -62,26 +61,24 @@ void run(List<String> args) async {
     sendValidationEmail: (session, email, validationCode) async {
       // Send the validation email to the user.
       // Return `true` if the email was successfully sent, otherwise `false`.
-      session.log('$email, validationCode: $validationCode');
+      pod.logVerbose('$email, validationCode: $validationCode');
       return sendNewMail(session, email, validationCode);
     },
     sendPasswordResetEmail: (session, userInfo, validationCode) async {
       // Send the password reset email to the user.
       // Return `true` if the email was successfully sent, otherwise `false`.
-      session.log('${userInfo.email}, validationCode: $validationCode');
+      pod.logVerbose('${userInfo.email}, validationCode: $validationCode');
       return sendResetMail(session, userInfo, validationCode);
     },
   ));
 
   // Start the server.
   await pod.start().catchError((e, s) async {
-    session.log(
+    pod.logVerbose(
       'POD: e:$e, s: $s',
-      level: LogLevel.error,
-      exception: e,
-      stackTrace: s,
     );
   });
+  pod.server.httpServer.idleTimeout = null;
 }
 
 Future<bool> sendResetMail(
@@ -139,7 +136,7 @@ Future<bool> sendNewMail(
 }
 
 SmtpServer? creatSmtpServer(Session session, String email) {
-  session.log('_sendMail---, email: $email');
+  session.log(level: LogLevel.info, '_sendMail---, email: $email');
   Map<String, String> passwords = session.passwords;
   String? password = passwords['mailPassword'];
   if (password == null) return null;
@@ -153,7 +150,7 @@ SmtpServer? creatSmtpServer(Session session, String email) {
   final port = map['port'] ?? 587;
   final ssl = map['ssl'] ?? false;
   final username = map['username'];
-  session.log('username: $username, port: $port');
+  session.log(level: LogLevel.info, 'username: $username, port: $port');
   if (smtp == null || username == null) return null;
   // Use the SmtpServer class to configure an SMTP server:
   final smtpServer = SmtpServer(smtp,
@@ -166,12 +163,12 @@ Future<bool> sendMail(
   if (smtpServer == null) return false;
   try {
     final sendReport = await send(message, smtpServer);
-    session.log('Message sent: $sendReport');
+    session.log(level: LogLevel.info, 'Message sent: $sendReport');
     return true;
   } on MailerException catch (e) {
     session.log('Message not sent. $e');
     for (var p in e.problems) {
-      session.log('Problem: ${p.code}: ${p.msg}');
+      session.log(level: LogLevel.error, 'Problem: ${p.code}: ${p.msg}');
     }
     return false;
   }
@@ -182,24 +179,31 @@ Future<List<ServerHealthMetric>> serverHealthCheckHandler(
   final running = pod.server.running;
   final runningInsight = pod.serviceServer.running;
   final runMode = pod.runMode;
-  final session = await pod.createSession();
-  session.log(
+  pod.logVerbose(
       'runMode: $runMode, running: $running, runningInsight: $runningInsight');
 
   if (running == false) {
-    session.log('RESTART Server');
+    pod.logVerbose('RESTART Server');
     await pod.server.start();
   }
   if (runningInsight == false) {
-    session.log('RESTART InsightServer');
+    pod.logVerbose('RESTART InsightServer');
     await pod.serviceServer.start();
   }
   return [
     ServerHealthMetric(
       name: 'Server Running',
-      serverId: pod.serverId,
+      serverId: pod.server.serverId,
       timestamp: timestamp,
       isHealthy: running,
+      value: 1.0,
+      granularity: 1,
+    ),
+    ServerHealthMetric(
+      name: 'InsightServer Running',
+      serverId: pod.serviceServer.serverId,
+      timestamp: timestamp,
+      isHealthy: runningInsight,
       value: 1.0,
       granularity: 1,
     ),
