@@ -11,6 +11,9 @@ dependencies:
   yaml: ^3.1.2
   serverpod: 2.7.0
   serverpod_auth_server: 2.7.0
+dependency_overrides: 
+  serverpod: 
+    path: ../../serverpod-2.7.0/packages/serverpod
 
 dev_dependencies:
   lints: '>=3.0.0 <6.0.0'
