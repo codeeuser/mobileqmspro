@@ -10,11 +10,14 @@ class ProfileUserEndpoint extends Endpoint {
         await ProfileUser.db.find(session, where: (t) => t.email.equals(email));
     ProfileUser? profileUser;
     if (list.isEmpty) {
+      final now = DateTime.now();
       profileUser = ProfileUser(
-          email: email,
-          passcode: _randomDigit(6),
-          membership: Membership.basic,
-          createdDate: DateTime.now());
+        email: email,
+        passcode: _randomDigit(6),
+        membership: Membership.basic,
+        createdDate: now,
+        modifiedDate: now,
+      );
       profileUser = await ProfileUser.db.insertRow(session, profileUser);
     } else {
       profileUser = list.last;
@@ -43,10 +46,15 @@ class ProfileUserEndpoint extends Endpoint {
   }
 
   Future<ProfileUser> update(Session session, ProfileUser profileUser) async {
+    final now = DateTime.now();
+    profileUser.modifiedDate = now;
     return await ProfileUser.db.updateRow(session, profileUser);
   }
 
   Future<ProfileUser> create(Session session, ProfileUser profileUser) async {
+    final now = DateTime.now();
+    profileUser.createdDate = now;
+    profileUser.modifiedDate = now;
     return await ProfileUser.db.insertRow(session, profileUser);
   }
 

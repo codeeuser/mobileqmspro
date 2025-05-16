@@ -73,12 +73,11 @@ void run(List<String> args) async {
   ));
 
   // Start the server.
-  await pod.start().catchError((e, s) async {
+  await pod.start().onError((e, s) async {
     pod.logVerbose(
       'POD: e:$e, s: $s',
     );
   });
-  pod.server.httpServer.idleTimeout = null;
 }
 
 Future<bool> sendResetMail(
