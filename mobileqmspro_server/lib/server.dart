@@ -39,11 +39,12 @@ void run(List<String> args) async {
   // );
 
   String runMode = pod.runMode;
-  String serverId = pod.serverId;
+  String serverId = '0'; //pod.serverId;
   String publicScheme = pod.config.apiServer.publicScheme;
-  String basePath = '..';
+  String basePath = '.';
   String privatekeyPath = '$basePath/certificates/${runMode}_$serverId.key';
   String p12Path = '$basePath/certificates/${runMode}_$serverId.p12';
+  pod.logVerbose('p12Path: $p12Path');
   String key = Platform.script.resolve(privatekeyPath).toFilePath();
   String p12 = Platform.script.resolve(p12Path).toFilePath();
   bool existKey = File(key).existsSync();

@@ -35,6 +35,7 @@ $ dart run intl_utils:generate
 $ flutter run -d chrome --web-port=1234
 $ flutter create .
 $ dart compile aot-snapshot bin/main.dart 
+$ dart compile aot-snapshot bin/main.dart --target-os=linux --target-arch=x64
 $ dartaotruntime bin/main.aot
 ```
 
