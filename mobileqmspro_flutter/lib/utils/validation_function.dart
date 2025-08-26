@@ -45,8 +45,8 @@ String? validateWs(String value) {
   return null;
 }
 
-String? validateText(String value) {
-  if (value.isEmpty) return 'Text is required.';
+String? validateText(String? value) {
+  if (value == null || value.isEmpty) return 'Text is required.';
   final RegExp nameExp = RegExp(r'^[A-Za-z ]+$');
   if (!nameExp.hasMatch(value.trim())) {
     return 'Please enter only alphabetical characters.';

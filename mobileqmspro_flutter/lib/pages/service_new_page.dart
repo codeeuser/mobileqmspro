@@ -210,7 +210,7 @@ class _ServiceNewPageState extends State<ServiceNewPage> {
                           controller: _letterController,
                           maxLength: 3,
                           validator: (value) {
-                            return validateStringMinMax(value, 1, 3);
+                            return validateText(value);
                           },
                         ),
                         TextFormField(
