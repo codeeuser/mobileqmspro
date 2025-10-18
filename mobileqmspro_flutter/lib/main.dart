@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:catcher_2/catcher_2.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
@@ -21,78 +19,80 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:window_manager/window_manager.dart';
 
 void main() async {
-  runZoned(() async {
-    WidgetsFlutterBinding.ensureInitialized();
+  WidgetsFlutterBinding.ensureInitialized();
 
-    SharedPreferences.setPrefix('mobileqmspro_');
-    final sharedPreference = await SharedPreferences.getInstance();
+  SharedPreferences.setPrefix('mobileqmspro_');
+  final sharedPreference = await SharedPreferences.getInstance();
 
-    await initializeServerpodClient();
+  await initializeServerpodClient();
 
-    // handle Windows Size
-    if (Utils.isMacos || Utils.isWindows) {
-      await windowManager.ensureInitialized();
+  // handle Windows Size
+  if (Utils.isMacos || Utils.isWindows) {
+    await windowManager.ensureInitialized();
 
-      WindowOptions windowOptions = const WindowOptions(
-        size: Size(400, 800),
-        minimumSize: Size(400, 600),
-        center: true,
-        skipTaskbar: false,
+    WindowOptions windowOptions = const WindowOptions(
+      size: Size(400, 800),
+      minimumSize: Size(400, 600),
+      center: true,
+      skipTaskbar: false,
+    );
+    windowManager.waitUntilReadyToShow(windowOptions, () async {
+      await windowManager.setTitleBarStyle(
+        TitleBarStyle.hidden,
+        windowButtonVisibility: true,
       );
-      windowManager.waitUntilReadyToShow(windowOptions, () async {
-        await windowManager.setTitleBarStyle(
-          TitleBarStyle.hidden,
-          windowButtonVisibility: true,
-        );
-        await windowManager.show();
-        await windowManager.focus();
-      });
-    }
-    DateTime now = DateTime.now().toLocal();
-    PackageInfo packageInfo = await PackageInfo.fromPlatform();
-
-    if (kIsWeb) {
-      usePathUrlStrategy();
-    }
-
-    String? reportUrl = mapConfig['serverpod']['reportUrl'];
-
-    Catcher2Options debugOptions = Catcher2Options(SilentReportMode(), [
-      ConsoleHandler(
-          enableApplicationParameters: false,
-          enableDeviceParameters: false,
-          enableCustomParameters: false)
-    ]);
-    Catcher2Options releaseOptions = Catcher2Options(SilentReportMode(), [
-      if (reportUrl != null && reportUrl.trim() != '') ...[
-        HttpHandler(
-          HttpRequestType.post,
-          Uri.parse(reportUrl),
-          enableCustomParameters: true,
-          printLogs: true,
-        ),
-      ],
-      ConsoleHandler(
-          enableApplicationParameters: false,
-          enableDeviceParameters: false,
-          enableCustomParameters: false)
-    ], customParameters: {
-      'timeZoneOffset': now.timeZoneOffset.inHours.toString(),
-      'timeZoneName': now.timeZoneName,
-      'appName': 'mobileQMSPro',
-      'appVersion':
-          '${packageInfo.version}, buildNumber:${packageInfo.buildNumber}',
-      'platform': Utils.getPlatformName(),
-      'ipInfo': '',
+      await windowManager.show();
+      await windowManager.focus();
     });
-    Catcher2.addDefaultErrorWidget(showStacktrace: true);
+  }
+  DateTime now = DateTime.now().toLocal();
+  PackageInfo packageInfo = await PackageInfo.fromPlatform();
 
+  if (kIsWeb) {
+    usePathUrlStrategy();
+  }
+
+  String? reportUrl = mapConfig['serverpod']['reportUrl'];
+
+  Catcher2Options debugOptions = Catcher2Options(SilentReportMode(), [
+    ConsoleHandler(
+        enableApplicationParameters: false,
+        enableDeviceParameters: false,
+        enableCustomParameters: false)
+  ]);
+  Catcher2Options releaseOptions = Catcher2Options(SilentReportMode(), [
+    if (reportUrl != null && reportUrl.trim() != '') ...[
+      HttpHandler(
+        HttpRequestType.post,
+        Uri.parse(reportUrl),
+        enableCustomParameters: true,
+        printLogs: true,
+      ),
+    ],
+    ConsoleHandler(
+        enableApplicationParameters: false,
+        enableDeviceParameters: false,
+        enableCustomParameters: false)
+  ], customParameters: {
+    'timeZoneOffset': now.timeZoneOffset.inHours.toString(),
+    'timeZoneName': now.timeZoneName,
+    'appName': 'mobileQMSPro',
+    'appVersion':
+        '${packageInfo.version}, buildNumber:${packageInfo.buildNumber}',
+    'platform': Utils.getPlatformName(),
+    'ipInfo': '',
+  });
+
+  if (kIsWeb) {
+    runApp(buildProvider(sharedPreference));
+  } else {
+    Catcher2.addDefaultErrorWidget(showStacktrace: true);
     Catcher2(
         navigatorKey: Catcher2.navigatorKey,
         rootWidget: buildProvider(sharedPreference),
         debugConfig: debugOptions,
         releaseConfig: releaseOptions);
-  });
+  }
 }
 
 Widget buildProvider(SharedPreferences prefs) {
