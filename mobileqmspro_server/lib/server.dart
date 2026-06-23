@@ -2,7 +2,7 @@ import 'dart:io';
 
 import 'package:mailer/mailer.dart';
 import 'package:mailer/smtp_server.dart';
-import 'package:serverpod/serverpod.dart';
+import 'package:serverpod/serverpod.dart' hide Message;
 import 'package:serverpod_auth_server/serverpod_auth_server.dart' as auth;
 import 'package:yaml/yaml.dart';
 
@@ -184,11 +184,15 @@ Future<List<ServerHealthMetric>> serverHealthCheckHandler(
 
   if (running == false) {
     pod.logVerbose('RESTART Server');
-    await pod.server.start();
+    await pod.server.start(
+      authenticationHandler: pod.server.authenticationHandler,
+    );
   }
   if (runningInsight == false) {
     pod.logVerbose('RESTART InsightServer');
-    await pod.serviceServer.start();
+    await pod.serviceServer.start(
+      authenticationHandler: pod.serviceServer.authenticationHandler,
+    );
   }
   return [
     ServerHealthMetric(
